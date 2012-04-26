@@ -1,0 +1,73 @@
+﻿
+body{
+	font: 12px Arial, Helvetica, sans-serif;
+	color: #000000;
+	background: url(images/bg.jpg) top repeat-x #CBE3EC
+
+;
+	line-height: 18px;
+}
+
+#buttons{
+	text-align:center;
+	height: 44px;
+	padding-left: 0px;
+	background: url(images/buttons.gif) top repeat-x;
+	padding: 0px 0px 0px 7px;
+}
+
+#buttons a {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	display: block;
+	float: left;
+	text-decoration: none;
+	color: #ffffff;
+	text-align: center;
+	padding-top: 10px;
+}
+
+#logo {	
+		height: 40px;
+		padding: 26px 0px 0px 13px;
+		text-align: left;
+		background: url(images/logo.gif) top repeat-x;
+		
+}
+
+#logo a {
+	text-decoration: none;
+	font-size: 16px;
+	color: #03688E;
+	font-style: italic;
+	font-weight: 100;
+}
+	
+#logo H2 a{
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight:100;
+	color: #03688E;
+	font-style: italic;
+}
+
+
+.but {
+	width: 221px;
+}
+
+#buttons .but:hover {
+	background: url(images/but_hover.gif) top repeat-x;
+	}
+	
+	
+
+
+.a_fu_i{ padding: 5px 0px 0px 0px;
+		margin: 0px 20px 0px 0px;
+		display:block;
+		width: 32px;
+		height:32px;
+		float: right;}
+.a_fu_i:hover { padding: 0px 0px 0px 0px;
+				display:block;}

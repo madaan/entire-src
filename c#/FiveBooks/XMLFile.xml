@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Advertisements>
+  <Ad>
+    <ImgUrl>~/images/unicef.jpg</ImgUrl>
+    <AlternateText>UNICEF</AlternateText>
+    <navigateURL>http://www.unicef.org</navigateURL>
+  </Ad>
+  <Ad>
+    <ImgUrl>~/images/redcross.jpg</ImgUrl>
+    <AlternateText>RED CROSS</AlternateText>
+    <navigateURL>http://www.indianredcross.org</navigateURL>
+  </Ad>
+  <Ad>
+    <ImgUrl>~/images/sarvashiksha.jpg</ImgUrl>
+    <AlternateText>SARVA SHIKSHA ABHIYAN</AlternateText>
+    <navigateURL>http://ssa.nic.in</navigateURL>
+  </Ad>
+  <Ad>
+    <ImgUrl>~/images/teachindia.jpg</ImgUrl>
+    <AlternateText>TEACH INDIA</AlternateText>
+    <navigateURL>http://www.teachforindia.org</navigateURL>
+  </Ad>
+</Advertisements>

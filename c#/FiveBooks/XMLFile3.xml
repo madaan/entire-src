@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Advertisements>
+  <Ad>
+    <ImgUrl>~/images/helpage.gif</ImgUrl>
+    <AlternateText>HELP AGE INDIA</AlternateText>
+    <navigateURL>http://www.helpageindia.org</navigateURL>
+  </Ad>
+  <Ad>
+    <ImgUrl>~/images/disha.jpg</ImgUrl>
+    <AlternateText>DISHA</AlternateText>
+    <navigateURL>http://www.disha.org</navigateURL>
+  </Ad>
+</Advertisements>

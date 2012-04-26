@@ -1,0 +1,79 @@
+<!--sg-->
+<html>
+<head>
+
+<script>
+
+function init()
+{
+
+}
+
+function rinit()
+{
+}
+function validate()
+{
+var valid=true;
+var alertStr="";
+var str=document.forms["f1"]["nameField"].value;//+'  '+document.form.f1.list.value;
+var isselect=document.forms["f1"]["genderSelect"][0].checked||document.forms["f1"]["genderSelect"][1].checked;
+var isCourseSelect=document.forms["f1"]["list1"].selectedIndex;
+if(str.length==0)
+{
+alertStr="NAME FIELD CANNOT BE LEFT BLANK";
+valid=false;
+}
+if(isselect==false)
+{
+alertStr+="\nSELECT A GENDER";
+document.getElementById("m1").innerHTML="ERROR!";
+}
+if(isCourseSelect==0)
+{
+alertStr+="\nSELECT A COURSE";
+}
+if(valid==false)
+alert(alertStr);
+return valid;
+}
+</script>
+</head>
+<style>
+.wrong
+{
+color:red;
+visibility:visible;
+}
+.right
+{
+visibility:hidden;}
+</style>
+<body>
+<p id='dsd'>
+This is a test
+</p>
+<script>
+</script>
+<center><p ><form name='f1' method=GET  onsubmit="return validate()" action="sgtest1.php"> 
+Enter Your Name -> <input type=text name="nameField" id='i1' ><span id='m1' ></span>
+<hr>
+<br>Gender :<br>
+Male :<input type=radio name=genderSelect>
+<br>Female :<input type=radio name=genderSelect>
+<hr>
+<br>Course :<br>
+<select  name=list1 >
+<option name=op1 value=w>SELECT A COURSE 
+<option name=op1 value=w>CSE
+<option name=op1 value=w>IT
+<option name=op1 value=w>ICE 
+<option name=op1 value=w>ECE
+<option name=op1 value=w>EEE
+</select>
+<br>
+<input type=submit value="SUBMIT FORM" onmouseover="rinit()" onmouseout="init()"> 
+</form><center></p>
+</body>
+</html>
+

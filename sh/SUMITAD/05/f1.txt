@@ -1,0 +1,14 @@
+AnyEvent::Strict (3pm) - force strict mode on for the whole process
+at.allow (5)         - determine who can submit jobs via at or batch
+doveadm-who (1)      - Show who is logged in to the Dovecot server
+ipsec_newhostkey (8) - generate a new raw RSA authentication key for a host
+ipsec_showhostkey (8) - show host's authentication key
+jwhois (1)           - client for the whois service
+ldapwhoami (1)       - LDAP who am i? tool
+pamfixtrunc (1)      - repair a Netpbm image whose file is truncated
+w (1)                - Show who is logged on and what they are doing.
+who (1)              - show who is logged on
+who (1p)             - display who is on the system
+whoami (1)           - print effective userid
+whois (1)            - client for the whois service
+whois.jwhois (1)     - client for the whois service

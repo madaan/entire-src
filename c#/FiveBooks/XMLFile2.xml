@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Advertisements>
+  <Ad>
+    <ImgUrl>~/images/khanacademy.png</ImgUrl>
+    <AlternateText>KHAN ACADEMY</AlternateText>
+    <navigateURL>http://www.khanacademy.org</navigateURL>
+  </Ad>
+  <Ad>
+    <ImgUrl>~/images/middaymeal.jpg</ImgUrl>
+    <AlternateText>MID DAY MEAL</AlternateText>
+    <navigateURL>http://www.middaymeal.com</navigateURL>
+  </Ad>
+</Advertisements>

@@ -1,0 +1,89 @@
+//sg
+#include<iostream>
+#include<fstream>
+using namespace std;
+long long ph1[20000],ph2[20000];
+   int labelledph1[20000],labelledph2[20000];
+  fstream fnc,fc;
+void layDataInMemory(int numRec);
+void assignLabels(int numRec);
+void assignLabelsToPh2(long long item,int label,int numRec);
+void assignLabelsToUnlabelledPh2(int numRec,int label);
+void displayLabelledData(int numRec);
+main()
+{
+int numRec=8500;
+fnc.open("/home/aman/sgtry/sg1.pairs",ios::in);
+fc.open("/home/aman/sgtry/sgnobodoclean.pairs",ios::out); 
+layDataInMemory(numRec);
+assignLabels(numRec);
+displayLabelledData(numRec);
+//Records Prepared 
+}	
+void layDataInMemory(int numRec)
+{
+int i=0;
+  while(i<numRec)
+{
+  fnc>>ph1[i]>>ph2[i];
+ cout<<"\nReading record "<<i<<" :"<<ph1[i]<<"  "<<ph2[i];
+  i++;
+ }
+cout<<"Read "<<i<<" records";
+}
+void assignLabels(int numRec)
+{
+long label=1;
+long j=0;
+long long prevNum;
+prevNum=ph1[0];
+cout<<prevNum<<endl;
+while(j<numRec)
+{
+//   cout<<"\nComparing "<<prevNum<<" with "<<ph1[j];
+  while(prevNum==ph1[j])
+  {
+    labelledph1[j++]=label;
+  
+//     cout<<"\nAssigning "<<label<<" to "<<ph1[j-1]<<endl;
+  }
+  assignLabelsToPh2(prevNum,label,numRec); //now label ph2
+  
+prevNum=ph1[j];
+  label++;
+}
+ assignLabelsToUnlabelledPh2(numRec,label);
+}
+//assign the given label to all the items in ph2
+void assignLabelsToPh2(long long item,int label,int numRec) //pass 1
+{
+  for(int i=0;i<numRec;i++)
+  {
+    if(ph2[i]==item)
+    {
+      labelledph2[i]=label;
+    }
+  }
+}
+void assignLabelsToUnlabelledPh2(int numRec,int label)  //pass 2
+{
+  int totalRecs=0;
+  for(int i=0;i<numRec;i++)
+  {
+      if(labelledph2[i]==0)
+    {
+      assignLabelsToPh2(ph2[i],label++,numRec);
+    
+    }
+    
+  }
+
+cout<<"\nDONE\n";
+}
+void displayLabelledData(int numRec)
+{
+  for(int i=0;i<numRec;i++)
+  {
+ fc<<labelledph1[i]<<"\t"<<labelledph2[i]<<"\n";
+  }
+}
