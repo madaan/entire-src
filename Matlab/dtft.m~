@@ -1,3 +1,6 @@
+
+
+
 %sg
 x=input('Enter the sequence');
 w=-(pi):.01:(pi);
@@ -8,7 +11,15 @@ res=zeros(1,1000);
 for wc=1:wl
     for ec=1:xl
         res(wc)=res(wc)+exp(i*(ec-1)*w(wc));
-    end        
+    end
+    
+    
+
+    
+    
+    
+    
+    
 end
 
 su

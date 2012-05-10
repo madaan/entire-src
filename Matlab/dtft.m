@@ -1,3 +1,6 @@
+
+
+
 %sg
 x=input('Enter the sequence');
 w=-(pi):.01:(pi);
