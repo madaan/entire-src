@@ -1,0 +1,13 @@
+ a=1;
+ b=1;
+  c=0;
+ x=zeros(1,200000);
+for i=0:.01:200*pi
+    
+    x(a)=sin(10i);
+    
+    a=a+1;
+end
+disp(x);
+
+wavwrite(x,'~/wt.wav');
