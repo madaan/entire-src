@@ -10,13 +10,13 @@ void movePegs(int n,int to,int from ,int aux)
 {
 if(n==1)
 {
-cout<<"\nMoving "<<n<<" pegs from "<<to<<" to "<<from;
+cout<<"\a\nMoving "<<n<<" pegs from "<<to<<" to "<<from;
 return;
 }
 //first move the first n-1 pegs to auxilary
 movePegs(n-1,aux,from,to);
 //then move the final peg to the destination
-cout<<"\nMoving "<<n<<" pegs from "<<to<<" to "<<from;
+cout<<"\a\nMoving "<<n<<" pegs from "<<to<<" to "<<from;
 //finally move the remaining n-1 pegs to the destination using initial 
 //destination as the final peg
 movePegs(n-1,to,aux,from);

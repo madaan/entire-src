@@ -12,7 +12,7 @@ scanf("%d",&arr[i]);
 printf("\n");
 for(i=0;i<n;i++)
 {
-if(arr[i]==1)
+if(arr[i])
 {
 printf(" _____");
 }
@@ -25,7 +25,7 @@ printf("\n");
 for(i=0;i<n;i++)
 {
 
-if(arr[i]==0)
+if(arr[i])
 {
 printf(" _____");
 }
