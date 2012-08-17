@@ -4,7 +4,7 @@ using namespace std;
 template <class T>
 struct Node
 {
-T data;
+T * data;
 Node * next;
 };
 template <class T>
@@ -16,14 +16,20 @@ LinkedList()
 {
 head=NULL;
 }
-void addHead(T data);
+void addHead(T * data);
 void deleteHead();
 void display();
+Node<T>* getHead();
 void reverseList();
 };
+template <class T>
+Node<T>* LinkedList<T>::getHead()
+{
+	return head;
+}
 
 template <class T>
-void LinkedList<T>::addHead(T data)
+void LinkedList<T>::addHead(T * data)
 {
 Node<T> * newN=new Node<T>();
 newN->data=data;
@@ -69,7 +75,7 @@ void LinkedList<T>::display()
 Node<T> * temp=head;
 while(temp)
 {
-cout<<temp->data<<"  " ;
+cout<<*(temp->data)<<"  " ;
 temp=temp->next;
 }
 cout<<"\n";

@@ -1,37 +1,27 @@
 //sg
-
 #include<stdio.h>
-
-void f(char **p)
+struct test
 {
-char *t;
-t = (p += sizeof(int))[-1];
-printf("%s\n", t);
-}
+short a,b;
+};
 int main()
 {
-int r = 5,b=0,c=0;
-char *argv[] = { "ab", "cd", "ef", "gh", "ij", "kl" };
-f(argv);
-/*
-//c=a++ + ++a + a++;
-//printf("%d %d \n",b,c);
-//printf("%d %d \n",b,c);
-//a=5;switch(a){default:a = 4;case 6:a--;case 5:a = a+1;case 1:a = a-1;}printf("%d \n",a);
-//*a gives you not an integer, but address of a 1d array on an integer
-int a[][2] = {1, 2, 3, 4, 5, 6};
-int (*ptr)[2] = a;
-int * p2=*a;
-printf("%d %d\n",*p2,*(p2+2));
-printf("%d %d ", (*ptr)[1], (*ptr)[2]);
-++ptr;
-printf("%d %d\n", (*ptr)[1], (*ptr)[2]);
+/*int x=40,y=35,z=20,w=10;
+int a=x*y/z-w;
+int b=x*y/(z-w);
+printf("%d  %d\n",a,b);
 */
-char *s = "Opendays2012";
-int i = 0;
-while(*(s++))
-i++;
-printf("%d",i);
+struct test t={1,2};
+short c,m=10,a=3;
+float p=t.a;
+int w=p;
+float * pt;
+pt=&w;
+printf("%f\n",p);
+//c=m/a--;
+printf("%d\n",a++ + a++ + ++a);
+printf("c=%d m=%d a=%d \n",c,m,a);
+int x=34.54,y=20,z=-5;
+printf("%d",(y>50 && z>10 || x>30));
 return 0;
-
 }
