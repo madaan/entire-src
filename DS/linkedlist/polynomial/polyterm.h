@@ -22,6 +22,12 @@ friend ostream& operator <<(ostream& o,Term& t);
 };
 ostream& operator <<(ostream& o,Term& t)
 {
+	if(t.coeff!=0)
+	{
+	if(t.coeff==1)
+	cout<<"x^"<<t.exp;
+	else
 	cout<<t.coeff<<"x^"<<t.exp;
+	}
 	return o;
 }

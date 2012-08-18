@@ -7,6 +7,7 @@ class Polynomial
 {
  static int MAX;
 LinkedList<Term> ll; 
+void collect();
 public:
 Polynomial(int * coeffArr,int * expArr)
 {
@@ -103,15 +104,50 @@ Polynomial operator *(Polynomial p2)
 	//before we create a polynomial, we must collect all the terms
 	
 	coeff[termCount]=0;
-	return Polynomial(coeff,exp);
 	
+	Polynomial p= Polynomial(coeff,exp);
+	p.collect();
+	return p;
 } 
 };
+void Polynomial::collect()
+{
+	int coeff,exp;
+	//here we never delete head
+	Node<Term> * head=ll.getHead();
+	Node<Term> * temp=NULL,*prev=NULL;
+	while(head)
+	{
+		prev=head;
+		temp=head->next;
+		coeff=head->data->coeff;
+		exp=head->data->exp;
+		while(temp)
+		{
+			if(temp->data->exp==exp)
+			{
+				coeff+=temp->data->coeff;
+				ll.deleteNode(prev);
+				temp=temp->next;
+			}
+			/*prev should not be updated in case a node is deleted.
+			*because then it would be pointing to a deleted node*/
+			else
+			{
+			prev=temp;
+			temp=temp->next;
+			}
+		}
+		head->data->coeff=coeff;
+		head=head->next;
+	}
+	
+}
 ostream& operator <<(ostream& o,Polynomial& p)
 {
 	Node<Term> * st=p.ll.getHead();
 	if(!st)
-	{	cout<<"Error printing lists!";
+	{	cout<<"Polynomial=0\n";
 		return o;
 	}
 	for(;st->next;st=st->next)
@@ -125,16 +161,24 @@ int Polynomial::MAX=100;
 int main()
 {
 	cout<<"Testing poly\n";
-	int c[]={1,-1,0};
-	int e[]={1,2};
-	int c1[]={1,1,0};
-	int e1[]={3,2};
-	Polynomial p1(c,e),p2(c1,e1);
+	int c[10];
+	int e[10];
+	int c1[10];
+	int e1[10];
+	for(int i=1;i<9;i++)
+	{
+		c[i-1]=i;
+		e[i-1]=i;
+		c1[i-1]=2*i;
+		e1[i-1]=2*i;
+	}
+	c1[8]=c[8]=0;
+		Polynomial p1(c,e),p2(c1,e1);
 	Polynomial p3=p1+p2;
 	cout<<p1<<p2;
-	cout<<p3;
-//	p3=p1*p2;
 	//cout<<p3;
+	p3=p1*p2;
+	cout<<p3;
 	
 	return 0;
 }

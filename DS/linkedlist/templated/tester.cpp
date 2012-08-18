@@ -10,19 +10,19 @@
 using namespace std;
 int main()
 {
-LinkedList<int> ll;
-for(int i=0;i<10;i++)
-ll.addHead(i);
-ll.display();
-/*ll.addHead(1);
-ll.addHead(2);
-ll.addHead(3);
-cout<<"Normal\n";
-ll.display();
-cout<<"Twisted\n";
-ll.reverseList();
-ll.display();
+LinkedList<int> l1,l2;
 
-*/
+for(int i=3;i<13;i+=3)
+{
+	l1.addHead(new int(i));
+}
+for(int i=4;i<13;i+=4)
+{
+	l2.addHead(new int(i));
+}
+l1.display();
+l2.display();
+l1.unionList(l2);
+l1.intersect(l2);
 return 0;
 }
