@@ -3,6 +3,8 @@
  * 
  */
 #include<iostream>
+#include<string>
+#include<queue>
 using namespace std;
 /* A NODE OF THE TREE*/
 
@@ -36,12 +38,81 @@ class Tree
 	template<class L>
 	friend istream& operator >> (istream& i,Tree<L>& t);
 	void inorder(TreeNode<T>* head);
+	void preorder(TreeNode<T>* head);
+	void postorder(TreeNode<T>* head);
 	int height(TreeNode<T>* head);
 	int internalNodes(TreeNode<T>* head);
 	int totalNodes(TreeNode<T>* head);
 	int leafNodes(TreeNode<T>* head);
 	void treeStatPrinter();
+	void prettyPrint();
 };
+template<class T>
+void Tree<T>::prettyPrint()
+{
+	queue<TreeNode<T>*> ready;
+	queue<TreeNode<T>*> print;
+	TreeNode<T>* curr,*currP;
+	int ht=height(head);
+	int nl=ht+1;
+	//whitespace
+	int wsBEG=1<<ht;//white space start
+	int wsIBW=1<<nl;//white space in between
+	/*ready queue at any time stores the nodes that belong to the 
+	 * same level only*/
+	 
+	/*add head to ready queue*/
+	ready.push(head);
+	do
+	{
+	//fill print queue
+	while(!ready.empty())
+	{
+		curr=ready.front();
+		if(curr==NULL) 
+		{
+		print.push(NULL);
+		ready.pop();  //delete the null
+		continue;
+		}
+		ready.pop();
+		//fill print queue
+		print.push(curr);
+	}
+	for(int i=0;i<wsBEG+2;i++)
+	{
+		cout<<" ";
+	}
+	//print all of these and refill the ready queue
+	while(!print.empty())
+	{
+		currP=print.front();
+		print.pop();
+	
+		if(currP==NULL)
+		{
+			cout<<" ";
+		}
+		else
+		{
+		cout<<currP->data;
+		ready.push(currP->left);
+		ready.push(currP->right);
+		}
+			for(int i=0;i<wsIBW;i++)
+		{
+		cout<<" ";
+		}
+	}
+	wsIBW=wsIBW>>1;
+	
+	wsBEG=wsBEG>>1;
+	
+	cout<<"\n\n";
+	}while(--nl);
+	
+	
+}
 template<class T>
 void Tree<T>::treeStatPrinter()
 {
@@ -106,12 +177,35 @@ void Tree<T>::inorder(TreeNode<T>* head)
 	}
 }
 template <class T>
+void Tree<T>::preorder(TreeNode<T>* head)
+{
+	if(head)
+	{
+	cout<<" "<<head->data;
+	preorder(head->left);
+	preorder(head->right);
+	}
+}
+template <class T>
+void Tree<T>::postorder(TreeNode<T>* head)
+{
+	if(head)
+	{
+	postorder(head->left);
+	postorder(head->right);
+	cout<<" "<<head->data;
+	}
+}
+template <class T>
 istream& operator >> (istream& i,Tree<T>& t)
 {
 	//this will help in reading the tree in depth order
 	TreeNode<T> * stack[100];
 		
-	int top=-1,lv,rv;
+	int top=-1;
+	/*Any type that has to be used with tree must define it's
+	 * own input,output and null check operators*/
+	T lv,rv;
 	bool complete=false;
 	TreeNode<T> * curr=t.head,*lc,*rc;
 	while(!complete)
@@ -163,20 +257,18 @@ istream& operator >> (istream& i,Tree<T>& t)
 		curr=stack[top];
 		top--;
 		}
-		
-		
-	
 return i;
 }
+
 	
 int main()
 {
-	int rootVal;
+	float rootVal;
 	cout<<"Enter root node value " ;
 	cin>>rootVal;
-	Tree<int> * t=new  Tree<int>(rootVal);
+	Tree<float> * t=new  Tree<float>(rootVal);
 	cin>>(*t);
-
-	t->treeStatPrinter();
+	t->prettyPrint();
+	//t->treeStatPrinter();
 	return 0;
 }
