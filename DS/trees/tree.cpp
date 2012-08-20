@@ -15,7 +15,6 @@ struct TreeNode
 	TreeNode * left,*right;
 	TreeNode(T data)
 	{
-		
 		this->data=data;
 		left=right=NULL;
 	}
@@ -339,12 +338,47 @@ istream& operator >> (istream& i,Tree<T>& t)
 		}
 return i;
 }
+class Char
+{
+	char c;
+	public:
+	Char(char ct):c(ct)
+	{}
+	Char():c('0')
+	{}
+	friend bool operator ==(Char& c,int x);
+	friend bool operator !=(Char& c,int x);
+	friend istream& operator >>(istream& i,Char& C);
+	friend ostream& operator <<(ostream& i,Char& C);
+};
+istream& operator >>(istream& i,Char& C)
+{
+	cin>>C.c;
+	return i;
+}
+ostream& operator <<(ostream& o,Char& C)
+{
+	cout<<C.c;
+	return o;
+}
+bool operator ==(Char& C,int x)
+{
+	int val=C.c-48;// 0 ASCII 48
+	if(val==x)
+	return true;
+	else
+	return false;
+}
+bool operator !=(Char& C,int x)
+{
+	return !(C==x);
+}
 int main()
 {
-	float rootVal;
+	Char rootVal('a');
 	cout<<"Enter root node value " ;
 	cin>>rootVal;
-	Tree<float> * t=new  Tree<float>(rootVal);
+	Tree<Char> * t=new  Tree<Char>(rootVal);
 	cin>>(*t);
 	t->prettyPrint(t->getHead());
 	//t->treeStatPrinter();
