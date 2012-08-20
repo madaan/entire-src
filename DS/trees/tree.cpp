@@ -35,6 +35,7 @@ class Tree
 	{
 		return head;
 	}
+	
 	template<class L>
 	friend istream& operator >> (istream& i,Tree<L>& t);
 	void inorder(TreeNode<T>* head);
@@ -45,11 +46,71 @@ class Tree
 	int totalNodes(TreeNode<T>* head);
 	int leafNodes(TreeNode<T>* head);
 	void treeStatPrinter();
-	void prettyPrint();
+	void prettyPrint(TreeNode<T>* head);
+	TreeNode<T>*  getMirror(TreeNode<T>* head);
+	
 };
 template<class T>
-void Tree<T>::prettyPrint()
+TreeNode<T>* Tree<T>::getMirror(TreeNode<T>* head)
 {
+	if(!head)  //required for non leafs
+	{
+		return NULL;
+	}
+	if(head->left==NULL&&head->right==NULL)
+	{
+		return head;
+	}
+	TreeNode<T> * nN=new TreeNode<T>(head->data);
+	nN->left=getMirror(head->right);
+	nN->right=getMirror(head->left);
+	return nN;
+}
+template<class T>
+void Tree<T>::prettyPrint(TreeNode<T>* head)
+{
+	/* Prints the tree on the basis of following pattern
+	 * of spaces that is observed with binary trees :  
+	 *  <--------2^h-----------><--------2^h----------->
+	 *  
+	 *  <--2^(h-1)--><--------2^h---------><--2^(h-1)-->
+	 *  
+	 *  <-2^(h-2)-><--2^(h-1)--><--2^(h-1)--><-2^(h-2)->
+	 * 
+	 * Maintains 2 queues : 
+	 * 1. Ready queue : This queue contains all nodes of the same level
+	 * 2. Print queue : Nodes to be printed. 
+	 * Head is first added to the ready queue, then for each level,
+	 * a node is taken out from ready queue,added to print queue and then
+	 * it's children are inserted into the ready queue.
+	 * This helps in maintaining a Breadth first traversal.
+	 * 
+	 * The function is far from perfect, but prints "ok" looking trees 
+	 * for most of the cases.
+	 * Eg : A special case ,Left skewed tree and it's mirror image
+	 * [aman@aman trees]$ ./a.out 
+	 * Enter root node value 1
+
+	 * Enter left child of  1 : 2
+	 * Enter right child of 1 : 0
+
+	 * Enter left child of  2 : 3
+	 * Enter right child of 2 : 0
+
+	 * Enter left child of  3 : 0
+	 * Enter right child of 3 : 0
+	 *     1    
+
+	 *   2         
+
+	 *  3           
+
+	 *     1    
+
+	 *        2    
+
+	 *           3  
+	 */
 	queue<TreeNode<T>*> ready;
 	queue<TreeNode<T>*> print;
 	TreeNode<T>* curr,*currP;
@@ -57,7 +118,8 @@ void Tree<T>::prettyPrint()
 	int nl=ht+1;
 	//whitespace
 	int wsBEG=1<<ht;//white space start
-	int wsIBW=1<<nl;//white space in between
+	int wsIBW=wsBEG;
+	
 	/*ready queue at any time stores the nodes that belong to the 
 	 * same level only*/
 	 
@@ -79,7 +141,7 @@ void Tree<T>::prettyPrint()
 		//fill print queue
 		print.push(curr);
 	}
-	for(int i=0;i<wsBEG+2;i++)
+	for(int i=0;i<wsBEG;i++)
 	{
 		cout<<" ";
 	}
@@ -92,6 +154,14 @@ void Tree<T>::prettyPrint()
 		if(currP==NULL)
 		{
 			cout<<" ";
+			/*a null should also ensure 
+			 * that his children are 
+			 * NULLs, this shall help in printing a balanced
+			 * tree*/
+			
+			ready.push(NULL);
+			ready.push(NULL);
+		
 		}
 		else
 		{
@@ -104,14 +174,10 @@ void Tree<T>::prettyPrint()
 		cout<<" ";
 		}
 	}
-	wsIBW=wsIBW>>1;
-	
+	wsIBW=wsBEG;
 	wsBEG=wsBEG>>1;
-	
 	cout<<"\n\n";
-	}while(--nl);
-	
-	
+	}while(--nl);	
 }
 template<class T>
 void Tree<T>::treeStatPrinter()
@@ -199,10 +265,15 @@ void Tree<T>::postorder(TreeNode<T>* head)
 template <class T>
 istream& operator >> (istream& i,Tree<T>& t)
 {
+	/*The tree was earlier read in Depth first order
+	 * this has been changed to breadth first order. 
+	 * To change this to depth first order.
+	 */   
 	//this will help in reading the tree in depth order
-	TreeNode<T> * stack[100];
-		
-	int top=-1;
+	//TreeNode<T> * stack[100];
+	queue<TreeNode<T>*> inputQ;
+	
+	//int top=-1;
 	/*Any type that has to be used with tree must define it's
 	 * own input,output and null check operators*/
 	T lv,rv;
@@ -217,50 +288,57 @@ istream& operator >> (istream& i,Tree<T>& t)
 		cin>>rv;
 		if((lv==0)&&(rv==0)) //at a leaf
 		{
-			if(top==-1) //no  more to process
+			//if(top==-1) //no  more to process
+			if(inputQ.empty())
 			{
 				complete=true;
 				break;
 			}
 			else //go to the next node
 			{
-				curr=stack[top];
-				top--;
+				//curr=stack[top];
+				//top--;
+				curr=inputQ.front();
+				inputQ.pop();
 				continue;
 			}
 		}
 		else if((lv==0)&&(rv!=0)) //only right child is there
 		{
 		rc=new TreeNode<T>(rv);
-		top++;
-		stack[top]=rc;
+		//top++;
+		//stack[top]=rc;
+		inputQ.push(rc);
 		curr->right=rc;
 		}
 		else if((lv!=0)&&(rv==0)) //only left child is there
 		{
 		lc=new TreeNode<T>(lv);
-		top++;
-		stack[top]=lc;
+		//top++;
+		//stack[top]=lc;
+		inputQ.push(lc);
 		curr->left=lc;
 		}
 		else //not a leaf, gotta update the l and r childs
 		{
 		lc=new TreeNode<T>(lv);
-		top++;
-		stack[top]=lc;
+		//top++;
+		//stack[top]=lc;
 		rc=new TreeNode<T>(rv);
-		top++;
-		stack[top]=rc;
+		//top++;
+		//stack[top]=rc;
 		curr->left=lc;
 		curr->right=rc;
+		inputQ.push(lc);
+		inputQ.push(rc);
 		}
-		curr=stack[top];
-		top--;
+		//curr=stack[top];
+		//top--;
+		curr=inputQ.front();
+		inputQ.pop();
 		}
 return i;
 }
-
-	
 int main()
 {
 	float rootVal;
@@ -268,7 +346,8 @@ int main()
 	cin>>rootVal;
 	Tree<float> * t=new  Tree<float>(rootVal);
 	cin>>(*t);
-	t->prettyPrint();
+	t->prettyPrint(t->getHead());
 	//t->treeStatPrinter();
+	t->prettyPrint(t->getMirror(t->getHead()));
 	return 0;
 }
