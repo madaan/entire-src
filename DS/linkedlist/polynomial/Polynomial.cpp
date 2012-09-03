@@ -175,6 +175,7 @@ int main()
 	c1[8]=c[8]=0;
 		Polynomial p1(c,e),p2(c1,e1);
 	Polynomial p3=p1+p2;
+	cout<<"\n";
 	cout<<p1<<p2;
 	//cout<<p3;
 	p3=p1*p2;

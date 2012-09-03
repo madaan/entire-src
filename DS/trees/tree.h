@@ -33,20 +33,26 @@ class Tree
 	{
 		return head;
 	}
-	
+	/*Reading a tree */
 	template<class L>
 	friend istream& operator >> (istream& i,Tree<L>& t);
+	/*Standard traversals*/
 	void inorder(TreeNode<T>* head);
 	void preorder(TreeNode<T>* head);
 	void postorder(TreeNode<T>* head);
-	int height(TreeNode<T>* head);
-	int internalNodes(TreeNode<T>* head);
-	int totalNodes(TreeNode<T>* head);
-	int leafNodes(TreeNode<T>* head);
+	/*Calculating height*/
+	int  height(TreeNode<T>* head);
+	/*Determining type of nodes*/
+	int  internalNodes(TreeNode<T>* head);
+	int  totalNodes(TreeNode<T>* head);
+	int  leafNodes(TreeNode<T>* head);
+	/* Tree summary*/
 	void treeStatPrinter();
+	/*Printing the tree*/
 	void prettyPrint(TreeNode<T>* head);
+	/* Mirror : calculation and check*/
 	TreeNode<T>*  getMirror(TreeNode<T>* head);
-	
+	bool  isMirror(TreeNode<T>* head1,TreeNode<T>* head2);
 };
 template<class T>
 TreeNode<T>* Tree<T>::getMirror(TreeNode<T>* head)
@@ -63,6 +69,20 @@ TreeNode<T>* Tree<T>::getMirror(TreeNode<T>* head)
 	nN->left=getMirror(head->right);
 	nN->right=getMirror(head->left);
 	return nN;
+}
+template<class T>
+bool Tree<T>::isMirror(TreeNode<T>* head1,TreeNode<T>* head2)
+{
+	if(head1==NULL && head2==NULL)
+	return true;
+	if((head1==NULL && head2!=NULL)&&(head2==NULL && head1!=NULL))
+	return false;
+	if(head1->data==head2->data)
+	{return isMirror(head1->left,head2->right)&&isMirror(head1->right,
+	head2->left);
+}
+	//else
+	return false;
 }
 template<class T>
 void Tree<T>::prettyPrint(TreeNode<T>* head)
@@ -265,7 +285,8 @@ istream& operator >> (istream& i,Tree<T>& t)
 {
 	/*The tree was earlier read in Depth first order
 	 * this has been changed to breadth first order. 
-	 * To change this to depth first order.
+	 * To change this to depth first order,simple toggle 
+	 * comments.
 	 */   
 	//this will help in reading the tree in depth order
 	//TreeNode<T> * stack[100];

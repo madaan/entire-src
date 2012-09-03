@@ -21,6 +21,9 @@ class Char
 	Char():c('0')
 	{}
 	friend bool operator ==(Char& c,int x);
+	bool operator ==(Char& c);
+	bool operator !=(Char& c);
+	
 	friend bool operator !=(Char& c,int x);
 	friend istream& operator >>(istream& i,Char& C);
 	friend ostream& operator <<(ostream& i,Char& C);
@@ -34,6 +37,14 @@ ostream& operator <<(ostream& o,Char& C)
 {
 	cout<<C.c;
 	return o;
+}
+bool Char::operator ==(Char& C)
+{
+	return C.c==c;
+}
+bool Char::operator !=(Char& C)
+{
+	return !(C.c==c);
 }
 bool operator ==(Char& C,int x)
 {

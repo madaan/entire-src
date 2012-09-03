@@ -1,27 +1,22 @@
 //sg
 #include<stdio.h>
-struct test
+#include<ncurses.h>
+int f(int *a,int n)
 {
-short a,b;
-};
+	if(n<=0)
+	{
+		return 0;
+	}
+	else if(*a%2==0)
+	return *a+f(a+1,n-1);
+	else
+	return *a-f(a+1,n-1);
+}+
 int main()
 {
-/*int x=40,y=35,z=20,w=10;
-int a=x*y/z-w;
-int b=x*y/(z-w);
-printf("%d  %d\n",a,b);
-*/
-struct test t={1,2};
-short c,m=10,a=3;
-float p=t.a;
-int w=p;
-float * pt;
-pt=&w;
-printf("%f\n",p);
-//c=m/a--;
-printf("%d\n",a++ + a++ + ++a);
-printf("c=%d m=%d a=%d \n",c,m,a);
-int x=34.54,y=20,z=-5;
-printf("%d",(y>50 && z>10 || x>30));
+	int a[]={12,7,13,4,11,6};
+	
+	printf("%d",f(a,6));
+	
 return 0;
 }
