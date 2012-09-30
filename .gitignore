@@ -2,3 +2,6 @@
 *.out
 *.o
 *.class
+*.dat
+*.txt
+*.dump

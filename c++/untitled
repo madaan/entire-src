@@ -1,0 +1,10 @@
+//sg
+class RandomNumberGenerator
+{
+fstream f;
+RandomNumberGenerator(char * filename)
+{
+f.open(filename,ios::out|ios::replace);
+
+
+}
