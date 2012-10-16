@@ -23,6 +23,7 @@ main()
 int i;
 for(i=0;i<100;i++)
 FIBO_TABLE[i]=-1;
-printf("%d\n",fibo(43));
+for(i=0;i<15;i++)
+printf("%d\n",fibo(i));
 }
 

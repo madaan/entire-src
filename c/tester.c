@@ -14,8 +14,8 @@ int f(int *a,int n)
 }
 int main()
 {
-	char t='ew';
-       /*
+int i,j,t;      
+ /*
 	int a[]={12,7,13,4,11,6};
 	int * callocarr,*mallocarr,i;
 	callocarr=(int *)calloc(10,sizeof(int));
@@ -24,10 +24,17 @@ int main()
 	printf("\n%d",callocarr[i]);
 	for(i=0;i<10;i++)
 	printf("\n%d",mallocarr[i]);
-	*/
+	
 printf("%d\n%d\n%d",sizeof(long),sizeof(int),sizeof(short int));
 int a=10;
 int res=a++ + ++a + ++a +a;
 printf("\n%d",res);
+*/
+for(i=0;i<100000;i++)
+for(j=0;j<100000;j++)
+{
+for(t=0;t<1000;t++)
+{}
+}
 return 0;
 }
