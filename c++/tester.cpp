@@ -1,21 +1,17 @@
 //sg
 #include<iostream>
 using namespace std;
-class Test
+class 
 {
 public:
-Test()
-{
-cout<<"\nHello , an object is created";
-}
 void foo()
 {
 	cout<<"\nInside foo";
 }
-}obj1; //one way of creating the object
-main()
+}obj; //one way of creating the object
+int main()
 {
-	Test obj2;
-	obj1.foo();
-	obj2.foo();
+int a=1,b=2,c=3;
+cout<<a*+b+c;
+return 0;
 }

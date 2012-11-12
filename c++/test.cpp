@@ -1,23 +1,16 @@
 //sg
 #include<iostream>
 using namespace std;
-main()
+int main()
 {
-int * a=new int[10];
-for(int i=0;i<10;i++)
-{a[i]=i;}
+void * p1;
+int * p2, * p3;
 
-delete a;
-a=new int[5];
-for(int i=0;i<5;i++)
-{
-a[i]=i;
-}
-
-for(int i=0;i<5;i++)
-{
-cout<<a[i]<<"\n";
-}
-delete a;
+p2 = new int;
+p1 = p2;
+p3 = (int *) p1;
+delete p2;
+//delete p3;
+delete (int *) p1;
 }
 
