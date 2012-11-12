@@ -18,5 +18,6 @@ int main()
 	bool res1=t->isMirror(t->getHead(),t->getMirror(t->getHead()));
 	if(res1)
 	cout<<"\n\nTrees printed above are mirrors!\n\n";
+	t->printSameLevel(2);
 	return 0;
 }

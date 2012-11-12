@@ -12,6 +12,7 @@ struct TreeNode
 {
 	T  data;
 	TreeNode * left,*right;
+	int level;
 	TreeNode(T data)
 	{
 		this->data=data;
@@ -27,6 +28,7 @@ class Tree
 	Tree(T  data)
 	{
 		head=new TreeNode<T>(data);
+		head->level=0;
 	}
 	
 	TreeNode<T>* getHead()
@@ -53,6 +55,8 @@ class Tree
 	/* Mirror : calculation and check*/
 	TreeNode<T>*  getMirror(TreeNode<T>* head);
 	bool  isMirror(TreeNode<T>* head1,TreeNode<T>* head2);
+	/*Printing all the elements at the same level*/
+	void printSameLevel(int);
 };
 template<class T>
 TreeNode<T>* Tree<T>::getMirror(TreeNode<T>* head)
@@ -279,6 +283,48 @@ void Tree<T>::postorder(TreeNode<T>* head)
 	postorder(head->right);
 	cout<<" "<<head->data;
 	}
+}
+template<class T>
+void Tree<T>::printSameLevel(int requiredLevel)
+{
+queue<TreeNode<T>*> BFSQ;
+TreeNode<T> * temp;
+BFSQ.push(getHead());
+while(!BFSQ.empty())
+{
+temp=BFSQ.front();
+BFSQ.pop();
+//if the level of the current node is equal to the 
+////required level, we can stop processing now and simply 
+////remove from the queue all the elements that follow 
+////and have the same level number.
+////It follows from properties of BFS that such elements 
+////will occur in a series ( level by level traversal).
+if(temp->level==requiredLevel)
+{
+break;
+}
+if(temp->right)
+{
+BFSQ.push(temp->right);
+temp->right->level=temp->level+1;
+}
+if(temp->left)
+{
+BFSQ.push(temp->left);
+temp->left->level=temp->level+1;
+}
+}
+if(!BFSQ.empty()||requiredLevel==0)
+{
+cout<<"Printing all the nodes at level "<<requiredLevel<<" : ";
+while(temp&&temp->level==requiredLevel)
+{
+cout<<temp->data<<"  ";
+temp=BFSQ.front();
+BFSQ.pop();
+}
+}
 }
 template <class T>
 istream& operator >> (istream& i,Tree<T>& t)
