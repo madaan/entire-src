@@ -29,9 +29,28 @@ start=newNode;
 newNode->next=temp;
 puts("Added a node to the front");
 }
-
+//getter to return the start pointer
+Node * LinkedList::getStart()
+{
+	return start;
+}
+//function to reverse the list
+void LinkedList::reverseList(Node * curr,Node * prev)
+{
+	if(curr->next==NULL) //reached end
+	{
+		start=curr;
+		curr->next=prev;
+		return;
+	}
+	reverseList(curr->next,curr); //reverse rest of the list
+		curr->next=prev; //then update this 
+		return;
+	
+}
 /*FUNCTION 
  * Print Linked List*/
+
 void LinkedList::printLinkedList()
 {
 Node * temp=start;

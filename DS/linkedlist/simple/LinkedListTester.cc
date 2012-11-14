@@ -9,7 +9,7 @@ int done=1,choice;
 while(done)
 {
 cout<<"Select the operation that you want to perform: \n";
-cout<<"1.Print List\n2.Add Node At The Front\n3.Delete Node From Front\n4.Add Node at the rear\n Press Any Other Key To Exit\n\t:";
+cout<<"1.Print List\n2.Add Node At The Front\n3.Delete Node From Front\n4.Add Node at the rear\n5.Reverse The list Press Any Other Key To Exit\n\t:";
 cin>>choice;
 
 switch(choice)
@@ -29,6 +29,12 @@ case 4:
 cout<<"Enter the element to be added";
 cin>>choice;
 myLL->addNodeToRear(choice);
+break;
+case 5:
+myLL->reverseList(myLL->getStart(),NULL);
+cout<<"\nList Reversed!";
+myLL->printLinkedList();
+
 break;
 default:
 done=0;

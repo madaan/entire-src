@@ -13,8 +13,10 @@ LinkedList(int n)
 {
 start=new Node(n);
 }
+Node * getStart();
 void addNodeToFront(int n);
 void printLinkedList();
 void deleteFromFront();
 void addNodeToRear(int n);
+void reverseList(Node * curr,Node * prev);
 };
