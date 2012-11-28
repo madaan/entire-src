@@ -1,16 +1,18 @@
-#include<stdio.h>
-#include<string.h>
-#define i 20
-int main()
-{
-printf("%d..",i);
-fun();
-printf("%d",i);
+///sg
+/*/ * strtok example */
+#include <stdio.h>
+#include <string.h>
 
-char str[]="S65AB";
-printf("\n%d", sizeof(str));}
-void fun()
+int main ()
 {
-#undef i
-#define i 30
+  char str[] ="- This, a sample string.";
+  char * pch;
+  printf ("Splitting string \"%s\" into tokens:\n",str);
+  pch = strtok (str," ,.-");
+  while (pch != NULL)
+  {
+    printf ("\n%s remaining : %s",pch,str);
+    pch = strtok (NULL, " ,.-");
+  }
+  return 0;
 }
