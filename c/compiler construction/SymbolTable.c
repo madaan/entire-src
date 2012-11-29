@@ -162,9 +162,10 @@ int search(char * sym)
 void printSymbolTable()
 {
 	int i=0;
+		printf("\n\n %-10s %-10s %-10s","Symbol","Token","Value (0 means N/A)");
 		for(i=0;i<count;i++)
 		{
-			printf("\n\n Symbol= %-10s Token=%-10s Value=%-5d (0 means N/A)",SYM[i].id,SYM[i].token,SYM[i].value);
+			printf("\n %-10s %-10s %-5d ",SYM[i].id,SYM[i].token,SYM[i].value);
 		}
 }
 int main()
