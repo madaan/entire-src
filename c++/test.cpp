@@ -1,16 +1,24 @@
-//sg
-#include<iostream>
+#include <iostream>
+#include <string>
+
+char a[100];
 using namespace std;
-int main()
+class X
 {
-void * p1;
-int * p2, * p3;
+	public:
+	static int x;
+	static char xu;
+	static char xua[100];
+};
+int X::x;
+char X::xu;
+char X::xua[100];
+int main() {
+    string password;
+cout<<X::x;
+cout<<endl<<X::xu;
+cout<<endl<<X::xua;
+    
+ return(0);
 
-p2 = new int;
-p1 = p2;
-p3 = (int *) p1;
-delete p2;
-//delete p3;
-delete (int *) p1;
 }
-

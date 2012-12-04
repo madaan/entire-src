@@ -1,18 +1,14 @@
-///sg
-/*/ * strtok example */
+//sg
 #include <stdio.h>
-#include <string.h>
 
-int main ()
+int array1[5] = {2, 4, 6, 8, 10};
+int array[5] = {2, 4, 6, 8, 10};
+int *pointer;
+
+
+int main()
 {
-  char str[] ="- This, a sample string.";
-  char * pch;
-  printf ("Splitting string \"%s\" into tokens:\n",str);
-  pch = strtok (str," ,.-");
-  while (pch != NULL)
-  {
-    printf ("\n%s remaining : %s",pch,str);
-    pch = strtok (NULL, " ,.-");
-  }
-  return 0;
+        pointer = array;
+        printf("%p:\t%d\n", pointer, *pointer);
+        return 0;
 }
