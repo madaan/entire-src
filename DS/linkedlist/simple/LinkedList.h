@@ -18,5 +18,9 @@ void addNodeToFront(int n);
 void printLinkedList();
 void deleteFromFront();
 void addNodeToRear(int n);
-void reverseList(Node * curr,Node * prev);
+void reverseList(Node * curr,Node * prev,Node * stopper);
+//---------------
+void reverseBlocksK(int K);
+void reverseListNotStart(Node * curr,Node * prev,Node * stopper);
+//----------------
 };

@@ -34,19 +34,73 @@ Node * LinkedList::getStart()
 {
 	return start;
 }
-//function to reverse the list
-void LinkedList::reverseList(Node * curr,Node * prev)
+//function to reverse the list starting from curr to
+//stopper.
+void LinkedList::reverseList(Node * curr,Node * prev,Node * stopper)
 {
-	if(curr->next==NULL) //reached end
+	if(curr->next==stopper) //reached end
 	{
 		start=curr;
 		curr->next=prev;
 		return;
 	}
-	reverseList(curr->next,curr); //reverse rest of the list
+	reverseList(curr->next,curr,stopper); //reverse rest of the list
 		curr->next=prev; //then update this 
 		return;
 	
+}
+//function to reverse the list without modifying the head
+void LinkedList::reverseListNotStart(Node * curr,Node * prev,Node * stopper)
+{
+	if(curr->next==stopper) //reached end
+	{
+		curr->next=prev;
+		return;
+	}
+	reverseListNotStart(curr->next,curr,stopper); //reverse rest of the list
+		curr->next=prev; //then update this 
+		return;
+	
+}
+//function to reverse the list in blocks of K
+void LinkedList::reverseBlocksK(int K)
+{
+	int i=0;
+	int blockNumber=0;
+	Node * curr=this->getStart();
+	Node * stopper=curr,* nextIterPrev,*prevCurr;
+	Node * prev=NULL;
+	do
+	{
+	while(i<K&&stopper)
+	{
+	nextIterPrev=stopper;
+	stopper=stopper->next;
+	i++;	
+	}
+	if(!stopper&&i<K) //list finish
+	{
+		prevCurr->next=curr;
+		return;}
+	
+	if(blockNumber==0)
+	{
+		reverseList(curr,prev,stopper);
+		prevCurr=curr;
+	}
+	else
+	{
+	prevCurr->next=nextIterPrev;
+	reverseListNotStart(curr,nextIterPrev,stopper);
+	curr->next=stopper;
+	prevCurr=curr;
+	}
+	blockNumber++;
+	i=0;
+	prev=curr;//after list has been reversed
+	curr=stopper;
+	
+	}while(1);
 }
 /*FUNCTION 
  * Print Linked List*/
@@ -58,7 +112,7 @@ Node * temp=start;
 int  rows=2;
 while(rows--)
 {
-puts("--------");
+puts("\n\n");
 }
 while(temp)
 {
@@ -69,7 +123,7 @@ puts("NULL");
 rows=2;
 while(rows--)
 {
-puts("--------");
+puts("\n\n");
 }
 }
 /*FUNCTION

@@ -58,8 +58,12 @@ int main(int argc,char * argv[])
          
         fn=strtok(temp,",");
         ln=strtok(NULL,",");
-        first[line_count]=malloc(sizeof(char)*(strlen(fn)+1));
-         last[line_count]=malloc(sizeof(char)*(strlen(ln)+1));
+        //free the memory allocated by getline
+        if(!(first[line_count]=malloc(sizeof(char)*(strlen(fn)+1)))||!(last[line_count]=malloc(sizeof(char)*(strlen(ln)+1))))
+        {
+		perror("Insufficient memory, program will now exit\n");
+		return 0;
+		}
         if(fn&&ln)
         {
         strcpy(first[line_count],fn);
@@ -67,13 +71,19 @@ int main(int argc,char * argv[])
         line_count++;
        }
        //required so that getline does the allocation
+        free(temp);
         temp=NULL;
        line_length=0;
    }
+   free(temp);
     while(line_count--)
     {
         printf("First Name : %s\nLast Name : %s\n",first[line_count],last[line_count]);
+       free(first[line_count]);
+       free(last[line_count]);
     }
+    free(first);
+    free(last);
     fclose(fp);
     return 0;
 }

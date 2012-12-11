@@ -57,63 +57,24 @@ class Tree
 	bool  isMirror(TreeNode<T>* head1,TreeNode<T>* head2);
 	/*Printing all the elements at the same level*/
 	void printSameLevel(int);
-	/*Finding the common ancestor,note that the DFS is not a generic 
-	 implementation, it is used to assist getAncestor */
-	TreeNode<T>* getAncestor(T child1,T child2);
-	int searchDFS(TreeNode<T>*,T,TreeNode<T>*[]);
-};
-template<class T>
-TreeNode<T>* Tree<T>::getAncestor(T child1,T child2)
-{	
-	/*ALGORITHM ->
-	 * START DFS AND FIND CHILD1
-	 * BACKTRACK AND FIND CHILD2*/
-	 TreeNode<T>* stack[100],*curr,*temp;
-	 int top;
-	top=searchDFS(getHead(),child1,stack);
-	 if(top==-1)
-	 {
-		return NULL;
-	 }
-	 //now backtrack
-	 while(top>=0)
-	 {
-		curr=stack[top]; 
-		 if(searchDFS(curr,child2,stack)!=-1)
-		 {
-			 return curr;
-		 }
-		 top--;
-	 }
-return NULL;}
-template<class T>
+	/*Getting the lowest common ancestor, a and b should exist*/
+	TreeNode<T>* LCA(TreeNode<T>* root,T a,T b);
 
-template <class T>
-int Tree<T>::searchDFS(TreeNode<T> * origin,T data,TreeNode<T> * stack[100])
+};
+
+template<class T>
+TreeNode<T>* Tree<T>::LCA(TreeNode<T>* root,T a,T b)
 {
-	int top=-1;
-	TreeNode<T>* temp;
-	stack[++top]=origin;
-	cout<<"\nSearching for : "<<data<<"\n";
-	 while(top>=0) //while stack is not empty
-	 {
-		 
-		 temp=stack[top];//get the top element
-		 cout<<"\nComparing with "<<temp->data;
-		 if(temp->data==data)
-		 {
-		return top-1;
-		}
-		 else //continue DFS
-		 {
-			 top--;//pop current
-			 if(temp->left)
-			 stack[++top]=temp->left;
-			 if(temp->right)
-			 stack[++top]=temp->right;
-		 }
-	 }
-	 return -1;
+	TreeNode<T> *left,*right;
+	if(root==NULL)
+	return NULL;
+	if((root->data==a)||(root->data==b))
+	return root;
+	left=LCA(root->left,a,b);
+	right=LCA(root->right,a,b);
+	if(left&&right)
+	return root;
+	return left?left:right;
 }
 template<class T>
 TreeNode<T>* Tree<T>::getMirror(TreeNode<T>* head)

@@ -4,12 +4,29 @@
 using namespace std;
 int main()
 {
-LinkedList * myLL=new  LinkedList(0);//Start with a 0
+int i=1;
+LinkedList * myLL=new  LinkedList(i++);//Start with a 0
 int done=1,choice;
+
+myLL->addNodeToRear(i++);
+myLL->addNodeToRear(i++);
+myLL->addNodeToRear(i++);
+myLL->addNodeToRear(i++);
+myLL->addNodeToRear(i++);
+
+
 while(done)
 {
 cout<<"Select the operation that you want to perform: \n";
-cout<<"1.Print List\n2.Add Node At The Front\n3.Delete Node From Front\n4.Add Node at the rear\n5.Reverse The list Press Any Other Key To Exit\n\t:";
+//the menu
+cout<<"\
+1.Print List\n\n\
+2.Add Node At The Front\n\n\
+3.Delete Node From Front\n\n\
+4.Add Node at the rear\n\n\
+5.Reverse The list Press\n\n\
+6.Reverse in blocks of K\n\n\
+ Any Other Key To Exit\n\t:";
 cin>>choice;
 
 switch(choice)
@@ -31,10 +48,16 @@ cin>>choice;
 myLL->addNodeToRear(choice);
 break;
 case 5:
-myLL->reverseList(myLL->getStart(),NULL);
+myLL->reverseList(myLL->getStart(),NULL,NULL);
 cout<<"\nList Reversed!";
 myLL->printLinkedList();
-
+break;
+case 6:
+cout<<"Enter the value of K";
+cin>>choice;
+myLL->reverseBlocksK(choice);
+cout<<"\nList Reversed in blocks of K!";
+myLL->printLinkedList();
 break;
 default:
 done=0;

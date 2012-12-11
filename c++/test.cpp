@@ -1,24 +1,29 @@
-#include <iostream>
-#include <string>
+//sg
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-char a[100];
-using namespace std;
-class X
-{
-	public:
-	static int x;
-	static char xu;
-	static char xua[100];
-};
-int X::x;
-char X::xu;
-char X::xua[100];
-int main() {
-    string password;
-cout<<X::x;
-cout<<endl<<X::xu;
-cout<<endl<<X::xua;
-    
- return(0);
+int main(){
+        int vet[1000], fre[51]={0};
+        int i;
 
+       
+srandom(time(NULL));
+        for(i=0;i<1000;i++){
+       
+                vet[i]=(random()%51);
+        }
+
+for(i=0;i<1000;i++){
+printf("%d\n", vet[i]);
+}
+
+        for(i=0;i<1000;i++){
+                        fre[vet[i]]=fre[vet[i]]+1;
+        }
+
+        for(i=0;i<51;i++){
+                printf("The number %d  was generated %d times\n", i, fre[i]);
+        }
+        return 0;
 }

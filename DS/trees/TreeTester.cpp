@@ -19,8 +19,8 @@ int main()
 	if(res1)
 	cout<<"\n\nTrees printed above are mirrors!\n\n";
 	t->printSameLevel(2);
-	TreeNode<Char>* anc=t->getAncestor(Char('f'),Char('g'));
+	TreeNode<Char>* anc=t->LCA(t->getHead(),Char('4'),Char('7'));
 	if(anc)
-	cout<<"Common Ancestor of f and g :  "<<anc->data;
+	cout<<"Common Ancestor of 4 and 7 :  "<<anc->data;
 	return 0;
 }
