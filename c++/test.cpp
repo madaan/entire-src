@@ -1,29 +1,25 @@
 //sg
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+#include <iostream>
+#include <fstream>
 
-int main(){
-        int vet[1000], fre[51]={0};
-        int i;
 
-       
-srandom(time(NULL));
-        for(i=0;i<1000;i++){
-       
-                vet[i]=(random()%51);
-        }
+using namespace std;
 
-for(i=0;i<1000;i++){
-printf("%d\n", vet[i]);
-}
+int main(int argc, char* argv[]) {
 
-        for(i=0;i<1000;i++){
-                        fre[vet[i]]=fre[vet[i]]+1;
-        }
+    long f;
 
-        for(i=0;i<51;i++){
-                printf("The number %d  was generated %d times\n", i, fre[i]);
-        }
-        return 0;
+    fstream myFile("data.txt", fstream::in|fstream::out);
+    cout << "f before: " << f << endl;
+    myFile >> f;
+    cout << "f after: " << f << endl;
+    f++;
+    cout << "f after increment: " << f << endl;
+    myFile.seekp(ios::beg);
+    myFile << f<<"\n";
+    myFile.close();
+
+    return 0;
 }

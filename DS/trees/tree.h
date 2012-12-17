@@ -58,7 +58,7 @@ class Tree
 	/*Printing all the elements at the same level*/
 	void printSameLevel(int);
 	/*Getting the lowest common ancestor, a and b should exist*/
-	TreeNode<T>* LCA(TreeNode<T>* root,T a,T b);
+	TreeNode<T>* LCA(TreeNode<T>* root,T a,T b)ww;
 
 };
 

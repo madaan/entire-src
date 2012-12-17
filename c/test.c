@@ -1,17 +1,12 @@
 //sg
 #include <stdio.h>
-#include<unistd.h>
 
-int main()
+
+int main(int argc, char *argv[])
 {
-	if(1)
-	{
-	printf("Hello");
-	goto evil;
-	}
-	else
-	{evil:
-	printf(" World");
-	}
-		return 0;
+	static int a[1<<20]={};
+	int i;
+	for(i=0;i<100;i++)
+	printf("%d ",a[i]); 
+    return 0;  
 }
