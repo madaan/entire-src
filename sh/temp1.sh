@@ -1,11 +1,11 @@
-
-if [ $0='gmailpass' ]
-then
-echo "sg123456amanmadaanbastianschweinsteiger"|xclip -selection "clipboard";
-sleep 5;
+#!/bin/bash
+clear
+echo 'This script will install: Firefox 17.0.1 (language: enGB or itIT or enUS) and flash 11 in Firefox17.0.1, continue?'
+read  reply
+b="yes";
+if  [[ "$reply" = "yes" ]]; then
+echo "Got you!";
 else
-echo "sg123456bastianschweinsteiger123456sg123456789"|xclip -selection "clipboard";
-sleep 5;
-fi;
-echo ""|xclip -selection "clipboard";
-exit
+  echo "I'm quitting the script..."
+  exit
+fi

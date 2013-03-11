@@ -1,12 +1,14 @@
 //sg
+#include<stdio.h>
 #include <stdio.h>
+#include <stdlib.h>
 
+#define answer 3.141593
 
-int main(int argc, char *argv[])
-{
-	static int a[1<<20]={};
-	int i;
-	for(i=0;i<100;i++)
-	printf("%d ",a[i]); 
-    return 0;  
+int main(int argc, char **argv) {
+
+        float a = (argc - 2)?: strtod(argv[1], 0);    
+        printf("double = %lf ,float =  %f long long double = %lld", a-answer , a-answer , a-answer);
+
+	return 0;
 }
