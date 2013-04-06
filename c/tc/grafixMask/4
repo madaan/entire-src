@@ -1,0 +1,116 @@
+//sg
+#include<stdio.h>
+#include<iostream>
+#include<stack>
+#include<stdlib.h>
+#include<string>
+#include<string.h>
+void getCoordinates(char * str, int * corr) {
+char temp[20];
+int i = 0, j = 0;
+int pos = 0; // 0->top, 1->left, 2->bottom, 3->right
+while(i < 13) {
+    j = 0;
+while(str[i] != ' ') {
+temp[j++] = str[i++];
+}
+i++;
+temp[j] = '\0';
+corr[pos++] = atoi(temp);
+
+}
+
+}
+struct node {
+    int x, y;
+    node(int x, int y) {
+        this-> x = x;
+        this->y = y;
+    }
+    node() {
+        x = y = 0;
+    }
+};
+bool fill[600][400];
+
+int dfs(node);
+
+void sortedAreas(char * rectangles[],int n) {
+//set up fill
+int top, left, bottom, right;
+
+for(int x = 0; x < 600; x++) {
+    for(int y = 0; y < 400; y++) {
+    fill[x][y] = false;
+
+    }
+}
+printf("%s : ",rectangles[0]);
+std::cin.get();
+
+for(int i = 0; i < n; i++) { //process each rectangle
+        
+        top = atoi(strtok(rectangles[i], "."));
+        left = atoi(strtok(NULL, "."));
+        bottom = atoi(strtok(NULL, "."));
+        right = atoi(strtok(NULL, "."));
+        for(int x = top; x <= bottom; x++) {
+            for(int y = left; y <= right; y++) {
+                fill[x][y] = true;
+            }
+        }
+}
+/*
+top = 0;
+left = 299;
+bottom = 399;
+right = 307;
+int results[50];
+printf("here");
+std::cin.get();*/
+for(int x = 0; x < 600; x++) {
+    for(int y = 0; y < 400; y++) {
+        if(fill[x][y] == false) {
+
+            printf("%d\n", dfs(node(x,y)));
+        }
+    }
+}
+}
+
+int dfs(node start) {
+std::stack<node> dfss;
+node top;
+int area  = 0;
+dfss.push(start);
+while(!dfss.empty()) {
+top = dfss.top();
+dfss.pop();
+if(top.x < 0 || top.x >= 600) {
+    continue;
+}
+if(top.y < 0 || top.y >= 400) {
+    continue;
+}
+if(fill[top.x][top.y]) {
+    continue;
+}
+fill[top.x][top.y] = true;
+//else push the neighbors
+area++;
+dfss.push(node(top.x + 1, top.y));
+dfss.push(node(top.x - 1, top.y));
+dfss.push(node(top.x, top.y + 1));
+dfss.push(node(top.x, top.y - 1));
+}
+return area;
+}
+
+int main() {
+char * arr [] = {"0 292 399 307"};
+int corr[4];
+getCoordinates(arr[0], corr);
+printf("%d %d %d %d",corr[0], corr[1], corr[2], corr[3]);
+//sortedAreas(arr, 1);
+return 0;
+}

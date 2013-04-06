@@ -1,0 +1,3 @@
+The City of Palo Alto, in its official description of parking lot standards,
+specifies the grade of wheelchair access ramps in terms of centimeters of
+rise per foot of run.  A compromise, I imagine...@
