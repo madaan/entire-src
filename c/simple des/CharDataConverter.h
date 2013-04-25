@@ -1,5 +1,6 @@
 //sg
 //Author : Aman Madaan <madaan.amanmadaan@gmail.com>
+
 class CharDataConverter
 {
     public : 

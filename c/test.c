@@ -1,11 +1,10 @@
 //sg
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-
-#include<stdio.h>
+#define SO(X,s) X *a; s = ((int)(a + 1) - (int)(a));
 int main()
 {
-int a = 10, b = 20;
-printf("%d", "%d", a, b);
+system("echo \"Hello World\"");
+ 
+return 0;
 }

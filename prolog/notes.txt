@@ -1,0 +1,2 @@
+Important points : 
+1. Predicate is defined by a clause, that may be rule or a fact.
