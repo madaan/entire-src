@@ -1,19 +1,23 @@
+//sg
 #include<stdio.h>
-main()
+int main()
 {
-char command = '1';
-while(command!='0') {
-    printf("Menu:\n");
-    printf("1. First option\n");
-    printf("2. Second option\n");
-    printf("0. Exit\n");
-    printf("Choose: 0,1,2?: ");
-    command = getchar();
-    while(getchar()!='\n');     
-    switch(command) {
-        case '0': break;
-        case '1': printf("option 1");break;//functionCall1(); break; 
-        case '2': printf("option 2");break;//functionCall2(); break;
-    }
+int a[10];
+int i=0;
+int res=0,n;
+printf("Enter the number of elements, followed by the elements...");
+scanf("%d",&n);
+for(i=0;i<n;i++)
+scanf("%d",(a+i));
+for(i=0;i<n;i++)
+{
+	res=res^a[i];
 }
+printf("\nXOR OF ALL BUT THE DUPLICATE NUMBER : %d",res);
+for(i=0;i<n;i++)
+{
+	res=res^a[i];
+}
+printf("\nDuplicate element is : %d",res);
+return 0;
 }
