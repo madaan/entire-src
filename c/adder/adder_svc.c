@@ -20,7 +20,7 @@ static void
 adderprog_1(struct svc_req *rqstp, register SVCXPRT *transp)
 {
 	union {
-		char *adder_1_arg;
+		operation adder_1_arg;
 	} argument;
 	char *result;
 	xdrproc_t _xdr_argument, _xdr_result;
@@ -32,7 +32,7 @@ adderprog_1(struct svc_req *rqstp, register SVCXPRT *transp)
 		return;
 
 	case ADDER:
-		_xdr_argument = (xdrproc_t) xdr_wrapstring;
+	//	_xdr_argument = (xdrproc_t) xdr_operation;
 		_xdr_result = (xdrproc_t) xdr_wrapstring;
 		local = (char *(*)(char *, struct svc_req *)) adder_1;
 		break;
