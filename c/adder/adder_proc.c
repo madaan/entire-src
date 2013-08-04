@@ -57,10 +57,19 @@ char **adder_1(char **b, CLIENT *req)
         mpz_cdiv_q(n13, n11, n12);
         break;
     }
-
+    
+    static char *result;
+    FILE *f = fopen("/home/aman/console.txt", "a");
+    if(!f) {
+        char *errstr = malloc(100);
+        strcpy(errstr, "ERROR OPENING FILE!\0");
+        result = errstr;
+        return &result;
+    }
+    fprintf(f, "Operated");
     char *str = malloc(1000);
     mpz_get_str(str, 10, n13);
-    static char *result;
     result = str;
+    fclose(f);
     return &result;
 }
