@@ -57,10 +57,6 @@ adderprog_1(struct svc_req *rqstp, register SVCXPRT *transp)
 	return;
 }
 
-bool_t xdr_operation (XDR * x, operation* op)
-{
-    return 1;
-}
 int
 main (int argc, char **argv)
 {

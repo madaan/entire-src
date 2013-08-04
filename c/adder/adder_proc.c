@@ -13,16 +13,15 @@ char **adder_1(operation *opn, CLIENT *req)
     mpz_init(n13);
     mpz_set_str(n11, opn->op1, 10);
     mpz_set_str(n12, opn->op2, 10);
+    
     FILE *f = fopen("/home/aman/console", "a");
-	if (f == (FILE *)NULL) {
-		return NULL;
+	
+    if (f == (FILE *)NULL) {
+        return NULL;
 	}
 
     fprintf(f, "op 1 : %s, %s, %c\n", opn->op1, opn->op2, opn->operator);
-    
-    strcpy(opn->op1, "1234");
 
-    fprintf(f, "op 1 : %s, %s, %c\n", opn->op1, opn->op2, opn->operator);
     switch(opn->operator) {
         case '+':
         mpz_add(n13, n11, n12);
@@ -39,6 +38,10 @@ char **adder_1(operation *opn, CLIENT *req)
         
         case '/':
         mpz_cdiv_q(n13, n11, n12);
+        break;
+
+        default:
+        fprintf(f, "Cannot perform operations\n");
         break;
     }
 

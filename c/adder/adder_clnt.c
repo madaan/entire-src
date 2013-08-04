@@ -9,10 +9,6 @@
 /* Default timeout can be changed using clnt_control() */
 static struct timeval TIMEOUT = { 25, 0 };
 
-bool_t xdr_operation (XDR * x, operation* op)
-{
-    return 1;
-}
 char **
 adder_1(operation *argp, CLIENT *clnt)
 {
