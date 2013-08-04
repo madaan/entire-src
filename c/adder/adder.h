@@ -26,13 +26,14 @@ typedef struct operation operation;
 
 #if defined(__STDC__) || defined(__cplusplus)
 #define ADDER 1
-extern  char ** adder_1(operation **, CLIENT *);
-extern  char ** adder_1_svc(operation *, struct svc_req *);
+extern  char ** adder_1(operation *, CLIENT *);
+//extern  char ** adder_1_svc(operation *, struct svc_req *);
 extern int adderprog_1_freeresult (SVCXPRT *, xdrproc_t, caddr_t);
 
 #else /* K&R C */
 #define ADDER 1
 extern  char ** adder_1();
+extern  char ** adder_1_svc();
 extern int adderprog_1_freeresult ();
 #endif /* K&R C */
 

@@ -74,7 +74,7 @@ main(argc, argv)
  * "printmessage" on the server
 	 */
     
-	char **result = adder_1(&remoteOP, clnt);
+	char **result = adder_1(remoteOP, clnt);
     if(*result == NULL) {
         printf("Invalid operation\n");
         continue;

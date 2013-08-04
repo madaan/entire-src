@@ -32,7 +32,7 @@ adderprog_1(struct svc_req *rqstp, register SVCXPRT *transp)
 		return;
 
 	case ADDER:
-	//	_xdr_argument = (xdrproc_t) xdr_operation;
+		_xdr_argument = (xdrproc_t) xdr_operation;
 		_xdr_result = (xdrproc_t) xdr_wrapstring;
 		local = (char *(*)(char *, struct svc_req *)) adder_1;
 		break;
@@ -57,6 +57,10 @@ adderprog_1(struct svc_req *rqstp, register SVCXPRT *transp)
 	return;
 }
 
+bool_t xdr_operation (XDR * x, operation* op)
+{
+    return 1;
+}
 int
 main (int argc, char **argv)
 {
