@@ -44,11 +44,24 @@ char **adder_1(operation *opn, CLIENT *req)
         fprintf(f, "Cannot perform operations\n");
         break;
     }
+<<<<<<< HEAD
 
 	fclose(f);
+=======
+    
+    static char *result;
+    FILE *f = fopen("/home/aman/console.txt", "a");
+    if(!f) {
+        char *errstr = malloc(100);
+        strcpy(errstr, "ERROR OPENING FILE!\0");
+        result = errstr;
+        return &result;
+    }
+    fprintf(f, "Operated");
+>>>>>>> 3107b1d50fb1a588986fdf71bdbfc8c7c13b274c
     char *str = malloc(1000);
     mpz_get_str(str, 10, n13);
-    static char *result;
     result = str;
+    fclose(f);
     return &result;
 }
