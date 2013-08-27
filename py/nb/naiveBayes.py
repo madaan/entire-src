@@ -1,6 +1,4 @@
 #returns the training data read from a file in list of list format
-#
-
 from decimal import *
 
 def readDataList(fileName):
