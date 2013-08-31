@@ -84,7 +84,7 @@ def classify(test, nbmodel):
 def main():
     
     nbmodel = learnParameters(convertToBin(readDataList('nb.txt')))
-    test = "0,1,1,0,1,0,0,0,0,0,0,1,0,0,0,1,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1"
+    test = "0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1"
     classify([int(i) for i in test.split(",")], nbmodel)
 
 if __name__ == "__main__":

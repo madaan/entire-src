@@ -1,0 +1,18 @@
+1. Writing just exit without any return value will cause it to return the exit status of the last command.
+
+2. #!/bin/sh invokes the default system interpreter.
+
+3. The #! line in a shell script will be the first thing the command interpreter (sh or bash) sees. Since this line begins with a #, it will be correctly interpreted as a comment when the command interpreter finally executes the script. The line has already served its purpose - calling the command interpreter.
+
+The line is first read by the program loader, the shebang directs it to load the following path as a program to use to run the commands listed in the file.
+
+4. A script needs read, as well as execute permission for it to run, since the shell needs to be able to read it.
+
+5. The current directory is by default not included in the PATH.
+
+6. Quoting a variable preservers whitespace.
+
+7. Unintialized variable has no value. Evaluates to zero in case of arithmetic operators.
+
+8. nohup is the signal sent to the children process after it is killed.
+
