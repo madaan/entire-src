@@ -13,7 +13,7 @@ if [ "$#" -ne 1 ];then
     exit 1
 fi
 
-extension=`echo $1|cut -f2 -d'.'`
+extension=`basename $1|cut -f2 -d'.'`
 if [ "$extension" = "$1" ];then
     echo "The file has no extension, program will now exit!"
     exit 1

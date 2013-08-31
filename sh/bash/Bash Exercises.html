@@ -2,8 +2,18 @@
 <!-- saved from url=(0062)http://shadowfax.cse.iitb.ac.in/cs699/bash/133050004/bash.html -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Bash Exercises</title>
-<link rel="stylesheet" type="text/css" href="./Bash Exercises_files/style.css">
 <style>
+ol.a
+{
+list-style-type:lower-alpha;
+}
+h2
+{
+color:red;
+}
+h3 {color:blue;}
+table {border:solid;}
+td {border:solid;}
 .em { color:red; font-weight:bold }
 </style>
 </head>
@@ -49,15 +59,18 @@ submission.</p>
 <ol>
   <li>Simple sequence of commands, simple if-then-else:
       <ol class="a">
-	<li><b>tex2pdf.sh</b>Script to generate dvi from latex file,
+	<li><b>tex2pdf.sh</b>
+	    Script to generate dvi from latex file,
 	    and tar the entire directory.
 	    <br>
 	    <i>Concepts exercised:</i> script as a sequence of commands
-	</li><li><b>tex2pdf-a.sh</b>Script to generate dvi from latex file,
+	</li><li><b>tex2pdf-a.sh</b>
+	    Script to generate dvi from latex file,
 	    and tar the entire directory, taking one argument.
 	    <br>
 	    <i>Concepts exercised:</i> command line argument
-	</li><li><b>tex2pdf-b.sh</b>Script to generate dvi from latex file,
+	</li><li><b>tex2pdf-b.sh</b>
+	    Script to generate dvi from latex file,
 	    and tar the entire directory, taking one argument.  Check
 	    latex compilation success.  <i>Hint</i> Learn the use of
 	    the special shell variable "$?".
@@ -65,8 +78,8 @@ submission.</p>
 	    <i>Concepts exercised:</i> checking command exit status,
 	    if-then-else
 	</li><li><span class="em">Optional [5HP]:</span>
-	    <b>tex2pdf-c.sh</b>Script to generate dvi from latex
-  file from any location
+	    <b>tex2pdf-c.sh</b>
+	    Script to generate dvi from latex file from any location
 	    and tar the entire directory from the parent directory, taking one argument.  Check
 	    latex compilation success.  <i>Hint</i> Learn the use of
 	    pwd, dirname, and basename; perhaps also pushd and popd.
@@ -93,7 +106,8 @@ submission.</p>
       </ol>
   </li>
   <li>Involving loops:
-	</li><li><b>photo-rename.sh</b>
+      <ol class="a">
+	<li><b>photo-rename.sh</b>
 	    Write a bash script called photo-rename.sh to rename, in a given
 	    directory, all files of the form ddmmyyyyANY.jpg to
 	    yyyy-mm-dd-ANY.jpg<br>
@@ -112,7 +126,6 @@ submission.</p>
 	    <i>Concepts exercised:</i> loops, learning to handle
   spaces in file/dir names
 	</li>
-      <ol class="a">
 	<li><b>myopen-generic.sh</b>
 	    This is an enhancement to myopen.sh, making it more
 	    generic.
@@ -129,17 +142,57 @@ submission.</p>
 	    <i>Concepts exercised:</i> use of environment variables
 	</li>
       </ol>
-  
-  <li>Involving sed, awk, pipes: (coming up)
+  </li>
+  <li>Involving pipes:
       <ol class="a">
+        <li><b>photo-dates.sh</b>
+	    Script to print the date and time of a photo.
+	    <br>
+	    <i>Concepts exercised:</i> simple use of pipe
+	</li>
+        <li><span class="em">Optional [2HP]:</span>
+	    <b>photo-dates-a.sh</b>
+	    Script to print the date and time of several photos.
+	    <br>
+	    <i>Concepts exercised:</i> simple use of pipe, loops,
+	    string manipulation
+	</li>
+	<li><b>get-ip.sh</b>
+	    Script to get the IP address of your machine.
+	    <br>
+	    <i>Concepts exercised:</i> simple use of pipe
+	</li>
+	<li><span class="em">Optional [2HP]:</span>
+	    <b>get-ip-a.sh</b>
+	    Script to print only the IP address of your machine.
+	    <br>
+	    <i>Concepts exercised:</i> simple use of pipe, string
+	    manipulation
+	</li>
+	<li><b>num-uploaded.sh</b>
+	    Script to find out how many students have submitted their
+	    bash assignment so far.
+	    <br>
+	    <i>Concepts exercised:</i> use of pipe
+	</li>
+	<li><span class="em">Optional [10HP]:</span>
+	    <b>tar-scp.sh</b>
+	    Script to tar and copy the result to another machine,
+	    WITHOUT creating any file, in a SINGLE LINE command.
+	    <br>
+	    <i>Concepts exercised:</i> forcing tar to output to
+	    stdout, using ssh to execute a command, use of pipe
+	</li>
       </ol>
+  </li>
+  <li>Involving sed, awk: (coming up)
   </li>
 </ol>
 
 <hr>
 <address>Bhaskaran Raman</address>
 <!-- hhmts start -->
-Last modified: Wed Aug 28 13:16:07 IST 2013
+Last modified: Sat Aug 31 08:41:57 IST 2013
 <!-- hhmts end -->
  
 </body></html>

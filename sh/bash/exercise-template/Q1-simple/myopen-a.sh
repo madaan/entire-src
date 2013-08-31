@@ -10,3 +10,30 @@
 # a.b.txt is 'txt'.
 
 
+if [ "$#" -ne 1 ];then
+    echo "Error : Wrong number of arguments."
+    echo "Usage : $0 FileName "
+    exit 1
+fi
+
+extension=`basename $1|rev|cut -f1 -d'.'`
+if [ "$extension" = "$1" ];then
+    echo "The file has no extension, program will now exit!"
+    exit 1
+fi
+
+#After reversal, we get the last field first, but it is reversed
+
+case "$extension" in 
+    [tT][Xx][Tt]) eval 'gedit $1'
+        ;;
+    [Ll][Mm][Tt][Hh])eval 'firefox $1'
+        ;;
+    [Ff][Dd][Pp])eval 'evince $1'
+        ;;
+    *) echo "I don't know what to do with this extension, the program will now exit!"
+        exit 1
+esac
+
+
+
