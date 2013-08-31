@@ -16,8 +16,46 @@
 # Argument-2: hour of the day in 24-hour format (0-23)
 # The script should change directory to the correct directory
 # depending on the time
-# The script should print an appropriate error message if it does not
+# The script should print an appropriate error message if it thenes not
 # get exactly two arguments
-# If the time window does not match any of the lab timings, then the
+# If the time winthenw thenes not match any of the lab timings, then the
 # script should not change directory
+if [ "$#" -ne 2 ];then
+    echo "Error! Wrong number of arguments."
+    echo "Usage : ./tcd.sh [DAY_OF_WEEK] [TIME]"
+    exit 1
+fi
 
+if [ "$1" = "Mon" ];then
+        if [ $2 -ge 1400 -a $2 -le 1700 ]
+        then
+            echo "Changing to CS599"
+            cd CS599
+            pwd
+        else
+            echo "No classes found in this time"
+        fi
+
+elif [ $1 = "Wed" ];then
+    if [ $2 -ge "1400" -a $2 -le "1700" ];then
+        echo "Changing to CS699"
+        cd CS699
+        pwd
+    else
+            echo "No classes found in this time"
+    fi
+
+elif [ $1 = "Fri" ];then
+    if [ $2 -ge "1400" -a $2 -le "1700" ];then
+        echo "Changing to CS699"
+        cd CS799
+        pwd
+    else
+        echo "No classes found in this time"
+    fi
+
+else
+    echo "No classes found in this time"
+fi
+
+                 
