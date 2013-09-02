@@ -16,3 +16,4 @@ The line is first read by the program loader, the shebang directs it to load the
 
 8. nohup is the signal sent to the children process after it is killed.
 
+9. By default, the only way to set IFS to newline is IFS=$'\n'
