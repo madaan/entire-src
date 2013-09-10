@@ -1,0 +1,19 @@
+High Performance MPEG 1.0/2.0/2.5 Audio Player for Layers 1, 2 and 3
+	version 20120622000000; written and copyright by Michael Hipp and others
+	free software (LGPL/GPL) without any warranty but with best wishes
+
+Playing MPEG stream 1 of 3: sa.mp3 ...
+
+MPEG 1.0 layer III, 192 kbit/s, 44100 Hz joint-stereo
+Title:   Staying Alive                   Artist: Bee Gees                      
+Comment: from http://roomp3.com          Album:  www.roomp3.com                
+Year:                                    Genre:  Blues
+
+[0:00] Decoding of sa.mp3 finished.
+[readers.c:1179] error: Cannot open file 2: No such file or directory
+[mpg123.c:633] error: Cannot open 2: File access error. (code 22)
+
+Directory: /dev/
+Playing MPEG stream 3 of 3: null ...
+
+[0:00] Decoding of null finished.

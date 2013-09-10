@@ -1,0 +1,20 @@
+Respected sir
+
+------------------------- Q1 complaints -------------------------
+1. The feedback says incorrect checkout, however, runnning
+
+svn import file:///home/aman/checkout/svn-repo-quiz1/repo shows that the checkout is successful.
+
+------------------------- Q3 complaints -------------------------
+2. For writing the equation, I have used math mode, just that I have written the equation in another file, eqn.tex. The output is as shown in eqn.pdf .
+
+------------------------- Q6 complaints -------------------------
+3. For Q6, it has been remarked that no "ref" tag has been used.
+However, on line 91 of quiz1-answer.tex, I have used the ref tag.
+
+
+I request you to look into the issues.
+
+Thanks
+Aman Madaan
+133050004

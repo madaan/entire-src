@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<!-- saved from url=(0086)http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+    <title>command line - How to iterate over arguments in bash script - Stack Overflow</title>
+    <link rel="shortcut icon" href="http://cdn.sstatic.net/stackoverflow/img/favicon.ico">
+    <link rel="apple-touch-icon image_src" href="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="http://stackoverflow.com/opensearch.xml">
+    
+    <script type="text/javascript" async="" src="./command line - How to iterate over arguments in bash script - Stack Overflow_files/ga.js"></script><script type="text/javascript" async="" src="./command line - How to iterate over arguments in bash script - Stack Overflow_files/quant.js"></script><script type="text/javascript" src="./command line - How to iterate over arguments in bash script - Stack Overflow_files/jquery.min.js"></script>
+    <script type="text/javascript" src="./command line - How to iterate over arguments in bash script - Stack Overflow_files/stub.js"></script>
+    <link rel="stylesheet" type="text/css" href="./command line - How to iterate over arguments in bash script - Stack Overflow_files/all.css">
+    
+        <link rel="canonical" href="./command line - How to iterate over arguments in bash script - Stack Overflow_files/command line - How to iterate over arguments in bash script - Stack Overflow.html">
+        <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;How to iterate over arguments in bash script&#39;" href="http://stackoverflow.com/feeds/question/255898">
+        <script type="text/javascript">
+        
+            StackExchange.ready(function () {
+                StackExchange.using("postValidation", function () {
+                StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+            });
+
+            
+            StackExchange.question.init({canOpenBounty:true,votesCast:[],canViewVoteCounts:true,totalCommentCount:1,shownCommentCount:1,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:255898});
+
+            styleCode();
+
+                StackExchange.realtime.subscribeToQuestion('1', '255898');
+            
+                    });
+        </script>
+
+
+    <script type="text/javascript">
+        StackExchange.ready(function () {
+            StackExchange.realtime.init('sockets.ny.stackexchange.com');
+            StackExchange.realtime.subscribeToInboxNotifications();
+                    StackExchange.realtime.subscribeToReputationNotifications('1');
+                });
+    </script>
+    <script type="text/javascript">
+        StackExchange.init({"stackAuthUrl":"https://stackauth.com","serverTime":1378495798,"styleCode":true,"enableUserHovercards":true,"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","enableSocialMediaInSharePopup":true},"user":{"fkey":"6fe95b2f318fb97731a8c454fe83a4f0","isRegistered":true,"userType":3,"userId":988966,"accountId":965464,"gravatar":"<div class=\"\"><img src=\"https://www.gravatar.com/avatar/e7e54ed8d87e07cf8b12ecf9c7b38426?s=32&d=identicon&r=PG\" alt=\"\" width=\"32\" height=\"32\"></div>","profileUrl":"http://stackoverflow.com/users/988966/axiom","notificationsUnviewedCount":0,"inboxUnviewedCount":0}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.js":"6c261bebf56a","js/moderator.js":"ed7a8238b2f8","js/full-anon.js":"91e39f868c82","js/full.js":"f9e9cb812ede","js/wmd.js":"12e251f7c6c3","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/mobile.js":"75f8938d6753","js/help.js":"6e6623243cf6","js/tageditor.js":"450c9e8426fc","js/tageditornew.js":"b6c68ad4c7dd","js/inline-tag-editing.js":"8e84e8a137f7","js/revisions.js":"d3e781ee5528","js/review.js":"947758ba83ea","js/tagsuggestions.js":"aa48ef6154df","js/post-validation.js":"bb996020492a","js/explore-qlist.js":"1c5bbd79b562","js/events.js":"27a33f0b2cad"});
+        
+    </script>
+    <script type="text/javascript">
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+<script async="" type="text/javascript" src="./command line - How to iterate over arguments in bash script - Stack Overflow_files/full.js"></script><script async="" type="text/javascript" src="./command line - How to iterate over arguments in bash script - Stack Overflow_files/post-validation.js"></script><script async="" type="text/javascript" src="./command line - How to iterate over arguments in bash script - Stack Overflow_files/prettify-full.js"></script><script async="" type="text/javascript" src="./command line - How to iterate over arguments in bash script - Stack Overflow_files/wmd.js"></script><link href="./command line - How to iterate over arguments in bash script - Stack Overflow_files/company.min.css" type="text/css" rel="stylesheet"><link href="./command line - How to iterate over arguments in bash script - Stack Overflow_files/sidebar.min.css" type="text/css" rel="stylesheet"></head>
+<body class="question-page">
+    <noscript>&lt;div id="noscript-padding"&gt;&lt;/div&gt;</noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+    <div class="container">
+        <div id="header">
+            <div id="portalLink">
+                <a class="genu" onclick="StackExchange.ready(function(){genuwine.click();});return false;">Stack Exchange</a>
+            </div>
+            <div id="topbar">
+                <div id="hlinks">
+                    
+<span id="hlinks-user">        <span class="profile-triangle">▼</span><a href="http://stackoverflow.com/users/988966/axiom" class="profile-link">axiom</a>&nbsp;<a href="http://stackoverflow.com/users/988966/axiom?tab=reputation"><span class="reputation-score" title="your reputation; view reputation changes" dir="ltr">1,542</span></a><span title="5 silver badges"><span class="badge2"></span><span class="badgecount">5</span></span><span title="17 bronze badges"><span class="badge3"></span><span class="badgecount">17</span></span>
+ <span class="lsep">|</span>
+
+</span>
+<span id="hlinks-nav">                        <a href="http://stackoverflow.com/review/">review</a>
+
+ <span class="lsep">|</span>
+</span>
+<span id="hlinks-custom">            <a href="http://chat.stackoverflow.com/">chat</a>
+
+ <span class="lsep">|</span>
+                <a href="http://meta.stackoverflow.com/">meta</a>
+
+ <span class="lsep">|</span>
+            <a href="http://stackoverflow.com/about">about</a>
+
+ <span class="lsep">|</span>
+            <a href="http://stackoverflow.com/help">help</a>
+</span>
+                </div>
+                <div id="hsearch">
+                    <form id="search" action="http://stackoverflow.com/search" method="get" autocomplete="off">
+                        <div>
+                            <input autocomplete="off" name="q" class="textbox" placeholder="search" tabindex="1" type="text" maxlength="240" size="28" value="">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="http://stackoverflow.com/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs ">
+                    <ul>
+                            <li class="youarehere"><a id="nav-questions" href="http://stackoverflow.com/questions">Questions</a></li>
+                            <li><a id="nav-tags" href="http://stackoverflow.com/tags">Tags</a></li>
+                            <li><a id="nav-users" href="http://stackoverflow.com/users">Users</a></li>
+                            <li><a id="nav-badges" href="http://stackoverflow.com/help/badges">Badges</a></li>
+                            <li><a id="nav-unanswered" href="http://stackoverflow.com/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion" href="http://stackoverflow.com/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content">
+            
+
+<div itemscope="" itemtype="http://schema.org/Article">
+    <link itemprop="image" href="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png">
+            <div id="question-header">
+            <h1 itemprop="name"><a href="./command line - How to iterate over arguments in bash script - Stack Overflow_files/command line - How to iterate over arguments in bash script - Stack Overflow.html" class="question-hyperlink">How to iterate over arguments in bash script</a></h1>
+        </div>
+            <div id="mainbar">
+
+            
+
+<div class="question" data-questionid="255898" id="question">
+    
+        <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="255898">
+    <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+    <span class="vote-count-post " title="View upvote and downvote totals" style="cursor: pointer;">180</span>
+    <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+    
+    <a class="star-off" href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script#" title="This is a favorite question (click again to undo)">favorite</a>
+    <div class="favoritecount"><b>53</b></div>   
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="description">
+
+        <p>I have a complex command that I'd like to make a shell/bash script of.  I can write it in terms of <code>$1</code> easily:</p>
+
+<pre class="lang-bsh prettyprint prettyprinted" style=""><code><span class="pln">foo $1 args </span><span class="pun">-</span><span class="pln">o $1</span><span class="pun">.</span><span class="pln">ext</span></code></pre>
+
+<p>I want to be able to pass multiple input names into the script - what's the right way to do this?  Of course I want to handle filenames with spaces in them.</p>
+
+    </div>
+    <div class="post-taglist">
+        <a href="http://stackoverflow.com/questions/tagged/bash" class="post-tag" title="show questions tagged &#39;bash&#39;" rel="tag">bash</a> <a href="http://stackoverflow.com/questions/tagged/command-line" class="post-tag" title="show questions tagged &#39;command-line&#39;" rel="tag">command-line</a> 
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="http://stackoverflow.com/q/255898/988966" title="short permalink to this question" class="short-link" id="link-post-255898">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/255898/edit" class="suggest-edit-post" title="revise and improve this post">edit</a><span class="lsep">|</span><a href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script#" class="flag-post-link" title="flag this post for serious problems or moderator attention" data-postid="255898">flag</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info ">
+        <div class="user-action-time">
+            
+
+            <a href="http://stackoverflow.com/posts/255898/revisions" title="show all edits to this post">edited <span title="2012-05-07 22:53:28Z" class="relativetime">May 7 '12 at 22:53</span></a>
+
+        </div>
+        <div class="user-gravatar32">
+            <a href="http://stackoverflow.com/users/360899/lesmana"><div class=""><img src="./command line - How to iterate over arguments in bash script - Stack Overflow_files/aed1b37bc11c126adfcfb028d8bd9916" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="http://stackoverflow.com/users/360899/lesmana">lesmana</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">5,694</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="17 silver badges"><span class="badge2"></span><span class="badgecount">17</span></span><span title="40 bronze badges"><span class="badge3"></span><span class="badgecount">40</span></span>
+        </div>
+    </div>
+    </td>
+    <td class="post-signature owner">
+        
+
+    <div class="user-info ">
+        <div class="user-action-time">
+            
+
+                    asked <span title="2008-11-01 18:14:21Z" class="relativetime">Nov 1 '08 at 18:14</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="http://stackoverflow.com/users/12874/thelema"><div class=""><img src="./command line - How to iterate over arguments in bash script - Stack Overflow_files/45a507c3a0fb4d186226e59e413f35cd" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="http://stackoverflow.com/users/12874/thelema">Thelema</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">2,184</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="11 silver badges"><span class="badge2"></span><span class="badgecount">11</span></span><span title="25 bronze badges"><span class="badge3"></span><span class="badgecount">25</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </tbody></table>
+</div>
+</td>
+        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-255898" class="comments">
+        <table>
+        <tbody>
+                    
+    <tr id="comment-1904112" class="comment" data-commentid="1904112">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span title="number of &#39;useful comment&#39; votes received" class="warm">9</span>
+</td>
+<td>
+<a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+</td></tr>
+<tr><td>&nbsp;</td><td><a class="comment-flag" title="flag this comment as unconstructive, offensive, or spam">flag</a></td></tr></tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">FYI, it's a good idea to always put parameters within quotes. You never know when a parm might contain an embedded space.</span> –&nbsp;<a href="http://stackoverflow.com/users/170383/david-r-tribble" title="4170 reputation" class="comment-user">David R Tribble</a> <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script#comment1904112_255898"><span title="2009-12-31 22:20:25Z" class="relativetime-clean">Dec 31 '09 at 22:20</span></a></span></div></td>
+    </tr>
+
+        </tbody>
+    
+        <tfoot>
+            <tr>
+                <td></td>
+                <td class="comment-form"><form id="add-comment-255898" data-placeholdertext="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."></form></td>
+            </tr>
+        </tfoot>
+    
+        </table>
+    </div>
+    <a id="comments-link-255898" class="comments-link" data-comments-counts="0" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”." href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script#">add comment</a>
+</td>
+</tr>                  <tr class="bounty-notification">
+          <td class="votecell"></td>
+          <td>
+          <div style="margin-top:20px">
+            <a class="bounty-link bounty" title="offer some of your reputation for better answers">
+                start a bounty
+            </a>
+          </div>
+          </td>
+          </tr>
+    </tbody></table>    
+</div>
+
+
+            <div id="answers">
+
+                <a name="tab-top"></a>
+                <div id="answers-header">
+                    <div class="subheader answers-subheader">
+                        <h2>
+                                4 Answers
+                        </h2>
+                        <div>
+                            <div id="tabs">
+        <a class="youarehere" href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script?answertab=active#tab-top" title="Answers with the latest activity first">
+            active
+        </a>
+        <a href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script?answertab=oldest#tab-top" title="Answers in the order they were provided">
+            oldest
+        </a>
+        <a href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script?answertab=votes#tab-top" title="Answers with the highest score first">
+            votes
+        </a>
+</div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+  
+<a name="255913"></a>
+<div id="answer-255913" class="answer accepted-answer" data-answerid="255913">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="255913">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span class="vote-count-post " title="View upvote and downvote totals" style="cursor: pointer;">269</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text"><p>Use <code>"$@"</code> to represent all the arguments:</p>
+
+<pre class="lang-bsh prettyprint prettyprinted" style=""><code><span class="kwd">for</span><span class="pln"> var </span><span class="kwd">in</span><span class="pln"> </span><span class="str">"$@"</span><span class="pln">
+</span><span class="kwd">do</span><span class="pln">
+    echo </span><span class="str">"$var"</span><span class="pln">
+</span><span class="kwd">done</span></code></pre>
+
+<p>This will iterate over each argument and print it out on a separate line.  $@ behaves like $* except that when quoted the arguments are broken up properly if there are spaces in them:</p>
+
+<pre class="lang-bsh prettyprint prettyprinted" style=""><code><span class="pln">sh test</span><span class="pun">.</span><span class="pln">sh </span><span class="lit">1</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="str">'3 4'</span><span class="pln">
+</span><span class="lit">1</span><span class="pln">
+</span><span class="lit">2</span><span class="pln">
+</span><span class="lit">3</span><span class="pln"> </span><span class="lit">4</span></code></pre>
+</div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="http://stackoverflow.com/a/255913/988966" title="short permalink to this answer" class="short-link" id="link-post-255913">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/255913/edit" class="suggest-edit-post" title="revise and improve this post">edit</a><span class="lsep">|</span><a href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script#" class="flag-post-link" title="flag this post for serious problems or moderator attention" data-postid="255913">flag</a></div>                    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info ">
+        <div class="user-action-time">
+            
+
+            <a href="http://stackoverflow.com/posts/255913/revisions" title="show all edits to this post">edited <span title="2008-11-01 23:52:48Z" class="relativetime">Nov 1 '08 at 23:52</span></a>
+
+        </div>
+        <div class="user-gravatar32">
+            
+        </div>
+        <div class="user-details">
+            <br>
+            
+        </div>
+    </div>
+    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info user-hover">
+        <div class="user-action-time">
+            
+
+                        answered <span title="2008-11-01 18:25:27Z" class="relativetime">Nov 1 '08 at 18:25</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="http://stackoverflow.com/users/25222/robert-gamble"><div class=""><img src="./command line - How to iterate over arguments in bash script - Stack Overflow_files/df9dc984d0eede2df0cd514195c461f2" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="http://stackoverflow.com/users/25222/robert-gamble">Robert Gamble</a><br>
+            <span class="reputation-score" title="reputation score 33633" dir="ltr">33.6k</span><span title="8 gold badges"><span class="badge1"></span><span class="badgecount">8</span></span><span title="89 silver badges"><span class="badge2"></span><span class="badgecount">89</span></span><span title="112 bronze badges"><span class="badge3"></span><span class="badgecount">112</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-255913" class="comments">
+        <table>
+        <tbody>
+                    
+    <tr id="comment-115185" class="comment" data-commentid="115185">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span>&nbsp;</span>
+</td>
+<td>
+<a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+</td></tr>
+<tr><td>&nbsp;</td><td><a class="comment-flag" title="flag this comment as unconstructive, offensive, or spam">flag</a></td></tr></tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">The semi-colon is unnecessary, of course.</span> –&nbsp;<a href="http://stackoverflow.com/users/15168/jonathan-leffler" title="236171 reputation" class="comment-user">Jonathan Leffler</a> <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script#comment115185_255913"><span title="2008-11-01 22:36:43Z" class="relativetime-clean">Nov 1 '08 at 22:36</span></a></span></div></td>
+    </tr>
+            
+    <tr id="comment-1904260" class="comment" data-commentid="1904260">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span title="number of &#39;useful comment&#39; votes received" class="supernova">43</span>
+</td>
+<td>
+<a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+</td></tr>
+<tr><td>&nbsp;</td><td><a class="comment-flag" title="flag this comment as unconstructive, offensive, or spam">flag</a></td></tr></tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">As a shortcut, <code>for var; do ...; done</code> means <code>for var in "$@"; do ...; done</code></span> –&nbsp;<a href="http://stackoverflow.com/users/20713/ephemient" title="74042 reputation" class="comment-user">ephemient</a> <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script#comment1904260_255913"><span title="2009-12-31 23:05:43Z" class="relativetime-clean">Dec 31 '09 at 23:05</span></a></span></div></td>
+    </tr>
+            
+    <tr id="comment-10610220" class="comment" data-commentid="10610220">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span title="number of &#39;useful comment&#39; votes received" class="warm">8</span>
+</td>
+<td>
+<a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+</td></tr>
+<tr><td>&nbsp;</td><td><a class="comment-flag" title="flag this comment as unconstructive, offensive, or spam">flag</a></td></tr></tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">How do I iterate over the arguments following the first <code>n</code> arguments?</span> –&nbsp;<a href="http://stackoverflow.com/users/2023370/user2023370" title="2182 reputation" class="comment-user">user2023370</a> <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script#comment10610220_255913"><span title="2011-12-19 11:14:53Z" class="relativetime-clean">Dec 19 '11 at 11:14</span></a></span></div></td>
+    </tr>
+            
+    <tr id="comment-14637207" class="comment" data-commentid="14637207">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span title="number of &#39;useful comment&#39; votes received" class="cool">2</span>
+</td>
+<td>
+<a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+</td></tr>
+<tr><td>&nbsp;</td><td><a class="comment-flag" title="flag this comment as unconstructive, offensive, or spam">flag</a></td></tr></tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">@user643722 - <a href="http://stackoverflow.com/a/11159412/1072112">This answer</a> may be what you need..</span> –&nbsp;<a href="http://stackoverflow.com/users/1072112/ghoti" title="12084 reputation" class="comment-user">ghoti</a> <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script#comment14637207_255913"><span title="2012-06-22 17:17:06Z" class="relativetime-clean">Jun 22 '12 at 17:17</span></a></span><span class="edited-yes" title="this comment was edited 2 times"></span></div></td>
+    </tr>
+            
+    <tr id="comment-17388219" class="comment" data-commentid="17388219">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span title="number of &#39;useful comment&#39; votes received" class="cool">3</span>
+</td>
+<td>
+<a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+</td></tr>
+<tr><td>&nbsp;</td><td><a class="comment-flag" title="flag this comment as unconstructive, offensive, or spam">flag</a></td></tr></tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">@user643722 <a href="http://stackoverflow.com/a/7762555/487993">Here</a> is the answer to that!</span> –&nbsp;<a href="http://stackoverflow.com/users/487993/juanpi" title="198 reputation" class="comment-user">JuanPi</a> <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script#comment17388219_255913"><span title="2012-10-11 22:20:29Z" class="relativetime-clean">Oct 11 '12 at 22:20</span></a></span></div></td>
+    </tr>
+
+        </tbody>
+    
+        <tfoot>
+            <tr>
+                <td></td>
+                <td class="comment-form"><form id="add-comment-255913" data-placeholdertext="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."></form></td>
+            </tr>
+        </tfoot>
+    
+        </table>
+    </div>
+    <a id="comments-link-255913" class="comments-link" data-comments-count="1" title="expand to show all comments on this post, or add one of your own" href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script#">add / show <b>1</b> more comment</a><a id="hidden-comments-link-255913" class="comments-link dno" data-comments-counts="0" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”." href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script#">add comment</a>
+</td>
+</tr>
+    </tbody></table>
+</div>
+
+  
+<a name="13118192"></a>
+<div id="answer-13118192" class="answer" data-answerid="13118192">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="13118192">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span class="vote-count-post " title="View upvote and downvote totals" style="cursor: pointer;">9</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text"><p>For simple cases you can also use <code>shift</code>.
+It treats argument list like a queue, each <code>shift</code> throws the first argument out,
+number of each argument that is left is decremented.</p>
+
+<pre class="lang-bsh prettyprint prettyprinted" style=""><code><span class="com">#this prints all arguments</span><span class="pln">
+</span><span class="kwd">while</span><span class="pln"> test $</span><span class="com"># -gt 0</span><span class="pln">
+</span><span class="kwd">do</span><span class="pln">
+    echo $1
+    shift
+</span><span class="kwd">done</span></code></pre>
+</div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="http://stackoverflow.com/a/13118192/988966" title="short permalink to this answer" class="short-link" id="link-post-13118192">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/13118192/edit" class="suggest-edit-post" title="revise and improve this post">edit</a><span class="lsep">|</span><a href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script#" class="flag-post-link" title="flag this post for serious problems or moderator attention" data-postid="13118192">flag</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info ">
+        <div class="user-action-time">
+            
+
+                        answered <span title="2012-10-29 08:36:10Z" class="relativetime">Oct 29 '12 at 8:36</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="http://stackoverflow.com/users/1065693/nuoritoveri"><div class=""><img src="./command line - How to iterate over arguments in bash script - Stack Overflow_files/dce55799f8d5f08b9b8f716419193733" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="http://stackoverflow.com/users/1065693/nuoritoveri">nuoritoveri</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">337</span><span title="3 silver badges"><span class="badge2"></span><span class="badgecount">3</span></span><span title="7 bronze badges"><span class="badge3"></span><span class="badgecount">7</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-13118192" class="comments">
+        <table>
+        <tbody>
+                    
+    <tr id="comment-27483159" class="comment" data-commentid="27483159">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span>&nbsp;</span>
+</td>
+<td>
+<a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+</td></tr>
+<tr><td>&nbsp;</td><td><a class="comment-flag" title="flag this comment as unconstructive, offensive, or spam">flag</a></td></tr></tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">I think this answer is better because if you do <code>shift</code> in a for loop, that element is still part of the array, whereas with this <code>shift</code> works as expected.</span> –&nbsp;<a href="http://stackoverflow.com/users/1601989/davidg" title="194 reputation" class="comment-user">DavidG</a> <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script#comment27483159_13118192"><span title="2013-09-06 16:33:27Z" class="relativetime-clean">2 hours ago</span></a></span></div></td>
+    </tr>
+
+        </tbody>
+    
+        <tfoot>
+            <tr>
+                <td></td>
+                <td class="comment-form"><form id="add-comment-13118192" data-placeholdertext="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."></form></td>
+            </tr>
+        </tfoot>
+    
+        </table>
+    </div>
+    <a id="comments-link-13118192" class="comments-link" data-comments-counts="0" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”." href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script#">add comment</a>
+</td>
+</tr>
+    </tbody></table>
+</div>
+
+  
+<a name="1987331"></a>
+<div id="answer-1987331" class="answer" data-answerid="1987331">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="1987331">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span class="vote-count-post " title="View upvote and downvote totals" style="cursor: pointer;">36</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text"><p>Note that Robert's answer is correct, and it works in <code>sh</code> as well.  You can (portably) simplify it even further:</p>
+
+<pre class="lang-bsh prettyprint prettyprinted" style=""><code><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> </span><span class="str">"$@"</span></code></pre>
+
+<p>is equivalent to:</p>
+
+<pre class="lang-bsh prettyprint prettyprinted" style=""><code><span class="kwd">for</span><span class="pln"> i</span></code></pre>
+
+<p>I.e., you don't need anything!</p>
+
+<p>Testing (<code>$</code> is command prompt):</p>
+
+<pre class="lang-bsh prettyprint prettyprinted" style=""><code><span class="pln">$ </span><span class="kwd">set</span><span class="pln"> a b </span><span class="str">"spaces here"</span><span class="pln"> d
+$ </span><span class="kwd">for</span><span class="pln"> i</span><span class="pun">;</span><span class="pln"> </span><span class="kwd">do</span><span class="pln"> echo $i</span><span class="pun">;</span><span class="pln"> </span><span class="kwd">done</span><span class="pln">
+a
+b
+spaces here
+d
+$ </span><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> </span><span class="str">"$@"</span><span class="pun">;</span><span class="pln"> </span><span class="kwd">do</span><span class="pln"> echo $i</span><span class="pun">;</span><span class="pln"> </span><span class="kwd">done</span><span class="pln">
+a
+b
+spaces here
+d</span></code></pre>
+
+<p>I first read about this in <em>Unix Programming Environment</em> by Kernighan and Pike.</p>
+
+<p>In <code>bash</code>, <code>help for</code> documents this:</p>
+
+<blockquote>
+  <p><code>for NAME [in WORDS ... ;] do COMMANDS; done</code></p>
+  
+  <p>If <code>'in WORDS ...;'</code> is not present, then <code>'in "$@"'</code> is assumed.</p>
+</blockquote>
+</div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="http://stackoverflow.com/a/1987331/988966" title="short permalink to this answer" class="short-link" id="link-post-1987331">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/1987331/edit" class="suggest-edit-post" title="revise and improve this post">edit</a><span class="lsep">|</span><a href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script#" class="flag-post-link" title="flag this post for serious problems or moderator attention" data-postid="1987331">flag</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info ">
+        <div class="user-action-time">
+            
+
+                        answered <span title="2009-12-31 22:25:49Z" class="relativetime">Dec 31 '09 at 22:25</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="http://stackoverflow.com/users/226621/alok-singhal"><div class=""><img src="./command line - How to iterate over arguments in bash script - Stack Overflow_files/4ecd473d46f300f81636ee7034c358e2" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="http://stackoverflow.com/users/226621/alok-singhal">Alok Singhal</a><br>
+            <span class="reputation-score" title="reputation score 26599" dir="ltr">26.6k</span><span title="5 gold badges"><span class="badge1"></span><span class="badgecount">5</span></span><span title="52 silver badges"><span class="badge2"></span><span class="badgecount">52</span></span><span title="86 bronze badges"><span class="badge3"></span><span class="badgecount">86</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-1987331" class="comments">
+        <table>
+        <tbody>
+                    
+    <tr id="comment-11089398" class="comment" data-commentid="11089398">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span>&nbsp;</span>
+</td>
+<td>
+<a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+</td></tr>
+<tr><td>&nbsp;</td><td><a class="comment-flag" title="flag this comment as unconstructive, offensive, or spam">flag</a></td></tr></tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">That's good info @Alok. +1</span> –&nbsp;<a href="http://stackoverflow.com/users/970195/jaypal-singh" title="16120 reputation" class="comment-user">jaypal singh</a> <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script#comment11089398_1987331"><span title="2012-01-15 20:47:11Z" class="relativetime-clean">Jan 15 '12 at 20:47</span></a></span></div></td>
+    </tr>
+
+        </tbody>
+    
+        <tfoot>
+            <tr>
+                <td></td>
+                <td class="comment-form"><form id="add-comment-1987331" data-placeholdertext="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."></form></td>
+            </tr>
+        </tfoot>
+    
+        </table>
+    </div>
+    <a id="comments-link-1987331" class="comments-link" data-comments-counts="0" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”." href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script#">add comment</a>
+</td>
+</tr>
+    </tbody></table>
+</div>
+
+  
+<a name="256225"></a>
+<div id="answer-256225" class="answer" data-answerid="256225">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="256225">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span class="vote-count-post " title="View upvote and downvote totals" style="cursor: pointer;">79</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text"><p><strong>Rewrite of a now-deleted answer by VonC</strong></p>
+
+<p>Robert Gamble's succinct answer deals directly with the question.
+This one amplifies on some issues with filenames containing spaces.</p>
+
+<p>See also: <a href="http://stackoverflow.com/questions/154625/1-in-binsh">${1:+"$@"} in /bin/sh</a></p>
+
+<p>Basic thesis: <code>"$@"</code> is correct, and <code>$*</code> (unquoted) is almost always wrong.
+This is because <code>"$@"</code> works fine when arguments contain spaces, and
+works the same as <code>$*</code> when they don't.
+In some circumstances, <code>"$*"</code> is OK too, but <code>"$@"</code> usually (but not
+always) works in the same places.
+Unquoted, <code>$@</code> and <code>$*</code> are equivalent (and almost always wrong).</p>
+
+<p>[<em>Added</em>: So, what is the difference between <code>$*</code>, <code>$@</code>, <code>"$*"</code>, and <code>"$@"</code>?  They are all related to 'all the arguments to the shell', but they do different things. When unquoted, <code>$*</code> and <code>$@</code> do the same thing.  They treat each 'word' (sequence of non-whitespace) as a separate argument.  The quoted forms are quite different, though: <code>"$*"</code> treats the argument list as a single space-separated string, whereas <code>"$@"</code> treats the arguments almost exactly as they were when specified on the command line.
+See more information below, after the introduction of the (non-standard) command <code>al</code>.
+<br>
+]</p>
+
+<p>Secondary thesis: if you need to process arguments with spaces and then
+pass them on to other commands, then you sometimes need non-standard
+tools to assist.</p>
+
+<p><em>Example:</em></p>
+
+<pre class="lang-bsh prettyprint prettyprinted" style=""><code><span class="pln">    $ mkdir </span><span class="str">"my dir"</span><span class="pln"> anotherdir
+    $ ls
+    anotherdir      my dir
+    $ cp </span><span class="pun">/</span><span class="pln">dev</span><span class="pun">/</span><span class="pln">null </span><span class="str">"my dir/my file"</span><span class="pln">
+    $ cp </span><span class="pun">/</span><span class="pln">dev</span><span class="pun">/</span><span class="pln">null </span><span class="str">"anotherdir/myfile"</span><span class="pln">
+    $ ls </span><span class="pun">-</span><span class="typ">Fltr</span><span class="pln">
+    total </span><span class="lit">0</span><span class="pln">
+    drwxr</span><span class="pun">-</span><span class="pln">xr</span><span class="pun">-</span><span class="pln">x   </span><span class="lit">3</span><span class="pln"> jleffler  staff  </span><span class="lit">102</span><span class="pln"> </span><span class="typ">Nov</span><span class="pln">  </span><span class="lit">1</span><span class="pln"> </span><span class="lit">14</span><span class="pun">:</span><span class="lit">55</span><span class="pln"> my dir</span><span class="pun">/</span><span class="pln">
+    drwxr</span><span class="pun">-</span><span class="pln">xr</span><span class="pun">-</span><span class="pln">x   </span><span class="lit">3</span><span class="pln"> jleffler  staff  </span><span class="lit">102</span><span class="pln"> </span><span class="typ">Nov</span><span class="pln">  </span><span class="lit">1</span><span class="pln"> </span><span class="lit">14</span><span class="pun">:</span><span class="lit">55</span><span class="pln"> anotherdir</span><span class="pun">/</span><span class="pln">
+    $ ls </span><span class="pun">-</span><span class="typ">Fltr</span><span class="pln"> </span><span class="pun">*</span><span class="pln">
+    my dir</span><span class="pun">:</span><span class="pln">
+    total </span><span class="lit">0</span><span class="pln">
+    </span><span class="pun">-</span><span class="pln">rw</span><span class="pun">-</span><span class="pln">r</span><span class="pun">--</span><span class="pln">r</span><span class="pun">--</span><span class="pln">   </span><span class="lit">1</span><span class="pln"> jleffler  staff  </span><span class="lit">0</span><span class="pln"> </span><span class="typ">Nov</span><span class="pln">  </span><span class="lit">1</span><span class="pln"> </span><span class="lit">14</span><span class="pun">:</span><span class="lit">55</span><span class="pln"> my file
+
+    anotherdir</span><span class="pun">:</span><span class="pln">
+    total </span><span class="lit">0</span><span class="pln">
+    </span><span class="pun">-</span><span class="pln">rw</span><span class="pun">-</span><span class="pln">r</span><span class="pun">--</span><span class="pln">r</span><span class="pun">--</span><span class="pln">   </span><span class="lit">1</span><span class="pln"> jleffler  staff  </span><span class="lit">0</span><span class="pln"> </span><span class="typ">Nov</span><span class="pln">  </span><span class="lit">1</span><span class="pln"> </span><span class="lit">14</span><span class="pun">:</span><span class="lit">55</span><span class="pln"> myfile
+    $ ls </span><span class="pun">-</span><span class="typ">Fltr</span><span class="pln"> </span><span class="str">"./my dir"</span><span class="pln"> </span><span class="str">"./anotherdir"</span><span class="pln">
+    </span><span class="pun">./</span><span class="pln">my dir</span><span class="pun">:</span><span class="pln">
+    total </span><span class="lit">0</span><span class="pln">
+    </span><span class="pun">-</span><span class="pln">rw</span><span class="pun">-</span><span class="pln">r</span><span class="pun">--</span><span class="pln">r</span><span class="pun">--</span><span class="pln">   </span><span class="lit">1</span><span class="pln"> jleffler  staff  </span><span class="lit">0</span><span class="pln"> </span><span class="typ">Nov</span><span class="pln">  </span><span class="lit">1</span><span class="pln"> </span><span class="lit">14</span><span class="pun">:</span><span class="lit">55</span><span class="pln"> my file
+
+    </span><span class="pun">./</span><span class="pln">anotherdir</span><span class="pun">:</span><span class="pln">
+    total </span><span class="lit">0</span><span class="pln">
+    </span><span class="pun">-</span><span class="pln">rw</span><span class="pun">-</span><span class="pln">r</span><span class="pun">--</span><span class="pln">r</span><span class="pun">--</span><span class="pln">   </span><span class="lit">1</span><span class="pln"> jleffler  staff  </span><span class="lit">0</span><span class="pln"> </span><span class="typ">Nov</span><span class="pln">  </span><span class="lit">1</span><span class="pln"> </span><span class="lit">14</span><span class="pun">:</span><span class="lit">55</span><span class="pln"> myfile
+    $ var</span><span class="pun">=</span><span class="str">'"./my dir" "./anotherdir"'</span><span class="pln"> </span><span class="pun">&amp;&amp;</span><span class="pln"> echo $var
+    </span><span class="str">"./my dir"</span><span class="pln"> </span><span class="str">"./anotherdir"</span><span class="pln">
+    $ ls </span><span class="pun">-</span><span class="typ">Fltr</span><span class="pln"> $var
+    ls</span><span class="pun">:</span><span class="pln"> </span><span class="str">"./anotherdir"</span><span class="pun">:</span><span class="pln"> </span><span class="typ">No</span><span class="pln"> such file or directory
+    ls</span><span class="pun">:</span><span class="pln"> </span><span class="str">"./my: No such file or directory
+    ls: dir"</span><span class="pun">:</span><span class="pln"> </span><span class="typ">No</span><span class="pln"> such file or directory
+    $</span></code></pre>
+
+<p>Why doesn't that work?
+It doesn't work because the shell processes quotes before it expands
+variables.
+So, to get the shell to pay attention to the quotes embedded in <code>$var</code>,
+you have to use <code>eval</code>:</p>
+
+<pre class="lang-bsh prettyprint prettyprinted" style=""><code><span class="pln">    $ </span><span class="kwd">eval</span><span class="pln"> ls </span><span class="pun">-</span><span class="typ">Fltr</span><span class="pln"> $var
+    </span><span class="pun">./</span><span class="pln">my dir</span><span class="pun">:</span><span class="pln">
+    total </span><span class="lit">0</span><span class="pln">
+    </span><span class="pun">-</span><span class="pln">rw</span><span class="pun">-</span><span class="pln">r</span><span class="pun">--</span><span class="pln">r</span><span class="pun">--</span><span class="pln">   </span><span class="lit">1</span><span class="pln"> jleffler  staff  </span><span class="lit">0</span><span class="pln"> </span><span class="typ">Nov</span><span class="pln">  </span><span class="lit">1</span><span class="pln"> </span><span class="lit">14</span><span class="pun">:</span><span class="lit">55</span><span class="pln"> my file
+
+    </span><span class="pun">./</span><span class="pln">anotherdir</span><span class="pun">:</span><span class="pln">
+    total </span><span class="lit">0</span><span class="pln">
+    </span><span class="pun">-</span><span class="pln">rw</span><span class="pun">-</span><span class="pln">r</span><span class="pun">--</span><span class="pln">r</span><span class="pun">--</span><span class="pln">   </span><span class="lit">1</span><span class="pln"> jleffler  staff  </span><span class="lit">0</span><span class="pln"> </span><span class="typ">Nov</span><span class="pln">  </span><span class="lit">1</span><span class="pln"> </span><span class="lit">14</span><span class="pun">:</span><span class="lit">55</span><span class="pln"> myfile
+    $ </span></code></pre>
+
+<p>This gets really tricky when you have file names such as "<code>He said,
+"Don't do this!"</code>" (with quotes and double quotes and spaces).</p>
+
+<pre class="lang-bsh prettyprint prettyprinted" style=""><code><span class="pln">    $ cp </span><span class="pun">/</span><span class="pln">dev</span><span class="pun">/</span><span class="pln">null </span><span class="str">"He said, \"Don't do this!\""</span><span class="pln">
+    $ ls
+    </span><span class="typ">He</span><span class="pln"> said</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Don't do this!"</span><span class="pln">       anotherdir                      my dir
+    $ ls </span><span class="pun">-</span><span class="pln">l
+    total </span><span class="lit">0</span><span class="pln">
+    </span><span class="pun">-</span><span class="pln">rw</span><span class="pun">-</span><span class="pln">r</span><span class="pun">--</span><span class="pln">r</span><span class="pun">--</span><span class="pln">   </span><span class="lit">1</span><span class="pln"> jleffler  staff    </span><span class="lit">0</span><span class="pln"> </span><span class="typ">Nov</span><span class="pln">  </span><span class="lit">1</span><span class="pln"> </span><span class="lit">15</span><span class="pun">:</span><span class="lit">54</span><span class="pln"> </span><span class="typ">He</span><span class="pln"> said</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Don't do this!"</span><span class="pln">
+    drwxr</span><span class="pun">-</span><span class="pln">xr</span><span class="pun">-</span><span class="pln">x   </span><span class="lit">3</span><span class="pln"> jleffler  staff  </span><span class="lit">102</span><span class="pln"> </span><span class="typ">Nov</span><span class="pln">  </span><span class="lit">1</span><span class="pln"> </span><span class="lit">14</span><span class="pun">:</span><span class="lit">55</span><span class="pln"> anotherdir
+    drwxr</span><span class="pun">-</span><span class="pln">xr</span><span class="pun">-</span><span class="pln">x   </span><span class="lit">3</span><span class="pln"> jleffler  staff  </span><span class="lit">102</span><span class="pln"> </span><span class="typ">Nov</span><span class="pln">  </span><span class="lit">1</span><span class="pln"> </span><span class="lit">14</span><span class="pun">:</span><span class="lit">55</span><span class="pln"> my dir
+    $ </span></code></pre>
+
+<p>The shells (all of them) do not make it particularly easy to handle such
+stuff, so (funnily enough) many Unix programs do not do a good job of
+handling them.
+On Unix, a filename (single component) can contain any characters except
+slash and NUL <code>'\0'</code>.
+However, the shells strongly encourage no spaces or newlines or tabs
+anywhere in a path names.
+It is also why standard Unix file names do not contain spaces, etc.</p>
+
+<p>When dealing with file names that may contain spaces and other
+troublesome characters, you have to be extremely careful, and I found
+long ago that I needed a program that is not standard on Unix.
+I call it <code>escape</code> (version 1.1 was dated 1989-08-23T16:01:45Z).</p>
+
+<p>Here is an example of <code>escape</code> in use - with the SCCS control system.
+It is a cover script that does both a <code>delta</code> (think <em>check-in</em>) and a
+<code>get</code> (think <em>check-out</em>).
+Various arguments, especially <code>-y</code> (the reason why you made the change)
+would contain blanks and newlines.
+Note that the script dates from 1992, so it uses back-ticks instead of
+<code>$(cmd ...)</code> notation and does not use <code>#!/bin/sh</code> on the first line.</p>
+
+<pre class="lang-bsh prettyprint prettyprinted" style=""><code><span class="pun">:</span><span class="pln">   </span><span class="str">"@(#)$Id: delget.sh,v 1.8 1992/12/29 10:46:21 jl Exp $"</span><span class="pln">
+</span><span class="com">#</span><span class="pln">
+</span><span class="com">#   Delta and get files</span><span class="pln">
+</span><span class="com">#   Uses escape to allow for all weird combinations of quotes in arguments</span><span class="pln">
+
+</span><span class="kwd">case</span><span class="pln"> </span><span class="str">`basename $0 .sh`</span><span class="pln"> </span><span class="kwd">in</span><span class="pln">
+deledit</span><span class="pun">)</span><span class="pln">    eflag</span><span class="pun">=</span><span class="str">"-e"</span><span class="pun">;;</span><span class="pln">
+</span><span class="kwd">esac</span><span class="pln">
+
+sflag</span><span class="pun">=</span><span class="str">"-s"</span><span class="pln">
+</span><span class="kwd">for</span><span class="pln"> arg </span><span class="kwd">in</span><span class="pln"> </span><span class="str">"$@"</span><span class="pln">
+</span><span class="kwd">do</span><span class="pln">
+    </span><span class="kwd">case</span><span class="pln"> </span><span class="str">"$arg"</span><span class="pln"> </span><span class="kwd">in</span><span class="pln">
+    </span><span class="pun">-</span><span class="pln">r</span><span class="pun">*)</span><span class="pln">    gargs</span><span class="pun">=</span><span class="str">"$gargs `escape \"$arg\"`"</span><span class="pln">
+            dargs</span><span class="pun">=</span><span class="str">"$dargs `escape \"$arg\"`"</span><span class="pln">
+            </span><span class="pun">;;</span><span class="pln">
+    </span><span class="pun">-</span><span class="pln">e</span><span class="pun">)</span><span class="pln">     gargs</span><span class="pun">=</span><span class="str">"$gargs `escape \"$arg\"`"</span><span class="pln">
+            sflag</span><span class="pun">=</span><span class="str">""</span><span class="pln">
+            eflag</span><span class="pun">=</span><span class="str">""</span><span class="pln">
+            </span><span class="pun">;;</span><span class="pln">
+    </span><span class="pun">-*)</span><span class="pln">     dargs</span><span class="pun">=</span><span class="str">"$dargs `escape \"$arg\"`"</span><span class="pln">
+            </span><span class="pun">;;</span><span class="pln">
+    </span><span class="pun">*)</span><span class="pln">      gargs</span><span class="pun">=</span><span class="str">"$gargs `escape \"$arg\"`"</span><span class="pln">
+            dargs</span><span class="pun">=</span><span class="str">"$dargs `escape \"$arg\"`"</span><span class="pln">
+            </span><span class="pun">;;</span><span class="pln">
+    </span><span class="kwd">esac</span><span class="pln">
+</span><span class="kwd">done</span><span class="pln">
+
+</span><span class="kwd">eval</span><span class="pln"> delta </span><span class="str">"$dargs"</span><span class="pln"> </span><span class="pun">&amp;&amp;</span><span class="pln"> </span><span class="kwd">eval</span><span class="pln"> get $eflag $sflag </span><span class="str">"$gargs"</span></code></pre>
+
+<p>(I would probably not use escape quite so thoroughly these days - it is
+not needed with the <code>-e</code> argument, for example - but overall, this is
+one of my simpler scripts using <code>escape</code>.)</p>
+
+<p>The <code>escape</code> program simply outputs its arguments, rather like <code>echo</code>
+does, but it ensures that the arguments are protected for use with
+<code>eval</code> (one level of <code>eval</code>; I do have a program which did remote shell
+execution, and that needed to escape the output of <code>escape</code>).</p>
+
+<pre class="lang-bsh prettyprint prettyprinted" style=""><code><span class="pln">    $ escape $var
+    </span><span class="str">'"./my'</span><span class="pln"> </span><span class="str">'dir"'</span><span class="pln"> </span><span class="str">'"./anotherdir"'</span><span class="pln">
+    $ escape </span><span class="str">"$var"</span><span class="pln">
+    </span><span class="str">'"./my dir" "./anotherdir"'</span><span class="pln">
+    $ escape x y z
+    x y z
+    $ </span></code></pre>
+
+<p>I have another program called <code>al</code> that lists its arguments one per line
+(and it is even more ancient: version 1.1 dated 1987-01-27T14:35:49).
+It is most useful when debugging scripts, as it can be plugged into a
+command line to see what arguments are actually passed to the command.</p>
+
+<pre class="lang-bsh prettyprint prettyprinted" style=""><code><span class="pln">    $ echo </span><span class="str">"$var"</span><span class="pln">
+    </span><span class="str">"./my dir"</span><span class="pln"> </span><span class="str">"./anotherdir"</span><span class="pln">
+    $ al $var
+    </span><span class="str">"./my
+    dir"</span><span class="pln">
+    </span><span class="str">"./anotherdir"</span><span class="pln">
+    $ al </span><span class="str">"$var"</span><span class="pln">
+    </span><span class="str">"./my dir"</span><span class="pln"> </span><span class="str">"./anotherdir"</span><span class="pln">
+    $</span></code></pre>
+
+<p>[<em>Added:</em>
+And now to show the difference between the various <code>"$@"</code> notations, here is one more example:</p>
+
+<pre class="lang-bsh prettyprint prettyprinted" style=""><code><span class="pln">$ cat xx</span><span class="pun">.</span><span class="pln">sh
+</span><span class="kwd">set</span><span class="pln"> </span><span class="pun">-</span><span class="pln">x
+al $@
+al $</span><span class="pun">*</span><span class="pln">
+al </span><span class="str">"$*"</span><span class="pln">
+al </span><span class="str">"$@"</span><span class="pln">
+$ sh xx</span><span class="pun">.</span><span class="pln">sh     </span><span class="pun">*</span><span class="pln">      </span><span class="pun">*/*</span><span class="pln">
+</span><span class="pun">+</span><span class="pln"> al </span><span class="typ">He</span><span class="pln"> said</span><span class="pun">,</span><span class="pln"> </span><span class="str">'"Don'</span><span class="pln">\'</span><span class="str">'t'</span><span class="pln"> </span><span class="kwd">do</span><span class="pln"> </span><span class="str">'this!"'</span><span class="pln"> anotherdir my dir xx</span><span class="pun">.</span><span class="pln">sh anotherdir</span><span class="pun">/</span><span class="pln">myfile my dir</span><span class="pun">/</span><span class="pln">my file
+</span><span class="typ">He</span><span class="pln">
+said</span><span class="pun">,</span><span class="pln">
+</span><span class="str">"Don't
+do
+this!"</span><span class="pln">
+anotherdir
+my
+dir
+xx</span><span class="pun">.</span><span class="pln">sh
+anotherdir</span><span class="pun">/</span><span class="pln">myfile
+my
+dir</span><span class="pun">/</span><span class="pln">my
+file
+</span><span class="pun">+</span><span class="pln"> al </span><span class="typ">He</span><span class="pln"> said</span><span class="pun">,</span><span class="pln"> </span><span class="str">'"Don'</span><span class="pln">\'</span><span class="str">'t'</span><span class="pln"> </span><span class="kwd">do</span><span class="pln"> </span><span class="str">'this!"'</span><span class="pln"> anotherdir my dir xx</span><span class="pun">.</span><span class="pln">sh anotherdir</span><span class="pun">/</span><span class="pln">myfile my dir</span><span class="pun">/</span><span class="pln">my file
+</span><span class="typ">He</span><span class="pln">
+said</span><span class="pun">,</span><span class="pln">
+</span><span class="str">"Don't
+do
+this!"</span><span class="pln">
+anotherdir
+my
+dir
+xx</span><span class="pun">.</span><span class="pln">sh
+anotherdir</span><span class="pun">/</span><span class="pln">myfile
+my
+dir</span><span class="pun">/</span><span class="pln">my
+file
+</span><span class="pun">+</span><span class="pln"> al </span><span class="str">'He said, "Don'</span><span class="pln">\'</span><span class="str">'t do this!" anotherdir my dir xx.sh anotherdir/myfile my dir/my file'</span><span class="pln">
+</span><span class="typ">He</span><span class="pln"> said</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Don't do this!"</span><span class="pln"> anotherdir my dir xx</span><span class="pun">.</span><span class="pln">sh anotherdir</span><span class="pun">/</span><span class="pln">myfile my dir</span><span class="pun">/</span><span class="pln">my file
+</span><span class="pun">+</span><span class="pln"> al </span><span class="str">'He said, "Don'</span><span class="pln">\'</span><span class="str">'t do this!"'</span><span class="pln"> anotherdir </span><span class="str">'my dir'</span><span class="pln"> xx</span><span class="pun">.</span><span class="pln">sh anotherdir</span><span class="pun">/</span><span class="pln">myfile </span><span class="str">'my dir/my file'</span><span class="pln">
+</span><span class="typ">He</span><span class="pln"> said</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Don't do this!"</span><span class="pln">
+anotherdir
+my dir
+xx</span><span class="pun">.</span><span class="pln">sh
+anotherdir</span><span class="pun">/</span><span class="pln">myfile
+my dir</span><span class="pun">/</span><span class="pln">my file
+$</span></code></pre>
+
+<p>Notice that nothing preserves the original blanks between the <code>*</code> and <code>*/*</code> on the command line.  Also, note that you can change the 'command line arguments' in the shell by using:</p>
+
+<pre class="lang-bsh prettyprint prettyprinted" style=""><code><span class="kwd">set</span><span class="pln"> </span><span class="pun">--</span><span class="pln"> </span><span class="pun">-</span><span class="pln">new </span><span class="pun">-</span><span class="pln">opt and </span><span class="str">"arg with space"</span></code></pre>
+
+<p>This sets 4 options, '<code>-new</code>', '<code>-opt</code>', '<code>and</code>', and '<code>arg with space</code>'.
+<br>
+]</p>
+
+<p>Hmm, that's quite a long <em>answer</em> - perhaps <em>exegesis</em> is the better term.
+Source code for <code>escape</code> available on request (email to firstname dot
+lastname at gmail dot com).
+The source code for <code>al</code> is incredibly simple:</p>
+
+<pre class="lang-bsh prettyprint prettyprinted" style=""><code><span class="com">#include &lt;stdio.h&gt;</span><span class="pln">
+int main</span><span class="pun">(</span><span class="pln">int argc</span><span class="pun">,</span><span class="pln"> char </span><span class="pun">**</span><span class="pln">argv</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">while</span><span class="pln"> </span><span class="pun">(*++</span><span class="pln">argv </span><span class="pun">!=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">)</span><span class="pln">
+        puts</span><span class="pun">(*</span><span class="pln">argv</span><span class="pun">);</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pun">(</span><span class="lit">0</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+
+<p>That's all.  It is equivalent to the <code>test.sh</code> script that Robert Gamble showed, and could be written as a shell function (but shell functions didn't exist in the local version of Bourne shell when I first wrote <code>al</code>).</p>
+</div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="http://stackoverflow.com/a/256225/988966" title="short permalink to this answer" class="short-link" id="link-post-256225">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/256225/edit" class="suggest-edit-post" title="revise and improve this post">edit</a><span class="lsep">|</span><a href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script#" class="flag-post-link" title="flag this post for serious problems or moderator attention" data-postid="256225">flag</a></div>                    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info ">
+        <div class="user-action-time">
+            
+
+            <a href="http://stackoverflow.com/posts/256225/revisions" title="show all edits to this post">edited <span title="2009-12-31 22:13:27Z" class="relativetime">Dec 31 '09 at 22:13</span></a>
+
+        </div>
+        <div class="user-gravatar32">
+            
+        </div>
+        <div class="user-details">
+            <br>
+            
+        </div>
+    </div>
+    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info user-hover">
+        <div class="user-action-time">
+            
+
+                        answered <span title="2008-11-01 23:04:33Z" class="relativetime">Nov 1 '08 at 23:04</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="http://stackoverflow.com/users/15168/jonathan-leffler"><div class=""><img src="./command line - How to iterate over arguments in bash script - Stack Overflow_files/7d0d66b076e3bc70819e50f8a25af8df" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="http://stackoverflow.com/users/15168/jonathan-leffler">Jonathan Leffler</a><br>
+            <span class="reputation-score" title="reputation score 236171" dir="ltr">236k</span><span title="29 gold badges"><span class="badge1"></span><span class="badgecount">29</span></span><span title="222 silver badges"><span class="badge2"></span><span class="badgecount">222</span></span><span title="439 bronze badges"><span class="badge3"></span><span class="badgecount">439</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-256225" class="comments">
+        <table>
+        <tbody>
+                    
+    <tr id="comment-115259" class="comment" data-commentid="115259">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span title="number of &#39;useful comment&#39; votes received" class="cool">1</span>
+</td>
+<td>
+<a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+</td></tr>
+<tr><td>&nbsp;</td><td><a class="comment-flag" title="flag this comment as unconstructive, offensive, or spam">flag</a></td></tr></tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">Wow, very detailed and well articulated.  I read @VonC's post three times and didn't understand where he was going.</span> –&nbsp;<a href="http://stackoverflow.com/users/25222/robert-gamble" title="33633 reputation" class="comment-user">Robert Gamble</a> <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script#comment115259_256225"><span title="2008-11-01 23:58:29Z" class="relativetime-clean">Nov 1 '08 at 23:58</span></a></span></div></td>
+    </tr>
+            
+    <tr id="comment-16591817" class="comment" data-commentid="16591817">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span>&nbsp;</span>
+</td>
+<td>
+<a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+</td></tr>
+<tr><td>&nbsp;</td><td><a class="comment-flag" title="flag this comment as unconstructive, offensive, or spam">flag</a></td></tr></tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">long post... but I still upvoted because it is necessary required reading when you are implementing something that uses the input parameters.</span> –&nbsp;<a href="http://stackoverflow.com/users/52074/trevor-boyd-smith" title="2945 reputation" class="comment-user">Trevor Boyd Smith</a> <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script#comment16591817_256225"><span title="2012-09-10 16:36:00Z" class="relativetime-clean">Sep 10 '12 at 16:36</span></a></span></div></td>
+    </tr>
+            
+    <tr id="comment-25128109" class="comment" data-commentid="25128109">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span>&nbsp;</span>
+</td>
+<td>
+<a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+</td></tr>
+<tr><td>&nbsp;</td><td><a class="comment-flag" title="flag this comment as unconstructive, offensive, or spam">flag</a></td></tr></tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">thanks for pointing me to <code>eval</code> !</span> –&nbsp;<a href="http://stackoverflow.com/users/1050264/v01pe" title="325 reputation" class="comment-user">v01pe</a> <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script#comment25128109_256225"><span title="2013-06-26 15:07:06Z" class="relativetime-clean">Jun 26 at 15:07</span></a></span></div></td>
+    </tr>
+
+        </tbody>
+    
+        <tfoot>
+            <tr>
+                <td></td>
+                <td class="comment-form"><form id="add-comment-256225" data-placeholdertext="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."></form></td>
+            </tr>
+        </tfoot>
+    
+        </table>
+    </div>
+    <a id="comments-link-256225" class="comments-link" data-comments-counts="0" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”." href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script#">add comment</a>
+</td>
+</tr>
+    </tbody></table>
+</div>
+                                    <a name="new-answer"></a>
+                    <form id="post-form" action="http://stackoverflow.com/questions/255898/answer/submit" method="post" class="post-form">
+                        <input type="hidden" id="post-id" value="255898">
+                        <h2 class="space">Your Answer</h2>
+
+
+
+    
+
+<script type="text/javascript">
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+         
+        prepareEditor({
+            heartbeatType: 'answer',
+            bindNavPrevention: true,
+            postfix: "",
+            onDemand: false,
+            discardSelector: ".discard-answer"
+            
+        });
+        
+
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"><ul id="wmd-button-row" class="wmd-button-row"><li class="wmd-button" style="left: 0px;" id="wmd-bold-button" title="Strong &lt;strong&gt; Ctrl+B"><span style="background-position: 0px 0px;"></span></li><li class="wmd-button" style="left: 25px;" id="wmd-italic-button" title="Emphasis &lt;em&gt; Ctrl+I"><span style="background-position: -20px 0px;"></span></li><li class="wmd-spacer wmd-spacer1" id="wmd-spacer1"></li><li class="wmd-button" style="left: 75px;" id="wmd-link-button" title="Hyperlink &lt;a&gt; Ctrl+L"><span style="background-position: -40px 0px;"></span></li><li class="wmd-button" style="left: 100px;" id="wmd-quote-button" title="Blockquote &lt;blockquote&gt; Ctrl+Q"><span style="background-position: -60px 0px;"></span></li><li class="wmd-button" style="left: 125px;" id="wmd-code-button" title="Code Sample &lt;pre&gt;&lt;code&gt; Ctrl+K"><span style="background-position: -80px 0px;"></span></li><li class="wmd-button" style="left: 150px;" id="wmd-image-button" title="Image &lt;img&gt; Ctrl+G"><span style="background-position: -100px 0px;"></span></li><li class="wmd-spacer wmd-spacer2" id="wmd-spacer2"></li><li class="wmd-button" style="left: 200px;" id="wmd-olist-button" title="Numbered List &lt;ol&gt; Ctrl+O"><span style="background-position: -120px 0px;"></span></li><li class="wmd-button" style="left: 225px;" id="wmd-ulist-button" title="Bulleted List &lt;ul&gt; Ctrl+U"><span style="background-position: -140px 0px;"></span></li><li class="wmd-button" style="left: 250px;" id="wmd-heading-button" title="Heading &lt;h1&gt;/&lt;h2&gt; Ctrl+H"><span style="background-position: -160px 0px;"></span></li><li class="wmd-button" style="left: 275px;" id="wmd-hr-button" title="Horizontal Rule &lt;hr&gt; Ctrl+R"><span style="background-position: -180px 0px;"></span></li><li class="wmd-spacer wmd-spacer3" id="wmd-spacer3"></li><li class="wmd-button" style="left: 325px;" id="wmd-undo-button" title="Undo - Ctrl+Z"><span style="background-position: -200px -20px;"></span></li><li class="wmd-button" style="left: 350px;" id="wmd-redo-button" title="Redo - Ctrl+Shift+Z"><span style="background-position: -220px -20px;"></span></li><li class="wmd-button wmd-help-button" id="wmd-help-button" style="right: 0px;" title="Markdown Editing Help"><span style="background-position: -240px 0px;"></span></li></ul></div>
+            <textarea id="wmd-input" class="wmd-input processed" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        <div class="grippie" style="margin-right: 0px;"></div></div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+    <div class="community-option">
+        <input id="communitymode" name="communitymode" type="checkbox">
+        <label for="communitymode" title="Marking an answer community wiki encourages others to edit it by lowering the reputation barrier required to edit. However, you will not gain any upvote reputation from it. This cannot be undone.">community wiki</label>
+    </div>
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="6fe95b2f318fb97731a8c454fe83a4f0">
+        <input id="author" name="author" type="text">
+    </div>
+</div>
+                        <div style="position: relative;">
+                            
+                        </div>
+
+                                                    <div class="form-submit cbt">
+                                <input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+                                <a href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script#" class="discard-answer dno">discard</a>
+                            </div>
+                    </form>
+
+
+
+                    <h2 class="bottom-notice">
+Not the answer you're looking for?                        Browse other questions tagged <a href="http://stackoverflow.com/questions/tagged/bash" class="post-tag" title="show questions tagged &#39;bash&#39;" rel="tag">bash</a> <a href="http://stackoverflow.com/questions/tagged/command-line" class="post-tag" title="show questions tagged &#39;command-line&#39;" rel="tag">command-line</a>  or <a href="http://stackoverflow.com/questions/ask">ask your own question</a>.                    </h2>
+            </div>
+        </div>
+                <div id="sidebar" class="show-votes">
+                            <div class="module question-stats">
+                    <p class="label-key">tagged</p>
+                    <div class="tagged"><a href="http://stackoverflow.com/questions/tagged/bash" class="post-tag" title="show questions tagged &#39;bash&#39;" rel="tag">bash</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">25576</span></span><br>
+<a href="http://stackoverflow.com/questions/tagged/command-line" class="post-tag" title="show questions tagged &#39;command-line&#39;" rel="tag">command-line</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">7723</span></span><br>
+</div>
+                    <table id="qinfo">
+                        <tbody><tr>
+                            <td>
+                                <p class="label-key">asked</p>
+                            </td>
+                            <td style="padding-left: 10px">
+                                <p class="label-key" title="2008-11-01 18:14:21Z"><b>4 years ago</b></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p class="label-key">viewed</p>
+                            </td>
+
+                            <td style="padding-left: 10px">
+                                <p class="label-key">
+                                    <b>124019 times</b>
+                                </p>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td>
+                                    <p class="label-key">active</p>
+                                </td>
+                                <td style="padding-left: 10px">
+                                    <p class="label-key"><b><a href="http://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-bash-script?lastactivity" class="lastactivity-link" title="2012-10-29 08:36:10Z">10 months ago</a></b></p>
+                                </td>
+                            </tr>
+                    </tbody></table>
+                </div>
+            
+<div class="module community-bulletin" data-tracker="cb=1">
+    <h4>Community Bulletin</h4>
+    <div class="related">
+        <div class="spacer">
+            <div class="bulletin-item-type"><a href="http://blog.stackoverflow.com/?cb=1" class="event-date" target="_blank">blog</a></div>
+            <div class="bulletin-item-content">
+                <a href="http://blog.stackoverflow.com/2013/09/podcast-52-we-didnt-need-headphones/?cb=1" class="question-hyperlink" target="_blank">Podcast #52 – We Didn’t Need Headphones</a>
+            </div>
+            <br class="cbt">
+        </div>
+    </div>
+</div>            
+                    <div class="everyonelovesstackoverflow" id="careers2">
+        </div>
+    <div id="hireme"> <a href="http://careers.stackoverflow.com/jobs?a=288" class="top" target="_blank"></a> <ul class="jobs"> <li> <a href="http://careers.stackoverflow.com/jobs/28748/front-end-dev-a-profitable-saas-startup-recruiterbox?a=z3O54Jtm" target="_blank" title="Front-end Dev for a profitable SaaS startup at Recruiterbox. Click to learn more."> Front-end Dev for a profitable SaaS startup<br> <span class="company">Recruiterbox</span> <span class="location">Bangalore, India</span> </a> </li> <li> <a href="http://careers.stackoverflow.com/jobs/40107/senior-backend-web-developer-securifi?a=MUILzwOc" target="_blank" title="Senior Backend Web Developer at Securifi. Click to learn more."> Senior Backend Web Developer<br> <span class="company">Securifi</span> <span class="location">Hyderabad, India / relocation</span> </a> </li> <li> <a href="http://careers.stackoverflow.com/jobs/40083/python-engineer-recruiterbox?a=MSUfBE8E" target="_blank" title="Python Engineer at Recruiterbox. Click to learn more."> Python Engineer<br> <span class="company">Recruiterbox</span> <span class="location">Bangalore, India</span> </a> </li> </ul> <img alt="" class="impression" src="./command line - How to iterate over arguments in bash script - Stack Overflow_files/z3O54Jtm-MUILzwOc-MSUfBE8E-288" style="display:none"></div>
+
+
+
+            
+
+                <div class="module sidebar-linked">
+                    <h4 id="h-linked">Linked</h4>
+                    <div class="linked" data-tracker="lq=1">
+                        <div class="spacer">
+<a href="http://stackoverflow.com/q/15197456?lq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes default">0</div>
+</a>
+<a href="http://stackoverflow.com/questions/15197456/how-to-get-parameters-from-command-line-in-unix-script?lq=1" class="question-hyperlink">how to get parameters from command line in unix script</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/5691098?lq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">17</div>
+</a>
+<a href="http://stackoverflow.com/questions/5691098/using-command-line-argument-range-in-bash-for-loop?lq=1" class="question-hyperlink">Using command line argument range in bash for loop</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/154625?lq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">13</div>
+</a>
+<a href="http://stackoverflow.com/questions/154625/1-in-bin-sh?lq=1" class="question-hyperlink">${1:+“$@”} in /bin/sh</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/1987162?lq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">10</div>
+</a>
+<a href="http://stackoverflow.com/questions/1987162/pass-arguments-between-shell-scripts-but-retain-quotes?lq=1" class="question-hyperlink">pass arguments between shell scripts but retain quotes</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/2761723?lq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">9</div>
+</a>
+<a href="http://stackoverflow.com/questions/2761723/what-is-the-difference-between-and-in-shell-scripts?lq=1" class="question-hyperlink">What is the difference between $@ and $* in shell scripts?</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/3307672?lq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">5</div>
+</a>
+<a href="http://stackoverflow.com/questions/3307672/whats-the-difference-between-and-in-unix?lq=1" class="question-hyperlink">What's the difference between $@ and $* in UNIX?</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/11159023?lq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">5</div>
+</a>
+<a href="http://stackoverflow.com/questions/11159023/grabbing-all-arguments-after-nth-argument-and-concatenating-them-together-in-bas?lq=1" class="question-hyperlink">grabbing all arguments after nth argument and concatenating them together in bash</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/18135451?lq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">5</div>
+</a>
+<a href="http://stackoverflow.com/questions/18135451/what-is-the-difference-between-var-var-and-var-in-the-bash-shell?lq=1" class="question-hyperlink">What is the difference between ${var}, “$var”, and “${var}” in the Bash shell?</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/7056700?lq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes default">3</div>
+</a>
+<a href="http://stackoverflow.com/questions/7056700/what-is-an-elegant-way-that-a-shell-script-times-itself-really?lq=1" class="question-hyperlink">What is an elegant way that a shell-script times **itself** (really)?</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/8759052?lq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">0</div>
+</a>
+<a href="http://stackoverflow.com/questions/8759052/looping-through-arguments-in-shell-script?lq=1" class="question-hyperlink">looping through arguments in shell script?</a>
+</div>
+<div class="spacer more">
+<a href="http://stackoverflow.com/questions/linked/255898?lq=1">see more linked questions…</a></div>
+
+                    </div>
+                </div>
+                            <div class="module sidebar-related">
+                    <h4 id="h-related">Related</h4>
+                    <div class="related" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="http://stackoverflow.com/q/59895?rq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted large">945</div>
+</a>
+<a href="http://stackoverflow.com/questions/59895/can-a-bash-script-tell-what-directory-its-stored-in?rq=1" class="question-hyperlink">Can a Bash script tell what directory it's stored in?</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/68372?rq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted large">156</div>
+</a>
+<a href="http://stackoverflow.com/questions/68372/what-is-your-single-most-favorite-command-line-trick-using-bash?rq=1" class="question-hyperlink">What is your single most favorite command-line trick using Bash?</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/855265?rq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">1</div>
+</a>
+<a href="http://stackoverflow.com/questions/855265/how-do-i-write-some-bash-shell-script-to-convert-all-matching-filenames-in-dir?rq=1" class="question-hyperlink">How do I write some (bash) shell script to convert all matching filenames in directory to command-line options?</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/1574898?rq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">11</div>
+</a>
+<a href="http://stackoverflow.com/questions/1574898/bash-and-filenames-with-spaces?rq=1" class="question-hyperlink">Bash and filenames with spaces</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/3736774?rq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">0</div>
+</a>
+<a href="http://stackoverflow.com/questions/3736774/bash-scripting-parameter-substitution-problem?rq=1" class="question-hyperlink">Bash scripting: parameter substitution problem</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/4651437?rq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">54</div>
+</a>
+<a href="http://stackoverflow.com/questions/4651437/how-to-set-a-bash-variable-equal-to-the-output-from-a-command?rq=1" class="question-hyperlink">How to set a BASH variable equal to the output from a command?</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/5483167?rq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">2</div>
+</a>
+<a href="http://stackoverflow.com/questions/5483167/generating-the-output-file-name-from-the-input-file-in-bash?rq=1" class="question-hyperlink">Generating the output file name from the input file in bash</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/6844228?rq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">2</div>
+</a>
+<a href="http://stackoverflow.com/questions/6844228/passing-arguments-to-octave-function-from-within-bash-script?rq=1" class="question-hyperlink">Passing arguments to octave function from within bash script</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/11159023?rq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">5</div>
+</a>
+<a href="http://stackoverflow.com/questions/11159023/grabbing-all-arguments-after-nth-argument-and-concatenating-them-together-in-bas?rq=1" class="question-hyperlink">grabbing all arguments after nth argument and concatenating them together in bash</a>
+</div>
+<div class="spacer">
+<a href="http://stackoverflow.com/q/12723551?rq=1" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes default">1</div>
+</a>
+<a href="http://stackoverflow.com/questions/12723551/debugging-bash-shell-script-escaping-characters-passing-arguments?rq=1" class="question-hyperlink">“Debugging” bash shell script: escaping characters, passing arguments</a>
+</div>
+
+                    </div>
+                </div>
+        </div>
+    
+<div id="feed-link">
+    <div id="feed-link-text"><a href="http://stackoverflow.com/feeds/question/255898" title="feed of this question and its answers"><span class="feed-icon"></span>question feed</a></div>
+</div>
+    <script type="text/javascript">
+StackExchange.ready(function(){$.get('/posts/255898/ivc/ef2c');});
+</script>
+<noscript>
+    &lt;div&gt;&lt;img src="/posts/255898/ivc/ef2c" class="dno" alt="" width="0" height="0"&gt;&lt;/div&gt;
+</noscript><div style="display:none" id="prettify-lang">lang-bsh</div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="http://stackoverflow.com/about">about</a>
+                    <a href="http://stackoverflow.com/help">help</a>
+                    <a href="http://blog.stackexchange.com/?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com/">chat</a>
+                    <a href="http://data.stackexchange.com/">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/about/hiring">jobs</a>
+                    <a href="http://engine.adzerk.net/r?e=eyJhdiI6NDE0LCJhdCI6MjAsImNtIjo5NTQsImNoIjoxMTc4LCJjciI6Mjc3NiwiZG0iOjQsImZjIjoyODYyLCJmbCI6Mjc1MSwibnciOjIyLCJydiI6MCwicHIiOjExNSwic3QiOjAsInVyIjoiaHR0cDovL3N0YWNrb3ZlcmZsb3cuY29tL2Fib3V0L2NvbnRhY3QiLCJyZSI6MX0&s=hRods5B22XvRBwWIwtIMekcyNF8">advertising info</a>
+
+                    <a onclick="StackExchange.switchMobile(&quot;on&quot;, &quot;/questions/255898/how-to-iterate-over-arguments-in-bash-script&quot;)">mobile</a>
+                    <b><a href="http://stackoverflow.com/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com/">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tbody><tr>
+            <th colspan="3">
+                Technology
+            </th>
+            <th>
+                Life / Arts
+            </th>
+            <th>
+                Culture / Recreation
+            </th>
+            <th>
+                Science
+            </th>
+            <th>
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="http://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="http://serverfault.com/" title="professional system and network administrators">Server Fault</a></li>
+                        <li><a href="http://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="http://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="http://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="http://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="http://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="http://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://programmers.stackexchange.com/" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="http://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems.">Unix &amp; Linux</a></li>
+                        <li><a href="http://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="http://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Answers</a></li>
+                        <li><a href="http://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="http://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="http://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="http://security.stackexchange.com/" title="IT security professionals">IT Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="http://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="http://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="http://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="http://mathematica.stackexchange.com/" title="users of Mathematica">Mathematica</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="http://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="http://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="http://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="http://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="http://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="http://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="http://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="http://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="http://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="http://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="http://stats.stackexchange.com/" title="statisticians, data analysts, data miners and data visualization experts">Cross Validated (stats)</a></li>
+                        <li><a href="http://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="http://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="http://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="http://meta.stackoverflow.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Overflow</a></li>
+                        <li><a href="http://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="http://careers.stackoverflow.com/">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</tbody></table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo © 2013 stack exchange inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc-wiki</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="footer-flair">
+                <a href="http://creativecommons.org/licenses/by-sa/3.0/" class="cc-wiki-link"></a>
+            </div>
+            <div id="svnrev">
+                rev 2013.9.5.993
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        &lt;div id="noscript-warning"&gt;Stack Overflow works best with JavaScript enabled&lt;img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"&gt;&lt;/div&gt;
+    </noscript>
+
+    <script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-5620270-1']);
+        _gaq.push(['_setCustomVar', 1, 'tags', '|bash|command-line|']); 
+        _gaq.push(['_setCustomVar', 2, 'accountid', '965464',2]); 
+_gaq.push(['_trackPageview']);
+    var _qevents = _qevents || [];
+    (function () {
+        var ssl='https:'==document.location.protocol,
+            s=document.getElementsByTagName('script')[0],
+            ga=document.createElement('script');
+        ga.type='text/javascript';
+        ga.async=true;
+        ga.src=(ssl?'https://ssl':'http://www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(ga,s);
+        var sc=document.createElement('script');
+        sc.type='text/javascript';
+        sc.async=true;
+        sc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+        s.parentNode.insertBefore(sc,s);
+    })();
+    _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>        
+    
+
+</body></html>

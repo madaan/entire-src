@@ -1,0 +1,388 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML//EN">
+<!-- saved from url=(0079)http://www.cse.iitb.ac.in/~br/courses/cs699-autumn2011/exercises/bash/bash.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Bash Exercises</title>
+<link rel="stylesheet" type="text/css" href="./Bash Exercises_files/style.css">
+<style>
+.em { color:red; font-weight:bold }
+</style>
+</head>
+
+<body>
+<h2>Bash Exercises</h2>
+
+<p>Some of the exercises below are <span class="em">optional</span>
+carrying <span class="em">house points</span>.  You need not have to
+submit these as part of your mandatory exercises.  The house points
+for these optional exercises are <span class="em">counted once per
+house</span>, and will count against the name of the student
+submitting the earliest.  Note that you have to submit all exercises
+at once: so it will be better for your house if different members
+submit different optional parts.</p>
+
+<p>Of course I encourage everyone to try all the exercises at leisure,
+or at least learn the solutions from colleagues, after the submission
+deadline.</p>
+
+<ol>
+  <li>Simple sequence of commands, simple if-then-else:
+      <ol class="a">
+	<li>Write a bash script to latex compile, bibtex compile, and view
+	    dvi of a latex file.
+	</li>
+	<li>Now make the dvi viewing conditional: only if the earlier
+	    compilations were successful.  <i>Hint:</i> You will have
+	    to use "$?" to get the exit status of the previous command.
+	</li>
+	<li>smartlatex.sh: modify the above script so that:
+            latex compilation is done only if the latex file or bibtex
+	    file is newer than the dvi file (or dvi file does not exist).
+	</li>
+	<li><span class="em">Optional [1HP]:</span> Take a C program with two C files (or write a simple such
+	    example).  Write a bash script to compile each file, link them
+	    to form an executable, and run the executable.
+	</li>
+	<li><span class="em">Optional [2HP]:</span> Now modify the above script so that each step is conditional on
+	    the previous step completing successfully.
+	</li>
+	<li><span class="em">Optional [5HP]:</span> smartcompile.sh: modify the above script so that:
+            compilation is done only if the C file is newer than the
+            object file (or object file does not exist), linking is
+            done only if either object file is newer than the
+            executable file (or executable file does not exist).
+	</li>
+      </ol>
+  </li>
+  <li>Involving loops:
+      <ol class="a">
+        <li>lsdir.sh: list only the directories in the current directory.
+	</li>
+	<li>lslinks.sh: list only the soft-links in the current directory.
+	</li>
+	<li>lsexe.sh: list all the executable files in the current
+            directory.
+	</li>
+	<li>lstype.sh: combine the above to have a single script which
+  lists directories, links, or executables, depending on its argument:
+  -dir for directories, -links for links, -exe for executables.  The
+  script should take exactly one argument.
+	</li>
+	<li><span class="em">Optional [3HP]:</span> Modify the above lstype.sh to take one or more of the
+  -dir, -links, -exe arguments.  The output should be corresponding to
+  the given arguments.
+	</li>
+	<li><span class="em">Optional [3HP]:</span> change-extn.sh: This script should take two arguments,
+  representing two file extensions.  It should move all files of the
+  first extension in the current directory to the second extension.
+  For instance:
+	    <pre>	    ./change-extn.sh txt csv
+	    </pre>
+	    will change all files with extension .txt to extension
+  .csv in the current directly.<br>
+	    <i>Hint:</i> In my solution, I used a for loop, a sed command inside the
+  for loop to change the extension, and the 'eval' command to evaluate
+  a string (for convenience).
+	</li>
+	<li><span class="em">Optional [10HP]:</span> timekeeper.sh: It is often useful to have audio reminders
+  during presentations, so that the presentation does not run
+  overtime.<br>
+	    This script should take as argument an even
+  number of arguments.  The arguments are read in pairs, and in each
+  pair, the first represents a time duration, and the second
+  represents an mp3 file to be played after the expiry of that time
+  duration.<br>
+	    For example, the command:
+	    <pre>	    ./timekeeper.sh 30 warning.mp3 5 warning.mp3 5 timeup.mp3 3 exceeded.mp3
+	    </pre>
+	    can be used for a 40 minute presentation.  It gives one warning 10 minutes
+	    before time, another warning 5 min before time.  And it signals a time-up
+	    sound when time is up, and a time-exceeded sound after an excess of 3 minutes.
+	    <br><br>
+	    As an exercise in exploring and understanding various bash features,
+	    do the following.
+	    <ul>
+	      <li>Parse the arguments and store it in two arrays: one
+		  of the time intervals and another of the files to be played.
+	      </li>
+	      <li>Make the player to be used an environment variable, which
+		  if not specified defaults to the mpg123 command-line mp3 player.
+	      </li>
+	      <li>If the program is called without any arguments, the usage must
+		  be printed, using a function called "usage"
+	      </li>
+	      <li>Write a function called "sleepmin" which takes one argument, the
+		  number of minutes to sleep.  You'll have to use the "sleep" command
+		  to sleep (in units of seconds).
+	      </li>
+	      <li>Try using the same loop variable (say i) within the sleepmin
+		  function and outside of it in the main script.  What happens?
+		  You need to use explicit declarations using the "declare"
+		  statement.
+	      </li>
+	    </ul>
+	</li>
+	<li>photoresize.sh: in a directory there are a lot of jpg
+            photos (from a digital camera).  The names of the photos
+            are 2011-08-15-0091.jpg until 2011-08-15-0110.jpg.  There
+            are thus a total of 20 photos.<br>
+
+	    The script should scale the first 5 images to 10% of their
+            original size.  Use the convert command with the "-scale"
+            option, and a single for loop, and the seq command.  Each
+            scaled image must be saved under the name
+            2011-08-15-abcd-small.jpg where 'abcd' denotes the photo
+            number from the original file name.
+	</li>
+	<li>Now write the above script using a while loop.
+	</li>
+	<li>Now change the script to scale all the images.  You may
+            have to use the command printf.
+	</li>
+      </ol>
+  </li>
+  <li>Involving sed, awk, pipes:
+      <ol class="a">
+        <li>Write a command to print the number of lines in a file,
+            using "wc -l".  But the output should not include the file
+            name which is printed by default by "wc -l".  Use pipes to
+            achieve this.  Provide one solution without using awk, and
+            one solution using awk.
+	</li>
+        <li>lsdir.sh: list only the directories in the current directory.
+	    Since this solution is supposed to involve pipes, use a regular "ls -l"
+	    followed by a grep.
+	</li>
+        <li>lslinks.sh: list only the soft-links in the current directory.
+	    Since this solution is supposed to involve pipes, use a regular "ls -l"
+	    followed by a grep.
+	</li>
+	<li>lsexe.sh: list only the executable files in the current
+	    directory.  Since this solution is supposed to involve pipes, use
+	    a regular "ls -l" followed by a grep.
+	</li>
+	<li><span class="em">Optional [5HP]:</span> getpid.sh: get the process id, given the process name
+            without using pgrep.  Note: you should not print the PID
+            of any other process you run within the script, including
+            that of getpid.sh itself.
+	</li>
+	<li><span class="em">Optional [5HP]:</span> old-mcdonald.sh: this is a script to print the Old
+            McDonald rhyme.  As stdin input, a sequence of lines, of
+            animal:sound is given.  And out comes the rhyme.  For
+            instance:
+
+	    <pre>	    Input is:
+	    pig:oink
+	    cow:moo
+	    dog:bow
+	    
+	    Output is:
+	    Old McDonald had a farm ei-ei-o
+	    On that farm he had a pig ei-ei-o
+	    With a oink-oink here, oink-oink there
+	    Here a oink there a oink, everywhere oink-oink
+
+	    Old McDonald had a farm ei-ei-o
+	    On that farm he had a cow ei-ei-o
+	    With a moo-moo here, moo-moo there
+	    Here a moo there a moo, everywhere moo-moo
+
+	    Old McDonald had a farm ei-ei-o
+	    On that farm he had a dog ei-ei-o
+	    With a bow-bow here, bow-bow there
+	    Here a bow there a bow, everywhere bow-bow
+
+	    Old McDonald had a farm ei-ei-o
+	    </pre>
+	    You may have to use the 'cut' command, and of course a
+	    loop to read through the input and print.
+	</li>
+	<li>Write an awk script to do the above.  Your output should
+	    be the same as the last case, including spacings and the
+	    last line ending the rhyme.
+	</li>
+	<li>In the above case, note that the script is not
+	    grammatically correct: it prints "a oink-oink" instead of
+	    "an oink-oink".  Pipe the output of the above script
+	    through an appropriate sed command or script to print the
+	    grammatically correct version.  Of course, your sed
+	    command/script should work not just for the "oink" case,
+	    but also for any animal sound beginning with a vowel, but
+	    the sed script needs to work only for the above rhyme.
+	    <pre>	    Example corrected output:
+	    Old McDonald had a farm ei-ei-o
+	    On that farm he had a pig ei-ei-o
+	    With an oink-oink here, oink-oink there
+	    Here an oink there an oink, everywhere oink-oink
+
+	    (rest is the same as earlier)
+	    </pre>
+	</li>
+	<li>Variable substitution:<br>
+	    Suppose you want to rename all instances of a given variable abc
+	    with another variable name efg (in a C file).  Write a script to do this, using
+	    sed.  Its ok to replace instances where "abc" appears as a
+	    substring in another variable name.  Your script should
+	    take both the old and new variable names as argument.
+	</li>
+	<li><span class="em">Optional [5HP]:</span> search_html.sh:
+	    This script should take 3 arguments: a text string to
+	    search, an input HTML file, and an output HTML file.  Use
+	    a sed command to highlight the given text string in HTML
+	    by adding an appropriate style tag around the text string.
+	    The output should be stored in the output file, and the
+	    result be displayed in your browser.<br><br>
+	    The highlight colour should have some default in your
+	    script, but must be over-ridden by the HIGHLIGHT_COLOUR
+	    environment variable when set.<br><br>
+	    The browser to be used should have some default in your
+	    script (e.g. firefox or google-chrome), but must be
+	    over-ridden by the BROWSER environment variable when
+	    set.<br><br>
+	    The script must print the correct usage and exit, if
+	    called with anything other than 3 arguments.<br><br>
+	    Your script need not handle special characters such as "/"
+	    in the text string.<br><br>
+	    <i>Hint:</i> I found it useful to first construct the sed
+	    command, and then use eval.  You may also use a sed script
+	    file (dynamically constructed) if you wish.
+	</li>
+	<li><span class="em">Optional [5HP]:</span> Modify the above script so that the highlighting is done
+	    only for exact word matches, assuming that the text string
+	    input is a single word.  You may assume that spaces or
+	    newlines separate each word from adjacent words.  State
+	    any other assumption necessary.
+	</li>
+	<li><span class="em">Optional [10HP]:</span> The above script may not work for cases where the search
+	    string involves a '/'.  Modify the script so that these
+	    cases are also handled.  Do this modification for the
+	    generic search, not the exact word match.  You can assume
+	    that the '/' being searched is not part of any HTML tag
+	    itself.<br>
+	    <span style="color:red"><i>Hint:</i></span> You can first
+	    pass the search string variable through a sed command.  I
+	    had to use a sed script for this, without which this can
+	    get messy.<br>
+	    <span style="color:red"><i>Warning:</i></span> This can be
+	    a tricky exercise!
+	</li>
+	<li>Write an awk command to count the number of lines in a
+	    file.  Check your output against that produced by using
+	    "wc -l".
+	</li>
+	<li><span class="em">Optional [5HP]:</span> move_tar.sh:
+	    Usually creators of tgz (or tar.gz) files arrange it so
+  that on untarring, all the files are put into a newly created
+  directory.  But sometimes creators of tgz files don't do this, and
+  this can sometimes be annoying, since if the user does a "tar zxvf"
+  to extract, all the files are untarred into the current directory,
+  which may have other files to begin with.  Now the user has trouble
+  figuring out which files were there originally and which were from
+  the untarred tgz file.<br>
+	    Write a script and/or a command to move all the files from
+  the untarred file, to a new directory.  For instance, after you run:
+	    <pre>	    tar zxvf fortunes.tgz
+	    </pre>
+	    five files fortune1.txt, fortune2.txt, fortune3.txt,
+  fortune4.txt, and fortune5.txt are created in the current directory.
+  After this, the command:
+	    <pre>	    ./move_tar.sh fortunes.tgz fortunes
+	    </pre>
+	    will move the five files into a directory called fortunes,
+  which is created if not already present.
+	    <i>Hint:</i> I found it useful to pipe the output of a
+	    "tar tzvf" command through an appropriate awk command, and
+	    then redirect the output to a temporary file.  I then used
+	    a while loop whose input was redirected from the temporary
+	    file (its possible to redirect the input for only a part
+	    of the script; do the redirection just after the "done" of
+	    the while loop).
+	</li>
+	<li><span class="em">Optional [7HP]:</span> ls_last_mod.sh:
+	    This script is for doing things such as: "list all the
+	    files/dirs in the current directory, which were modified
+	    in the last 1 week".  The time-frame of last modification
+	    has to be taken as two arguments: a number and a unit.
+	    The unit can be "weeks", "days", "hours", "minutes", or
+	    "seconds".<br>
+	    <i>Hints:</i> First read the usage of the date command,
+	    particularly the "+%s" option and the "-d" option.  All
+	    time computations in bash are conveniently done in seconds
+	    (since 1970-01-01 00:00:00 UTC).  I also found it useful
+	    to list all the files and directories into a separate
+	    temporary file, which I read line by line.  I processed
+	    each line using several awk commands to extract fields.
+	    Note that you also have to eliminate the first line
+	    printed by "/bin/ls -l".  I did this using bash regular
+	    expression comparison.
+	</li>
+	<li>Study the format of the file /etc/passwd which stores
+	    information about various user accounts.  It includes
+	    various dummy user accounts too: these have user ids, but
+	    they are not allowed to login.  This is indicated by the
+	    setting "/bin/false" for the login shell.<br>
+	    Write an awk script to print the user ids (the first
+	    field) of all such dummy accounts whose shell is "/bin/false".
+	</li>
+	<li>Now modify the above script to print the maximum uid among
+	    all the users whose login shell is "/bin/false".
+	</li>
+	<li>Write an awk script or command so that the output has the
+	    3rd and 4th columns swapped as compared to the input.
+	</li>
+	<li><span class="em">Optional [5HP]:</span> Write a bash script which will take 2 arguments: the
+	    column numbers to be swapped in the input (stdin).  The
+	    bash script should generate an appropriate awk command or
+	    script to do the swapping.  If the either column number is
+	    non-existent, the output should be the same as the
+	    input.<br>
+	</li>
+	<li><span class="em">Optional [10HP]:</span> Awk is very useful for parsing log files.  The following
+	    sequence of exercises will demonstrate that.  The file
+	    "example-logfile.txt" is a real log file collected from
+	    experiments in the course of a student's research (with
+	    some minimal modifications for this exercise).  The
+	    context and format of the log file are given in the first
+	    several lines of the log file.
+	    <ul>
+	      <li>Now write an awk script to delete all the 'comment'
+		  lines (beginning with a '#').
+	      </li>
+	      <li>Next modify the script to also delete all lines
+		  which have anything other than 5 fields with
+		  numbers.  That is, remove any line with 6 fields, or
+		  4 fields, or any line with 5 fields of which one is
+		  not a number (has non digit characters).
+	      </li>
+	      <li>Now further enhance the script to eliminate
+		  duplicate entries (lines which have the same node-id
+		  and log-id).  You may assume that the original log
+		  file has only non-decreasing log-ids for each
+		  node-id.
+	      </li>
+	      <li>Now further enhance the script to calculate the
+		  duration of the time window for which log entries were
+		  made at each node.  This is nothing but the
+	    difference between the maximum and minimum timestamps of
+	    each node-id.  You may assume that the timestamps are in
+	    non-decreasing order in the log file.  The output of script should be a
+		  two column output, with the first column being the
+		  node-id, and the second column being the log time
+		  duration.
+	      </li>
+	      <li>Now pipe the above two column output via an
+	    appropriate sort program to sort numerically by the log
+	    duration (2nd column of the output).
+	      </li>
+	    </ul>
+	</li>
+      </ol>
+  </li>
+</ol>
+
+<hr>
+<address>Bhaskaran Raman</address>
+<!-- hhmts start -->
+Last modified: Mon Aug 22 10:43:56 IST 2011
+<!-- hhmts end -->
+ 
+</body></html>
