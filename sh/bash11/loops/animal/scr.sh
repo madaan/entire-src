@@ -1,5 +1,7 @@
 #sg
 
+exec 3<> "ifile"
+
 while read line;do
     animalName=`echo $line|cut -f1 -d':'`
     soundName=`echo $line|cut -f2 -d':'`
@@ -19,5 +21,6 @@ while read line;do
         ;;
     esac
         echo 
-done <& 0
- echo "Old McDonald had a farm ei-ei-o"
+done <& 3
+
+echo "Old McDonald had a farm ei-ei-o"

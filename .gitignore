@@ -7,4 +7,10 @@
 *.dump
 *~
 *.s
-
+*/*~
+*/*.pdf
+*/*/*.pdf
+*.pdf
+sh/bash_resources/*
+sh/sed/sed_resources/*
+sh/awk/res
