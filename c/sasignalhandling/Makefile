@@ -5,7 +5,7 @@ build/handlers.o : handlers.c handlers.h
 	gcc -c handlers.c && mv *.o build
 
 build/GracefulTerminator.o : GracefulTerminator.c
-	gcc -c GracefulTerminator.c && mv *.o build
+	gcc -c GracefulTerminator.c -Wno-div-by-zero && mv *.o build 
 
 
 
