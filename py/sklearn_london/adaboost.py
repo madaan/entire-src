@@ -25,11 +25,10 @@ def main():
     #                     algorithm="SAMME",
     #                     n_estimators=200)
 
-    parameters = {'kernel':('linear', 'rbf'), 'C':[1, 10]}
     c_range = 10.0 ** np.arange(6.5,7.5,.25)
     gamma_range = 10.0 ** np.arange(-2.5,0.5,.25)
     parameters = {'kernel':['rbf'], 'C':c_range,  'gamma':gamma_range} 
-    svr = SVC(probability=True)
+    svr = SVC()
 
     clf = grid_search.GridSearchCV(svr, parameters)
     
@@ -37,7 +36,7 @@ def main():
     clf.fit(train, target)
     bdt = AdaBoostClassifier(base_estimator = clf.best_estimator_,
                          algorithm="SAMME",
-                         n_estimators=200)
+                         n_estimators=100)
 
     
 
@@ -74,11 +73,10 @@ def cvalidate():
 
     #SVM
 
-    parameters = {'kernel':('linear', 'rbf'), 'C':[1, 10]}
     c_range = 10.0 ** np.arange(6.5,7.5,.25)
     gamma_range = 10.0 ** np.arange(-2.5,0.5,.25)
     parameters = {'kernel':['rbf'], 'C':c_range,  'gamma':gamma_range} 
-    svr = SVC(probability=True)
+    svr = SVC()
 
     clf = grid_search.GridSearchCV(svr, parameters)
     
@@ -86,7 +84,7 @@ def cvalidate():
     clf.fit(X_train, y_train)
     bdt = AdaBoostClassifier(base_estimator = clf.best_estimator_,
                          algorithm="SAMME",
-                         n_estimators=200)
+                         n_estimators=100)
 
     
     #bdt = AdaBoostClassifier(base_estimator = KNeighborsClassifier(n_neighbors=10))
