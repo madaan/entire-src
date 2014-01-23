@@ -1,20 +1,31 @@
+# -*- coding: utf-8 -*-
 #sg
 
 from collections import defaultdict
 import sys
 import string
-
+import codecs
+from kitchen.text.converters import getwriter
 #create sets from the three wordlists
 #se
 
 def create_maps(filenames):
 	sets = defaultdict(str)
-	sets['e'] = set(line.strip().lower() for line in open(filenames['e']))
-	sets['f'] = set(line.strip().lower() for line in open(filenames['f']))
-	sets['g'] = set(line.strip().lower() for line in open(filenames['g']))
+	sets['e'] = set(line.strip().lower().decode('utf-8', 'ignore') for line in open(filenames['e']))
+	sets['f'] = set(line.strip().lower().decode('utf-8', 'ignore') for line in open(filenames['f']))
+	sets['g'] = set(line.strip().lower().decode('utf-8', 'ignore') for line in open(filenames['g']))
 	return sets
 
-def label_words(target, sets):
+def label_doc(target_doc, sets):
+	
+	UTF8Writer = codecs.getwriter('utf8')
+	sys.stdout = UTF8Writer(sys.stdout)
+
+	color = ["C2DFFF", "C3FDB8", "FCDFFF"] #English, German, French
+	ENG = 0
+	GER = 1
+	FRE = 2
+
 	print """
 	<html>
 	<head>
@@ -22,25 +33,24 @@ def label_words(target, sets):
 	</head>
 	<body>
 	<div class = "container">
-	<div class = "jumbotron">
-	<h1> Segmenter </h1><br/><p>Labels the languages of the multilingual documents</p></div>
+		<h1><span class="glyphicon glyphicon-random">
+ Answer 5</span></h1>
 	"""
+	print "<p style=\"background-color: " + color[ENG] + "\">English</p>"
+	print "<p style=\"background-color: " + color[GER] + "\">German</p>"
+	print "<p style=\"background-color: " + color[FRE] + "\">French</p><hr>"
 	
-	
-	target_file = open(target, "r")
+	target_doc_handle = open(target_doc, "r")
 
-	color = ["C2DFFF", "C3FDB8", "FCDFFF"]
 	segmentation_score = 1
 
-	for line in target_file:
+	for line in target_doc_handle:
 		print '<br/>'
 		score_segment = 0
-		ENG = 0
-		GER = 1
-		FRE = 2
 		len_segment = 0
 		count = [0, 0, 0]
 		for word in line.split():
+
 			'''for each line, we will maintain a goodness score that will depend on how confused the labeller is. This is given by 
 			goodness_segment = score_segment / length_segment
 			score_segment  = sum(score of words in segment)
@@ -75,7 +85,7 @@ def label_words(target, sets):
 		
 				
 
-		print "<span  title = " + str(score_segment) + " style=\"background-color:" + color[count.index(max(count))] + ";\">" + line + "</span> ",
+		print "<p  title = " + str(score_segment) + " style=\"background-color:" + color[count.index(max(count))] + ";\">" + line.encode('utf-8', 'ignore') + "</p> ",
 
 	print '<br/><center> <h1>Segmentation score = ' + str(segmentation_score) + '</center></h1></div></body></html>'
 
