@@ -41,21 +41,16 @@ def viterbi(observation):
 
 
 num_states = 2
+
 def viterbi_topk(observation, k):
     BASE = 2
-    a = [[[0 for col in range (0, k)] for row in range(0, num_states)] for i in range(0, len(observation))]
-    picked = [[[0 for col in range (0, k)] for row in range(0, num_states)] for i in range(0, len(observation))]
+    a = [[[0 for col in range (0, k)] for row in range(0, num_states)] for blades in range(0, len(observation))]
+    picked = [[[0 for col in range (0, k)] for row in range(0, num_states)] for blades in range(0, len(observation))]
     
     for i in range(0, k):
         a[0][0][i] = 1 + -log(emission[0][observation[0]], BASE)
         a[0][1][i] = 1 + -log(emission[1][observation[0]], BASE)
 
-    a[1][0][0] = 5.474
-    a[1][0][1] = 6.381
-    a[1][1][0] = 6.059
-    a[1][1][1] = 6.381
-    for level_vals in a:
-        print level_vals
     temp = [] #records all the |S| values for a node
     for i in range(1, len(observation)):
         for s_curr in states:
@@ -65,6 +60,10 @@ def viterbi_topk(observation, k):
             #now temp has all the possible updates, just get top 2
             if i < k:
                 temp = list(set(temp))
+            if len(temp) < k :
+                difference = k - len(temp)
+                for d in range(0, difference):
+                    temp.append(temp[len(temp) - 1])
             #print i, temp
             temp = sorted(temp, key = lambda x: x[0])
             a[i][s_curr] = [tt[0] for tt in temp[0:k]]
@@ -76,9 +75,6 @@ def viterbi_topk(observation, k):
 
             #print 'time : %d state : %s value : %f' % (i, state_name[s_curr], a[i][s_curr])
 
-    for level_vals in a:
-        print level_vals
-    print a[0][0][1]
 
     final = []
     last_stack = len(observation) - 1
@@ -87,18 +83,19 @@ def viterbi_topk(observation, k):
         for i in range(0, k):
             final.append((a[last_stack][st][i], st, i))
     final = sorted(final, key = lambda x : x[0])
-    print final
-    rank = 1 #best path
-    hook = final[rank][1] #which state to latch to
-    sub_hook = final[rank][2] #which element
-    state_string = []
-    state_string.append(state_name[hook])
-    for i in range(len(observation) - 1, 0, -1):
-        print i
-        hook = picked[i][hook][rank]
+    
+    
+    print 'Top ', k, 'paths : '
+    for rank in range(0, k):
+        hook = final[rank][1] #which state to latch to
+        sub_hook = final[rank][2] #which element
+        state_string = []
         state_string.append(state_name[hook])
-    state_string.reverse()
-    print ''.join(state_string)
+        for i in range(len(observation) - 1, 0, -1):
+            hook = picked[i][hook][rank]
+            state_string.append(state_name[hook])
+        state_string.reverse()
+        print ''.join(state_string)
     
     '''
     if a[len(observation) - 1][1] < a[len(observation) - 1][0] : 
@@ -119,4 +116,4 @@ def viterbi_topk(observation, k):
 
 
 if __name__ == '__main__':
-    viterbi_topk('ggcactgaa', 2)
+    viterbi_topk('ggcactgaa', 129)
