@@ -6,6 +6,7 @@ float C[55][30]; //total cost
 int prev[55][30]; //the dish cooked on the previous day
 float dishInfo[55][2]; //information about the dishes
 int dish_sequence[55];
+
 #define COST 0
 #define BENIFIT 1
 #define max(a, b) ((a > b) ? (a) : (b))
@@ -91,9 +92,9 @@ int main()
     
         float max_dish = -2  //so that it picks up -1
             , min_cost = 10000000;
-        for(int i = 1; i <= NUM_DISHES /2; i++) {
-            for(int j = 3; j < 4 ; j++) {
-                printf("%5f      ", C[i][j]);
+        for(int i = 1; i <= NUM_DISHES; i++) {
+            for(int j = 0; j < DAYS ; j++) {
+                printf("%5f      ", B[i][j]);
             }
             printf("\n");
         }

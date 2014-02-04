@@ -75,7 +75,8 @@ public class MainActivity extends Activity {
     
     private String downloadResults(String text) throws IOException {
         InputStream is = null;
-        String URL = "http://10.0.2.2/test.php?nums=" + text;
+        //String URL = "http://10.0.2.2/test.php?nums=" + text;
+        String URL = "http://10.0.2.2:1234";
         // Only display the first 500 characters of the retrieved
         // web page content.
         int len = 500;
