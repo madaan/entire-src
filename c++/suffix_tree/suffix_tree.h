@@ -26,15 +26,20 @@ struct Node
 
 class SuffixTree
 {
-
     public :
         Node *parent;
-        
+
         //take a string and create a tree
-        SuffixTree::SuffixTree(char *str) 
+        SuffixTree(char *str) ;
         
         //prints the suffix tree in bfs
         void print_stree(Node *parent);
+        
+        //checks whether the substring appears in a string
+        //returns number of matches if yes or -1 if no
+        bool search_stree(char *str);
+
+ 
     private:
         //attaches a given suffix to the node
         void attachSuffix(Node *parent, char * str);

@@ -65,3 +65,29 @@ void SuffixTree::print_stree(Node *parent)
     }
         printf("\n");
 }
+
+//checks whether the substring appears in a string
+bool SuffixTree::search_stree(char *str)
+{
+    Node * curr = parent;
+    bool strFound = false; 
+    int level = 0;
+    int len = strlen(str);
+    int currChildren = 0;
+    while(!strFound && level <= len) 
+    {
+        strFound = true;
+        for(int i = 0; i < curr -> numChildren; i++) {
+            if((curr -> child[i]) -> nodeVal == str[level]) {
+                level += 1;
+                strFound = false;
+                curr = curr -> child[i];
+                if(level == len) {
+                    return true;
+                }
+                break;
+            }
+        }
+    }
+    return false;
+}
