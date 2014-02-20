@@ -1,0 +1,166 @@
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage{default}
+
+\usepackage[utf8]{inputenc}
+\usepackage{default}
+\newcommand*{\Comb}[2]{{}^{#1}C_{#2}}%
+
+\usepackage{amsmath}
+\usepackage{pst-node}
+
+\usepackage{color}
+\definecolor{myblue}{rgb}{.8, .8, 1}
+\definecolor{mygreen}{rgb}{.8, 1, 0.8}
+
+\usepackage{amsmath}
+\usepackage{empheq}
+
+
+\newlength\mytemplen
+\newsavebox\mytempbox
+
+\makeatletter
+\newcommand\mybluebox{%
+    \@ifnextchar[%]
+       {\@mybluebox}%
+       {\@mybluebox[0pt]}}
+
+\def\@mybluebox[#1]{%
+    \@ifnextchar[%]
+       {\@@mybluebox[#1]}%
+       {\@@mybluebox[#1][0pt]}}
+
+\def\@@mybluebox[#1][#2]#3{
+    \sbox\mytempbox{#3}%
+    \mytemplen\ht\mytempbox
+    \advance\mytemplen #1\relax
+    \ht\mytempbox\mytemplen
+    \mytemplen\dp\mytempbox
+    \advance\mytemplen #2\relax
+    \dp\mytempbox\mytemplen
+    \colorbox{myblue}{\hspace{1em}\usebox{\mytempbox}\hspace{1em}}}
+
+\makeatother
+
+
+\psset{arrowscale=2,arrows=->}
+\def\VPh{\vphantom{\displaystyle\sum_{i=n}^m {i^2}}}
+\def\psBox#1#2{\psframebox[fillcolor=#1,fillstyle=solid]{\VPh\displaystyle#2}}
+
+\usetheme{Warsaw}
+\useoutertheme{infolines}
+
+\title{MMD for class ratio estimation}
+\institute[IITB]{
+  Indian Institute of Technology Bombay, Mumbai
+}
+\author{Seminar Presentation}
+
+\begin{document}
+\maketitle
+\begin{frame}
+ \frametitle{Aim}
+ \begin{itemize}
+  \item Instead of per instance label, interested in the aggregate statistics\medskip
+  \item Eg: Fraction of comments on a website that are positive.\medskip
+  \item Eg: Fraction of spam mails\medskip
+  \item Eg: Fraction of mentions that point to a particular entity.\medskip
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Problem Formulation}
+ \begin{itemize}
+  \item  Let $X = {x \in R_d }$ be the set of all instances and 
+  $Y = {0, 1, . . . , c}$ be the  set of all labels.
+ \medskip
+\item Given a labeled dataset $D(\subset X\text{ x } Y)$, design an estimator that for any given set
+$U (\subset X )$ can estimate the class ratios $\theta = [\theta_0 , \theta_1 , . . . , \theta_c ]$
+Where  $\theta_y$ denotes the fraction of instances with class label y in U 
+ \end{itemize}
+
+\end{frame}
+\begin{frame}
+ \frametitle{Why not train a classifier?}
+ \begin{itemize}
+  \item We can also get the ratio by training a classifier and running it over all of the test data
+  \medskip
+  \item Fails because the distribution of class labels over training and test data is usually not the same.
+\medskip
+  \item Occam's Razor : One less assumption
+ \end{itemize}
+
+\end{frame}
+\begin{frame}
+ \frametitle{Maximum Mean Discrepancy}
+ \begin{itemize}
+  \item Match two distributions based on the mean of features in the hilbert space induced by a kernel K. \medskip
+  \item Assume that distribution of features is same in both training and test data : 
+    $P_U (x|y) = P_D (x|y), \forall y \in Y$ \medskip
+  \item Thus, the test distribution must equal $Q(x) = \Sigma_{y} P_D (x|y)\theta_y$  \medskip
+ \end{itemize}
+
+\end{frame}
+\begin{frame}
+ \frametitle{Maximum Mean Discrepancy : Objective}
+ \begin{itemize}
+  \item Let $\bar{\phi}_y and \bar{\phi}_u$ denote the true means of the feature vectors of the y th class and the
+unlabeled data \medskip
+  \item Suppose we somehow get the true class ratios ${\theta}$. The true mean of the feature vector of the
+  unlabeled data can then be obtained by $\Sigma_y\theta_y\bar{\phi}_y$. \medskip
+  \item So ideally, $\Sigma_y\theta_y\bar{\phi}_y = \bar{\phi}_u$ \medskip
+ \end{itemize}
+ The objective thus is
+  \begin{empheq}[box={\mybluebox[5pt]}]{equation*}
+  min_{\theta} || \Sigma_y \in Y\text{  } || \Sigma_y\theta_y\bar{\phi}_y = \bar{\phi}_u || ^ {2}  
+  \end{empheq}
+  \begin{center}
+  Such that 
+  \begin{itemize}
+   \item \begin{center} $\forall y, \theta_y \geq 0$ \end{center}
+  \item \begin{center} $\sum_{y = 0}^c \theta_y = 1$ \end{center} 
+  \end{itemize}
+  \end{center}
+  
+  \end{frame}
+  
+\begin{frame}
+ \frametitle{Maximum Mean Discrepancy : Objective}
+\begin{itemize}
+ \item But $\bar{\phi}_y \text{ and } \bar{\phi}_u$ are unknown and thus are approximated from the training dataset by counting.
+ \begin{equation}
+    \hat{\phi}_y(n_y) = \Sigma_{(x, y) \in D} \frac{\phi(x)}{n_y} 
+ \end{equation}
+ \begin{equation}
+ \hat{\phi}_U(n_u) = \Sigma_{x \in U} \frac{\bar{\phi(x)}_y}{n_u} 
+ \end{equation}
+
+ \item The objective can be written in terms of dot products of the mapped features and thus the kernel trick can be applied.
+ 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Upper bounds on the error}
+\begin{figure}[h]
+ \centering
+ \includegraphics[bb=0 0 840 218,scale=0.3,keepaspectratio=true]{./bound.png}
+ % bound.png: 840x218 pixel, 72dpi, 29.63x7.69 cm, bb=0 0 840 218
+ \caption{Upper bound on the difference between the true class ratio and the predicted class ratio}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Experiments and Results : Methods used}
+\begin{itemize}
+ \item SMO - MKL : The baseline, train a classifier and get the ratios \medskip
+  \item PE - DR : One of the methods for direct estimation of class ratios \medskip
+  \item MMD : MMD based approach but with a single kernel whose parameters were determined using grid search \medskip
+  \item MMD - MKL : MMD with Kernel selection motivated by the theoretical bounds \medskip
+\end{itemize}
+\end{frame}
+
+\end{document}

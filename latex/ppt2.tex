@@ -1,0 +1,472 @@
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage{default}
+\newcommand*{\Comb}[2]{{}^{#1}C_{#2}}%
+
+\usepackage{amsmath}
+\usepackage{pst-node}
+
+\usepackage{color}
+\definecolor{myblue}{rgb}{.8, .8, 1}
+\definecolor{mygreen}{rgb}{.8, 1, 0.8}
+
+\usepackage{amsmath}
+\usepackage{empheq}
+
+
+\newlength\mytemplen
+\newsavebox\mytempbox
+
+\makeatletter
+\newcommand\mybluebox{%
+    \@ifnextchar[%]
+       {\@mybluebox}%
+       {\@mybluebox[0pt]}}
+
+\def\@mybluebox[#1]{%
+    \@ifnextchar[%]
+       {\@@mybluebox[#1]}%
+       {\@@mybluebox[#1][0pt]}}
+
+\def\@@mybluebox[#1][#2]#3{
+    \sbox\mytempbox{#3}%
+    \mytemplen\ht\mytempbox
+    \advance\mytemplen #1\relax
+    \ht\mytempbox\mytemplen
+    \mytemplen\dp\mytempbox
+    \advance\mytemplen #2\relax
+    \dp\mytempbox\mytemplen
+    \colorbox{myblue}{\hspace{1em}\usebox{\mytempbox}\hspace{1em}}}
+
+\makeatother
+
+
+\psset{arrowscale=2,arrows=->}
+\def\VPh{\vphantom{\displaystyle\sum_{i=n}^m {i^2}}}
+\def\psBox#1#2{\psframebox[fillcolor=#1,fillstyle=solid]{\VPh\displaystyle#2}}
+
+\usetheme{Warsaw}
+\useoutertheme{infolines}
+
+\title{Named Entity Recognition and Tagging}
+\subtitle{Seminar Presentation}
+\author[A. Madaan]{Aman Madaan}
+\institute[IITB]{
+  Indian Institute of Technology Bombay, Mumbai
+}
+\date{January 23rd, 2014}
+
+\begin{document}
+\maketitle
+
+\begin{frame}
+\frametitle{Table of Contents}
+\tableofcontents[currentsection]
+\begin{itemize}
+  \item Recognition and Tagging \bigskip
+  \item Named Entity Recognition \bigskip
+    \begin{itemize}
+      \item Problem statement \bigskip
+      \item Solutions \bigskip
+      \item NER as a Sequence labelling problem : HMM to MEMM to CRF
+    \end{itemize}
+\bigskip
+  \item Named Entity Tagging \bigskip
+    \begin{itemize}
+      \item 
+      Collective Annotation of WikiPedia Entities in Web Text \\ Sayali Kulkarni, Amit Singh, Ganesh Ramakrishnan, and Soumen Chakrabarti
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Recognition and Tagging : Two step problem}
+ \begin{center}
+\textcolor{blue}{Michael Jordan is a Professor at Berkeley}
+   \end{center}
+
+\end{frame}
+
+\begin{frame}
+ \frametitle{Recognition and Tagging : Two step problem}
+ \begin{center}
+\textcolor{blue}{Michael Jordan is a Professor at Berkeley}
+   \end{center}
+
+ \begin{itemize}  
+  \item Step 1 : \textbf{Identify} entities
+
+  \medskip
+  \textcolor{green}{Michael Jordan\_PERSON} is a professor at \textcolor{green}{Berkeley\_INSTITUTION} \medskip
+  
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Recognition and tagging : Two step problem}
+ \begin{center}
+\textcolor{blue}{Michael Jordan is a Professor at Berkeley}
+   \end{center}
+
+ \begin{itemize}  
+  \item Step 1 : \textbf{Identify} entities
+  \medskip
+  
+  \textcolor{green}{Michael Jordan\_PERSON} is a professor at \textcolor{green}{Berkeley\_INSTITUTION} \medskip
+  \item Step 2 : \textbf{Link} entities to knowledge bases : 
+  \medskip
+  
+  \textcolor{red}{Michael Jordan\_ENTITY} (\url{http://en.wikipedia.org/wiki/Michael_I._Jordan})  is a professor at  
+  \textcolor{red}{Berkeley\_ENTITY} (\url{http://en.wikipedia.org/wiki/University_of_California,_Berkeley})
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{NER : Problem Statement}
+ \begin{center}
+\  \begin{definition}[Named entity recognition\footnote {from \ref{thewiki}}]
+   Named-entity recognition (NER) (also known as entity identification and entity extraction) is a subtask of information extraction that seeks to locate and classify 
+   atomic elements in text into predefined categories such as the names of persons, organizations, locations, expressions of times, quantities, monetary values, percentages, etc.
+  \end{definition}
+
+ \end{center}
+\end{frame}
+
+\begin{frame}
+ \frametitle{NER : Solutions}
+ \begin{center}
+ \includegraphics[height = 6cm]{cohen}\footnote{from \ref{thesurvey}}
+ \end{center}
+
+\end{frame}
+
+ \begin{frame}
+ \frametitle{NER as a sequence labeling problem}
+ \begin{itemize}
+  \item Observation sequence : Text \medskip
+  \item State sequence : Labeling of the sequence with elements in (PER, LOC, ORG) etc. \medskip
+  \item Find $\text{argmax}_{S}  P(S|O)$ \medskip
+  \item Candidates : HMM, MEMM, CRF
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{NER as a sequence labeling problem}
+ \begin{itemize}
+ \item HMM 
+ \begin{itemize}
+ \item Generative
+ \item Makes strong independence assumption
+ \item Myopic (Refer to label bias problem in \hyperref[thesurvey]{William Cohen's Survey})
+ \end{itemize}
+ 
+ \item MEMM
+ \begin{itemize}
+ \item Discriminative
+ \item No independence assumptions are made, by formulation
+ \item Allows the use of feature functions
+ \item Myopic
+ \end{itemize}
+ 
+ \item CRF
+ \begin{itemize}
+  \item Discriminative
+  \item MEMM + non myopic, avoids local normalization
+  \item Talks of ``compatibility'', not independence (\hyperref[thesite]{CS 728})
+ \end{itemize}
+
+ 
+ \end{itemize}
+ 
+\end{frame}
+
+
+
+
+\begin{frame}
+ \begin{center}
+ 
+  Collective Annotation of WikiPedia Entities in Web Text 
+  
+  \bigskip
+  
+ \hyperref[thepaper]{ Sayali Kulkarni, Amit Singh, Ganesh Ramakrishnan, and Soumen Chakrabarti}
+  \end{center}
+
+\end{frame}
+
+\begin{frame}
+ \frametitle{Key Intuition : Topical Coherence}
+ \begin{itemize}
+  \item A document is usually about one topic \bigskip
+  \item Disambiguating each entity using the local clues misses out on a major piece of information : Topic of a page \bigskip
+  \item A page is usually has one topic, you can expect all the entities to be \emph{related} to the topic \emph{somehow} \bigskip
+  \end{itemize}
+  \textcolor{green}{Michael Jackson} : 30 Disambiguations 
+  
+ \textcolor{green}{John Paul} : 10 disambiguations 
+ 
+ 
+ 
+  But if they are mentioned on the \textbf{same page}, the page is most likely about Christianity, A big hint towards disambiguating \textbf{both} of them
+  
+ 
+  \end{frame}
+ 
+\begin{frame}
+ \frametitle{Challenges}
+ \begin{itemize}
+  \item Capturing local compatibility \bigskip
+  \item Inculcating topical coherence in the overall objective \bigskip
+ \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+ \frametitle{Challenges}
+ \begin{itemize}
+  \item Capturing local compatibility
+  \begin{itemize}
+   \item \textcolor{blue}{Create a scoring function to rank possible candidates}
+  \end{itemize}
+
+  \item Inculcating topical coherence in the overall objective
+ \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+ \frametitle{Challenges}
+ \begin{itemize}
+  \item Capturing local compatibility
+  \begin{itemize}
+   \item \textcolor{blue}{Create a scoring function to rank possible candidates}
+  \end{itemize}
+
+  \item Inculcating topical coherence in the overall objective
+
+  \begin{itemize}
+   \item \textcolor{blue}{Define Topical coherence}
+  \end{itemize}
+
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+ \frametitle{Local compatibility}
+ \begin{itemize}
+  \item $s$ : Spot, an Entity to be disambiguated (Christian leader John Paul) \bigskip 
+  \item $\gamma$ : An entity label value (\url{http://en.wikipedia.org/wiki/Po-pe_John_Paul_II})  \bigskip 
+ \item $f_s(\gamma)$ : A feature function that creates a vector of features
+ \end{itemize}
+
+  
+\end{frame}
+
+\begin{frame}
+
+\frametitle{Local compatibility : Feature design} 
+\begin{itemize}
+ \item 1. Take
+\begin{itemize} 
+ \item Text from the first descriptive paragraph of $\gamma$
+  \item Text from the whole page for $\gamma$
+  \item Anchor text within Wikipedia for $\gamma$.
+  \item Anchor text and 5 tokens around $\gamma$ 
+ \end{itemize}
+ 
+ \item 2. Apply each of the following operation with one argument as Spot
+    \begin{itemize}
+      \item{Dot-product between word count vectors}
+      \item{Cosine similarity in TFIDF vector space}
+      \item{Jaccard similarity between word sets}
+ \end{itemize} 
+ \end{itemize}
+ Total 12 Features (3 operations, 4 argument pairs) + Sense Probability Prior\footnote{Obtained by counting intra wiki links}
+ 
+\end{frame}
+
+\begin{frame}
+ \frametitle{Compatibility Score}
+ \begin{itemize}
+ \item Local compatibility score between a spot $s$ and a candidate is given by $w^{T}f_s(\gamma)$
+ \item Thus, candidate is picked by $argmax_{\gamma\in\Gamma}w^{T}f_s(\gamma)$
+ \item $w$ is trained using an SVM like training objective
+ \begin{center} $w^{T}f_s(\gamma) - w^{T}f_s(\gamma) \geq 1 - \epsilon_s$ \end{center}
+ \end{itemize}
+ 
+ \end{frame}
+
+ \begin{frame}
+  \frametitle{Defining topic Relatedness}
+  \begin{itemize}
+   \item We need some notion of capturing the fact that 2 topics are related to each other \medskip
+   \item Given
+   \begin{itemize}
+    \item $g(\gamma)$ : Set of wikipedia pages that link to $\gamma$
+    \item $c :$ Total number of Wikipedia pages
+    \item $r(\gamma, \gamma') :$ Relatedness of topics $\gamma$ and $\gamma'$
+   \end{itemize}\bigskip
+
+    
+   \item Define $ r(\gamma, \gamma') = \frac{log|g(\gamma) \bigcap g(\gamma')| - log(max\{|g(\gamma)|, |(\gamma')|\})} {log c - log(min\{|g(\gamma)|, |(\gamma')|\})}$ 
+
+  \end{itemize}
+
+  
+ \end{frame}
+
+ 
+ \begin{frame}
+  \frametitle{The Dominant Topic Model}
+  \begin{itemize}
+   \item Need to define a collective score based on pairwise topical coherence of all $\gamma_s$ used for labeling. \medskip
+   \item The pairwise topical coherence, $r(\gamma_s, \gamma_s')$ is as defined above.\medskip
+   \item For a page, overall topical coherence : \begin{center}\medskip
+                                                  $\Sigma_{s \neq s' \in S_0}r(\gamma_s, \gamma_s')$
+                                                 \end{center}
+   \item Can be written as clique potential as in case of node potential\medskip
+      \begin{center}
+	$exp(\Sigma_{s \neq s' \in S_0}r(\gamma_s, \gamma_s'))$
+      \end{center}
+
+  \end{itemize}
+
+ \end{frame}
+
+ \begin{frame}
+  \frametitle{The Optimization objective}
+ \begin{center}
+ \begin{empheq}[box={\mybluebox[5pt]}]{equation*}
+  \frac{1}{\binom{|S_0|}{2}}\Sigma_{s \neq s' \in S_0}r(\gamma_s, \gamma_s') + \frac{1}{|S_0|}\Sigma_{s \in S_0}w^{T}f_s(\gamma)
+ \end{empheq}
+ \includegraphics[height = 5 cm]{objective}\footnote{From \ref{thepaper}}
+  \end{center}
+
+ 
+ \end{frame}
+
+ \begin{frame}
+  \frametitle{Solving the optimization objective}
+  \begin{itemize}
+   \item LP rounding approach\bigskip
+   \item Hill climbing
+   \begin{center}
+    \includegraphics[height = 3cm]{hill}
+   \end{center}
+
+  \end{itemize}
+
+ \end{frame}
+
+ \begin{frame}
+  \frametitle{Experiments : Data preparation}
+  \begin {itemize}
+  \item August 2008 version of WikiPedia used, 5.15 million entity IDs. \medskip
+  \item Filter out IDs composed of verbs, adverbs, conjunctions etc. \medskip
+  \item Create a trie from IDs. \medskip
+  \item Identify spots (\emph{NER}) by tokenizing the document and then matching spots with the trie. 
+  \end{itemize}
+  
+ \end{frame}
+
+ \begin{frame}
+  \frametitle{Experiments : Preparing Ground Truth Collection}
+  \begin {itemize}
+  \item Need data annotated with links to Wikipedia \medskip
+  \item Done manually, pages obtained from popular links across various domains \medskip
+  \item 19, 000 annotations marked, 40\% marked NA, 3800 distinct entities used \medskip
+  \end{itemize}
+ \begin{tabular}{| l | c | r |}
+\hline
+ Number of documents & 107 \\
+Total number of spots & 17,200 \\
+
+Spot per 100 tokens & 30 \\
+Average ambiguity per Spot & 5.3\\
+\hline
+\end{tabular}
+  
+ \end{frame}
+
+ \begin{frame}
+  \frametitle{Results : Only Local disambiguation}
+  \begin{itemize}
+  \item Local approach performs well
+  \end{itemize}
+  
+  \begin{center}
+  \begin{empheq}[box={\mybluebox[5pt]}]{equation*}
+  \gamma_0 \leftarrow argmax_{\gamma\in\Gamma_s}  w^{T}f_s(\gamma)
+  \end{empheq}
+  \begin{empheq}[box={\mybluebox[5pt]}]{equation*}
+  \text{if }  w^{T}f_s(\gamma_0) > \rho_{NA} \text{ then return }\gamma_0 \text{ else return NA}
+  \end{empheq}
+  \includegraphics[height = 4 cm]{localperf}\footnote{from \ref{thepaper}}
+  \end{center}
+
+ \end{frame}
+
+ \begin{frame}
+  \frametitle{LP vs Hill climbing approach}
+  \begin{itemize}
+   \item Hill climbing and LP are equivalent
+  \end{itemize}
+
+  \begin{center}
+  \includegraphics[height = 5 cm]{hillversuslp}\footnote{from \ref{thepaper}}
+  \end{center}
+ \end{frame}
+
+ 
+ \begin{frame}
+  \frametitle{Recall precision for various approaches}
+  \begin{itemize}
+   \item Exploiting topical coherence improves precision by 9%
+   \item Adding topic prior also helps
+  \end{itemize}
+
+  \begin{center}
+  \includegraphics[height = 5 cm]{overall}\footnote{from \ref{thepaper}}
+  \end{center}
+ \end{frame}
+
+ 
+ \begin{frame}
+  \frametitle{Summary}
+  \begin{itemize}
+   \item Authors exploit the intuition that a document is usually about one topic \medskip 
+   \item Entities belonging to a document can thus have a common \emph{background} \medskip
+   \item Importance of good features design (local disambiguation) \medskip
+   \item Global topical coherence was added to obtain the global optimization objective \medskip
+   \item Extensive data preparation effort \medskip
+   
+  \end{itemize}
+
+ \end{frame}
+
+\begin{frame}
+\frametitle{References}
+\begin{thebibliography}{9}
+\setbeamertemplate{bibliography item}[text]
+\bibitem{A} \label{thepaper} Collective Annotation of Wikipedia Entities in Web Text \\
+
+Sayali Kulkarni, Amit Singh, Ganesh Ramakrishnan, and Soumen Chakrabarti,
+ IIT Bombay
+
+\setbeamertemplate{bibliography item}[online]
+\bibitem{B}  \label{thesite} \url{http://www.cse.iitb.ac.in/~soumen/OWI/Slides/}
+
+\setbeamertemplate{bibliography item}[text]
+\bibitem{C} \label{thesurvey} William Cohen's Survey available at \ref{thesite}
+
+\setbeamertemplate{bibliography item}[online]
+\bibitem{The Wikipedia Page} \label{thewiki} \url{http://en.wikipedia.org/wiki/Named-entity_recognition}
+
+\end{thebibliography}
+\end{frame}
+\end{document}
