@@ -1,0 +1,46 @@
+BIT can be used to answer both update and cumulative frequencies in log time.
+Using the conventional approach, we need to do O(n) work after each update query to answer the cf query in O(1) time. 
+
+Using BIT, when we update cumulative frequency, we update it for all the indexes which are responsible for the index for which the update is to be done. i.e. suppose you need to increase ith position by i, you should increase i, i + i & -i and so on till maximum index is reached. 
+
+############
+More Verbose
+############
+
+Every index j is responsible for storing sum of some range of indexes. For example, consider an index k.
+
+arr[k] = sum of (p, p + 1, ... ,q)
+
+Now, if you update any of the frequencies of p, p + 1, ... q, you must update arr[k]. 
+
+How to find out the positions which will include some index?
+
+To answer this, we should answer : how do you find out the positions that should be included in the sum stored at a location.
+
+An index is reponsible for 
+(idx - 2^r + 1) to (idx)
+
+here r is position of the first one from the left.
+Eg for 110 (6), this is 6 - 2 ^ 1 + 1 to 6, i.e. 5 to 6.
+
+So tree[idx] will store the sum from 5 to 6.
+
+Basically, we store at each location a10, the numbers from a00 to a10.
+
+How to get numbers less than will be told to us by a00. 
+
+
+Symmetrical technique can be used to find out the numbers which will include the number we are at. 
+start from idx, which of course has to be updated. 
+Then go to, idx + (idx & -idx)
+
+Keep going till you reach the right half.
+
+To obtain the cumulative frequency as follows : 
+idx = idx - (idx & - idx)
+
+For example, for 110 (6), this will be
+110 - (110 & 010) = 100
+100 - (100 & 100) = 0
+
+So at location 6, you 
