@@ -1,0 +1,74 @@
+\chapter{Introduction}
+\section{Problem Definition}
+Consider the following sentence : 
+
+ \begin{center}
+\textcolor{blue}{Michael Jordan is a Professor at Berkeley}
+   \end{center}
+
+ We first want to identify all the \textbf{named entities} in the text. The task is called named entity recognition and is 
+ formally defined as : 
+ \begin{mydef}[Named entity recognition\footnote {from \ref{thewiki}}]
+ \label{nerdef}
+   Named-entity recognition (NER) (also known as entity identification and entity extraction) is a subtask of information extraction that seeks to locate and classify 
+   atomic elements in text into predefined categories such as the names of persons, organizations, locations, expressions of times, quantities, monetary values, percentages, etc.
+  \end{mydef}
+ But we do not stop at that, we want to link each of the named entities thus recognized to a knowledge base\footnote{The knowledge base is a catalog of entities, like Wikipedia}.
+ Thus, our problem has a 2 step solution : 
+
+ \begin{itemize}  
+  \item Step 1 : \textbf{Identify} entities
+  \medskip
+  
+  \textcolor{green}{Michael Jordan\_PERSON} is a professor at \textcolor{green}{Berkeley\_INSTITUTION} \medskip
+  \item Step 2 : \textbf{Link} entities to knowledge bases : 
+  \medskip
+  
+  \textcolor{red}{Michael Jordan\_ENTITY} (\url{http://en.wikipedia.org/wiki/Michael_I._Jordan})  is a professor at  
+  \textcolor{red}{Berkeley\_ENTITY} (\url{http://en.wikipedia.org/wiki/University_of_California,_Berkeley})
+\end{itemize}
+
+The stanford NER library is a popular choice for recognizing named entities. [\ref{stanfordner}]
+
+\section{Applications}
+
+
+In simple terms, disambiguating named entities in the unstructured text imparts a structure to the document. 
+We need two more data points to further appreciate the power that such a tool provides to us.
+The first is the size of the web. As of 31st March 2014, there are atleast 1.8 billon indexed web pages.[\ref{ws}]
+The second is the number of wikipedia entities. The wikipedia statistics [\ref{wikistats}] estimate the number of pages to be
+around 32 million. Yago, a catalog of entities made from wikipedia has 12, 727, 222 entities.	
+Imparting structure to documents at this magnitude has far reaching implications in the information
+extraction and is a bridge towards the hitherto dream of a semantic web.  \\
+
+
+It is highly recommended that the reader has a look at \url{http://www.google.co.in/insidesearch/features/search/knowledge.html}, 
+The google knowledge graph project.
+
+
+\section{Terminology}
+The following terms are widely used in the literature on named entity disambiguation and thus in the survey.
+
+\begin{itemize}
+ \item \textbf{Mention, Spot} \\
+ A piece of text which needs to be disambiguated. For example, \textbf{Amazon} has attracted a lot of visitors.
+ \item \textbf{Entity} \\
+ A named entity as defined in the definition \ref{nerdef}. 
+ \item \textbf{Candidates} \\
+ A set of entities which might be the correct disambiguation for a given mention.
+ For example, possible candidates for the sentence above are Amazon river and Amazon.com
+ \item \textbf{Prior} \\
+ Probability of a mention linking to a particular entity. For example, the mention ``Amazon`` may be used
+ to refer to the website (say) 60\% of the time.
+ \item \textbf{Knowledge base} \\
+ A catalog of Entities where an entity is as defined above. For example, Wikipedia or yago.
+
+\end{itemize}
+
+\section{Structure}
+We have already given an introduction to the problem and the applications. 
+The next chapter discusses the solutions based on local disambiguation, i.e., figuring 
+out the correct entity based on just the local evidences. Chapter 3 presents the intuition
+behind having a global strategy for disambiguation, and the optimization problem that
+results from such an objective. The final chapter summarizes a recent work which 
+pragmatically selects global and local evidences, to get the best of both worlds.

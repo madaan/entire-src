@@ -1,0 +1,60 @@
+%sg
+\documentclass[a4paper,10pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{epigraph}
+\usepackage{graphicx, float}
+\usepackage{pst-node}
+\usepackage[]{algorithm2e}
+\newtheorem{mydef}{Definition}
+% Title Page
+\title{Seminar Report\footnote{Draft}}
+\author{Aman Madaan \\ 133050004}
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\begin{abstract}
+TODO
+\end{abstract}
+
+\part{Problem Definition and Motivation}
+\input{nedintro}
+
+\part{Structured Knowledge Repositories}
+\input{kb.tex}
+
+\part{Named Entity Disambiguation}
+\input{lned.tex}
+\input{ned.tex}
+
+\part{Aggregate Statistics}
+\input{aggregate}
+
+\chapter{Conclusion and further readings}
+TODO
+
+For this report, only a small subset of the papers was selected to cover as much ground as possible.
+The following list may be valuable to the interested readers.
+
+\begin{itemize}
+ \item \textbf{We have emphasized on Wikipedia as the catalog. The following work presents a general approach} \\
+ Sil, Avirup, et al. "Linking named entities to any database." Proceedings of the 2012 Joint Conference on Empirical Methods in Natural Language Processing and Computational Natural Language Learning. Association for Computational Linguistics, 2012.
+ \item \textbf{Large scale named entity disambiguation.} \\
+ Cucerzan, Silviu. ``Large-Scale Named Entity Disambiguation Based on Wikipedia Data.'' EMNLP-CoNLL. Vol. 7. 2007.
+ \item \textbf{One of the initial works on NED} \\
+ Bunescu, Razvan C., and Marius Pasca. "Using Encyclopedic Knowledge for Named entity Disambiguation." EACL. Vol. 6. 2006.
+ \item \textbf{Yago, a clean catalog of Wikipedia entities and the relations } \\
+ Suchanek, Fabian M., Gjergji Kasneci, and Gerhard Weikum. "Yago: a core of semantic knowledge." Proceedings of the 16th international conference on World Wide Web. ACM, 2007.
+ \item \textbf{Quick entity annotations for short text} \\
+ Suchanek, Fabian M., Gjergji Kasneci, and Gerhard Weikum. "Yago: a core of semantic knowledge." Proceedings of the 16th international conference on World Wide Web. ACM, 2007.
+\end{itemize}
+
+
+\input{bib}
+\end{document}          
