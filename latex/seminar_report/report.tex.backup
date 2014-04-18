@@ -1,0 +1,76 @@
+%sg
+\documentclass[a4paper,10pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{fancybox}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{epigraph}
+\usepackage{graphicx, float}
+\usepackage{pst-node}
+\usepackage[]{algorithm2e}
+\usepackage{empheq}
+\newcommand{\argmin}[1]{\underset{#1}{\operatorname{arg}\!\operatorname{min}}\;}
+\newtheorem{mydef}{Definition}
+
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \vspace*{\baselineskip}
+    \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
+    \rule{\textwidth}{0.4pt}\\[\baselineskip]
+    {\LARGE Occurrence Statistics of Entities \\[0.3\baselineskip] Relations and Types on the Web}\\[0.2\baselineskip]
+    \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
+    \rule{\textwidth}{1.6pt}\\[\baselineskip]
+    \scshape
+    Submitted in partial fulfillment of requirements for the degree of
+    Master of Technology \par
+    \vspace*{1\baselineskip}
+     by \\[\baselineskip]
+    {\Large Aman Madaan \vspace*{1\baselineskip} \\ Under the Guidance of Prof. Sunita Sarawagi\par}
+    {\vspace*{20\baselineskip} \itshape Department of Computer Science and Engineering \\ Indian Institute of Technology Bombay\par}
+    \vfill
+    \begin{figure}[h]
+ \centering
+ \includegraphics[bb=0 0 229 220,scale=0.3]{./iitb_logo.jpg}
+ % iitb_logo.jpg: 229x220 pixel, 72dpi, 8.08x7.76 cm, bb=0 0 229 220
+\end{figure}
+
+    {\scshape April, 2014} \\
+    {\large }\par
+  \end{titlepage}
+\tableofcontents
+
+\begin{abstract}
+The Internet is a web of mostly unstructured knowledge woven around things. However, these things; people, places, technologies, movies, products, books
+etc. are mostly just mentioned by their name, with other crucial bits of information about them scattered around the point of mention. The cosmic scale of 
+such unstructured information has stemmed the dream of a semantic web. A web which is aware of the links that make sense, which \emph{understands} what the 
+user is looking for and which is gifted with the intelligence of locating the desideratum.
+
+There are several pieces in the puzzle of the semantic web, this report is an attempt to understand one important piece; entities on the web and
+their co occurrence statistics. 
+
+\end{abstract}
+
+
+\input{intro.tex}
+
+\part{Structured Knowledge Repositories}
+\input{kb.tex}
+
+\part{Named Entity Disambiguation}
+\input{nedintro}
+\input{lned.tex}
+\input{ned.tex}
+
+\part{Aggregate Statistics}
+\input{aggregate}
+
+\input{conclusion}
+
+
+\input{bib}
+\end{document}          

@@ -1,0 +1,17 @@
+\chapter{Introduction}
+\section{Problem Statement}
+\section{Structure}
+The report is divided into three parts.
+
+The first part gives an overview of what are knowledge bases. This is important 
+since the concept of such repositories of structured knowledge is central to the
+report. 
+
+The second part begins with an introduction to the problem of named entity disambiguation, the 
+terminology and applications, and goes on to cover the techniques for named entity disambiguation
+in some detail. We give and overview of the two broad categories of disambiguation techniques, Local and
+global disambiguation.
+
+The third part begins with a discussion on definition of Aggregate statistics and 
+some of their applications. Finally, we discuss Maximum mean discrepancy and its 
+application for estimating the aggregate statistics over entities.

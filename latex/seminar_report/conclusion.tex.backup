@@ -1,0 +1,13 @@
+\chapter{Conclusion}
+The potential of open web can only be harnessed to its full extent by adding structure to it. The process involves 
+creating structured repositories derived from the web that can answer interesting questions pertaining to entities
+that exist on the web. 
+
+Many such smart applications that rely on structured web will rely on frequencies of occurrence of the former. 
+The report has been a buildup to achieving that.
+We started by briefing what knowledge bases are. In the second part, we introduced the problem of disambiguating the
+mentions of named entities and presented solutions roughly spanning last 8 years of research in the field. 
+
+In the third part, we then elaborated on what is meant by aggregate statistics and presented several applications of the same. 
+We presented maximum mean discrepancy via an example and discussed the formulation. We briefly outlined how mmd can be applied for
+the estimating occurrence statistics of entities.
