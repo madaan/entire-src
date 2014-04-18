@@ -1,13 +1,13 @@
-\chapter{Distributional Statistics of Named entities}
+\section{Distributional Statistics of Named entities}
 Once you have a catalog of things, it makes sense to ask which of these ``things'' are more important than the others.
 In fact, one might extend the question and ask, ``Which pairs (or triples) of these things appear together on the open web?''.
 We define several different statistics one might be interested in over these entity catalogs, discuss some applications, 
-propose a baseline method and finally, prepare the ground for the next chapter by giving an outline of a solution 
+propose a baseline method and finally, prepare the ground for the next section by giving an outline of a solution 
 which is aimed at directly providing us with the statistics we are looking for. 
 
-\section{What Statistics?}
+\subsection{What Statistics?}
 
-\subsection{Which sense dominates for an entity?}
+\subsubsection{Which sense dominates for an entity?}
 For starters, we might want to calculate the number of times a particular ``sense'' of an entity\footnote{Please note that we 
 refer to entity in general terms. For example, any object having a YAGO id is an entity}. 
 For example, the ``Gingerbread'' might refer to several different concepts; from perhaps the most famous Android 2.3 to the novel.
@@ -20,7 +20,7 @@ We call this number the sense prior.
 
 Where $S_i$ is the $i^{th}$ sense\footnote{$i^{th}$ disambiguation in Wikipedia parlance} of the entity E. 
 
-\subsection{How often do the 2 entities appear together?}
+\subsubsection{How often do the 2 entities appear together?}
 A second interesting statistic would be to count how many times do two given entities, taking two given senses appear together.
 For example, We might want to know how many times does Nokia \url{http://en.wikipedia.org/wiki/Nokia} appears with Gingerbread \url{http://en.wikipedia.org/wiki/Gingerbread_(operating_system)}
 
@@ -35,17 +35,17 @@ entity bigrams. We thus define the entity bi gram count as follows :
 
 We propose an application of Entity bi grams for finding out important entities motivated by [\ref{relgram}].
 
-\section{Applications}
+\subsection{Applications}
 We list a few applications of the sense prior and outline an application of the entity bigrams.
 
- \subsection{Sense Prior}
+ \subsubsection{Sense Prior}
  A prior over the sense will be helpful in many applications related to information retrieval. 
  \begin{itemize}
   \item Entity Querying
   \item Knowledge graph based searching
  \end{itemize}
 
- \subsection{Entity Bigrams}
+ \subsubsection{Entity Bigrams}
  
  Given an entity, we want to find out other important entities that are related to it.
  For example, given an entity \textbf{Barack Obama, President of the USA}, we need to provide top 10 entities that are
@@ -66,26 +66,26 @@ based on the their page ranks upon convergence.
  
 
 
-\section{Baseline Approach : Label and Collect}
+\subsection{Baseline Approach : Label and Collect}
 How do we collect the aforementioned statistics?
 This question shouldn't be too difficult to answer now. The whole of part 3
 was dedicated towards tagging entity mentions in the text. We can use any of the 
 methods (for example, AIDA can be set up as a rest service) to tag the corpus, and then iterate over the corpus to collect these statistics
 in single pass. 
-\section{Solution based on estimating class ratios}
+\subsection{Solution based on estimating class ratios}
 While estimating class ratios by doing per mention disambiguation seems pretty intuitive, we are doing more than what we need to do.
 We are not interested in what each mention disambiguates to, a count of how many times does a particular entity appears
 is the desideratum. There are 3 different methods in the open domain for directly estimating the class ratio[\ref{mmd}] 
 , without going through the label and collect route. In particular, [\ref{mmd}] discuss a solution based on maximum mean 
 discrepancy and proves some upper bounds on errors. 
 
-If mmd really works, we should expect better estimation of the sense prior and the entity grams. The next chapter outlines the mmd based 
+If mmd really works, we should expect better estimation of the sense prior and the entity grams. The next section outlines the mmd based 
 solution and how mmd may be used to estimate the sense priors for different entities. 
 
-\chapter{MMD for estimating ratios of named entities in text}
-This chapter discusses the MMD approach for direct estimation of class ratios[\ref{mmd}]. We first provide an intuition for the 
+\section{MMD for estimating ratios of named entities in text}
+This section discusses the MMD approach for direct estimation of class ratios[\ref{mmd}]. We first provide an intuition for the 
 solution, follow it up with some results 
-\section{Introduction}
+\subsection{Introduction}
 The following hypothetical example is aimed to capture the gist of class ratio estimation using mmd.
 Suppose that in a factory producing balls, there are 3 different ball production machines, (say) A, B and C.
 Since neither of the machines is perfect, they do not produce spherical balls. Rather, the balls are
@@ -124,10 +124,10 @@ While ensuring that  :
 \end{itemize}
 
 This is the motivation behind MMD for class ratio estimation.
-\section{MMD Formulation}
+\subsection{MMD Formulation}
 
 With the above example by our side
-\subsection{Problem Definition}
+\subsubsection{Problem Definition}
 We reproduce the problem statement from [\ref{mmd}]
  \begin{itemize}
   \item  Let $X = {x \in R_d }$ be the set of all instances and 
@@ -138,7 +138,7 @@ $U (\subset X )$ can estimate the class ratios $\theta = [\theta_0 , \theta_1 , 
 Where  $\theta_y$ denotes the fraction of instances with class label y in U 
  \end{itemize}
 
-\subsection{Objective}
+\subsubsection{Objective}
 \begin{itemize}
   \item Match two distributions based on the mean of features in the hilbert space induced by a kernel K. \medskip
   \item Assume that distribution of features is same in both training and test data
@@ -169,9 +169,9 @@ unlabeled data \medskip
 Interesting discussion on theoretical bounds on the error in the class ratios thus predicted and
 methods for learning Kernel can be found in [\ref{mmd}]
 
-\subsection{Estimating entity ratios using MMD}
+\subsubsection{Estimating entity ratios using MMD}
 Given a corpus with mentions identified (using, say [\ref{stanfordner}]), we want
-reliable estimates of frequency of each of the entities. In this section, we gloss over the solution.
+reliable estimates of frequency of each of the entities. In this subsection, we gloss over the solution.
 \begin{itemize}
 \item \textbf{Features}  \\ Each mention has several candidate disambiguations. This gives one way of 
 formulating the features. For each mention, we can have a (sparse) feature vector having non zero scores

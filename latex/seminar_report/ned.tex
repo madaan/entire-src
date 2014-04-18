@@ -1,5 +1,5 @@
-\chapter{Collective Disambiguation of Named Entities}
-\section{The key intuition}
+\subsection{Collective Disambiguation of Named Entities}
+\subsubsection{The key intuition}
 We have seen several different ``local'' solutions, attempting to solve the problem by collecting evidence
 around a mention and then using it to disambiguate. Milne and Witten [\ref{mw}] 
 came close to inculcating some sort of coherence, but they couldn't totally build up the intuition. It was after a wait of 2 years that CSAW [\ref{thepaper}] took the game 
@@ -21,7 +21,7 @@ to a whole new level by working on the following key intuition :
 Since the CSAW[\ref{thepaper}] paper, every work on named entity disambiguation includes a 
 notion of \emph{Topical coherence} in the solution. 
 
-\section{Challenges}
+\subsubsection{Challenges}
 Though the notion of topical coherence is very natural and intuitive, there are 
 a lot of challenges involved when it comes to actually mapping these intuitions to an optimization
 problem.
@@ -41,9 +41,9 @@ We present the challenges involved and the solution given by the CSAW team.
   \end{itemize}
 
  Out of these two challenges, various solutions to the problem of capturing the local compatibility are presented in Chapter 2. 
- In this chapter, we focus on the problem of collective disambiguation. 
+ In this subsection, we focus on the problem of collective disambiguation. 
  
- \section{The Dominant Topic Model}
+ \subsubsection{The Dominant Topic Model}
   \begin{itemize}
    \item Need to define a collective score based on pairwise topical coherence of all $\gamma_s$ used for labeling. \medskip
    \item The pairwise topical coherence, $r(\gamma_s, \gamma_s')$ is as defined above.\medskip
@@ -57,7 +57,7 @@ We present the challenges involved and the solution given by the CSAW team.
 
   \end{itemize}
 
-  \section{The Optimization objective}
+  \subsubsection{The Optimization objective}
   With different notations as above, we would like to maximize the following to get the 
   best results.
  \begin{center}
@@ -68,7 +68,7 @@ We present the challenges involved and the solution given by the CSAW team.
   In verbose, we want that the entity-entity coherence be maximized, while choosing the disambiguation which is the best.
 
  
-  \section{Solving the optimization objective}
+  \subsubsection{Solving the optimization objective}
   The authors compare 2 different approaches for solving the optimization objective.
   \begin{itemize}
    \item LP rounding approach\bigskip
@@ -89,11 +89,11 @@ We present the challenges involved and the solution given by the CSAW team.
   \end{itemize}
 
 
-\chapter{Pragmatic combination of Local and Global Disambiguations}
+\subsection{Pragmatic combination of Local and Global Disambiguations}
 
-\section{Introduction}
+\subsubsection{Introduction}
 
-Recall that Chapter 2 was about local disambiguation. In chapter 3, we saw how
+Recall that Chapter 2 was about local disambiguation. In subsection 3, we saw how
 global disambiguation can be combined with the overall objective. A recent work, 
 Robust disambiguation of named entities in text [\ref{aida}], proposes that 
 blindly opting for global disambiguation may not be always right. 
@@ -103,7 +103,7 @@ All the 3 named entities in the sentence are Cities as well as football clubs.
 Collective disambiguation may \emph{coerce} all the three mentions to be 
 either football clubs or cities. The work aims to solve this problem by being selective about when to go for collective disambiguation.
 
-\section{Approach}
+\subsubsection{Approach}
 This approach first creates a mention to candidate graph. The sample graph for the sentence ``They performed Kashmir 
 written by Page and Plant. Page played unusual chord on his Gibson.'' is as shown below : 
  \begin{figure}[H]
@@ -116,16 +116,16 @@ written by Page and Plant. Page played unusual chord on his Gibson.'' is as show
 
 Having created the graph, we need to assign the edge weights. Clearly, there are 2 kinds of edges involved : 
 \begin{itemize}
- \item Mention - Entity edge : The authors used a knowledge based approach to assign this weight. This is as outlined in chapter 2.
+ \item Mention - Entity edge : The authors used a knowledge based approach to assign this weight. This is as outlined in subsection 2.
  The details about this score are given in [\ref{kpsim}].
- \item Entity - Entity edge : Milne witten score as defined in chapter 2 is used for this purpose.
+ \item Entity - Entity edge : Milne witten score as defined in subsection 2 is used for this purpose.
 \end{itemize}
 
 With the graph ready, the authors pluck the in a greedy manner such that there is only one edge between each 
 mention and entity.
 
 
-\chapter{Further Readings on Named Entity Disambiguation}
+\subsection{Further Readings on Named Entity Disambiguation}
 
 For this report, only a small subset of the papers was selected to cover as much ground as possible.
 The following list may be valuable to the interested readers.
