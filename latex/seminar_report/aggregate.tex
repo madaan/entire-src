@@ -1,4 +1,5 @@
 \section{Distributional Statistics of Named entities}
+\label{secagg}
 Once you have a catalog of things, it makes sense to ask which of these ``things'' are more important than the others.
 In fact, one might extend the question and ask, ``Which pairs (or triples) of these things appear together on the open web?''.
 We define several different statistics one might be interested in over these entity catalogs, discuss some applications, 
@@ -9,10 +10,15 @@ which is aimed at directly providing us with the statistics we are looking for.
 
 \subsubsection{Which sense dominates for an entity?}
 For starters, we might want to calculate the number of times a particular ``sense'' of an entity\footnote{Please note that we 
-refer to entity in general terms. For example, any object having a YAGO id is an entity}. 
-For example, the ``Gingerbread'' might refer to several different concepts; from perhaps the most famous Android 2.3 to the novel.
-We want to know out of all the \emph{Gingerbreads} on the web, how many refer to the Operating system. 
-We call this number the sense prior.
+refer to entity in general terms. For example, any object having a YAGO id is an entity} is used. 
+For example, the entity Michael Jordan has several disambiguations,  : The Professor, Basketballer and the botinist. 
+We want to find out the distribution of occurrences of these senses. We call this number the sense prior.
+
+It is important to note that Entity Prior is different from mention prior, which is the fraction of times a mention 
+links to a particular entity. For example, the text ``Gingerbread'' might refer to several different concepts; from perhaps the most famous Android 2.3 to the novel.
+Mention prior is to find out how many \emph{Gingerbreads} mentions on the web refer to Gingerbread the Operating system.
+Entity sense prior would tell us how frequent is Gingerbread the OS compared with Gingerbread the novel.
+
 \begin{equation}
 \tag{1}
 \text{Sense Prior}(S_i, E) =  P(E\text{ appears as the $i^{th}$ sense}) = P(S_i | ``E'')
@@ -24,13 +30,14 @@ Where $S_i$ is the $i^{th}$ sense\footnote{$i^{th}$ disambiguation in Wikipedia 
 A second interesting statistic would be to count how many times do two given entities, taking two given senses appear together.
 For example, We might want to know how many times does Nokia \url{http://en.wikipedia.org/wiki/Nokia} appears with Gingerbread \url{http://en.wikipedia.org/wiki/Gingerbread_(operating_system)}
 
-We call should counts Entity bi grams. We note that in contrast to word bi-grams and relational grams [\ref{relgram}], entity bi grams
+We call these counts Entity bi grams. We note that in contrast to word bi-grams and relational grams [\ref{relgram}], entity bi grams
 are symmetric, and there is no obvious use case where we might need to know the order dependent occurrence count of the entities. 
 However, such a formulation will lead to a sparse distribution, since each count will have to be normalized by the total number of 
 entity bigrams. We thus define the entity bi gram count as follows : 
 \begin{equation}
  \tag{2}
- \text{Entity Bi Gram}(E2 | E1) = P(E2\text{ follows }E1) = P(E2 | E1) 
+ \text{Entity Bi Gram}(E2 | E1) \\  = P(E2\text{ follows }E1) \\ 
+	= P(E2 | E1) 
 \end{equation}
 
 We propose an application of Entity bi grams for finding out important entities motivated by [\ref{relgram}].
@@ -83,6 +90,7 @@ If mmd really works, we should expect better estimation of the sense prior and t
 solution and how mmd may be used to estimate the sense priors for different entities. 
 
 \section{MMD for estimating ratios of named entities in text}
+\label{sec:mmd}
 This section discusses the MMD approach for direct estimation of class ratios[\ref{mmd}]. We first provide an intuition for the 
 solution, follow it up with some results 
 \subsection{Introduction}

@@ -30,10 +30,10 @@
   
 \preauthor{\begin{flushleft}\large \lineskip 0.5em \usefont{OT1}{phv}{b}{sl} \color{Black}} % Author font configuration
 
-\author{Aman Madaan, Under the Guidance of Prof. Sunita Sarawagi} % Your name
+%\author{Aman Madaan, Under the Guidance of Prof. Sunita Sarawagi} % Your name
 
 \postauthor{\large \usefont{OT1}{phv}{b}{sl} \color{Black} % Configuration for the institution name
-\\Department of Computer Science and Engineering \\ Indian Institute of Technology Bombay % Your institution
+%\\Department of Computer Science and Engineering \\ Indian Institute of Technology Bombay % Your institution
 
 \par\end{flushleft}\HorRule} % Horizontal rule after the title
 
@@ -42,22 +42,22 @@
 
 
 \begin{document}
-\maketitle
-\iffalse
+
+
 \begin{titlepage}
     \centering
     \vspace*{\baselineskip}
     \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
     \rule{\textwidth}{0.4pt}\\[\baselineskip]
-    {\LARGE Occurrence Statistics of Entities, Relations and Types on the Web}\\[0.2\baselineskip]
-    \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
+    {\LARGE \color{DarkBlue} Occurrence Statistics of Entities, Relations and Types on the Web}\\[0.2\baselineskip]
+    \rule{ \textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
     \rule{\textwidth}{1.6pt}\\[\baselineskip]
     \scshape
     Submitted in partial fulfillment of requirements for the degree of
     Master of Technology \par
     \vspace*{1\baselineskip}
      by \\[\baselineskip]
-    {\Large Aman Madaan \vspace*{1\baselineskip} \\ Under the Guidance of Prof. Sunita Sarawagi\par}
+    {\Large  Aman Madaan \vspace*{1\baselineskip} \\ Under the Guidance of Prof. Sunita Sarawagi\par}
        \begin{figure}[h]
  \centering
  \vspace*{13\baselineskip}
@@ -65,21 +65,23 @@
  % iitb_logo.jpg: 229x220 pixel, 72dpi, 8.08x7.76 cm, bb=0 0 229 220
 \end{figure}
 
-    {\vspace*{1\baselineskip} \itshape Department of Computer Science and Engineering \\ Indian Institute of Technology Bombay\par}
+    {\vspace*{1\baselineskip}  \itshape Department of Computer Science and Engineering \\ Indian Institute of Technology Bombay\par}
     \vfill
  
     {\scshape April, 2014} \\
     {\large }\par
   \end{titlepage}
-  \fi
+  
   
 %\tableofcontents
 \newpage
+\maketitle
 \begin{abstract}
-
-
-
-
+The problem of collecting reliable estimates of occurrence of entities on the open web forms the premise for this report.
+The models learned for tagging entities cannot be expected to perform well when deployed on the web. This is owing to the severe mismatch 
+in the distributions of such entities on the web and in the relatively diminutive training data.
+In this report, we build up the case for maximum mean discrepancy for estimation of occurrence statistics of entities on the web, taking a review of named entity 
+disambiguation techniques and related concepts along the way.
 \end{abstract}
 
 
@@ -97,7 +99,6 @@
 
 
 \input{ack}
-\newpage
 \input{bib}
 
 \end{document}          

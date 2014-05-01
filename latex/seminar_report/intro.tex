@@ -4,21 +4,18 @@ The Internet is a web of mostly unstructured knowledge woven around things. Howe
 etc. are mostly just mentioned by their name, with other crucial bits of information about them scattered around the point of mention. The cosmic scale of 
 such unstructured information has stemmed the dream of a semantic web. A web which is aware of the links that make sense, which \emph{understands} what the 
 user is looking for and which is gifted with the intelligence of locating the desideratum.
-
 There are several pieces in the puzzle of the semantic web, this report is an attempt to understand one important piece; entities on the web and
 their co occurrence statistics.
 
-
 Given a knowledge base such as Yago or Freebase consisting of entities and relations, and the Web, our goal is 
 to attach reliable estimates of the frequency of occurrences on the Web of various entities and relations as 
-singletons, pairs (ordered and unordered) in a sentence.  
-The aim is to collect statistics so as to be able to design prior probabilities about the set of 
+singletons, pairs (ordered and unordered) in a sentence.  The aim is to collect statistics so as to be able to assign prior probabilities to the set of 
 entities and relations that can co-exist in a sentence or a paragraph. These statistics have applications in 
 query interpretation and language understanding tasks.  
 We can view it as being analogous to statistics in relational catalogs.
 
 \subsection{Named Entity Recognition and Disambiguation}
-For collecting the statistics of entities on the web, we need a method to determine which words in the 
+For collecting the statistics about entities on the web, we need a method to determine which words in the 
 free flowing interminable text are of interest, i.e. represent entities. 
 
 Consider the following sentence : 
@@ -34,7 +31,7 @@ Consider the following sentence :
    Named-entity recognition (NER) (also known as entity identification and entity extraction) is a subtask of information extraction that seeks to locate and classify 
    atomic elements in text into predefined categories such as the names of persons, organizations, locations, expressions of times, quantities, monetary values, percentages, etc.
   \end{mydef}
- But we do not stop at that, we want to link each of the named entities thus recognized to a knowledge base\footnote{The knowledge base is a catalog of entities, like Wikipedia. Refer section [\ref{seckb}]}.
+ but we do not stop at that, we want to link each of the named entities thus recognized to a knowledge base\footnote{The knowledge base is a catalog of entities, like Wikipedia. Refer section [\ref{seckb}]}.
  Thus, our problem has a 2 step solution : 
 
  
@@ -63,21 +60,21 @@ Imparting structure to documents at this magnitude has far reaching implications
 extraction and is a bridge towards the hitherto dream of a semantic web.  \\
 
 
-It is highly recommended that the reader has a look at \url{http://www.google.co.in/insidesearch/features/search/knowledge.html}, 
-The google knowledge graph project.
+It is highly recommended that the reader pays \url{http://www.google.co.in/insidesearch/features/search/knowledge.html}, 
+the google knowledge graph project, a visit.
 
 
 \subsubsection{Terminology}
-The following terms are widely used in the literature on named entity disambiguation and thus in the survey.
+The following terms are widely used in the literature on named entity disambiguation and thus in this article.
 
 \begin{itemize}
  \item \textbf{Mention, Spot} \\
- A piece of text which needs to be disambiguated. For example, \textbf{Amazon} has attracted a lot of visitors.
+ A piece of text which needs to be disambiguated. For example, the sentence ``\textbf{Amazon} has attracted a lot of visitors''.
  \item \textbf{Entity} \\
  A named entity as defined in the definition \ref{nerdef}. 
  \item \textbf{Candidates} \\
  A set of entities which might be the correct disambiguation for a given mention.
- For example, possible candidates for the sentence above are Amazon river and Amazon.com
+ For example, possible candidates for the sentence above are ``Amazon river'' and ``Amazon.com''.
  \item \textbf{Prior} \\
  Probability of a mention linking to a particular entity. For example, the mention ``Amazon`` may be used
  to refer to the website (say) 60\% of the time.
@@ -94,26 +91,25 @@ the mismatch in the training and test distribution [\ref{mmd}].
 Our training data, hand labeled corpora, is paltry in comparison with the massive open web, where such 
 systems are supposed to be deployed. This is true even for large training datasets like the Wikipedia.
 
+\subsection{Maximum mean discrepancy}
+
 The observation that we don't really want the individual labels is a first step towards a better solution. 
 There are 3 reported methods for direct estimation of class ratios [\ref{mmd}]. We are interested in 
-using one of them, maximum mean discrepancy for solving the problem in hand.
+using one of them, maximum mean discrepancy (mmd) for solving the problem in hand.
 
-\subsection{Maximum mean discrepancy}
-  
-
+We introduce mmd and propose a formulation for determining class ratios in section \ref{sec:mmd}.
 \subsection{Structure}
-The report is divided into three parts.
 
-\textbf{The first part} gives an overview of what are knowledge bases. This is important 
+\textbf{Section \ref{seckb}} gives an overview of what are knowledge bases. This is important 
 since the concept of such repositories of structured knowledge is central to the
 report. 
 
-\textbf{The second part} begins with an introduction to the problem of named entity disambiguation, the 
+\textbf{Section \ref{secned}} begins with an introduction to the problem of named entity disambiguation, the 
 terminology and applications, and goes on to cover the techniques for named entity disambiguation
 in some detail. We give and overview of the two broad categories of disambiguation techniques, Local and
 global disambiguation.
 
-\textbf{The third part} begins with a discussion on definition of Aggregate statistics and 
-some of their applications. Finally, we discuss Maximum mean discrepancy and its 
+\textbf{Section \ref{secagg}} begins with a discussion on definition of Aggregate statistics and 
+some of their applications. Finally, in section \ref{sec:mmd}, we discuss Maximum mean discrepancy and its 
 application for estimating the aggregate statistics over entities.
 

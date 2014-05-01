@@ -1,0 +1,383 @@
+\documentclass{beamer}
+\usetheme{Warsaw}
+
+\usepackage[utf8]{inputenc}
+\usepackage{default}
+\usepackage{url}
+\usepackage{tikz}
+\usetheme{Warsaw}
+\useoutertheme{infolines}
+\usepackage[absolute,overlay]{textpos}
+\usetikzlibrary{matrix}
+\setlength{\TPHorizModule}{\paperwidth}\setlength{\TPVertModule}{\paperheight}
+\title{Co-occurrence statistics of the entities on the web}
+\subtitle{Seminar Presentation}
+\author[Aman Madaan]{Aman Madaan}
+\institute[IITB]{
+  Indian Institute of Technology Bombay, Mumbai
+}
+\date{May 2nd, 2014}
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+\usepackage[utf8]{inputenc}
+\usepackage{default}
+
+
+\usepackage{amsmath}
+\usepackage{pst-node}
+
+\usepackage{color}
+\definecolor{myblue}{rgb}{.8, .8, 1}
+\definecolor{mygreen}{rgb}{.8, 1, 0.8}
+
+
+\newlength\mytemplen
+
+
+\begin{document}
+\maketitle
+\begin{frame}{Motivation}
+
+
+ \begin{itemize}
+  \item Web Search is a quest for knowledge \medskip
+  \item The open web is huge, \textbf{1.8 billion} indexed web pages\footnote{As of 31st March 2014}, but unstructured  \medskip
+  \item The knowledge is scattered around in pieces \medskip
+  \item A user needs to carve the structure out of the web  \medskip
+  \item Structuring the web : A web page is more than just a bundle of strings \medskip
+  \item Benefits are not limited to search! \medskip
+ \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Structuring the web}
+ \begin{itemize}
+  \item Learn what the text is all about \medskip
+  \item Go beyond Strings \medskip
+  \item ``Albert Einstein'' \medskip
+  \item Beyond the tricks like finding pages having the \textbf{String} ``Albert Einstein'', \medskip
+  pages which link to pages having the \textbf{String} ``Albert Einstein''
+ \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\begin{exampleblock}{}
+  {\large ``Words that you use when you are doing the search, well they aren't \emph{just words}, they refer to \textbf{real} things
+in the world``}
+  \vskip5mm
+  \hspace*\fill{\small--- Jack Menzel, Product Management Director, Google Knowledge Graph
+}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Words are not just words}
+\begin{textblock*}{100pt}[.50,.5](190pt,170pt)
+\begin{figure}[h]
+ \centering
+ \includegraphics[bb=0 0 197 256,scale=0.5]{./einstein.jpg}
+  \caption{Albert Einstein}
+ % einstein.jpg: 197x256 pixel, 72dpi, 6.95x9.03 cm, bb=0 0 197 256
+\end{figure}
+\end{textblock*}
+\end{frame}
+\begin{frame}
+ \frametitle{Words are not just words}
+\begin{textblock*}{100pt}[.50,.5](190pt,170pt)
+\begin{figure}[h]
+ \centering
+ \includegraphics[bb=0 0 197 256,scale=0.5]{./einstein.jpg}
+  \caption{Albert Einstein}
+ % einstein.jpg: 197x256 pixel, 72dpi, 6.95x9.03 cm, bb=0 0 197 256
+\end{figure}
+\end{textblock*}
+\begin{textblock*}{80pt}[.50,.5](60pt,70pt)
+\begin{figure}[h]
+ \centering
+ \includegraphics[bb=0 0 197 256,scale=0.5]{./nobel.jpg}
+ % einstein.jpg: 197x256 pixel, 72dpi, 6.95x9.03 cm, bb=0 0 197 256
+\end{figure}
+\end{textblock*}
+
+\end{frame}
+\begin{frame}
+ \frametitle{Words are not just words}
+\begin{textblock*}{100pt}[.50,.5](190pt,170pt)
+\begin{figure}[h]
+ \centering
+ \includegraphics[bb=0 0 197 256,scale=0.5]{./einstein.jpg}
+  \caption{Albert Einstein}
+ % einstein.jpg: 197x256 pixel, 72dpi, 6.95x9.03 cm, bb=0 0 197 256
+\end{figure}
+\end{textblock*}
+\begin{textblock*}{80pt}[.50,.5](60pt,70pt)
+\begin{figure}[h]
+ \centering
+ \includegraphics[bb=0 0 197 256,scale=0.5]{./nobel.jpg}
+ % einstein.jpg: 197x256 pixel, 72dpi, 6.95x9.03 cm, bb=0 0 197 256
+\end{figure}
+\end{textblock*}
+
+\begin{textblock*}{80pt}[.50,.5](60pt,170pt)
+\begin{figure}[h]
+ \centering
+ \includegraphics[bb=0 0 197 256,scale=0.5]{./zurich.jpg}
+ % einstein.jpg: 197x256 pixel, 72dpi, 6.95x9.03 cm, bb=0 0 197 256
+\end{figure}
+\end{textblock*}
+
+\end{frame}
+\begin{frame}
+ \frametitle{Words are not just words}
+\begin{textblock*}{100pt}[.50,.5](190pt,170pt)
+\begin{figure}[h]
+ \centering
+ \includegraphics[bb=0 0 197 256,scale=0.5]{./einstein.jpg}
+ % einstein.jpg: 197x256 pixel, 72dpi, 6.95x9.03 cm, bb=0 0 197 256
+ \caption{Albert Einstein}
+\end{figure}
+\end{textblock*}
+\begin{textblock*}{80pt}[.50,.5](60pt,70pt)
+\begin{figure}[h]
+ \centering
+ \includegraphics[bb=0 0 197 256,scale=0.5]{./nobel.jpg}
+ % einstein.jpg: 197x256 pixel, 72dpi, 6.95x9.03 cm, bb=0 0 197 256
+\end{figure}
+\end{textblock*}
+
+\begin{textblock*}{80pt}[.50,.5](60pt,170pt)
+\begin{figure}[h]
+ \centering
+ \includegraphics[bb=0 0 197 256,scale=0.5]{./zurich.jpg}
+ % einstein.jpg: 197x256 pixel, 72dpi, 6.95x9.03 cm, bb=0 0 197 256
+\end{figure}
+\end{textblock*}
+
+
+\begin{textblock*}{120pt}[.50,.5](310pt,70pt)
+\begin{itemize} 
+\item \textbf{Born :} 1879, Germany
+\item \textbf{Died :} 1955, US
+ \end{itemize}
+
+\end{textblock*}
+
+\begin{textblock*}{120pt}[.50,.5](310pt,170pt)
+''Entities'' \emph{like} Albert Einstein
+\begin{itemize} 
+\item \textbf{Born :} Issac Newton
+\item \textbf{Died :} Stephen Hawking
+ \end{itemize}
+\end{textblock*}
+
+\end{frame}
+\begin{frame}{Structuring the web : Knowledge Bases}
+\begin{itemize}
+ \item Need a standard reference set of entities
+ \item Wordnet : The maiden knowledge base, has clean type system but limited entity base
+ \item Development of Wikipedia has lead to the development of large knowledge bases
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Freebase}
+\begin{figure}[h]
+ \centering
+ \includegraphics[bb=0 0 1366 768,scale=0.25]{./freebase.png}
+ % freebase.png: 1366x768 pixel, 72dpi, 48.19x27.09 cm, bb=0 0 1366 768
+\end{figure}
+ 
+\end{frame}
+\begin{frame}{Freebase}
+\begin{itemize}
+ \item Freebase relies on crowd sourcing for creation of a rich but clean knowledge base \medskip
+ \item The development of Freebase follows the same chain as Every local disambiguation techniques fall into one
+Wikipedia, with users flagging issues, and cleaning and augmenting information \medskip
+\item Freebase also provides access to itself using web APIs.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Knowledge Bases : Not there yet}
+ \begin{itemize}
+  \item None of the knowledge bases to the best of my knowledge provides any kind of entity priors
+  of any kind
+  \item These pieces of information are really crucial for a number of tasks related to querying knowledge
+  graphs.
+  \begin{alertblock}{Alert-block title}
+This is a block in red
+\end{alertblock}
+  \item We motivate the need for such statistics after reviewing named entity disambiguation techniques. 
+ \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Aggregate Statistics}
+\begin{itemize}
+\item So the Internet is made up of things, the entities, which have dependencies and affiliations with other entities  \medskip
+\item It makes sense to ask which of these “things” are more important than the others. \medskip
+\item We need just the statistics about occurrence of the entities. \medskip
+\item Which of the entities appear together often? \medskip
+\item Which of the entities appear in pair often? In triples? \medskip	
+\item Named Entity Disambiguation
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+
+ \begin{center}
+ \usebeamerfont*{frametitle}
+ \Huge  \color{blue}{Named Entity Disambiguation}
+  
+  \bigskip
+
+  \end{center}
+
+\end{frame}
+
+\begin{frame}{One Thousand Words}
+ \begin{figure}[h]
+ \centering
+ \includegraphics[bb=0 0 216 165]{./ned.png}
+ % ned.png: 450x343 pixel, 150dpi, 7.62x5.81 cm, bb=0 0 216 165
+ \caption{The Problem Of Named Entity Disambiguation}
+\end{figure}
+
+\end{frame}
+
+\include{nerslides}
+\begin{frame}{Named Entity Disambiguation : Outline}
+
+
+ \begin{itemize}
+  \item Techniques
+  \begin{itemize}
+   \item Local Disambiguation \medskip
+   \item Collective Disambiguation \medskip
+   \item Robust Disambiguation of Named Entities \medskip
+  \end{itemize}
+  \item Quick Demo
+ \end{itemize}
+
+\end{frame}
+\begin{frame}{Local Disambiguation}
+ \begin{itemize}
+  \item Resolve each mention oblivious to the other disambiguations \medskip
+  \item Need to disambiguate a mention by collecting the local evidences \medskip
+  \item \textbf{Evidences}  POS tags, gender information, dictionary lookup \medskip
+  \item \textbf{Local}  We cannot use the disambiguation information for any of the other entities for solving the problem \medskip
+  \item Techniques
+  \begin{itemize} 
+  \item Machine Learning Based
+  \item Rule Based
+  \item Recent Rule based 
+ \end{itemize}
+ \end{itemize}
+ 
+
+\end{frame}
+\begin{frame}{Local Disambiguation : Rule Based}
+\begin{itemize}
+ \item Stems from the classical problem of word sense disambiguation \medskip
+ \item Example : Lesk's Algorithm \medskip
+  \begin{block}{Lesk's Algorithm} \medskip
+       
+ For each mention, pick the candidate sense for which there is maximum overlap
+ in the gloss (definition) of the candidate and the context
+\end{block}
+\item Note that the possible mentions are those that are identified by the named entity recognizer
+ \end{itemize}
+
+ 
+\end{frame}
+
+\begin{frame}{Local Disambiguation : Rule Based (Example)}
+\begin{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Collecting Statistics of interest I : Sense Prior}
+\begin{itemize}
+
+\item \textbf{Sense Prior} The number of times a particular ``sense'' of an entity is used \medskip
+\item There are several ``Gingerbreads'' (Android 2.3, The novel) \medskip
+\item Sense prior would tell us how frequent is \emph{Gingerbread the OS} compared with \emph{Gingerbread the novel}  \medskip
+\item $Sense Prior(Si , E) = P (\text{E appears as the ith sense}) = P (Si |E) $ \medskip
+\item Different from mention prior! (Number of times a mention links to a particular entity)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Sense Prior : Example (Hypothetical)}
+  \begin{textblock*}{120pt}[.50,.5](70pt,70pt)
+  \begin{figure}[h]
+ 
+ \includegraphics[bb=0 0 200 150, scale=0.4]{./baske.jpg}
+ 
+ % baske.jpg: 200x150 pixel, 72dpi, 7.06x5.29 cm, bb=0 0 200 150
+\end{figure}
+   \centering 
+   Basketballer (60\%)
+\end{textblock*}
+  \begin{textblock*}{120pt}[.50,.5](280pt,80pt)
+  \begin{figure}[h]
+ \includegraphics[bb=0 0 200 150, scale=0.4]{./prof.jpg}
+ % baske.jpg: 200x150 pixel, 72dpi, 7.06x5.29 cm, bb=0 0 200 150
+\end{figure}
+\centering
+   Professor (30\%)
+\end{textblock*}
+  \begin{textblock*}{120pt}[.50,.5](70pt,200pt)
+  \begin{figure}[h]
+ \includegraphics[bb=0 0 200 150, scale=0.4]{./botanist.jpg}
+ % baske.jpg: 200x150 pixel, 72dpi, 7.06x5.29 cm, bb=0 0 200 150
+\end{figure}
+\centering
+Botanist (8\%)
+\end{textblock*}
+  \begin{textblock*}{120pt}[.50,.5](260pt,200pt)
+  \begin{figure}[h]
+ \includegraphics[bb=0 0 200 150, scale=0.16]{./footballer.jpg}
+ % baske.jpg: 200x150 pixel, 72dpi, 7.06x5.29 cm, bb=0 0 200 150
+\end{figure}
+\centering
+Footballer (2\%)
+\end{textblock*}
+  \begin{textblock*}{120pt}[.50,.5](200pt,140pt)
+
+\large{Michael Jordan}
+
+\end{textblock*}
+
+\end{frame}
+
+\begin{frame}{Co occurrence statistics}
+\begin{itemize}
+ \item \textbf{Entity Bigrams} Counts the number of times two given entities, taking two given senses appear together. \medskip
+\item Eg. : Number of times Nokia \url{http://en.wikipedia.org/wiki/Nokia} appears with Gingerbread \url{http://en.wikipedia.org/wiki/Gingerbread_(operating_system)} \medskip
+
+
+ \item $\text{Entity Bi Gram}(E2|E1) = P (E2\ follows\ E1) = P (E2|E1)$
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{Co occurrence statistics : Example}
+ \begin{figure}[h]
+ \centering
+ \includegraphics[bb=0 0 1024 768, scale=0.25]{./entitycoocc.png}
+ % entitycoocc.png: 1024x768 pixel, 72dpi, 36.12x27.09 cm, bb=0 0 1024 768
+ \caption{Entities Frequently Appear with related entities}
+\end{figure}
+
+\end{frame}
+
+
+\include{refslides}
+
+\end{document}
