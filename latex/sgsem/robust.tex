@@ -1,0 +1,14 @@
+
+\begin{frame}
+ \frametitle{Keyphrase based similarity}
+ Given a mention, m, we have all the candidate entities ($E$) with their respective keyphrase sets.
+ We need to find sim(m, e) for all $e \inE$
+ 
+ \begin{itemize}  
+  \item For a given entity, for each keyphrase, find its \emph{cover}.  \medskip
+  \item \textemph{Cover} : Shortest window of words that contains maximal number of words of the keyphrase. \medskip
+  \item Keyphrase : ``Grammy Award Winner'' \medskip
+  \item ``He has been the  \textcolor{green}{winner of many awards during his long career including the Grammy}''  \medskip
+\end{itemize} 
+
+\end{frame}

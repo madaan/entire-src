@@ -1,6 +1,8 @@
 
+
+
 \begin{frame}
- \begin{center}
+\begin{center}
  
   Collective Annotation of WikiPedia Entities in Web Text 
   
@@ -28,39 +30,23 @@
   
  
   \end{frame}
- 
-\begin{frame}
- \frametitle{Challenges}
- \begin{itemize}
-  \item Capturing local compatibility \bigskip
-  \item Inculcating topical coherence in the overall objective \bigskip
- \end{itemize}
+\begin{frame}{Topical Coherence}
+  \begin{figure}[h]
+ \centering
+ \includegraphics[bb=0 0 216 165]{./nedcollective.png}
+ % nedcollective.png: 450x343 pixel, 150dpi, 7.62x5.81 cm, bb=0 0 216 165
+\end{figure}
 
-\end{frame}
+ \end{frame}
 
-\begin{frame}
- \frametitle{Challenges}
+\begin{frame}{Challenges}
  \begin{itemize}
-  \item Capturing local compatibility
+  \item Capturing local compatibility \medskip
   \begin{itemize}
    \item \textcolor{blue}{Create a scoring function to rank possible candidates}
   \end{itemize}
 
-  \item Inculcating topical coherence in the overall objective
- \end{itemize}
-
-\end{frame}
-
-
-\begin{frame}
- \frametitle{Challenges}
- \begin{itemize}
-  \item Capturing local compatibility
-  \begin{itemize}
-   \item \textcolor{blue}{Create a scoring function to rank possible candidates}
-  \end{itemize}
-
-  \item Inculcating topical coherence in the overall objective
+  \item Inculcating topical coherence in the overall objective \medskip
 
   \begin{itemize}
    \item \textcolor{blue}{Define Topical coherence}
@@ -107,16 +93,19 @@
 \begin{frame}
  \frametitle{Compatibility Score}
  \begin{itemize}
- \item Local compatibility score between a spot $s$ and a candidate is given by $w^{T}f_s(\gamma)$
- \item Thus, candidate is picked by $argmax_{\gamma\in\Gamma}w^{T}f_s(\gamma)$
- \item $w$ is trained using an SVM like training objective
- \begin{center} $w^{T}f_s(\gamma) - w^{T}f_s(\gamma) \geq 1 - \epsilon_s$ \end{center}
+ \item Local compatibility score between a spot $s$ and a candidate is given by $w^{T}f_s(\gamma)$ \medskip
+ \item Thus, candidate is picked by $argmax_{\gamma\in\Gamma}w^{T}f_s(\gamma)$ \medskip
+ \item $w$ is trained using an SVM like training objective 
+ 
+ \begin{center} 
+ Minimize $||w||^2 + C\Sigma_{s}\varepsilon_s$
+ under the constraints
+ $w^{T}f_s(\gamma) - w^{T}f_s(\gamma) \geq 1 - \varepsilon_s$ \end{center}
  \end{itemize}
  
  \end{frame}
 
-\begin{frame}
-  \frametitle{Defining topic Relatedness}
+\begin{frame}{Defining topic Relatedness}
   \begin{itemize}
    \item We need some notion of capturing the fact that 2 topics are related to each other \medskip
    \item Given
@@ -128,7 +117,7 @@
 
     
    \item Define $ r(\gamma, \gamma') = \frac{log|g(\gamma) \bigcap g(\gamma')| - log(max\{|g(\gamma)|, |(\gamma')|\})} {log c - log(min\{|g(\gamma)|, |(\gamma')|\})}$ 
-
+  (The Milne and Witten Score)
   \end{itemize}
 
   
