@@ -1,22 +1,26 @@
-
 //sg
 #include <stdio.h>
-#include <algorithm>
-#define max(a, b) (a > b ? a : b)
-#define MAX 100010
-int main()
-{
-long long int M[MAX], F[MAX];
-int N = MAX;
-long long int pairs = 0;
-    
-for(int i = 0; i < N; i++) {
-    for(int j = i; j < N; j++) {
-        if(F[i] > F[j]) {
-            pairs++;
+typedef long long ll;
+ll search() {
+    int arr[] = {1, 1, 0, 0, 0};
+    ll start = 0;
+    ll end = sizeof(arr) / sizeof(arr[0]);
+    ll mid = 0;
+    while(start < end - 1) {
+        mid = (start + end) / 2;
+        bool isMidOk = (arr[mid] == 1);
+        if(isMidOk) {
+            start = mid;
+        } else {
+            end = mid;
         }
     }
+    return start;
 }
-printf("%lld\n", pairs);
+
+
+int main()
+{
+  printf("%lld\n", search());
 return 0;
 }
