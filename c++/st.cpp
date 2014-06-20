@@ -1,99 +1,65 @@
+#include<stdio.h>
+
+int main()
+{
+int count,j,t,i;
+long long int res,n,a1,r,a2,b1,b2,c1,c2,sum,a,b,c,store[10][2];
 
 
-#include <string.h>
-#include <vector>
-#include <cstdio>
-#include <cstdlib>
-#include <string>
-#include <cmath>
-#include <algorithm>
-#include <vector>
-#include <list>
-#include <map>
-#include <set>
-#include <queue>
-#include <stack>
-#include <utility>
-#include <functional>
-#include <complex>
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <bitset>
-#include <limits>
-#include <ctime>
-#include <cassert>
-#include <valarray>
+scanf("%d",&t);
 
-using namespace std;
+for(i=0;i<t;i++)
+	{
+	res=0;
+	count=0;
+	scanf("%lld",&n);
 
-#define IN(a) freopen(a, "r", stdin)
-#define OUT(a) freopen(a, "w", stdout)
+	scanf("%lld %lld",&a1,&a2);
+	scanf("%lld %lld",&b1,&b2);
+	scanf("%lld %lld",&c1,&c2);
 
-#define mp(a, b) make_pair(a, b)
-#define det(a, b, c, d) (a * d - c * b)
-#define sbstr(s, i, j) s.substr(i, j - i + 1)
+	sum = n-(a1+b1+c1);	
 
-#define clear(dp) memset(dp, -1, sizeof(dp))
-#define reset(arr) memset(arr, 0, sizeof(arr))
+	a=a2-a1+1;
+	b=b2-b1+1;
+	c=c2-c1+1;
 
-#define EPS 1e-9
-#define PI acos(-1.0)
-#define MOD 1000000007
-#define IINF 1000000000
-#define LINF 6000000000000000000LL
 
-int n, m;
-char a[55][55];
-int  d[55][55];
+	if(n>a2+b2+c2 || n<a1+b1+c1)
+		{
+		res=0;
+		count=0;
+		}
 
-int dx[] = {0, 0, 1, -1, 1, -1, 1, -1};
-int dy[] = {1, -1, 0, 0, 1, -1, -1, 1};
 
-bool valid (int x, int y) {
-  return x >= 0 && y >= 0 && x < n && y < m;
-}
+	else {
+	store[0][0]=0;store[0][1]=1;
+        store[1][0]=a;store[1][1]=-1;
+        store[2][0]=b;store[2][1]=-1;
+        store[3][0]=c;store[3][1]=-1;
+        store[4][0]=a+b;store[4][1]=1;
+        store[5][0]=b+c;store[5][1]=1;
+        store[6][0]=a+c;store[6][1]=1;
+        store[7][0]=a+b+c;store[7][1]=-1;
+	count=8;
+	}	
 
-int dfs (int x, int y) {
-  if(d[x][y] != -1)
-    return d[x][y];
-  d[x][y] = 0;
-  for(int k = 0; k < 8; ++k) {
-    int n_x = x + dx[k];
-    int n_y = y + dy[k];
-    if(valid(n_x, n_y)) {
-      if(a[n_x][n_y] == a[x][y] + 1) {
-        d[x][y] = max(d[x][y], 1 + dfs(n_x, n_y));
-      }
-    }
-  }
-  return d[x][y];
-}
+	for(j=0;j<count;j++)
+		{
+		r = sum - store[j][0];
+		if(r>=0)
+			{
+			 res=(res+(store[j][1]*((r+1)*(r+2))/2)); 
 
-int main () {
+			}	
+		}
 
-  int test_id(0);
+	res = res%1000000007;
 
-  while(scanf("%d%d", &n, &m)) {
-    if(n == 0 && m == 0)
-      break;
-    for(int i = 0; i < n; ++i) {
-      scanf("%s", a[i]);
-    }
-    int ans = 0;
-    for(int i = 0; i < 55; ++i) {
-      for(int j = 0; j < 55; ++j) {
-        d[i][j] = -1;
-      }
-    }
-    for(int i = 0; i < n; ++i) {
-      for(int j = 0; j < m; ++j) {
-        if(a[i][j] == 'A' && d[i][j] == -1) {
-          ans = max(ans, dfs(i, j));
-        }
-      }
-    }
-    printf("Case %d: %d\n", ++test_id, ans + 1);
-  }
-  return 0;
+	printf("%lld\n",res);
+
+	}
+
+return 0;
+
 }
