@@ -1,6 +1,6 @@
-\chapter{Knowledge Bases}
-  
-\section{What are knowledge bases?}
+\section{Structured Knowledge Repositories}
+ \label{seckb}
+\subsection{What are knowledge bases?}
 Before the digital age, Encyclopedias, such as the Encyclopedia Britannica were hailed as the repositories containing
 all that is known to the mankind. As the computer age dawned, it didn't take long for people to realize that a lot
 can be achieved if somehow all this information could be made available in a digital format.
@@ -11,7 +11,7 @@ of structured knowledge bases like dbpedia and yago.
 We discuss how knowledge bases fit in the context of named entity disambiguation, and give a list of several
 important knowledge bases, along with links to each for the interested reader.
 
-\section{Named Entity Disambiguation}
+\subsection{Knowledge bases and Named Entity Disambiguation}
 
 Many named entity disambiguation algorithms exploit large knowledge bases.
 On the other hand, reliable named entity disambiguators will be conducive towards
@@ -21,9 +21,9 @@ broken with the help of extensive manual effort. In the present case, Wikipedia 
 situation.
 
 
-\section{Existing Knowledge Bases}
+\subsection{Existing Knowledge Bases}
 We give a brief overview of some of the popular knowledge bases.
-\subsection{Wordnet}
+\subsubsection{Wordnet}
 \begin{itemize}
  \item Wordnet has a clean, hand crafted type hierarchy. Well documented APIs, such as the nltk toolkit
 (\url{http://www.nltk.org/howto/wordnet.html}) are available for using wordnet for a 
@@ -32,28 +32,28 @@ plethora of tasks, such as listing all the senses of a word, finding distances b
  \item Introduction to Wordnet \url{http://wordnetcode.princeton.edu/5papers.pdf}
 \end{itemize}
 
-\subsection{YAGO}
+\subsubsection{YAGO}
 \begin{itemize}
  \item An attempt to create a knowledge base that combines the clean type hierarchy of 
  wordnet with the huge information that Wikipedia provides. \url{http://www.mpi-inf.mpg.de/yago-naga/yago/}
  has link to an online interface. Refer [\ref{yago}] for details. 
 \end{itemize}
 
- \subsection{DBpedia}
+ \subsubsection{DBpedia}
  \begin{itemize}
   \item DBpedia \url{http://dbpedia.org/About} extracts information from the Wikipedia into RDF and provides 
   an interface that can be used to ask semantic questions. Users can use SPARQL to ask complicated queries 
   with results spanning several pages. Amazon also provides a DBpedia machine image for the users of AWS.
  \end{itemize}
 
- \subsection{Patty}
+ \subsubsection{Patty}
  \begin{itemize}
   \item  Patty \url{http://www.mpi-inf.mpg.de/yago-naga/patty/} is a repository of relation patterns. The aim is to 
   create ``Wordnet'' for relations. The authors also create a subsumption hierarchy for the 350, 569 pattern synsets.
   Refer [\ref{patty}] for details.  
  \end{itemize}
 
-\subsection{Freebase}
+\subsubsection{Freebase}
  \begin{itemize}
 \item Freebase [\ref{freebase}] relies on crowd sourcing for creation of a rich but clean knowledge base.
 The development of Freebase follows the same chain as Wikipedia, with users flagging issues, and

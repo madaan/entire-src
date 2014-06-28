@@ -1,0 +1,35 @@
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage{default}
+
+\begin{document}
+\begin{frame}
+\begin{center}
+ 
+\Huge Maximum Mean Discrepancy for Collecting Entity Statistics
+
+\end{center}
+
+ \end{frame}
+\begin{frame}{Introduction}
+\begin{center}
+ \includegraphics[bb=0 0 490 375, scale = 0.5]<1>{./diagram1.png}
+\includegraphics[bb=0 0 490 375, scale = 0.5]<2>{./diagram2.png}
+\end{center}
+
+\end{frame}
+\begin{frame}{Introduction}
+ \begin{itemize}
+  \item Let $F_{test}$ be the average feature vector of the 30 balls \medskip
+  \item If we knew the true fraction of balls made by each machine, $\theta_1, \theta_2, \theta_3$, we would expect \medskip
+  \begin{equation}
+   F_{test} = \theta_1 * F1 + \theta_2 * F2 + \theta_3 * F3
+  \end{equation}
+
+ \end{itemize}
+
+\end{frame}
+
+ 
+\end{document}

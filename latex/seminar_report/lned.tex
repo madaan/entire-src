@@ -1,18 +1,18 @@
-\chapter{Local Disambiguation of named entities}
-\section{Introduction}
+\subsection{Local Disambiguation of named entities}
+\subsubsection{Introduction}
 In local disambiguation, we collect just local evidences for each 
 mention for its disambiguation. This was state of the art until the CSAW[\ref{thepaper}]
 paper came along. We start by defining the problem and discussing the general form of solutions.
 We then provide a short summary of approach followed in Wikify [\ref{wikify}] and the famous Milne and Witten paper [\ref{mw}]. A
-solution based on machine learning[\ref{thepaper}] concludes the chapter.
+solution based on machine learning[\ref{thepaper}] concludes the subsection.
 
-\section{Problem definition}
+\subsubsection{Problem definition}
 We need to disambiguate a mention by collecting the local evidences. 
 The evidences can be anything, POS tags, gender information, dictionary lookup 
 etc. By local disambiguation, we mean that \textbf{we cannot use the disambiguation
 information for any other entities for solving the problem.} 
 
-\section{Solutions}
+\subsubsection{Solutions}
 
 Every local disambiguation techniques fall into one of the following two categories[\ref{wikify}]
 
@@ -33,16 +33,16 @@ Every local disambiguation techniques fall into one of the following two categor
  
  \end{itemize}
 
- \section{Related Work}
+ \subsubsection{Related Work}
 
-\subsection{Wikify[\ref{wikify}]}
+\par{Wikify[\ref{wikify}]}
 The biggest contribution of this paper is perhaps presenting Wikipedia as the 
 catalog against which were supposed to disambiguate. The paper also identifies
 two broad methods of doing named entity disambiguation : Knowledge based and 
 data based. Since the paper dates back to 2007, when the problem of NED was 
 not as established, there are a lot of references to the problem of word disambiguation.
 
-\subsection{Learning to link with Wikipedia[\ref{mw}]}
+\par{Learning to link with Wikipedia[\ref{mw}]}
 This paper defined three different features for disambiguation : 
 \begin{itemize}
  \item Commonness  : This is the prior defined in Chapter 1.
@@ -50,7 +50,7 @@ This paper defined three different features for disambiguation :
  gives a measure for determining how similar the two entities are. This measure 
  is based on the number of common inlinks to entities in question.
  The relatedness measure as defined here has been used in a lot of works. In fact, all
- the approaches presented in the subsequent sections use this relatedness score, popular
+ the approaches presented in the subsequent subsections use this relatedness score, popular
  as the Milne-Witten score for finding out entity entity similarity.
  This score is defined as follows \\ \\
  $ r(\gamma, \gamma') = \frac{log|g(\gamma) \bigcap g(\gamma')| - log(max\{|g(\gamma)|, |(\gamma')|\})} {log c - log(min\{|g(\gamma)|, |(\gamma')|\})}$ 
@@ -68,13 +68,13 @@ The algorithm selects a few unambiguous links in the document, and uses the simi
 with these unambiguous links as a criteria for disambiguation.
 Thus, in some sense, although the technique is not totally local, it shies away from doing anything to maintain
 coherence among the entities that are unveiled and thus we do not call this method a ``Global method'', which 
-are discussed in the following chapter.
+are discussed in the following subsection.
 
-\section{Machine learning based local disambiguation}
+\subsubsection{Machine learning based local disambiguation}
 As mentioned, there are primarily two approaches for local disambiguation. 
-This section discusses a machine learning based local disambiguation method in some detail. This section
+This subsection discusses a machine learning based local disambiguation method in some detail. This subsection
 is based on the local disambiguation approach taken in [\ref{thepaper}].
-\subsection{Definitions}
+\par{Definitions}
 We first repeat the definitions for quick reference : 
 \begin{itemize}
   \item $s$ : Spot, an Entity to be disambiguated (Christian leader John Paul) \bigskip 
@@ -82,7 +82,7 @@ We first repeat the definitions for quick reference :
  \item $f_s(\gamma)$ : A feature function that creates a vector of features given a spot and a candidate entity label.
  \end{itemize}
  
- \subsection{Local compatibility : Feature design} 
+ \par{Local compatibility : Feature design} 
  The feature function takes the spot and the candidate as arguments. 
  
 \begin{itemize} 
@@ -112,7 +112,7 @@ We first repeat the definitions for quick reference :
  for Linux based operating systems rest of the times.
  
  
-\subsection{Compatibility Score}
+\par{Compatibility Score}
 Once we have the features, we train the classifier by using the following optimization objective : 
 \begin{itemize}
  \item Local compatibility score between a spot $s$ and a candidate is given by $w^{T}f_s(\gamma)$
@@ -120,16 +120,16 @@ Once we have the features, we train the classifier by using the following optimi
  \begin{center} $w^{T}f_s(\gamma) - w^{T}f_s(\gamma) \geq 1 - \epsilon_s$ \end{center}
  \end{itemize}
  
- \subsection{Finding the best candidate}
+ \par{Finding the best candidate}
 
- \begin{algorithm}[H]
+ \begin{algorithm*}
  \KwData{A Document d}
  \KwResult{Annotated document d' with every mention linked to the best candidate entity}
  \ForEach{mention $m$ in the document} {
   calculate $argmax_{c_m \in \Gamma}w^{T}f_m(c_m)$
   where $\Gamma$ = $c_m$ : $c_m$ is a possible disambiguation of $m$
  }\caption{Local disambiguation}
-\end{algorithm}
+\end{algorithm*}
 
  Note that a multi class classifier is not learned for several reasons, all of which can be mapped to 
  the large number of classes. 

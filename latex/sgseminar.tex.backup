@@ -1,0 +1,23 @@
+\documentclass{beamer}
+\usetheme{Warsaw}
+
+\usepackage[utf8]{inputenc}
+\usepackage{default}
+
+\begin{document}
+\begin{frame}
+\begin{exampleblock}{}
+  {\large ``Words that you use when you are doing the search, well they aren't \emph{just words}, they refer to \textbf{real} things
+in the world``}
+  \vskip5mm
+  \hspace*\fill{\small--- Jack Menzel, Product Management Director, Google Knowledge Graph
+}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Words are not just words}
+\end{frame}
+
+
+\end{document}

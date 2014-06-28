@@ -1,5 +1,5 @@
 %sg
-\documentclass[a4paper,10pt]{report}
+\documentclass[DIV=calc, paper=a4, fontsize=11pt, twocolumn]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{color}
 \usepackage{fancyhdr}
@@ -7,6 +7,8 @@
 \usepackage{url}
 \usepackage{amsmath}
 \usepackage{mathtools}
+\usepackage[svgnames]{xcolor} % Enabling colors by their 'svgnames'
+
 \usepackage{epigraph}
 \usepackage{graphicx, float}
 \usepackage{pst-node}
@@ -16,13 +18,38 @@
 \newtheorem{mydef}{Definition}
 
 
+\usepackage{titling} % Allows custom title configuration
+
+\newcommand{\HorRule}{ \rule{\linewidth}{1pt}} % Defines the gold horizontal rule around the title
+
+\pretitle{\vspace{0pt} \begin{flushleft} \HorRule \fontsize{30}{30} \usefont{OT1}{phv}{b}{n} \selectfont} % Horizontal rule before the title
+
+\title{Occurrence Statistics of Entities, Relations and Types on the Web} % Your article title
+
+\posttitle{\par\end{flushleft}\vskip 0.5em} % Whitespace under the title
+  
+\preauthor{\begin{flushleft}\large \lineskip 0.5em \usefont{OT1}{phv}{b}{sl} \color{Black}} % Author font configuration
+
+\author{Aman Madaan, Under the Guidance of Prof. Sunita Sarawagi} % Your name
+
+\postauthor{\large \usefont{OT1}{phv}{b}{sl} \color{Black} % Configuration for the institution name
+\\Department of Computer Science and Engineering \\ Indian Institute of Technology Bombay % Your institution
+
+\par\end{flushleft}\HorRule} % Horizontal rule after the title
+
+\date{April 2014} % Add a date here if you would like one to appear underneath the title block
+
+
+
 \begin{document}
+\maketitle
+\iffalse
 \begin{titlepage}
     \centering
     \vspace*{\baselineskip}
     \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
     \rule{\textwidth}{0.4pt}\\[\baselineskip]
-    {\LARGE Occurrence Statistics of Entities \\[0.3\baselineskip] Relations and Types on the Web}\\[0.2\baselineskip]
+    {\LARGE Occurrence Statistics of Entities, Relations and Types on the Web}\\[0.2\baselineskip]
     \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
     \rule{\textwidth}{1.6pt}\\[\baselineskip]
     \scshape
@@ -31,46 +58,46 @@
     \vspace*{1\baselineskip}
      by \\[\baselineskip]
     {\Large Aman Madaan \vspace*{1\baselineskip} \\ Under the Guidance of Prof. Sunita Sarawagi\par}
-    {\vspace*{20\baselineskip} \itshape Department of Computer Science and Engineering \\ Indian Institute of Technology Bombay\par}
-    \vfill
-    \begin{figure}[h]
+       \begin{figure}[h]
  \centering
- \includegraphics[bb=0 0 229 220,scale=0.3]{./iitb_logo.jpg}
+ \vspace*{13\baselineskip}
+ \includegraphics[bb=0 0 229 220,scale=0.35]{./iitb_logo.jpg}
  % iitb_logo.jpg: 229x220 pixel, 72dpi, 8.08x7.76 cm, bb=0 0 229 220
 \end{figure}
 
+    {\vspace*{1\baselineskip} \itshape Department of Computer Science and Engineering \\ Indian Institute of Technology Bombay\par}
+    \vfill
+ 
     {\scshape April, 2014} \\
     {\large }\par
   \end{titlepage}
-\tableofcontents
-
+  \fi
+  
+%\tableofcontents
+\newpage
 \begin{abstract}
-The Internet is a web of mostly unstructured knowledge woven around things. However, these things; people, places, technologies, movies, products, books
-etc. are mostly just mentioned by their name, with other crucial bits of information about them scattered around the point of mention. The cosmic scale of 
-such unstructured information has stemmed the dream of a semantic web. A web which is aware of the links that make sense, which \emph{understands} what the 
-user is looking for and which is gifted with the intelligence of locating the desideratum.
 
-There are several pieces in the puzzle of the semantic web, this report is an attempt to understand one important piece; entities on the web and
-their co occurrence statistics. 
+
+
 
 \end{abstract}
 
 
 \input{intro.tex}
 
-\part{Structured Knowledge Repositories}
 \input{kb.tex}
 
-\part{Named Entity Disambiguation}
-\input{nedintro}
+\input{nedsecintro}
 \input{lned.tex}
 \input{ned.tex}
 
-\part{Aggregate Statistics}
 \input{aggregate}
 
 \input{conclusion}
 
 
+\input{ack}
+\newpage
 \input{bib}
+
 \end{document}          

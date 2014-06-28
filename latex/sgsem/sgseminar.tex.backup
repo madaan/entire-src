@@ -1,0 +1,102 @@
+\documentclass{beamer}
+\usepackage{etex}
+\usetheme{Warsaw}
+
+\usepackage[utf8]{inputenc}
+\usepackage{default}
+\usepackage{url}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{pst-node}
+\usepackage{empheq}
+\useoutertheme{infolines}
+\usepackage[absolute,overlay]{textpos}
+\usetikzlibrary{matrix}
+\setlength{\TPHorizModule}{\paperwidth}\setlength{\TPVertModule}{\paperheight}
+\title{Co-occurrence statistics of the entities on the web}
+\subtitle{Seminar Presentation}
+\author[Aman Madaan]{Aman Madaan}
+\institute[IITB]{
+  Indian Institute of Technology Bombay, Mumbai
+}
+\date{May 2nd, 2014}
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+\newcommand*{\Comb}[2]{{}^{#1}C_{#2}}%
+
+\usepackage{color}
+\definecolor{myblue}{rgb}{.8, .8, 1}
+\definecolor{mygreen}{rgb}{.8, 1, 0.8}
+
+
+
+\newlength\mytemplen
+\newsavebox\mytempbox
+
+\makeatletter
+\newcommand\mybluebox{%
+    \@ifnextchar[%]
+       {\@mybluebox}%
+       {\@mybluebox[0pt]}}
+
+\def\@mybluebox[#1]{%
+    \@ifnextchar[%]
+       {\@@mybluebox[#1]}%
+       {\@@mybluebox[#1][0pt]}}
+
+\def\@@mybluebox[#1][#2]#3{
+    \sbox\mytempbox{#3}%
+    \mytemplen\ht\mytempbox
+    \advance\mytemplen #1\relax
+    \ht\mytempbox\mytemplen
+    \mytemplen\dp\mytempbox
+    \advance\mytemplen #2\relax
+    \dp\mytempbox\mytemplen
+    \colorbox{myblue}{\hspace{1em}\usebox{\mytempbox}\hspace{1em}}}
+
+\makeatother
+
+
+\psset{arrowscale=2,arrows=->}
+\def\VPh{\vphantom{\displaystyle\sum_{i=n}^m {i^2}}}
+\def\psBox#1#2{\psframebox[fillcolor=#1,fillstyle=solid]{\VPh\displaystyle#2}}
+
+
+
+\begin{document}
+\maketitle
+\include{part1}
+\begin{frame}{Seminar Outline}
+ \begin{figure}[h]
+ \centering
+ \includegraphics[bb=0 0 937 610, scale=0.35]{./sgflow.jpg}
+ % sgflow.jpg: 937x610 pixel, 72dpi, 33.06x21.52 cm, bb=0 0 937 610
+ \caption{Outline}
+\end{figure}
+
+\end{frame}
+
+\include{kb}
+
+
+\include{nedintrolocal}
+
+\include{nerslides}
+
+\include{localdisamb}
+
+\include{collective}
+\include{rob}
+\include{soaslides}
+\include{statistics}
+\include{mmdslides}
+
+\include{refslides}
+
+
+\end{document}

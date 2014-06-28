@@ -1,0 +1,53 @@
+
+\begin{frame}
+\frametitle{Contributions}
+\begin{itemize}
+  \item \emph{Selectively} using prior, similarity (entity - mention) and coherence (entity - entity) 
+  depending on the text\bigskip
+  \item Keyphrase based mention - entity similarity\bigskip
+  \item Modeling of the problem \bigskip
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Mention Entity Graph}
+ \begin{figure}[h]
+ \centering
+ \includegraphics[bb=0 0 1074 469,scale=0.3]{./megraph.png}
+ % megraph.png: 1074x469 pixel, 72dpi, 37.88x16.54 cm, bb=0 0 1074 469
+ \caption{Mention Entity Graph}
+\end{figure}
+
+
+\end{frame}
+
+\begin{frame}
+ \frametitle{Recognition and Selecting Candidate Entities : Nodes of the graph}
+
+ \begin{itemize}
+  \item  Stanford's NER is used for finding potential named entity \medskip
+  \item Yago provides short names and paraphrases for each entity via the ``means'' relation \medskip
+  \item The list can be huge. Eg., For Afghanistan \medskip
+ \begin{itemize}
+ 
+ \item  Dari Persian 
+ \item Third Anglo Afghan War 
+\item  Republic of Afghanistan 
+ \item Afghanistan at the Asian Games 
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Keyphrase based similarity : Edge weights}
+\begin{itemize}  
+\item \textbf{Keyphrases for entities}
+   \begin{itemize}
+    \item Link anchor text \medskip
+    \item Category Names, citation titles, external references \medskip
+    \item Titles of articles linking to the entity \medskip
+    \end{itemize}
+  \item \textbf{How important is each word?}
+  \item $weight(w) = \frac{|w \in (KP(e) \bigbup_{e'\in IN_e}KP(e'))|}{N}$
+  \item Higher the weight, more indicative is a word of the topic. Statistics will have a higher weight for Prof. Michael Jordan.
+  \end{itemize}
+  \end{frame}
