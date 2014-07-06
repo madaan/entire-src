@@ -46,16 +46,19 @@ int main() {
         for(int i = 1; i <= n; i++) {
             //printf("Searching for %lld from (%d, %d) : %d\n",  cum[i - 1] + k, i, n - 1, bsearch(i, n, cum[i - 1] + k));
             ll key = cum[i - 1] + k; //to search for
+            if(key > cum[n]) {
+                break;
+            }
+            if(key < cum[1]) {
+                continue;
+            }
             //printf("searching for %lld\n", key);
             int start = firstOccur[key];
             int end = firstOccur[key + 1] - 1;
-            if(start == 0) {
-                continue;
-            }
             if(end < i) {
                 continue;
             }
-            if(start < i && end >= i) {
+            if(start < i) {
                 res += (end - i + 1);
             } else {
                 res += (end - start + 1);
@@ -65,9 +68,3 @@ int main() {
     }
     return 0;
 }
-
-
-
-
-
-

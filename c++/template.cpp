@@ -30,6 +30,7 @@ typedef pair<int,int> pi;
 typedef vector<string> vs;
  
 // Basic macros
+#define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
 #define se          second
 #define all(x)      (x).begin(), (x).end()
