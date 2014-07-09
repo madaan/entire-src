@@ -1,65 +1,66 @@
-#include<stdio.h>
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
 
 int main()
 {
-int count,j,t,i;
-long long int res,n,a1,r,a2,b1,b2,c1,c2,sum,a,b,c,store[10][2];
-
-
-scanf("%d",&t);
-
-for(i=0;i<t;i++)
-	{
-	res=0;
-	count=0;
-	scanf("%lld",&n);
-
-	scanf("%lld %lld",&a1,&a2);
-	scanf("%lld %lld",&b1,&b2);
-	scanf("%lld %lld",&c1,&c2);
-
-	sum = n-(a1+b1+c1);	
-
-	a=a2-a1+1;
-	b=b2-b1+1;
-	c=c2-c1+1;
-
-
-	if(n>a2+b2+c2 || n<a1+b1+c1)
-		{
-		res=0;
-		count=0;
-		}
-
-
-	else {
-	store[0][0]=0;store[0][1]=1;
-        store[1][0]=a;store[1][1]=-1;
-        store[2][0]=b;store[2][1]=-1;
-        store[3][0]=c;store[3][1]=-1;
-        store[4][0]=a+b;store[4][1]=1;
-        store[5][0]=b+c;store[5][1]=1;
-        store[6][0]=a+c;store[6][1]=1;
-        store[7][0]=a+b+c;store[7][1]=-1;
-	count=8;
-	}	
-
-	for(j=0;j<count;j++)
-		{
-		r = sum - store[j][0];
-		if(r>=0)
-			{
-			 res=(res+(store[j][1]*((r+1)*(r+2))/2)); 
-
-			}	
-		}
-
-	res = res%1000000007;
-
-	printf("%lld\n",res);
-
-	}
-
-return 0;
-
+    long long int k;
+    int t;
+    long long int n;
+    
+    long long int sum = 0, r;
+    char s[1000010];
+    
+    scanf("%d", &t);
+    
+    while (t--) {
+    	sum = 0;
+        scanf("%lld%lld", &n, &k);
+        scanf("%s", s);
+        
+        long long int i = 0;
+        if (k == 0) {
+        	while(i < n) {
+        		int h = i;
+        		while(s[i] == '0' && i < n) i++;
+        		sum += (i - h) * (i - h + 1) / 2;
+        		while(s[i] == '1' && i < n) i++;
+        	}
+        	printf("%lld\n", sum);
+        	continue;
+        }
+        while(s[i] != '1'&& i != n) {
+            i++;
+        }
+        int j = i;
+        int c = 0;
+        while(j < n && c != k) {
+            if (s[j] == '1') c++;
+            j++;
+        }
+        j--;
+        if (c != k) {
+            printf("0\n");
+            continue;
+        }
+        r = i;
+        while(j < n) {
+            long long int m = j;
+            while((r > 0) && (s[r - 1] == '0')) r--;
+            
+            while(m < n && s[m + 1] == '0') m++;
+            sum += (i - r + 1) * (m - j + 1);
+            
+            if (j == n - 1) {
+                break;
+            }
+            i++;
+            j++;
+            while(s[i] != '1') i++;
+            r = i - r + 1;
+            while(s[j] != '1' && j < n) j++;
+        }
+        printf("%lld\n", sum);
+    }
 }
