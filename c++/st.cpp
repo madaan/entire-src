@@ -1,65 +1,75 @@
-#include<stdio.h>
-
+#include<bits/stdc++.h>
+using namespace std;
+#define pb push_back
+#define mp make_pair
+#define clr(x) x.clear()
+#define sz(x) ((int)(x).size())
+#define F first
+#define S second
+#define REP(i,a,b) for(i=a;i<b;i++)
+#define rep(i,b) for(i=0;i<b;i++)
+#define rep1(i,b) for(i=1;i<=b;i++)
+#define pdn(n) printf("%d\n",n)
+#define sl(n) scanf("%lld",&n)
+#define sd(n) scanf("%d",&n)
+#define pn printf("\n")
+typedef pair<int,int> PII;
+typedef vector<PII> VPII;
+typedef vector<int> VI;
+typedef vector<VI> VVI;
+typedef long long LL;
+#define MOD 1000000007
+LL mpow(LL a, LL n) 
+{LL ret=1;LL b=a;while(n) {if(n&1) 
+    ret=(ret*b)%MOD;b=(b*b)%MOD;n>>=1;}
+return (LL)ret;}
+int toint(const string &s) { stringstream ss; ss << s; int x; ss >> x; return x; }
+LL dp[1025][109]={};
+vector < int > arr[109];
+int p;
+LL rec(int mask, int shirt)
+{
+    if(shirt==101)
+    {
+        if(mask==(p))return dp[mask][shirt]=1ll;
+        else return dp[mask][shirt]=0ll;
+    }
+    if(dp[mask][shirt]!=-1)return dp[mask][shirt];
+    LL ans=0;
+    ans += rec(mask,shirt+1);
+    int n=arr[shirt].size(),i;
+    for(i=0; i<n; i++)
+    {
+        if((mask)&(1<<arr[shirt][i]))continue;
+        ans += rec((mask)|(1<<arr[shirt][i]),shirt+1);
+        if(ans>=MOD)ans-=MOD;
+    }
+    return dp[mask][shirt]=ans;
+}
 int main()
 {
-int count,j,t,i;
-long long int res,n,a1,r,a2,b1,b2,c1,c2,sum,a,b,c,store[10][2];
-
-
-scanf("%d",&t);
-
-for(i=0;i<t;i++)
-	{
-	res=0;
-	count=0;
-	scanf("%lld",&n);
-
-	scanf("%lld %lld",&a1,&a2);
-	scanf("%lld %lld",&b1,&b2);
-	scanf("%lld %lld",&c1,&c2);
-
-	sum = n-(a1+b1+c1);	
-
-	a=a2-a1+1;
-	b=b2-b1+1;
-	c=c2-c1+1;
-
-
-	if(n>a2+b2+c2 || n<a1+b1+c1)
-		{
-		res=0;
-		count=0;
-		}
-
-
-	else {
-	store[0][0]=0;store[0][1]=1;
-        store[1][0]=a;store[1][1]=-1;
-        store[2][0]=b;store[2][1]=-1;
-        store[3][0]=c;store[3][1]=-1;
-        store[4][0]=a+b;store[4][1]=1;
-        store[5][0]=b+c;store[5][1]=1;
-        store[6][0]=a+c;store[6][1]=1;
-        store[7][0]=a+b+c;store[7][1]=-1;
-	count=8;
-	}	
-
-	for(j=0;j<count;j++)
-		{
-		r = sum - store[j][0];
-		if(r>=0)
-			{
-			 res=(res+(store[j][1]*((r+1)*(r+2))/2)); 
-
-			}	
-		}
-
-	res = res%1000000007;
-
-	printf("%lld\n",res);
-
-	}
-
-return 0;
-
+    int t;
+    cin >> t;
+    while(t--)
+    {
+        memset(dp,-1,sizeof(dp));
+        int n,i,j;
+        string ss,temp;
+        cin >> n;
+        getchar();
+        for(i=0; i<=100; i++)
+            arr[i].clear();
+        for(i=0; i<n; i++)
+        {
+            getline(cin,ss);
+            stringstream s (ss);
+            while(s>>temp)
+                arr[(toint(temp))].push_back(i);
+        }
+        for(i=0; i<100; i++)
+            sort(arr[i].begin(),arr[i].end());
+        p=(1<<n)-1;
+        cout << rec(0,1) << endl;
+    }
+    return 0;
 }

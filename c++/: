@@ -1,0 +1,147 @@
+//sg
+#include <algorithm>
+#include <bitset>
+#include <deque>
+#include <cassert>
+#include <cctype>
+#include <cmath>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <ctime>
+#include <functional>
+#include <iomanip>
+#include <iostream>
+#include <list>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <sstream>
+#include <stack>
+#include <utility>
+#include <vector>
+
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef pair<int,int> pi;
+typedef vector<string> vs;
+
+// Basic macros
+#define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
+#define st          first
+#define se          second
+#define all(x)      (x).begin(), (x).end()
+#define ini(a, v)   memset(a, v, sizeof(a))
+#define re(i,s,n)  	for(int i=s;i<(n);++i)
+#define rep(i,s,n)  for(int i=s;i<=(n);++i)
+#define fr(i,n)     re(i,0,n)
+#define repv(i,f,t) for(int i = f; i >= t; --i)
+#define rev(i,f,t)  repv(i,f - 1,t)
+#define frv(i,n)    rev(i,n,0)
+#define pu          push_back
+#define mp          make_pair
+#define sz(x)       (int)(x.size())
+
+const int oo = 2000000009;
+const double eps = 1e-9;
+char str[10];
+
+char *getByFirst(char c) {
+    if(c == 'j') {
+        return "jolteon";
+    } else if(c == 'u') {
+        return "umbreon";
+    } else if(c == 'l') {
+        return "leafeon";
+    } else if(c == 'g') {
+        return "glaceon";
+    } else if(c == 's') {
+        return "sylveon";
+    } else {
+        return "flareon";
+    }
+}
+
+char *getBySecondChar(char c, char t) {
+    if(c == 'o') {
+        return "jolteon";
+    } else if(c == 'm') {
+        return "umbreon";
+    } else if(c == 'e') {
+        return "leafeon";
+    } else if(c == 'y') {
+        return "sylveon";
+    } else if(c == 'l') {
+        if(t == 'r') {
+            return "flareon";
+        } else {
+            return "glaceon";
+        }
+    }
+}
+
+char *getByLastTwo(char *str) {
+    char search[3];
+    search[0] = str[3];
+    search[1] = str[4];
+    search[2] = '\0';
+    if(!strcmp(search, "lt")) {
+        return "jolteon";
+    }
+    else if(!strcmp(search, "br")) {
+        return "umbreon";
+    } else if(!strcmp(search, "af")) {
+        return "leafeon";
+    } else if(!strcmp(search, "ac")) {
+        return "glaceon";
+    } else if(!strcmp(search, "lv")) {
+        return "sylveon";
+    } else {
+        return "flareon";
+    }
+}
+
+
+
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    if(n == 8) {
+        printf("vaporeon\n");
+    } else if(n == 6) {
+        printf("espeon\n");
+    }
+    scanf("%s", str);
+    string vr[] = {"jolteon", "flareon", "umbreon", "leafeon", "glaceon", "sylveon"};
+    bool fs = {true, true, true, true, true, true};
+    set<int> feasibleSet(fs, fs + 6);
+    string<set> searchStrings;
+    char temp[10];
+    int i, j;
+    i = j = 0;
+    while(str[i]) {
+        j= 0;
+        while(str[i] && str[i] != '.') {
+            temp[j++] = str[i++];
+        }
+        temp[j] = '\0';
+        searchStrings.insert(temp);
+    }
+    tr(searchStrings, ss) {
+        tr(feasibleSet, fstr) {
+            if(find(*ss, vr[*fstr]) == string::npos) {
+                feasibleSet.erase
+
+
+
+
+
+
+}
+
+
+
