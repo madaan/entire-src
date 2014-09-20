@@ -1,3 +1,4 @@
+
 //sg
 #include <algorithm>
 #include <bitset>
@@ -47,3 +48,17 @@ typedef vector<string> vs;
  
 const int oo = 2000000009;
 const double eps = 1e-9;
+int main() {
+    int n, p, q;
+    int res = 0;
+    cin >> n;
+    fr(i, n) {
+        cin >> p >> q;
+        if(q - p >= 2) {
+            res++;
+        }
+    }
+    cout << res << "\n";
+    return 0;
+}
+

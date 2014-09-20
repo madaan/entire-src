@@ -119,8 +119,8 @@ namespace moj_harness {
 	int run_test_case(int casenum__) {
 		switch (casenum__) {
 		case 0: {
-			int d[]                   = {0,1,2};
-			int expected__            = 6;
+			int d[]                   = {6, 6};
+			int expected__            = 3;
 
 			std::clock_t start__      = std::clock();
 			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));

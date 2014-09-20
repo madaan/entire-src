@@ -47,3 +47,43 @@ typedef vector<string> vs;
  
 const int oo = 2000000009;
 const double eps = 1e-9;
+ll n, a, b;
+ll target;
+
+ll binsearch() {
+    ll l = 1;
+    ll r = 6000000000ll;
+    ll mid;
+    while(l < r) {
+        mid = l + ((r - l + 1ll) / 2ll);
+        if(target < mid) {
+            r = mid - 1;
+        } else {
+            l = mid;
+        }
+    }
+    return l;
+}
+
+
+int main() {
+    cin >> n >> a >> b;
+    
+    double target = 6ll * n;
+    if(target <= (a * b)) {
+        cout << (a * b) << "\n" << a << " " << b << "\n";
+        return 0;
+    }
+
+    ll na = ceil(target / b);
+    ll nb = ceil(target / a);
+    ll a1 = a * nb;
+    ll a2 = na * b;
+    if(a1 < a2 && (nb >= b)) {
+        cout << target << "\n" << a << " " << nb << "\n";
+    } else {
+        cout << target << "\n" << na << " " << b << "\n";
+    }
+    return 0;
+}
+

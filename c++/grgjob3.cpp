@@ -47,3 +47,40 @@ typedef vector<string> vs;
  
 const int oo = 2000000009;
 const double eps = 1e-9;
+int n, m, k;
+#define MAX 5009
+ll dp[MAX][MAX];
+int arr[MAX];
+ll cum[MAX];
+ll getmax(int i, int picked) {
+    if(dp[i][picked] != -1) {
+        return dp[i][picked];
+    }
+    if(i >= n - m + 2) {
+        return dp[i][picked] = 0;
+    }
+    if(picked >= k) {
+        return dp[i][picked] = 0;
+    }
+    dp[i + m][picked + 1] = getmax(i + m, picked + 1);
+    dp[i + 1][picked] = getmax(i + 1, picked);
+
+    return dp[i][picked] = max((cum[i + m - 1] - cum[i - 1] + dp[i + m][picked + 1]), dp[i + 1][picked]);
+}
+
+
+
+         
+int main() {
+    memset(dp, -1, sizeof(dp));
+    cin >> n >> m >> k;
+    cum[0] = 0;
+    for(int i = 1; i <= n; i++) {
+        scanf("%d", &arr[i]);
+        cum[i] = arr[i] + cum[i - 1];
+    }
+    cout << getmax(1, 0) << "\n";
+    return 0;
+}
+
+    
