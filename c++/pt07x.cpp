@@ -46,21 +46,22 @@ class Graph
     }
     int collect() {
         int res = 0;
-        for(int i = 0; i < n; i++) {
+        for(int i = 1; i <= n; i++) {
             res = marked[i] ? res + 1 : res;
         }
         return res;
     }
 };
 int main() {
-    int n, from, to;
+    int n, from, to, q;
     scanf("%d", &n);
+    scanf("%d", &q);
     if(n == 1) {
-        printf("0\n");
+        printf("%d\n", q);
         return 0;
     }
     if(n == 2) {
-        printf("1\n");
+        printf("%d\n", q - 1);
         return 0;
     }
 
@@ -74,6 +75,12 @@ int main() {
             g.dfs(i);
         }
     }
-    printf("%d\n", g.collect());
+    int vcsize = g.collect();
+    int save = q - vcsize;
+    if(save >= 0) {
+        printf("%d\n", save);
+    } else {
+        printf("IMPOSSIBLE\n");
+    }
     return 0;
 }

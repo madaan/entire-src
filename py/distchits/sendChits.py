@@ -51,8 +51,8 @@ def getserver():
 Takes list of attendees and chits as input, calls send_email required number of times
 '''
 def sendChits(attendeesFile, chitCodesFile):
-    attendees = [attendee.strip() for attendee in open(attendeesFile, 'r')]
-    chitCodes = [chitCode.strip() for chitCode in open(chitCodesFile, 'r')]
+    attendees = set([attendee.strip() for attendee in open(attendeesFile, 'r')])
+    chitCodes = set([chitCode.strip() for chitCode in open(chitCodesFile, 'r')])
     server = getserver()
     numAttendees = len(attendees)
     numChits = len(chitCodes)

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdio.h>
 #include <vector>
 #include <queue>
 #include <map>
@@ -26,7 +27,7 @@ int main()
     min_priority_queue Q;  
     for (int i = 0; i < E; ++i)
     {
-        cin >>u >>v >>w;
+        scanf("%d%d%d", &u, &v, &w);
         Q.push(make_pair(w, make_pair(u, v)));
     }
 
