@@ -1,8 +1,10 @@
-x = (0:0.05:1);
+x = (0:0.01:1);
 n = length(x);
 
-k = @(x, y) exp (-1 * sin(5 * pi * (x - y)) ^ 2);
-    
+#k = @(x, y) sin(x + y);
+#k = @(x, y) min(x, y);
+k = @(x, y) exp (-100 * (x - y) ^ 2);
+#k = @(x, y) 1   
 c = zeros(n, n);
 for i = 1:n
     for j = 1:n
@@ -17,6 +19,6 @@ u = randn(n, 1);
 z = A * sqrt(S) * u;
 
 
-plot(x, z, '.-')
+plot(x, z, '.')
 axis([0, 1, -2, 2])
 
