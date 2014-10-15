@@ -422,5 +422,3 @@ istream& operator >> (istream& i,Tree<T>& t)
 		}
 return i;
 }
-
-

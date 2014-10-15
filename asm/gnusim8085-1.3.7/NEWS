@@ -1,0 +1,155 @@
+GNUSim8085 1.3.7 (20 Feb 2011)
+
+New:     LP: #579341 - Editable memory listing as a tab.
+         This allows easy viewing/editing of memory contents in a table. The
+         table is shown in a tab similar to Data/Stack content shown currently.
+New:     LP: #579324 - Memory/IO Ports Grid Inspector
+         This allows easy viewing/editing of I/O contents in a table. The table
+         is shown in a tab similar to Data/Stack content shown currently.
+New:     Files opened/saved are added to recently used file list using
+         GtkRecentManager APIs.
+New:     LP: #519836 - Breakpoint Toggling
+         It is now possible to toggle breakpoint by clicking on left margin of
+         editor component.
+New:     LP: #579322 - Choosing a font in editor
+         This allows setting a font in editor component. But the preference is
+         not saved on application exit.
+New:     LP: #680100 - doesn't retain current working directory
+         The last accessed directory by the file selection dialogs is saved.
+         Also the default open/save directory is 'Documents' directory whose
+         value depends on OS and user settings.
+         But the working directory preference is not saved on application exit.
+Fix:     LP: #519828 - Start-up dialog should not be minimised
+Fix:     LP: #519834 - Assembler Error: No line highlighting
+Fix:     LP: #579317 - Modify the 'Help' dialog to point to actual tutorial
+Fix:     LP: #579318 - Stepping through code doesn't honor breakpoints
+Fix:     LP: #579319 - Help -> about = crash
+Fix:     LP: #579320 - CMP flags not working like SUB with signed numbers
+Fix:     LP: #584093 - 78+88 in BCD addition missed carry
+
+Translations:
+         New - Brazilian Portuguese (pt_BR), Greek (el), Tamil (ta).
+         Updated - Arabic (ar), French (fr), German (de), Gujarati (gu),
+         Kannada (kn), Italian (it), Spanish (es).
+
+GNUSim8085 1.3.6 (27 Feb 2010)
+
+New:     Basic printing support for program editor and assembly listing window.
+New:     Better looking installer. Multi-language interface and finish screen
+         with 'Run program' option.
+New:     The UI is now 'i18n'ized.
+New:     Experimental file handling with GIO APIs. Disabled by default.
+         Use --enable-gio configure option.
+New:     New icon.
+Fix:     SF#1847830 - Make the UI i18n enabled
+Fix:     SF#1942893 - Assembler listing window is too narrow
+Fix:     SF#2356534 - Basic File handling errors
+Fix:     SF#2462607 - Keypad should not insert instruction code while debugging
+Fix:     SF#2462657 - Example programs must be read-only on Windows
+Fix:     SF#2580092 - syntax highlighting for labels with underscore in symbol
+Fix:     SF#2582426 - syntax highlighting for sp register (stack pointer)
+
+Translations:
+         New - Arabic (ar), Asturian (ast), Esperanto (eo), French (fr),
+         German (de), Gujarati (gu), Italian (it), Kannada (kn), Spanish (es).
+
+GNUSim8085 1.3.5 (24 Dec 2008)
+
+New:     Port to gtksourceview 2.
+         Syntax highlighting works in non standard installation also.
+New:     Windows port with an installer.
+         GTK+ runtime needs to be installed separately.
+New:     Updated registers and flags are shown in bold.
+New:     Assembler now accepts Binary and octal arguments.
+Fix:     Tooltips for the keypad buttons. Needs GTK+ >= 2.12.
+Fix:     Add file filter for .asm files.
+Fix:     DAA Instruction bug. Thanks to Madhusudhan. C. S
+Fix:     Error message reports line number offset by 1. Thanks Aditya M.
+Fix:     DAD Instruction bug. Thanks to Aditya M.
+
+GNUSim8085 1.3.2 (17 Oct 2007)
+
+Fix:     Configure script exits silently (after checking for GNOME)
+Fix:     8085asm.lang file doesn't include some keywords
+FIX:     Assemble Error (equ/in)
+New:     Some code cleanup to use GTK+ widgets instead of GNOME widgets.
+New:     The instruction added using keypad now has single space (' ') instead of tabs ('\t') as field separater.
+New:     Fix 'make distcheck' as well as debian build.
+
+GNUSim8085 1.3 (20 Feb 2007)
+
+New:     Use gtksourceview as editor component.
+Fix:     Syntax highlighting working again.
+Fix:     About dialog does not close by pressing close button.
+
+GNUSim8085 1.2.91 (17 Oct 2006)
+
+Fix:     Bug Fixes for PCHL,DAA Instructions.
+Fix:     GUI Modifications.
+
+GNUSim8085 1.2.90 (30 Jul 2006)
+
+New:     We've got maintainers! Thanks to Aanjhan and Onkar for helping to make this release.
+Fix:     Text widget doesn't work in newer version of GNOME. Fixed by updating to Scintilla 1.66
+Fix:     Patch #964792 in sourceforge: PUSH/POP PSW operation fix.
+
+GNUSim8085 1.2.89 (26 Jan 2004)				- Sridhar
+
+New:	GNUSim8085 is ready for translation (gettext)!
+New:	Icon for all dialogs
+Fix:	'string.h' bug fixed
+Fix:	Removed gdk* funcs which were making library dependency problems on some systems
+
+GNUSim8085 1.2.88 (31 Dec 2003)				- Sridhar
+
+Fix:	ACI instruction bug fixed
+Fix:	Add/Sub with carry instructions bug fixed
+Fix:	Add/Sub instructions - carry set bug fixed
+Fix:	CMA instruction bug fixed
+Fix:	Carry check bug fixed
+Fix:	File listing save crash bug fixed
+New:	Main window has new title
+New:	Pango rendered text
+New:	XCHG implemented. (Oops! This was a very very critical bug!)
+Fix:	App Pixmap will now show correctly (unless u fiddle with pixmap dir)
+
+GNUSim8085 1.2.8 (11 Dec 2003)				- Sridhar
+
+New:	Keypad (Not stable!)
+
+GNUSim8085 1.2.3 (05 Nov 2003)				- Sridhar
+
+New:	ASM Files can be passed as a parameter hereafter!
+
+GNUSim8085 1.2.1 (01 Oct 2003)				- Sridhar
+
+Fix:	Instructions: LHLD, RAR, RAL, STC - wrong exec - fixed
+New:	Listing Window - added Button Box for "Save listing file"
+
+GNUSim8085 1.2.0 beta (26 Aug 2003)				- Sridhar
+
+New:	Stable Stack view
+Fix:	Now simulation will be as fast as that of release 1.1.9
+
+GNUSim8085 1.2.0 alpha (26 Aug 2003)				- Sridhar
+
+New:	Stack view - view current functions called and variables pushed!
+Fix:	"I/O Port" widget - resetting on execution - fixed
+TODO:	in this beta release, simulation is really slow, will be fixed later
+TODO:	tutorial
+
+GNUSim8085 1.1.9 (04 Aug 2003)				- Sridhar
+
+New:	Dec-Hex convertion widgets added
+New:	step-in and step-out implemented
+New:	Start-with dialog with "Tutorial" button
+New:	Automatic breakpoint insertion syntax for assembly code
+New:	Replace scintilla archives with sources (hence smaller package size!)
+Fix:	view not following trace - fixed
+Fix:	Assembler Syntax Fix: "equ" symbols can used in pseudo op operands also
+Fix:	Last char is not saved during saving file. Now fixed. (Don't use v < 1.2!)
+New:	Informative statusbar
+
+GNUSim8085 1.1 (25 July 2003)				- Sridhar
+
+New:	First stable release of the simulator(lot of bugs) :-)

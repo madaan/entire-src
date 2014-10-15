@@ -1,0 +1,22 @@
+U - urgent
+C - critical
+
+TODO
+=============================
+(U)* Divide screen properly (depending upto screen res) to each widget ??
+* More accurately aligned listing file
+* Descriptive assembler messages - no repetitions
+* "Load address" entry widget- not properly rendering and processing hex address! Bug in GtkEntry?
+* Data, Stack List view should restore state after reload/re-expand.
+
+Features Pending
+=================
+* Too many to list here.
+
+Website (http://www.gnusim8085.org)
+=======
+* Use Mediawiki (Theme like: http://mono-project.com/ , http://ubuntu-in.org/)
+* Add 'Documentation' online: 8085 Reference, Example code, etc. (add a link in 'Help' menu of the application)
+* ..
+* Submit link to various sites like freshmeat, gnomefiles.org, etc.
+

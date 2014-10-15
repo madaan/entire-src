@@ -1,0 +1,259 @@
+# NSIS installer script for for gnusim8085
+# Copyright (C) 2008  Onkar Shinde <onkarshinde@gmail.com>
+# LICENSE: Same as specified in COPYING file
+#
+# NOTE: Tested with NSIS 2.43 and 2.46 only. 2.43 is giving problem when trying to
+# set icon for installer. You may have to disable icon if you are trying to build
+# installer.
+
+# Pass -DINC_GTK to makensis to enable inclusion of GTK+ runtime.
+
+# Use modern UI
+!include MUI2.nsh
+# Use logic and version functions
+!include LogicLib.nsh
+!include WordFunc.nsh
+
+# Required for proper handling of start menu on Windows Vista
+RequestExecutionLevel admin
+
+# Better compression, hence smaller size for installer
+SetCompressor /SOLID lzma
+
+# Define application name and installer file name
+Name GNUSim8085
+!ifndef MINGW_HOME
+  !define MINGW_HOME "/usr/i586-mingw32msvc"
+!endif
+!ifdef INC_GTK
+  OutFile @PACKAGE@-@VERSION@-with-gtk-installer.exe
+!else
+  OutFile @PACKAGE@-@VERSION@-without-gtk-installer.exe
+!endif
+!define GTK_INSTALLER_EXE "gtk2-runtime-2.12.11-2008-07-25-ash.exe"
+!define GTK_VERSION_REQ "2.12.0"
+!define MUI_ICON pixmaps/gnusim8085.ico
+InstallDir "C:\Program Files\GNUSim8085"
+!define startmenu "$SMPROGRAMS\GNUSim8085"
+!define uninstaller "uninstaller.exe"
+
+# Show license page
+!define MUI_LICENSEPAGE_CHECKBOX
+!insertmacro MUI_PAGE_LICENSE COPYING
+
+!ifdef INC_GTK
+  # Show components page
+  !define MUI_PAGE_CUSTOMFUNCTION_PRE on_components_page_pre
+  !define MUI_PAGE_CUSTOMFUNCTION_LEAVE on_components_page_leave
+!endif
+!insertmacro MUI_PAGE_COMPONENTS
+
+# Show installation directory selector page
+!insertmacro MUI_PAGE_DIRECTORY
+
+# Show installation progress page
+!insertmacro MUI_PAGE_INSTFILES
+
+# Show finish page with an option to launch program
+!ifndef INC_GTK
+!define MUI_FINISHPAGE_RUN $INSTDIR\gnusim8085.exe
+!endif
+!insertmacro MUI_PAGE_FINISH
+
+# Show uninstall confirmation page
+!insertmacro MUI_UNPAGE_CONFIRM
+
+# Show uninstall progress page
+!insertmacro MUI_UNPAGE_INSTFILES
+
+# Set available UI languages for installer
+!insertmacro MUI_LANGUAGE "English"
+!insertmacro MUI_LANGUAGE "Arabic"
+!insertmacro MUI_LANGUAGE "Esperanto"
+!insertmacro MUI_LANGUAGE "French"
+!insertmacro MUI_LANGUAGE "German"
+!insertmacro MUI_LANGUAGE "Greek"
+!insertmacro MUI_LANGUAGE "Italian"
+!insertmacro MUI_LANGUAGE "PortugueseBR"
+!insertmacro MUI_LANGUAGE "Spanish"
+
+!ifdef INC_GTK
+  var gtk_mode  ; "public" or "none"
+  var gtk_tmp  ; temporary variable
+!endif
+var have_gtk  ; "1" or "0"
+
+# Show language selection dialog in installer
+Function .onInit
+  !insertmacro MUI_LANGDLL_DISPLAY
+
+# Check for existing GTK installation
+Call CheckGtk
+# ask for gtk only if it's a non-gtk installer.
+!ifndef INC_GTK
+  Call AskForGtk
+!endif
+
+!ifdef INC_GTK
+  StrCpy $gtk_mode "public" ; default
+!endif
+FunctionEnd
+
+# Install section
+Section "!GNUSim8085" SecMain
+SectionIn RO
+  SetOutPath $INSTDIR
+  !system 'make'
+  !system 'make DESTDIR=`pwd`/win32 install'
+  !system 'cp ${MINGW_HOME}/bin/iconv.dll win32/bin/'
+  !system 'cp ${MINGW_HOME}/bin/libgtksourceview-2.0-0.dll win32/bin/'
+  !system 'cp ${MINGW_HOME}/bin/libxml2.dll win32/bin/'
+  !system 'cp ${MINGW_HOME}/share/gtksourceview-2.0/language-specs/language2.rng data/'
+  !system 'cp ${MINGW_HOME}/share/gtksourceview-2.0/language-specs/def.lang data/'
+  !system 'cp ${MINGW_HOME}/share/gtksourceview-2.0/styles/styles.rng data/'
+  !system 'cp ${MINGW_HOME}/share/gtksourceview-2.0/styles/classic.xml data/'
+  File AUTHORS
+  File ChangeLog
+  File COPYING
+  File NEWS
+  File TODO
+  File win32/bin/*
+  File /r /x Makefile* data
+  File win32/share/doc/gnusim8085/asm-guide.txt
+  File /r win32/share/doc/gnusim8085/examples
+  File /r /x Makefile* pixmaps
+  # Make example program files read only
+  SetFileAttributes $INSTDIR\examples\addwithcarry.asm READONLY
+  SetFileAttributes $INSTDIR\examples\bcd2bin.asm READONLY
+  SetFileAttributes $INSTDIR\examples\debugexample.asm READONLY
+  SetFileAttributes $INSTDIR\examples\nqueens.asm READONLY
+  SetFileAttributes $INSTDIR\examples\sorting.asm READONLY
+  SetFileAttributes $INSTDIR\examples\sumofnumbers.asm READONLY
+  SetFileAttributes $INSTDIR\examples\swaphex.asm READONLY
+  CreateDirectory ${startmenu}
+  CreateShortcut "${startmenu}\GNUSim8085.lnk" "$INSTDIR\gnusim8085.exe" "" "$INSTDIR\pixmaps\gnusim8085.ico"
+  WriteUninstaller $INSTDIR\${uninstaller}
+  CreateShortcut "${startmenu}\Uninstall.lnk" "$INSTDIR\${uninstaller}"
+  !system 'rm -f data/language2.rng'
+  !system 'rm -f data/styles.rng'
+  !system 'rm -f data/classic.xml'
+  !system 'rm -f data/def.lang'
+SectionEnd
+
+!ifdef INC_GTK
+Section "GTK+ (shared installation)" SecGtkPublic
+  SetShellVarContext all  ; use all user variables as opposed to current user
+  AddSize 12200  ; ~ size of unpacked gtk
+  SetOutPath "$INSTDIR"
+  File "${GTK_INSTALLER_EXE}"
+  ExecWait '"${GTK_INSTALLER_EXE}"'
+  Delete "$INSTDIR\${GTK_INSTALLER_EXE}"
+SectionEnd
+!endif  ; !INC_GTK
+
+Section "Translations" SecI18N
+  File /r win32/share/locale
+  !system 'rm -rf win32'
+SectionEnd
+
+# Uninstall section
+Section "Uninstall"
+  Delete $INSTDIR\uninstaller.exe
+  RMDir /r ${startmenu}
+  RMDir /r $INSTDIR
+SectionEnd
+
+; Section descriptions
+!insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
+  !insertmacro MUI_DESCRIPTION_TEXT ${SecMain} "GNUSim8085 - Intel 8085 microprocessor simulator"
+!ifdef INC_GTK  ; this component is shown only when using gtk
+  !insertmacro MUI_DESCRIPTION_TEXT ${SecGtkPublic} "GTK+ libraries, needed by GNUSim8085. \
+    This will install a system-wide version of GTK+, shareable with other programs."
+!endif
+  !insertmacro MUI_DESCRIPTION_TEXT ${SecI18N} "Additional translations for the application UI (some may be incomplete)"
+!insertmacro MUI_FUNCTION_DESCRIPTION_END
+
+!ifdef INC_GTK
+Function on_components_page_leave
+  StrCmp $gtk_mode "none" "" noabort
+  Call AskForGtk
+  noabort:
+FunctionEnd
+!endif  ; INC_GTK
+
+Function .onselchange
+!ifdef INC_GTK
+  ; store the current mode
+  StrCpy $gtk_mode "none"
+
+  SectionGetFlags ${SecGtkPublic} $gtk_tmp
+  IntOp $gtk_tmp $gtk_tmp & ${SF_SELECTED}
+  IntCmp $gtk_tmp ${SF_SELECTED} "" mode_end_public mode_end_public
+  StrCpy $gtk_mode "public"
+  mode_end_public:
+
+!endif  ; INC_GTK
+FunctionEnd
+
+; detect GTK installation, version >= GTK_VERSION_REQ
+Function CheckGtk
+  SetShellVarContext all  ; use all user variables as opposed to current user
+  push $R0
+  push $R1
+
+  ReadRegStr $R0 HKLM "SOFTWARE\GTK\2.0" "Version"
+  ${VersionCompare} $R0 ${GTK_VERSION_REQ} $R1
+  ${If} $R1 == "2"
+    StrCpy $have_gtk "0"
+  ${Else}
+    StrCpy $have_gtk "1"
+  ${EndIf}
+
+  pop $R1
+  pop $R0
+FunctionEnd
+
+!ifdef INC_GTK
+Function on_components_page_pre
+  push $R2
+  ${If} $have_gtk == "0"
+    ; we don't have gtk installed, do nothing
+  ${Else}
+    ; we have gtk installed, uncheck the runtime box
+    IntOp $R2 ${SF_SELECTED} & 0
+    SectionSetFlags ${SecGtkPublic} $R2
+  ${EndIf}
+  pop $R2
+FunctionEnd
+!endif  ; INC_GTK
+
+Function AskForGtk
+  ${If} $have_gtk == "0"
+    goto no_gtk
+  ${Else}
+    goto have_gtk
+  ${EndIf}
+
+  no_gtk:
+    !ifdef INC_GTK
+      MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION \
+      "GTK2 Runtime (>= ${GTK_VERSION_REQ}) is not installed. GNUSIM8085 needs it to function properly.$\n$\n\
+      Click 'Cancel' to modify selection or 'OK' to continue anyway." \
+      /SD IDOK IDOK have_gtk
+      Abort
+    !else
+      MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION \
+      "GTK2 Runtime (>= ${GTK_VERSION_REQ}) is not installed. GNUSIM8085 needs it to function properly.$\n\
+      Please install GTK2-Runtime from http://gtk-win.sf.net/ first.$\n$\n\
+      Click 'Cancel' to abort installation or 'OK' to continue anyway." \
+      /SD IDOK IDOK have_gtk
+      Quit
+    !endif
+    goto end_gtk_check
+
+  have_gtk:
+    ; do nothing
+
+  end_gtk_check:
+
+FunctionEnd

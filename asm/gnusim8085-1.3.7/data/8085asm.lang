@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Author: Onkar Shinde <onkarshinde@gmail.com>
+  Copyright (C) 2007  Onkar Shinde <onkarshinde@gmail.com>
+        
+  This file is part of GNUSim8085.
+
+  GNUSim8085 is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  GNUSim8085 is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with GNUSim8085; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street - Fifth Floor, Boston, MA
+  02110-1301, USA.
+-->
+<language id="8085_asm" _name="8085 Assembly" version="2.0" _section="Sources">
+    <styles>
+        <style id="comment" _name="Comment" map-to="def:comment"/>
+        <style id="keyword" _name="Keyword" map-to="def:keyword"/>
+        <style id="register" _name="Register" map-to="def:type"/>
+        <style id="decimal" _name="Decimal" map-to="def:decimal"/>
+        <style id="hex" _name="Hex" map-to="def:base-n-integer"/>
+        <style id="label" _name="Label" map-to="def:preprocessor"/>
+    </styles>
+    <default-regex-options case-sensitive="false"/>
+    <definitions>
+        <context id="8085_asm">
+            <include>
+                <context id="comment" style-ref="comment">
+                    <start>;</start>
+                    <end>$</end>
+                </context>
+                <context id="keywords" style-ref="keyword">
+                    <keyword>aci</keyword>
+                    <keyword>ad(c|d|i)</keyword>
+                    <keyword>an(a|i)</keyword>
+                    <keyword>call</keyword>
+                    <keyword>c(c|m|p|z)</keyword>
+                    <keyword>cm(a|c|p)</keyword>
+                    <keyword>cn(c|z)</keyword>
+                    <keyword>cp(e|i|o)</keyword>
+                    <keyword>da(a|d)</keyword>
+                    <keyword>dc(r|x)</keyword>
+                    <keyword>d(b|s)</keyword>
+                    <keyword>equ</keyword>
+                    <keyword>(d|e)i</keyword>
+                    <keyword>hlt</keyword>
+                    <keyword>i(n|nr|nx)</keyword>
+                    <keyword>j(c|m|p|z|mp)</keyword>
+                    <keyword>jn(c|z)</keyword>
+                    <keyword>jp(e|o)</keyword>
+                    <keyword>ld(a|ax)</keyword>
+                    <keyword>(l|s)hld</keyword>
+                    <keyword>lxi</keyword>
+                    <keyword>m(ov|vi)</keyword>
+                    <keyword>nop</keyword>
+                    <keyword>o(ra|ri|ut)</keyword>
+                    <keyword>(pc|xt)hl</keyword>
+                    <keyword>push</keyword>
+                    <keyword>pop</keyword>
+                    <keyword>ra(l|r)</keyword>
+                    <keyword>r(c|m|p|z)</keyword>
+                    <keyword>ret</keyword>
+                    <keyword>(r|s)im</keyword>
+                    <keyword>rlc</keyword>
+                    <keyword>rn(c|z)</keyword>
+                    <keyword>rp(e|o)</keyword>
+                    <keyword>rrc</keyword>
+                    <keyword>rst</keyword>
+                    <keyword>sb(b|i)</keyword>
+                    <keyword>sphl</keyword>
+                    <keyword>st(a|ax)</keyword>
+                    <keyword>stc</keyword>
+                    <keyword>su(b|i)</keyword>
+                    <keyword>xchg</keyword>
+                    <keyword>xr(a|i)</keyword>
+                </context>
+                <context id="registers" style-ref="register">
+                    <keyword>(a|b|c|d|d|e|h|l|m|psw|sp)</keyword>
+                </context>
+                <context id="decimal" style-ref="decimal">
+                    <match>\b([1-9][0-9]*|0)([Uu]([Ll]|LL|ll)?|([Ll]|LL|ll)[Uu]?)?\b</match>
+                </context>
+                <context id="hex" style-ref="hex">
+                    <match>\b[0-9a-fA-F]+([Uu]([Ll]|LL|ll)?|([Ll]|LL|ll)[Uu]?)?(h|H)?\b</match>
+                </context>
+                <context id="label" style-ref="label">
+                    <match>\s*[_0-9a-zA-Z]+:</match>
+                </context>
+            </include>
+        </context>
+    </definitions>
+</language>
