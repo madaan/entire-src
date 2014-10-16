@@ -165,21 +165,16 @@ pair “Bill Gates” and “3” (say). While former will usually co-occur in f
 CEO, Evangelist etc.), the latter may co-occur anywhere Bill Gates happen to be around something
 which is 3, the number of cars, billion dollars donated, number of units headed, position in the
 company, number of business units shutdown by Microsoft and so on.
-\item The situation is worse for smaller whole numbers, which are more frequent. This intuitively makes
-sense as we are more often see 2,3 or 11 than 111212233 or 11.42143.
-\item \textbf{The match mines}
-
-During the initial phases of our experiments, we stumbled upon the \emph{match mines}
-These were basically huge tables, world cup scores of all the matches played and so on.
-A couple of such sentences were responsible for 21\% of the matches!
-It is easy (and very important) to get rid of such sentences. For subsequent runs, we first sort the sentences by length and then remove
-top 1000 of them.
+\item 
 \end{itemize}
+
+
+We give an example below:
+
 
 The first point of debugging a model which is not performing as well as it should is doing 
 sanity check on the training data. 
-
-\section{Fighting False Positives with units}
+\section{Fighting false Positives with units}
 
 \section{Numbers are weak entities: a case for keywords}
 
