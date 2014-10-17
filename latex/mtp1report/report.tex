@@ -1,10 +1,12 @@
-\documentclass[a4paper,10pt]{article}
+\documentclass[a4paper,10pt, twocolumn]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[]{algorithm2e}
 \usepackage{pdfpages}
+\usepackage{url}
 %opening
-\title{}
+\title{On Distant Supervision and its Application for Numerical Relation Extraction}
 \author{}
+
 
 \begin{document}
  
@@ -68,7 +70,7 @@ till the point of diminishing returns.
 This seemingly shaky method actually works [\ref{snowball}] and is popular by the name of snowballing.
 
 \section{Distant Supervision: Snowball scaled up}
-
+\label{ds}
 \subsection{Introduction}
 If the idea of Snowball looks convincing, Distant supervision should follow naturally.
 Earlier, we considered only one relation for one entity pair. Scale the amount of both of these up
@@ -98,10 +100,12 @@ We need another repository, called the test set, where we will run our extractor
 These two can be the same.
 \end{itemize}
 
+\subsection{Distant Supervision Assumption}
+Every sentence that has an entity pair ($e_1$, $e_2$) expresses the relation which exists between ($e_1$, $e_2$).
 \subsection{Matching}
 We next need to align our knowledge base with the corpus. This process is also called matching.
   
-\begin{algorithm}[H]
+\begin{algorithm}
  \KwData{Corpus C, Knowledge Base KB}
  \KwResult{Training data, D, A set of matches}
  Break C into a set of sentences, S\;
@@ -134,21 +138,119 @@ The first distant supervision paper came out in 1999.
 Since then, almost every knob that could be twisted in the ds machinery, has been 
 twisted. Different types of relations and different types of datasets will pose different challenges
 of course, and this report deals with some of them.
+\subsection{Constructing Biological Knowledge Bases by Extracting Information from Text Sources, Craven and Kumlien 1999}
+The was the first work to use distant supervision for creating a repository of biological facts. 
+They targeted 5 different relations between Proteins, Tissues, Cell-Types, Diseases, Pharmacologic-Agents and Subcellular-structure.
+A naive bayes based simple relation extractor is first described. The extractor works in 2 steps:  A classifier trained on hand labeled data
+first labels whether a sentence \emph{can} express a particular relation. If yes, the sentence is searched for a pair of one of the 5 types
+depending on the label and the fact is added to the database.
+The authors note that it took an expert 35 hours to hand label the corpus. This forms the basis of motivating distant supervision based 
+methods.The paper also identifies many areas of improvements, like a pair of entities taking up multiple relations, on which subsequent work has been
+built up.
 
-This section tries to sketch the guideline.
-\includepdf[landscape=true]{dsreadings.pdf}
+The authors obtain an improvement of around 9 precision points with distant supervision.
+It is possible that the following points contributed to the improvement in scores:
+\begin{itemize}
+ \item Constrained entity set. Proteins and Tissues won't just appear together without any possible relation. 
+ \item The corpus used was very well aligned with the knowledge base.
+\end{itemize}
 
+\subsection{Distant Supervision for the Web, Mintz et. al 2009}
+This work revived the interest of the community around the problem of distant supervision.
+The major contributions of this paper can be listed as follows:
+\begin{itemize}
+ \item \textbf{Distant Supervision for the Web}
+ Craven and Kumlien had a limited knowledge base and a limited corpus to align it with.
+ As the web exploded, the knowledge bases that became available were of the magnitude of FreeBase, and the
+ corpus that can be aligned with it was the web. Mintz et. al bought this fact to the spotlight and sparked 
+ a series of works.
+ 
+ \item \textbf{Features}
+ They designed a set of rich features that are used by researchers to date. These features include dependency paths, POS tag sequences, word sequences to name a few.
+ 
+\end{itemize}
+
+\subsection{Learning 5000 relation extractors}
+The number of relations typically used in the works were limited to the range of 30-40. 
+This work targeted 5000 relations, which is a big jump. To fight sparsity that will arise 
+in the training data due to a large number of classes, they also train a top level classifier
+which decides which extractor should be used for a particular document. Not all the extractors 
+are employed for a given document.
+
+\subsection{Riedel et. al}
+Distant supervision assumption does not really holds when the knowledge base is not well aligned with the corpus.
+Another way of saying this would be that the corpus can be expected to consist of sentences that can host entity pairs
+in a wide range of contexts, and the sentences may have nothing to do with the relations in which the entity pairs appear.
+They take the example of the relation ``nationality''. A wide range of popular entities that are born in the country 
+will be mentioned in the sentences that may have nothing to do with the fact that they were born in that country.
+In such cases, it can be argued that the training data generated will be extremely noisy and will lead to poor extraction 
+performance. Riedel et. al relax the distant supervision assumption.
 
 \section{MultiR}
 For our experiments
+\section{Numerical Relations}
+Numerical relations are much like the usual entity-entity relations, just more problematic.
+What we call a \emph{numerical relation} will usually be called an attribute colloquially. 
+For example, Camel and 215cm are related via the relation ``Average Height''.
 
 \section{Numerical Relation extraction using MultiR}
+The problem of numerical relation extraction can be easily moulded into the distant supervision framework.
+Recall from section [\ref{ds}] that we need a corpus and a knowledge base to generate the training data for distant supervision.
+We also need to fix on the set of relations that will be targeted. 
+
+\subsection{Relations}
+We selected the following 10 relations for our experiments:
+ \begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Relation Name & Relation Code \\
+\hline
+Land area (sq. km)&AG.LND.TOTL.K2\\
+Foreign direct investment, net (current US\$)&BN.KLT.DINV.CD\\
+Goods exports (current US\$)&BX.GSR.MRCH.CD\\
+Electricity production (kWh)&EG.ELC.PROD.KH\\
+CO2 emissions (kt)&EN.ATM.CO2E.KT\\
+Pump price for diesel fuel (US\$ per liter)&EP.PMP.DESL.CD\\
+Inflation, consumer prices (annual \%)&FP.CPI.TOTL.ZG\\
+Internet users (per 100 people)&IT.NET.USER.P2\\
+GDP (current US\$)&NY.GDP.MKTP.CD\\
+Life expectancy at birth, total (years)&SP.DYN.LE00.IN\\
+Population (Total)&SP.POP.TOTL\\
+\hline
+\end{tabular}
+\end{center}
+
+The relations were selected keeping in mind the availability of sentences which potentially express these facts
+along with difference in units.
+
+\subsection{Knowledge base}
+
+Our knowledge base was derived scrapped from \url{data.worldbank.org}.
+It has 4371979 numerical facts about 249 countries ranging over 1281 different attributes. 
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+Country id & Number & Relation \\
+\hline
+/m/04g5k&3126000130&EG.ELC.PROD.KH\\
+/m/02k8k&1969.179&EN.ATM.CO2E.KT\\
+/m/06nnj&332315&SP.POP.TOTL\\
+/m/019rg5&55.020073&SP.DYN.LE00.IN\\
+/m/05sb1&19974.148&EN.ATM.CO2E.KT\\
+/m/05v8c&10000000000&EG.ELC.PROD.KH\\
+/m/03spz&7639000100&EG.ELC.PROD.KH\\
+/m/06vbd&44249.688&EN.ATM.CO2E.KT\\
+/m/0d060g&51.3&IT.NET.USER.P2\\
+/m/05qkp&62.298927&SP.DYN.LE00.IN\\
+\hline
+\end{tabular}
+\end{center}
 
 \section{L'homme propose, et Dieu dispose}
 Our life would have been simpler if MultiR would do the desired, extract the numerical relations from the corpus provided
 information about some of the numerical relations. But as it happens, it was not meant to be.
-The model not doing well may mean several things. Checking sanity of the training data was the first among them.
-Turns out that vanilla distant supervision will lead to an \textbf{unprecedented} amount of false positives, which are the root cause
+The model not doing well may mean several things. Low quality training data being one of the primary reasons.
+Indeed, it turned out that vanilla distant supervision leads to an \textbf{unprecedented} amount of false positives, which are the root cause
 of everything that went wrong in the distant supervision pipeline.
 
 \subsection{Numbers and False positives}
@@ -180,8 +282,75 @@ The first point of debugging a model which is not performing as well as it shoul
 sanity check on the training data. 
 
 \section{Fighting False Positives with units}
+Analyzing results of plain matching made it clear that units will help in improving both precision
+(by eliminating matches where the unit is not present) and recall (increasing matches by
+canonicalization of numbers and conversion to SI units). We found that though units helped in
+drastically cutting down the number of false positives (match mines were completely eliminated),
+and helped recall (lots of good matches for Land area and Population), the number of false positives
+was still a trouble. The number of false positives was typically high for cases where the unit was
+percentage, since it is again a very generic unit. For other relations too, the number of false
+positives was very large. The large number of false positives, apart from degrading quality of the
+model, make evaluating the quality of matcher very difficult.
 
 \section{Numbers are weak entities: a case for keywords}
+
+\subsection{Motivation}
+Matches from unit extraction showed that in some cases, the sentence that supposedly labeled as a
+match for a particular relation has no mention of the relation itself at all.
+For example, consider:
+“In eurozone powerhouse Germany, industrial orders jumped 3.2 percent in June, official data
+showed Thursday, with foreign demand behind a sharp rebound following a surprise drop in May.”
+In this sentence, (Germany, 3.2) was considered as a match pair for the relation Internet user
+percent. Clearly, it has nothing to do with it.
+
+\subsection{Numerical Relations are Explicit}
+A key observation that can be made by going through the sentences that express numerical relations
+is that one cannot be too poetic while forming a sentence that is supposed to state a numerical fact.
+This is in stark contrast with sentences expressing relations between entity pairs, wherein the
+underlying relation might be implicit. If we want to state GDP of a country in a sentence, there is no
+escape from the words like “GPD” or “gross domestic product” and the likes * .
+
+Compare this with a sentence that must relate Microsoft and Bill Gates. A few ways of stating that
+Microsoft was founded by Bill Gates can be enumerated as follows:
+\begin{itemize}
+\item Bill Gates is the founder of Microsoft
+\item Bill Gates founded Microsoft
+\item Bill Gates is the father of Microsoft
+\item Bill Gates laid the foundation stone of Microsoft
+\item Bill Gates started Microsoft
+\end{itemize}
+
+If this is indeed true, imposing an additional constraint of keyword being present in a sentence in
+addition to the fact being present can help in cutting down the number of false positives. We note
+that such a pruning is possible only in case of numerical relations. As mentioned earlier, for real
+world entity pairs, co-incidental matches will be rarer and a constraint on the relation word being
+present will be too restrictive.
+\subsection{Approach}
+Let $M_r$ be the set of matches obtained by standard unit + distance based matching for a relation r.
+We prune $M_r$ by picking only sentences which contain one of the words in the set keywords(r).
+The sets keywords(r) are manually crafted.
+
+\begin{center}
+ \begin{tabular}{|l|l|}
+\hline \\
+ Relation Keywords & (case insensitive)\\
+\hline
+ Internet User \% &"Internet"\\
+Land Area &"area", "land", "land area"\\
+Population &"Population"\\
+Diesel &"diesel"\\
+GDP &"Gross domestic", "GDP"\\
+CO2 &"Carbon", "Carbon Emission", "CO2"\\
+Inflation &"Inflation", "Price Rise"\\
+FDI &"Foreign", "FDI"\\
+Goods Export & "goods"\\
+Life Expectancy & "life", "life expectancy"\\
+Electricity Production & "Electricity\\
+\hline
+\end{tabular}
+ \end{center}
+
+
 
 \section{Results}
 
