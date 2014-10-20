@@ -1,4 +1,4 @@
-\documentclass[a4paper,10pt, twocolumn]{article}
+\documentclass[a4paper,10pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[]{algorithm2e}
 \usepackage{pdfpages}
@@ -356,6 +356,101 @@ Electricity Production & "Electricity\\
 
 \section{Possibilities}
 
+\section{Rule Based Extraction}
+Analyzing a number of sentences expressing numerical relations lead to several insights as already discussed.
+
+\begin{itemize}
+ \item \textbf{Keywords} Sentences expressing numerical relations can be expected to be explicit about the relation being expressed.
+ Stated another way, we can expect presence of certain keywords that might help in identifying relations.
+ \item \textbf{Modifiers} A large number of false positives stem out of mentions where a change in the numerical attribute is mentioned.
+\end{itemize}
+
+\subsection{Dependency Path}
+We define a dependency path between two words ``A'' and ``B'' as the shortest path between them in the dependency graph.
+The dependency graph consists of one node for each of the words, and the dependencies are the collapsed typed dependencies 
+as obtained from the stanford dependency parser. [\ref{corenlp}]. 
+The following figure shows dependency graph for ``The estimated 2014 population of Zambia is 15,200,000, which ranks 70th in the world.''
+\begin{figure*}
+ \centering
+ \includegraphics[bb=0 0 990 149, scale = 0.4]{./dep.png}
+ % dep.png: 990x149 pixel, 72dpi, 34.92x5.26 cm, bb=0 0 990 149
+ \caption{Dependency Graph}
+ \label{fig:1}
+\end{figure*}
+
+
+\subsection{Relation extraction using dependency paths}
+Intuitively, it makes sense that the entities which are related will have some dependence on each other in the sentence 
+expressing the relation.
+
+\subsection{Extraction Algorithm}
+\begin{algorithm}
+ \KwData{Corpus C, KW(r) : Set of keywords for the relation r, Modifiers : A set of modifying words}
+ \KwResult{A set of extractions of the form r(C, N) where C and N are a country and number respectively related via a relation r}
+ Break C into a set of sentences, S\;
+ \For{each sentence s in S}{
+  let E = all entity pairs in s\;
+  \For{each country-number pair ($C$, $N$) in E}{
+      extract P, the dependency path between $C$ and $N$ \
+      \For{relation r}{
+	keywordCondition = $\exists$ keyword kw $\in$ KW(r) such that kw appears in P \
+	modifierCondition = $\exists$ modifying word mw $\in$ Modifiers such that mw appears in P \;
+	\If{keywordCondition $\and$ !modifierCondition} {\
+	  print r(C, N)
+	}
+      } 
+  }
+}
+
+\caption{Rule Based Relation Extraction}
+\end{algorithm}
+
+\subsection{Example}
+Consider the Sentence ``Germany's population was counted to be 80,219,695 on May 9, 2011, making it the 16th most populous country in the world.''
+The dependency parse graph for this sentence is as shown in [\ref{fig:2}]
+\begin{figure}[h]
+ \centering
+ \includegraphics[bb=0 0 1245 177,scale=0.3]{./dep4.png}
+ % dep2.png: 1245x177 pixel, 72dpi, 43.92x6.24 cm, bb=0 0 1245 177
+ \label{fig:2}
+\end{figure}
+
+\subsection{Results}
+\subsubsection{Precision and Recall}
+The extractor was applied to 30 sentences expressing 23 different relations.
+\begin{tabular}{|l|l|l|}
+\hline
+& Relations Present & Relations not Present (False positives) \\
+\hline
+Extracted & 16 & 17 \\
+\hline
+Not Extracted & 7 & N/A \\
+\hline
+\end{tabular}
+ \begin{itemize}
+  \item Precision: 48.4\%
+  \item Recall: 69.6\%
+ \end{itemize}
+
+The precision will increase further on applying unit based pruning.
+
+\subsubsection{Example Extractions}
+\begin{tabular}{|l|} 
+\hline
+Sentence $\rightarrow$ Extraction \\
+\hline
+At 3.71 million square miles (9.62 million km2) and with around 318 million people,\\ 
+the US is the world's 3rd or 4th-largest country by total area and third-largest by population. \\$\rightarrow$ POP( US, 318) \\
+\hline
+The land area of the contiguous US is 2,959,064 square miles (7,663,941 km2)\\ $\rightarrow$  AGL( US, 2,959,064), AGL( US, 7,663,941) \\
+\hline
+With 1,210,193,422 residents reported in the 2011 provisional census,\\ 
+India is the world's second-most populous country.\\\ $\rightarrow$ POP( India, 1,028,737,436)\\ 
+\hline
+According to an official estimate for 1 June 2014, the population of Russia is 143,800,000.\\ $\rightarrow$
+POP( Russia, 1), POP( Russia, 2014), POP( Russia, 143,800,000) \\
+\hline
+\end{tabular}
 
 \input{bib}
 \end{document}
