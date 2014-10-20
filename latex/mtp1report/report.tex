@@ -357,13 +357,32 @@ Electricity Production & "Electricity\\
 \section{Possibilities}
 
 \section{Rule Based Extraction}
-Analyzing a number of sentences expressing numerical relations lead to several insights as already discussed.
 
+\subsection{Peculiarity of Numerical Relations}
+Analyzing a number of sentences expressing numerical relations lead to several insights as already discussed.
 \begin{itemize}
  \item \textbf{Keywords} Sentences expressing numerical relations can be expected to be explicit about the relation being expressed.
  Stated another way, we can expect presence of certain keywords that might help in identifying relations.
  \item \textbf{Modifiers} A large number of false positives stem out of mentions where a change in the numerical attribute is mentioned.
 \end{itemize}
+
+\subsection{Dependencies}
+Dependencies are grammatical relation between two words, governer and dependent.
+The relation captures the way in which one of the words is affected by the other.
+For example, consider the sentence:
+``The red ball was lost''
+The dependencies are:
+\begin{itemize}
+
+\item \textbf{amod(ball,3,red,2)} ``Red'' is an adjective for ``ball''
+\item \textbf{det(ball,3,The,1)}  ``the'' is a determiner of ``ball''
+\item \textbf{nsubjpass(lost,5,ball,3)}	``ball is the subject of lost''
+\item \textbf{auxpass(lost,5,was,4)}	``was is an auxiliary of lost''
+\end {itemize}
+
+So we know that sentences expressing numerical relations should contain express how the number and a country
+are related, and we know that there exists a framework which can extract pairs of words that somehow affect each other.
+Combining these ideas leads us to a simple rule based relation extractor.
 
 \subsection{Dependency Path}
 We define a dependency path between two words ``A'' and ``B'' as the shortest path between them in the dependency graph.
