@@ -9,7 +9,7 @@
 \usepackage{titling} % Allows custom title configuration
 
 
-\title{Numerical Relation Extraction} % Your article title
+\title{Distant Supervision for Numerical Relation Extraction} % Your article title
 
 \begin{document}
 
@@ -19,7 +19,7 @@
     \vspace*{\baselineskip}
     \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
     \rule{\textwidth}{0.4pt}\\[\baselineskip]
-    {\LARGE \color{blue} Techniques for Numerical Relation Extraction}\\[0.2\baselineskip]
+    {\LARGE \color{blue} Distant Supervision for Numerical Relation Extraction}\\[0.2\baselineskip]
     \rule{ \textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
     \rule{\textwidth}{1.6pt}\\[\baselineskip]
     \scshape
@@ -27,7 +27,7 @@
     Master of Technology \par
     \vspace*{1\baselineskip}
      by \\[\baselineskip]
-    {\Large  Aman Madaan \vspace*{1\baselineskip} \\ Under the Guidance of Prof. Sunita Sarawagi, Prof. Ganesh Ramakrishnan and Prof. Mausam\par}
+    {\large  Aman Madaan \vspace*{1\baselineskip} \\ Under the Guidance of Prof. Sunita Sarawagi,\\ Prof. Ganesh Ramakrishnan and Prof. Mausam\par}
        \begin{figure}[h]
  \centering
  \vspace*{13\baselineskip}
@@ -38,12 +38,12 @@
     {\vspace*{1\baselineskip}  \itshape Department of Computer Science and Engineering \\ Indian Institute of Technology Bombay\par}
     \vfill
  
-    {\scshape April, 2014} \\
+    {\scshape October, 2014} \\
     {\large }\par
   \end{titlepage}
 \newpage
 \maketitle
-
+\tableofcontents
 \begin{abstract}
 The task of numerical relation extraction poses new, hitherto untackled challenges. The bewildering amount of false positives, units, 
 modifiers, time varying relations are just some of the issues that are non existent for standard relation extraction, but become 
@@ -64,9 +64,8 @@ This is not unexpected; such knowledge bases have potential of revolutionizing t
 themselves. 
 Clearly, any progress towards a solution will have to deal with intricacies of how facts are expressed in the natural language.
 It turns out, that such intricacies are too many to exhaust. Years of research has went into the aforementioned goal, and still
-are plenty of loose screws. This report discusses one of them, numerical relation extraction.
+there are plenty of loose screws. This report discusses one of them, numerical relation extraction.
 
-Section 2 defines the problem. Section 3 lays the foundation for distant supervision.
 
 
 \subsection{Terminology}
@@ -74,7 +73,7 @@ Section 2 defines the problem. Section 3 lays the foundation for distant supervi
 \begin{itemize}
 
 \item \textbf{a)Entity}
-An entity is something that exists in itself, actually or hypothetically. [\ref{wikientity}]
+An entity is something that exists in itself, actually or hypothetically. [\ref{wikientity}
 
 \item \textbf{b)Relation}
 A relation specifies a concept which binds two entities. For example, creator(Linux, Linus Torvalds).
@@ -87,7 +86,7 @@ A mention expressing a relation $R$ is called a match for $R$. The criteria for 
 can vary. Presence of both the entities is a however a mandatory condition.
 
 \item \textbf{e)Extraction}
-A 3-tuple $R(A, B)$ where $A$ and $B$ are entities related via $R$.
+A 3-tuple $R(A, B)$ where $A$ and $B$ are entities related via a relation $R$.
 \end{itemize}
 
 \section{Problem}
@@ -102,35 +101,36 @@ to a number. For example,
 \section{Snowballing}
 Let us motivate the idea by considering the following related problem:
 
-Suppose we want to populate the repository of founders of companies, and all that we know
-for a fact is that Elon Musk is the founder of SpaceX.
-The problem can be divided into two parts, each of them rely on an intuition about how human 
+Suppose we want to populate a repository of founders of companies, and all that we know
+is that Elon Musk is the founder of SpaceX.
+The problem can be divided into the following two parts, each of them rely on an intuition about how human 
 beings form sentences in general.
 
 \begin{itemize}
  
-\item The first of them is given an entity pair, and a corpus of documents, find out all the sentences that
-express a relation between the entity-pair.
+\item \emph{Given an entity pair, and a corpus of documents, find out all the sentences that
+\textbf{express a relation} between the entity-pair.}
 
-Command line ninjas will quickly think of the following solution:
-grep -i 'entity1' sentences|grep -i 'entity2'
+Command line ninjas will quickly think of the following solution:\\
+grep -i 'entity1' sentences$\vert$ grep -i 'entity2'
 
 The intuition behind this perhaps the most obvious solution is that \emph{a sentence
 that houses both the entities can be expected to express a relation between them}.
 A quick web search with the query ``entity1'' and ``entity2'' will show that this 
 intuition is not out of the blue.
 
-\item Sentence structure depends on the relation being expressed.
+\item \emph{Find what makes these sentences special} \\
+Sentence structure depends on the relation being expressed.
 In verbose, if two sentences express the same relation, there will be (okay, there can be expected to be)
-many \emph{features} that are similar in both of them. These include POS tags, words around the entities,
+ \emph{features} that are similar in both of them. These include POS tags, words around the entities,
 dependency path between the entities to name a few.
 
 \end{itemize}
 Putting together the intuitions above, we can solve the problem as follows:
 Collect all the sentences which have SpaceX and Elon Musk in them, extract features 
 from these sentences. Favor those features which repeat.
-Now us this set of features to extract similar pairs from other sentences.
-A fancier solution would be to re use the extractions to learn more features, and continuing the process 
+Now use this set of features to extract similar pairs from other sentences.
+A fancier solution would be to reuse the extractions to learn more features, and continuing the process 
 till the point of diminishing returns.
 
 This seemingly shaky method actually works [\ref{snowball}] and is popular by the name of snowballing.
@@ -144,7 +144,7 @@ and we have distant supervision.
 The basic setup is as follows:
 \begin{itemize}
 
-\item a) KB : A knowledge base consisting of facts. The facts are 3-tuples; the entities and the corresponding relation.
+\item \textbf{a) KB:} A knowledge base consisting of facts. The facts are 3-tuples; the entities and the corresponding relation.
 For example:
 \begin{center}
 
@@ -162,7 +162,7 @@ Alon Musk & SpaceX & Founder Of\\
 
 has 4 different facts
 
-\item b) Corpus
+\item \textbf{b) Corpus}
 The repository of text where we expect to find the sentences that express facts that we know.
 We need another repository, called the test set, where we will run our extractor to obtain new facts.
 These two can be the same.
@@ -172,8 +172,8 @@ These two can be the same.
 Every sentence that has an entity pair ($e_1$, $e_2$) expresses the relation which exists between ($e_1$, $e_2$).
 \subsection{Matching}
 We next need to align our knowledge base with the corpus. This process is also called matching.
-  
-\begin{algorithm}
+
+\begin{algorithm}[H]
  \KwData{Corpus C, Knowledge Base KB}
  \KwResult{Training data, D, A set of matches}
  Break C into a set of sentences, S\;
@@ -187,7 +187,7 @@ We next need to align our knowledge base with the corpus. This process is also c
   }
   }
  }
- \caption{Distant Supervision}
+ \caption{Distant Supervision: Matching}
 \end{algorithm}
 
 
@@ -238,14 +238,14 @@ The major contributions of this paper can be listed as follows:
  
 \end{itemize}
 
-\subsection{Learning 5000 relation extractors}
+\subsection{Learning 5000 relation extractors} [\ref{rel}]
 The number of relations typically used in the works were limited to the range of 30-40. 
 This work targeted 5000 relations, which is a big jump. To fight sparsity that will arise 
 in the training data due to a large number of classes, they also train a top level classifier
 which decides which extractor should be used for a particular document. Not all the extractors 
 are employed for a given document.
 
-\subsection{Riedel et. al}
+\subsection{Riedel et. al}[\ref{riedel}]
 Distant supervision assumption does not really holds when the knowledge base is not well aligned with the corpus.
 Another way of saying this would be that the corpus can be expected to consist of sentences that can host entity pairs
 in a wide range of contexts, and the sentences may have nothing to do with the relations in which the entity pairs appear.
@@ -254,12 +254,12 @@ will be mentioned in the sentences that may have nothing to do with the fact tha
 In such cases, it can be argued that the training data generated will be extremely noisy and will lead to poor extraction 
 performance. Riedel et. al relax the distant supervision assumption.
 
-\subsection{MultiR}
+\subsection{MultiR}[\ref{multir}]
 Some of the entity pairs can occur in multiple relationships. For example, an athlete usually \emph{plays for} the 
 country they are \emph{born in}. The \emph{CEO of} a company also \emph{works for} it. The techniques discussed till now are 
 focused on extracting only one of the relations for an entity pair. MultiR relaxes one relation per entity-pair assumption. 
 (Hence the name, multi-relation). MultiR achieves this by modeling both sentence level and corpus level extraction decision.
-The graphical model is as shown in figure [\ref{fig:multir}]
+The graphical model is as shown in figure [\ref{fig:multir}] (taken from [\ref{multir}])
 \begin{figure}[H]
  \centering
  \includegraphics[bb=0 0 720 540,scale=0.45]{./multirmode1.pdf}
@@ -278,6 +278,7 @@ the sentence expresses no relation. This is important for relaxation of the DS a
 \item \textbf{b) Corpus level extraction, Y:}
 The Ys are the binary variables, one for each relation. $Y_i$ takes the value of 0 or 1 depending on whether the $ith$ relation is expressed 
 in the corpus or not.
+\end{itemize}
 
 There are 2 factors:
 \begin{itemize}
@@ -285,7 +286,12 @@ There are 2 factors:
 The usual technique of representing factor tables in log-linear forms is used. The features are as defined by 
 [\ref{mintz}].
 
-\item \textbf{b) Factors between Y and Z}
+\item \textbf{b) Factors between Y and Z} These factors ensure that the probability mass is divided only amongst the possible extractions.
+As shown in the figure, the factor takes a value of 1 only if the corpus level bit is 1 i.e. that relation exists at corpus level \textbf{and} 
+at least one of the sentences also expresses it.
+\end{itemize}
+  
+  
 \section{Numerical Relations}
 Numerical relations are much like the usual entity-entity relations, just more problematic.
 What we call a \emph{numerical relation} will usually be called an attribute colloquially. 
@@ -299,6 +305,7 @@ We also need to fix on the set of relations that will be targeted.
 \subsection{Relations}
 The following 10 relations were chosen for our experiments:
  \begin{center}
+ \begin{table}[H]
 \begin{tabular}{|l|l|}
 \hline
 Relation Name & Relation Code \\
@@ -316,6 +323,9 @@ Life expectancy at birth, total (years)&SP.DYN.LE00.IN\\
 Population (Total)&SP.POP.TOTL\\
 \hline
 \end{tabular}
+\caption{Selected Relations}
+\label{rels}
+\end{table}
 \end{center}
 
 The relations were selected keeping in mind the availability of sentences which potentially express these facts
@@ -325,8 +335,9 @@ and to have some diversity in units.
 Our knowledge base was derived from \url{data.worldbank.org}.
 It has 4371979 numerical facts about 249 countries ranging over 1281 different attributes. 
 Table [\ref{fig:kb}] shows a sample.
-\begin{center}
-\begin{table}
+
+\begin{table}[H]
+\centering
 \begin{tabular}{|l|l|l|}
 \hline
 Country id & Number & Relation \\
@@ -343,12 +354,10 @@ Country id & Number & Relation \\
 /m/05qkp&62.298927&SP.DYN.LE00.IN\\
 \hline
 \end{tabular}
-
 \caption{A Sample of our KB}
 \label{fig:kb}
 \end{table}
 
-\end{center}
 
 \section{L'homme propose, et Dieu dispose}
 Our life would have been simpler if MultiR would do the desired; extract the numerical relations from the corpus provided
@@ -713,4 +722,6 @@ POP( Russia, 1), POP( Russia, 2014), POP( Russia, 143,800,000) \\
 \end{tabular}
 
 \input{bib}
+
+\includepdf[pages={1}]{dsreadings.pdf}
 \end{document}

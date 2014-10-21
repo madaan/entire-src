@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.5.17)  21 OCT 2014 23:47
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.5.17)  22 OCT 2014 01:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -525,26 +525,26 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \tf@toc=\write3
 \openout3 = `report.toc'.
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 76.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 75.
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 76.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 75.
 
 [2] [3] [4] [5]
 
 Package pdftex.def Warning: Option `bb' does not make sense,
-(pdftex.def)                using `viewport' instead on input line 265.
+(pdftex.def)                using `viewport' instead on input line 263.
 
-<./multirmode1.pdf, id=34, 722.7pt x 542.025pt>
+<./multirmode1.pdf, id=35, 722.7pt x 542.025pt>
 File: ./multirmode1.pdf Graphic file (type pdf)
  <use ./multirmode1.pdf>
-Package pdftex.def Info: ./multirmode1.pdf used on input line 265.
+Package pdftex.def Info: ./multirmode1.pdf used on input line 263.
 (pdftex.def)             Requested size: 325.21278pt x 243.90959pt.
 
 [6] [7 <./multirmode1.pdf>] [8] [9]
-Overfull \hbox (36.77098pt too wide) in paragraph at lines 459--464
+Overfull \hbox (36.77098pt too wide) in paragraph at lines 455--460
 []\OT1/cmr/m/it/10 sentence id [TAB] Num-ber, unit, startOff-set, end-Off-set;N
 umber2,unit,startOff,endOff
  []
@@ -552,38 +552,34 @@ umber2,unit,startOff,endOff
 [10] [11] [12]
 
 Package pdftex.def Warning: Option `bb' does not make sense,
-(pdftex.def)                using `viewport' instead on input line 605.
+(pdftex.def)                using `viewport' instead on input line 601.
 
-<./results.png, id=200, 1306.8825pt x 913.4125pt>
+<./results.png, id=201, 1306.8825pt x 913.4125pt>
 File: ./results.png Graphic file (type png)
  <use ./results.png>
-Package pdftex.def Info: ./results.png used on input line 605.
-(pdftex.def)             Requested size: 409.53415pt x 301.12805pt.
-
-Overfull \hbox (64.53415pt too wide) in paragraph at lines 605--607
- [][] 
- []
-
-[13] [14 <./results.png>]
+Package pdftex.def Info: ./results.png used on input line 601.
+(pdftex.def)             Requested size: 341.275pt x 250.9375pt.
+ [13 <./results.png>]
 
 Package pdftex.def Warning: Option `bb' does not make sense,
-(pdftex.def)                using `viewport' instead on input line 648.
+(pdftex.def)                using `viewport' instead on input line 640.
 
-<./dep.png, id=207, 993.7125pt x 149.55875pt>
+<./dep.png, id=205, 993.7125pt x 149.55875pt>
 File: ./dep.png Graphic file (type png)
  <use ./dep.png>
-Package pdftex.def Info: ./dep.png used on input line 648.
+Package pdftex.def Info: ./dep.png used on input line 640.
 (pdftex.def)             Requested size: 397.47893pt x 59.82257pt.
 
-Overfull \hbox (52.47893pt too wide) in paragraph at lines 648--650
+Overfull \hbox (52.47893pt too wide) in paragraph at lines 640--642
  [][] 
  []
 
+[14 <./dep.png (PNG copy)>]
 
 Package pdftex.def Warning: Option `bb' does not make sense,
 (pdftex.def)                using `viewport' instead on input line 667.
 
-<./dep_pos.png, id=208, 1296.845pt x 228.855pt>
+<./dep_pos.png, id=209, 1296.845pt x 228.855pt>
 File: ./dep_pos.png Graphic file (type png)
  <use ./dep_pos.png>
 Package pdftex.def Info: ./dep_pos.png used on input line 667.
@@ -597,7 +593,7 @@ Overfull \hbox (44.05745pt too wide) in paragraph at lines 667--670
 Package pdftex.def Warning: Option `bb' does not make sense,
 (pdftex.def)                using `viewport' instead on input line 679.
 
-<./dep_neg.png, id=210, 1284.8pt x 219.82124pt>
+<./dep_neg.png, id=211, 1284.8pt x 219.82124pt>
 File: ./dep_neg.png Graphic file (type png)
  <use ./dep_neg.png>
 Package pdftex.def Info: ./dep_neg.png used on input line 679.
@@ -607,13 +603,13 @@ Overfull \hbox (44.05745pt too wide) in paragraph at lines 679--682
  [][] 
  []
 
-[15 <./dep.png (PNG copy)> <./dep_pos.png>]
+
 Overfull \hbox (78.83412pt too wide) in paragraph at lines 707--723
 [] 
  []
 
-(./bib.tex [16 <./dep_neg.png>])
-<dsreadings.pdf, id=219, 1289.81876pt x 2389.92876pt>
+(./bib.tex [15 <./dep_pos.png> <./dep_neg.png>])
+<dsreadings.pdf, id=217, 1289.81876pt x 2389.92876pt>
 File: dsreadings.pdf Graphic file (type pdf)
  <use dsreadings.pdf>
 Package pdftex.def Info: dsreadings.pdf used on input line 726.
@@ -623,8 +619,8 @@ File: dsreadings.pdf Graphic file (type pdf)
 <use dsreadings.pdf>
 Package pdftex.def Info: dsreadings.pdf used on input line 726.
 (pdftex.def)             Requested size: 1289.81561pt x 2389.92296pt.
- [17]
-<dsreadings.pdf, id=225, page=1, 1289.81876pt x 2389.92876pt>
+ [16]
+<dsreadings.pdf, id=223, page=1, 1289.81876pt x 2389.92876pt>
 File: dsreadings.pdf Graphic file (type pdf)
 
 <use dsreadings.pdf, page 1>
@@ -648,30 +644,31 @@ File: dsreadings.pdf Graphic file (type pdf)
 <use dsreadings.pdf, page 1>
 Package pdftex.def Info: dsreadings.pdf, page1 used on input line 726.
 (pdftex.def)             Requested size: 456.22581pt x 845.34918pt.
- [18 <./dsreadings.pdf, page is rotated 90 degrees>] (./report.aux) ) 
+ [17 <./dsreadings.pdf, page is rotated 90 degrees>] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 5925 strings out of 493304
- 82641 string characters out of 6139871
- 182056 words of memory out of 5000000
- 9295 multiletter control sequences out of 15000+600000
- 9618 words of font info for 34 fonts, out of 8000000 for 9000
+ 5929 strings out of 493304
+ 82676 string characters out of 6139871
+ 183068 words of memory out of 5000000
+ 9298 multiletter control sequences out of 15000+600000
+ 9977 words of font info for 35 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  39i,18n,45p,342b,415s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report.pdf (19 pages, 1314052 bytes).
+t/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
+17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on report.pdf (18 pages, 1326981 bytes).
 PDF statistics:
  276 PDF objects out of 1000 (max. 8388607)
  163 compressed objects within 2 object streams

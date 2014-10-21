@@ -6,7 +6,7 @@
 \contentsline {subsection}{\numberline {4.1}Introduction}{4}
 \contentsline {subsection}{\numberline {4.2}Distant Supervision Assumption}{4}
 \contentsline {subsection}{\numberline {4.3}Matching}{4}
-\contentsline {subsection}{\numberline {4.4}Training}{4}
+\contentsline {subsection}{\numberline {4.4}Training}{5}
 \contentsline {section}{\numberline {5}Survey}{5}
 \contentsline {subsection}{\numberline {5.1}Constructing Biological Knowledge Bases by Extracting Information from Text Sources, Craven and Kumlien 1999}{5}
 \contentsline {subsection}{\numberline {5.2}Distant Supervision for the Web, Mintz et. al 2009}{5}
@@ -30,9 +30,9 @@
 \contentsline {section}{\numberline {12}Rule Based Extraction}{14}
 \contentsline {subsection}{\numberline {12.1}Peculiarity of Numerical Relations}{14}
 \contentsline {subsection}{\numberline {12.2}Dependencies}{14}
-\contentsline {subsection}{\numberline {12.3}Dependency Path}{15}
-\contentsline {subsection}{\numberline {12.4}Relation extraction using dependency paths}{15}
+\contentsline {subsection}{\numberline {12.3}Dependency Path}{14}
+\contentsline {subsection}{\numberline {12.4}Relation extraction using dependency paths}{14}
 \contentsline {subsection}{\numberline {12.5}Example}{15}
-\contentsline {subsection}{\numberline {12.6}Results}{16}
-\contentsline {subsubsection}{\numberline {12.6.1}Precision and Recall}{16}
+\contentsline {subsection}{\numberline {12.6}Results}{15}
+\contentsline {subsubsection}{\numberline {12.6.1}Precision and Recall}{15}
 \contentsline {subsubsection}{\numberline {12.6.2}Example Extractions}{16}

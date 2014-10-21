@@ -73,7 +73,7 @@ there are plenty of loose screws. This report discusses one of them, numerical r
 \begin{itemize}
 
 \item \textbf{a)Entity}
-An entity is something that exists in itself, actually or hypothetically. [\ref{wikientity}]
+An entity is something that exists in itself, actually or hypothetically. [\ref{wikientity}
 
 \item \textbf{b)Relation}
 A relation specifies a concept which binds two entities. For example, creator(Linux, Linus Torvalds).
@@ -83,10 +83,10 @@ A relation specifies a concept which binds two entities. For example, creator(Li
 
 \item \textbf{d)Match}
 A mention expressing a relation $R$ is called a match for $R$. The criteria for deciding whether the mention $m$ is a match or not 
-can vary. Presence of both the entities is a however a mandatory condition.
+can vary. Presence of both the entities is, however, a mandatory condition.
 
 \item \textbf{e)Extraction}
-A 3-tuple $R(A, B)$ where $A$ and $B$ are entities related via $R$.
+A 3-tuple $R(A, B)$ where $A$ and $B$ are entities related via a relation $R$.
 \end{itemize}
 
 \section{Problem}
@@ -101,35 +101,36 @@ to a number. For example,
 \section{Snowballing}
 Let us motivate the idea by considering the following related problem:
 
-Suppose we want to populate the repository of founders of companies, and all that we know
-for a fact is that Elon Musk is the founder of SpaceX.
-The problem can be divided into two parts, each of them rely on an intuition about how human 
+Suppose we want to populate a repository of founders of companies, and all that we know
+is that Elon Musk is the founder of SpaceX.
+The problem can be divided into the following two parts, each of them rely on an intuition about how human 
 beings form sentences in general.
 
 \begin{itemize}
  
-\item The first of them is given an entity pair, and a corpus of documents, find out all the sentences that
-express a relation between the entity-pair.
+\item \emph{Given an entity pair, and a corpus of documents, find out all the sentences that
+\textbf{express a relation} between the entity-pair.}
 
-Command line ninjas will quickly think of the following solution:
-grep -i 'entity1' sentences|grep -i 'entity2'
+Command line ninjas will quickly think of the following solution:\\
+grep -i 'entity1' sentences$\vert$ grep -i 'entity2'
 
 The intuition behind this perhaps the most obvious solution is that \emph{a sentence
 that houses both the entities can be expected to express a relation between them}.
 A quick web search with the query ``entity1'' and ``entity2'' will show that this 
 intuition is not out of the blue.
 
-\item Sentence structure depends on the relation being expressed.
+\item \emph{Find what makes these sentences special} \\
+Sentence structure depends on the relation being expressed.
 In verbose, if two sentences express the same relation, there will be (okay, there can be expected to be)
-many \emph{features} that are similar in both of them. These include POS tags, words around the entities,
+ \emph{features} that are similar in both of them. These include POS tags, words around the entities,
 dependency path between the entities to name a few.
 
 \end{itemize}
 Putting together the intuitions above, we can solve the problem as follows:
 Collect all the sentences which have SpaceX and Elon Musk in them, extract features 
 from these sentences. Favor those features which repeat.
-Now us this set of features to extract similar pairs from other sentences.
-A fancier solution would be to re use the extractions to learn more features, and continuing the process 
+Now use this set of features to extract similar pairs from other sentences.
+A fancier solution would be to reuse the extractions to learn more features, and continuing the process 
 till the point of diminishing returns.
 
 This seemingly shaky method actually works [\ref{snowball}] and is popular by the name of snowballing.
@@ -143,7 +144,7 @@ and we have distant supervision.
 The basic setup is as follows:
 \begin{itemize}
 
-\item a) KB : A knowledge base consisting of facts. The facts are 3-tuples; the entities and the corresponding relation.
+\item \textbf{a) KB:} A knowledge base consisting of facts. The facts are 3-tuples; the entities and the corresponding relation.
 For example:
 \begin{center}
 
@@ -161,7 +162,7 @@ Alon Musk & SpaceX & Founder Of\\
 
 has 4 different facts
 
-\item b) Corpus
+\item \textbf{b) Corpus}
 The repository of text where we expect to find the sentences that express facts that we know.
 We need another repository, called the test set, where we will run our extractor to obtain new facts.
 These two can be the same.
@@ -171,8 +172,8 @@ These two can be the same.
 Every sentence that has an entity pair ($e_1$, $e_2$) expresses the relation which exists between ($e_1$, $e_2$).
 \subsection{Matching}
 We next need to align our knowledge base with the corpus. This process is also called matching.
-  
-\begin{algorithm}
+
+\begin{algorithm}[H]
  \KwData{Corpus C, Knowledge Base KB}
  \KwResult{Training data, D, A set of matches}
  Break C into a set of sentences, S\;
@@ -186,7 +187,7 @@ We next need to align our knowledge base with the corpus. This process is also c
   }
   }
  }
- \caption{Distant Supervision}
+ \caption{Distant Supervision: Matching}
 \end{algorithm}
 
 
@@ -195,18 +196,16 @@ Recall that obtaining the sentences which express a relation gives us training d
 we want to use to learn relation extractors, our goal.
 There are several ways to achieve this, starting from the naive ways of training sentence 
 level classifier extending to fancier graphical model based learning.
-
-We briefly discuss the different training methods as we look at a survey of works on Distant Supervision
-so far.
-
+There are broadly two different ways of used in the literature for training extractors using the distant supervision data.
+Earlier work on distant supervision used the training data to train classical classifiers, like naive bayes, LR and so on.
+Recent work has shifted towards modeling extraction using graphical models.
 \section{Survey}
 
-The first distant supervision paper came out in 1999.
-Since then, almost every knob that could be twisted in the ds machinery, has been 
-twisted. Different types of relations and different types of datasets will pose different challenges
-of course, and this report deals with some of them.
+The first distant supervision paper came out in 1999 [\ref{craven}]. The process has remained more or less the same since the first paper, with 
+different works stemming out of either relaxations of different assumptions made by [\ref{craven}] or by using a smarter matching algorithm.
+
 \subsection{Constructing Biological Knowledge Bases by Extracting Information from Text Sources, Craven and Kumlien 1999}
-The was the first work to use distant supervision for creating a repository of biological facts. 
+This was the first work to use distant supervision for creating a repository of biological facts. 
 They targeted 5 different relations between Proteins, Tissues, Cell-Types, Diseases, Pharmacologic-Agents and Subcellular-structure.
 A naive bayes based simple relation extractor is first described. The extractor works in 2 steps:  A classifier trained on hand labeled data
 first labels whether a sentence \emph{can} express a particular relation. If yes, the sentence is searched for a pair of one of the 5 types
@@ -360,8 +359,8 @@ Country id & Number & Relation \\
 
 \section{L'homme propose, et Dieu dispose}
 Our life would have been simpler if MultiR would do the desired; extract the numerical relations from the corpus provided
-information about some of the numerical relations. Alas, it was not meant to be. Table [\ref{vanillatable}] contains the results
-from vanilla matching.
+information about some of the numerical relations. However, as table [\ref{vanillatable}] shows, the quality of training data
+is so poor that not much can be expected from the extractor obtained.
 
 \begin{center}
 \begin{table}[H]
@@ -419,8 +418,6 @@ It is easy (and very important) to get rid of such sentences. For subsequent run
 top 1000 of them.
 \end{itemize}
 
-The first point of debugging a model which is not performing as well as it should is doing 
-sanity check on the training data. 
 
 \section{Fighting False Positives with units}
 Analyzing results of plain matching made it clear that units will help in improving both precision
@@ -601,7 +598,7 @@ and the unit are considered.
 
 \begin{figure}[H]
  \centering
- \includegraphics[bb=0 0 1360 1000,scale=0.3]{./results.png}
+ \includegraphics[bb=0 0 1360 1000,scale=0.25]{./results.png}
  % results.png: 1360x1000 pixel, 72dpi, 47.98x35.28 cm, bb=0 0 1360 1000
  \caption{A comparison of the three heuristics}
  \label{fig:comp}
@@ -620,7 +617,7 @@ Analyzing a number of sentences expressing numerical relations lead to several i
 \end{itemize}
 
 \subsection{Dependencies}
-Dependencies are grammatical relation between two words, governer and dependent.
+Dependencies are grammatical relation between two words, governor and dependent.
 The relation captures the way in which one of the words is affected by the other.
 For example, consider the sentence:
 ``The red ball was lost''
@@ -633,15 +630,11 @@ The dependencies are:
 \item \textbf{auxpass(lost,5,was,4)}	``was is an auxiliary of lost''
 \end {itemize}
 
-So we know that sentences expressing numerical relations should contain express how the number and a country
-are related, and we know that there exists a framework which can extract pairs of words that somehow affect each other.
-Combining these ideas leads us to a simple rule based relation extractor.
-
 \subsection{Dependency Path}
 We define a dependency path between two words ``A'' and ``B'' as the shortest path between them in the dependency graph.
 The dependency graph consists of one node for each of the words, and the dependencies are the collapsed typed dependencies 
 as obtained from the stanford dependency parser. [\ref{corenlp}]. 
-The following figure shows dependency graph for ``The estimated 2014 population of Zambia is 15,200,000, which ranks 70th in the world.''
+Figure [\ref{fig:1}] shows dependency graph for ``The estimated 2014 population of Zambia is 15,200,000, which ranks 70th in the world.''
 \begin{figure*}
  \centering
  \includegraphics[bb=0 0 990 149, scale = 0.4]{./dep.png}
@@ -653,15 +646,23 @@ The following figure shows dependency graph for ``The estimated 2014 population 
 
 \subsection{Relation extraction using dependency paths}
 Intuitively, it makes sense that the entities which are related will have some dependence on each other in the sentence 
-expressing the relation.
-
+expressing the relation. If this is true, we can expect the following simple rule to work.
+Let $P$ be the set of words in the path between a Country $C$ and a number $N$. Then, for $C$-$N$ to be an extraction for a relation
+$R$, the following should hold:
+  \begin{itemize}
+   \item $P$ \textbf{should have} a word $w$ such that $w$ $\in$ $keywords(R)$
+   \item \textbf{should not have} any word $w$ such that $w$ $\in$ $modifiers$
+  \end{itemize}
+  
+Here $modifiers$ is a set of modifying words. The set is formed of the words like {``Increased, Decreased, 
+Changed''}.
 
 \subsection{Example}
 Consider the sentence:
 ``The estimated population for 2014 of the Australian continent	is about 36.25 million people''
 and the Country-Number pair (Australian, 36.25)
 The dependency graph of the sentence is as shown in figure [\ref{pos}].
-\begin{figure}[h]
+\begin{figure}[H]
  \centering
  \includegraphics[bb=0 0 1292 228,scale=0.3]{./dep_pos.png}
  \label{pos}
@@ -673,7 +674,7 @@ If we modify the sentence to:
 ``The estimated population for 2014 of the Australian continent	increased by about 3.25 million people''
 
 The path will additionally have a modifier, ``increased'', and thus there won't be any extraction.
-\begin{figure}[h]
+\begin{figure}[H]
  \centering
  \includegraphics[bb=0 0 1292 228,scale=0.3]{./dep_neg.png}
  % dep_pos.png: 1292x228 pixel, 72dpi, 45.57x8.04 cm, bb=0 0 1292 228
