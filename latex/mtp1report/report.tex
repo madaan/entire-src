@@ -3,12 +3,13 @@
 \usepackage[]{algorithm2e}
 \usepackage{pdfpages}
 \usepackage{url}
+\usepackage{float}
 %opening
 \usepackage{listings}
 \usepackage{titling} % Allows custom title configuration
 
 
-\title{Occurrence Statistics of Entities, Relations and Types on the Web} % Your article title
+\title{Numerical Relation Extraction} % Your article title
 
 \begin{document}
  
@@ -19,7 +20,7 @@ sg
     \vspace*{\baselineskip}
     \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
     \rule{\textwidth}{0.4pt}\\[\baselineskip]
-    {\LARGE \color{blue} Occurrence Statistics of Entities, Relations and Types on the Web}\\[0.2\baselineskip]
+    {\LARGE \color{blue} Techniques for Numerical Relation Extraction}\\[0.2\baselineskip]
     \rule{ \textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
     \rule{\textwidth}{1.6pt}\\[\baselineskip]
     \scshape
@@ -27,7 +28,7 @@ sg
     Master of Technology \par
     \vspace*{1\baselineskip}
      by \\[\baselineskip]
-    {\Large  Aman Madaan \vspace*{1\baselineskip} \\ Under the Guidance of Prof. Sunita Sarawagi\par}
+    {\Large  Aman Madaan \vspace*{1\baselineskip} \\ Under the Guidance of Prof. Sunita Sarawagi, Prof. Ganesh Ramakrishnan and Prof. Mausam\par}
        \begin{figure}[h]
  \centering
  \vspace*{13\baselineskip}
@@ -146,6 +147,7 @@ The basic setup is as follows:
 \item a) KB : A knowledge base consisting of facts. The facts are 3-tuples; the entities and the corresponding relation.
 For example:
 \begin{center}
+
 \begin{tabular}{|l|l|l|}
 \hline
 Entity & Entity & Relation \\
@@ -157,6 +159,7 @@ Alon Musk & SpaceX & Founder Of\\
 \hline
 \end{tabular}
 \end{center}
+
 has 4 different facts
 
 \item b) Corpus
@@ -252,7 +255,18 @@ In such cases, it can be argued that the training data generated will be extreme
 performance. Riedel et. al relax the distant supervision assumption.
 
 \subsection{MultiR}
-Some of the entity pairs can occur in multiple relationships. For example, 
+Some of the entity pairs can occur in multiple relationships. For example, an athlete usually \emph{plays for} the 
+country they are \emph{born in}. The \emph{CEO of} a company also \emph{works for} it. The techniques discussed till now are 
+focused on extracting only one of the relations for an entity pair. MultiR relaxes one relation per entity-pair assumption. 
+(Hence the name, multi-relation). MultiR achieves this by modeling both sentence level and corpus level extraction decision.
+The graphical model is as shown in figure [\ref{fig:multir}]
+\begin{figure}[h]
+ \centering
+ \includegraphics[bb=0 0 720 540,scale=0.45]{./multirmode1.pdf}
+ % multirmode1.pdf: 720x540 pixel, 72dpi, 25.40x19.05 cm, bb=0 0 720 540
+ \label{fig:multir}
+ \caption{MultiR Graphical Model}
+\end{figure}
 
 \section{Numerical Relations}
 Numerical relations are much like the usual entity-entity relations, just more problematic.
@@ -293,7 +307,9 @@ along with difference in units.
 
 Our knowledge base was derived scrapped from \url{data.worldbank.org}.
 It has 4371979 numerical facts about 249 countries ranging over 1281 different attributes. 
+Table [\ref{fig:kb}] shows a sample.
 \begin{center}
+\begin{table}
 \begin{tabular}{|l|l|l|}
 \hline
 Country id & Number & Relation \\
@@ -310,11 +326,46 @@ Country id & Number & Relation \\
 /m/05qkp&62.298927&SP.DYN.LE00.IN\\
 \hline
 \end{tabular}
+
+\caption{A Sample of our KB}
+\label{fig:kb}
+\end{table}
+
 \end{center}
 
 \section{L'homme propose, et Dieu dispose}
-Our life would have been simpler if MultiR would do the desired, extract the numerical relations from the corpus provided
-information about some of the numerical relations. But as it happens, it was not meant to be.
+Our life would have been simpler if MultiR would do the desired; extract the numerical relations from the corpus provided
+information about some of the numerical relations. Alas, it was not meant to be. Table [\ref{vanillatable}] contains the results
+from vanilla matching.
+
+
+\begin{center}
+\begin{table}[H]
+
+\resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
+
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+Relation&Total Matches&Sampled Matches&True Matches&Precision(\%)\\
+\hline
+Land Area&1884&15&\textbf{1}&\textbf{6.7}\\
+Foreign Direct Investment&0&0&0&0\\
+Goods Export&0&0&0&0\\
+Electricity Production&381&10&0&0\\
+$CO_{2}$ Emission&0&0&0&0\\
+Diesel Prices&8491&15&0&0\\
+Inflation(\%)&8689&15&0&0\\
+Internet Users(\%)&182319&40&0&0\\
+GDP(\$)&0&0&0&0\\
+Life Expectancy&267&10&0&0\\
+Total Population&0&0&0&0\\
+\hline
+\end{tabular}}
+\caption{Vanilla Match}
+\label{vanillatable}
+\end{table}
+\end{center}
+
 The model not doing well may mean several things. Low quality training data being one of the primary reasons.
 Indeed, it turned out that vanilla distant supervision leads to an \textbf{unprecedented} amount of false positives, which are the root cause
 of everything that went wrong in the distant supervision pipeline.
@@ -361,22 +412,67 @@ model, make evaluating the quality of matcher very difficult.
 As the next step, we integrated Prof. Sunita's unit extractor in the distant supervision pipeline.
 Concretely, we fed the corpus to the unit extractor to get information of the following form
 (sample):
-\begin{tabular}{ll}
- \hline
+\begin{center}
+ 
+\begin{tabular}{|l|l|}
+\hline
+Sentence ID & Numbers with units \\
+\hline
 2000064&172010.0::64:72;500.0::157:160;\\
-2000077&75.0:united states dollar:17:19;2010.0::55:67;29.0::69:70;40.0::72:74;75.0:united
-states dollar:102:104;\\
+2000077&75.0:united states dollar:17:19;2010.0::55:67;29.0::69:70;\\
 2000080&50.0::47:49;\\
 2000112&172009.0::56:64;\\
 2000113&0.10000000149011612::58:61;\\
 2000120&3.15564E7:second:113:115;1.0::131:132;\\
+\hline
 \end{tabular}
 
-Where the format of a single match is sentence id [TAB] Number, unit, startOffset, endOffset;Number2,unit,startOff,endOff
+\end{center}
+
+Where the format of a single match is:
+
+\emph{sentence id [TAB] Number, unit, startOffset, endOffset;Number2,unit,startOff,endOff}
 The knowledge base was also converted to SI units.
 We see lots of true positives for attributes that take value in the higher range. The number of false
 positives has also drastically decreased. Units have been particularly helpful in dealing with the so
 called “match mines”, sentences which have lots of country names and numbers, like score tallies.
+
+\subsection{Results}
+As table [\ref{fig:resunits}] shows, units help, but not as much as we would have expected.
+\begin{center}
+\begin{table}[H]
+ \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+Relation&Total Matches&Sampled Matches&True Matches&Precision(\%)\\
+\hline
+\textbf{Land Area} &98	& 40 & 32 &80\\
+Foreign Direct Investment & 791 & 40& 1&2.5\\
+Goods Export&816&40&3&7.5\\
+Electricity Production&19&19&0&0\\
+$CO_{2}$ Emission&196&40&2&5\\
+Diesel Prices&2&2&2&100\\
+Inflation(\%)&27598&40&0&0\\
+Internet Users(\%)&24639&40&0&0\\
+GDP(\$)&1790&40&0&0\\
+Life Expectancy&3081&40&0&0\\
+\textbf{Total Population}&5225&40&11&27.5\\
+\hline
+
+\end{tabular}}
+\caption{Unit Based}
+\label{fig:resunits}
+\end{table}
+\end{center}
+
+There can be several reasons for this.
+ \begin{itemize}
+  \item Attributes with Unit \% (inflation, internet user \%), are affected by stock data that is heavily present in the news corpus.
+  \item Relations FDI, Goods Export, GDP have almost similar values, thus, an (entity, number) pair matches all of the three relations. 
+  \end{itemize}
+  
+The analysis indicates that we might need some relation specific heuristics.
+ 
 
 \section{Numbers are weak entities: a case for keywords}
 
@@ -414,9 +510,10 @@ present will be too restrictive.
 \subsection{Approach}
 Let $M_r$ be the set of matches obtained by standard unit + distance based matching for a relation r.
 We prune $M_r$ by picking only sentences which contain one of the words in the set keywords(r).
-The sets keywords(r) are manually crafted.
+The sets keywords(r) are manually crafted and are listed in table [\ref{fig:kw}].
 
 \begin{center}
+\begin{table}
  \begin{tabular}{|l|l|}
 \hline \\
  Relation Keywords & (case insensitive)\\
@@ -434,70 +531,14 @@ Life Expectancy & "life", "life expectancy"\\
 Electricity Production & "Electricity\\
 \hline
 \end{tabular}
+\caption{Keywords for Relations}
+\label{fig:kw}
+\end{table}
  \end{center}
 
-
-
-\section{Results}
-
-Before discussing the results, let us summarize the heuristics:
-
-a) Vanilla: A sentence having a country-number pair $c-n$ is called a match for a relation $R$ if $R(c,n)$ is a fact in the KB.
-b) Unit Based: Feed the corpus to a unit extractor, extract normalized numbers along with units. During matching, both the normalized value of a number
-and the unit are considered.
-c) Keyword based: In addition to matching number and unit, also check whether one of the keywords for a relation is present. 
-
-\subsection{Vanilla Matching: Results}
-\begin{center}
- \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
- 
-\begin{tabular}{|l|l|l|l|l|}
-\hline
-Relation&Total Matches&Sampled Matches&True Matches&Precision(\%)\\
-\hline
-Land Area&1884&15&\textbf{1}&\textbf{6.7}\\
-Foreign Direct Investment&0&0&0&0\\
-Goods Export&0&0&0&0\\
-Electricity Production&381&10&0&0\\
-$CO_{2}$ Emission&0&0&0&0\\
-Diesel Prices&8491&15&0&0\\
-Inflation(\%)&8689&15&0&0\\
-Internet Users(\%)&182319&40&0&0\\
-GDP(\$)&0&0&0&0\\
-Life Expectancy&267&10&0&0\\
-Total Population&0&0&0&0\\
-\hline
-\end{tabular}}
-\end{center}
-
-\subsection{Units Based}
-\begin{center}
-\begin{table}
- \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
-\begin{tabular}{|l|l|l|l|l|}
-\hline
-Relation&Total Matches&Sampled Matches&True Matches&Precision(\%)\\
-\hline
-\textbf{Land Area} &98	& 40 & 32 &80\\
-Foreign Direct Investment & 791 & 40& 1&2.5\\
-Goods Export&816&40&3&7.5\\
-Electricity Production&19&19&0&0\\
-$CO_{2}$ Emission&196&40&2&5\\
-Diesel Prices&2&2&2&100\\
-Inflation(\%)&27598&40&0&0\\
-Internet Users(\%)&24639&40&0&0\\
-GDP(\$)&1790&40&0&0\\
-Life Expectancy&3081&40&0&0\\
-\textbf{Total Population}&5225&40&11&27.5\\
-\hline
-
-\end{tabular}}
-\caption{Unit Based}
-\end{table}
-\end{center}
-
-\subsection{Keyword Based}
-\begin{table}
+\subsection{Results}
+The results indicate that keywords help a lot. 
+\begin{table}[H]
 \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally 
 \begin{tabular}{|l|l|l|l|l|}
 \hline
@@ -519,7 +560,29 @@ GDP(\$)&0&0&0&0\\
 \end{tabular}
 }
 \caption{Keyword Based}
+\label{fig:kwres}
 \end{table}
+
+
+
+\section{A summary of the three heuristics}
+
+Before discussing the results, let us summarize the heuristics:
+\begin{itemize}
+\item \textbf{a) Vanilla:} A sentence having a country-number pair $c-n$ is called a match for a relation $R$ if $R(c,n)$ is a fact in the KB.
+\item \textbf{b) Unit Based:} Feed the corpus to a unit extractor, extract normalized numbers along with units. During matching, both the normalized value of a number
+and the unit are considered.
+\item \textbf{c) Keyword based:} In addition to matching number and unit, also check whether one of the keywords for a relation is present. 
+\end{itemize}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[bb=0 0 1360 1000,scale=0.3]{./results.png}
+ % results.png: 1360x1000 pixel, 72dpi, 47.98x35.28 cm, bb=0 0 1360 1000
+ \caption{A comparison of the three heuristics}
+ \label{fig:comp}
+\end{figure}
+
 
 
 \section{Rule Based Extraction}
