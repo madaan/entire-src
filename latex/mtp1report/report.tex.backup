@@ -49,7 +49,7 @@ The task of numerical relation extraction poses new, hitherto untackled challeng
 modifiers, time varying relations are just some of the issues that are non existent for standard relation extraction, but become 
 crucial when numbers are involved.
 
-We discuss moulding distant supervision for numerical relation extraction. The standard one to one mapping using numbers as the second entity 
+We discuss molding distant supervision for numerical relation extraction. The standard one to one mapping using numbers as the second entity 
 fails. Adding units help in improving the training data to a certain extent. The third heuristic, keyword based pruning yields drastic improvement
 in training data.
 The analysis of the results from the three heuristics lead to a basic rule based extractor, which performs better than any of the heuristics.
@@ -62,24 +62,42 @@ This is not unexpected; such knowledge bases have potential of revolutionizing t
 themselves. 
 Clearly, any progress towards a solution will have to deal with intricacies of how facts are expressed in the natural language.
 It turns out, that such intricacies are too many to exhaust. Years of research has went into the aforementioned goal, and still
-are plenty of loose screws.
+are plenty of loose screws. This report discusses one of them, numerical relation extraction.
 
-This report discusses one of them, numerical relation extraction.
+Section 2 defines the problem. Section 3 lays the foundation for distant supervision.
 
-\section{Bare Essentials}
-This report will demand that the reader is on the same page vis-a-vis a few terminologies.
-Trading off space and brevity for clarity:
-a)Entity
-b)Entity Pair
-c)Relation
-d)Mention
-e)Match
-f)Extraction
+
+\subsection{Terminology}
+This report will demand that the reader is on the same page vis-à-vis a few terminologies.
+
+\begin{itemize}
+
+\item \textbf{a)Entity}
+An entity is something that exists in itself, actually or hypothetically. [\ref{wikientity}]
+
+\item \textbf{b)Relation}
+A relation specifies a concept which binds two entities. For example, creator(Linux, Linus Torvalds).
+
+\item \textbf{c)Mention}
+ A piece of text which expresses a relation. For example, the sentence ``Linus Torvalds is the creator of Linux.''
+
+\item \textbf{d)Match}
+A mention expressing a relation $R$ is called a match for $R$. The criteria for deciding whether the mention $m$ is a match or not 
+can vary. Presence of both the entities is a however a mandatory condition.
+
+\item \textbf{e)Extraction}
+A 3-tuple $R(A, B)$ where $A$ and $B$ are entities related via $R$.
+\end{itemize}
 
 \section{Problem}
+Train extractors that can harness the Web for numerical relations, where relations are 3-tuples linking an entity
+to a number. For example,
+    \begin{itemize}
+	\item  (India, \textbf{economy}, 1.842 trillion USD)
+	\item  (China, \textbf{internet users},  590.56 million)
+	\item  (USA, \textbf{land area}, 2,959,054 square mile)
+    \end{itemize}
 
-The next few sections lay the foundation for discussion of our solution.
-  
 \section{Snowballing}
 Let us motivate the idea by considering the following related problem:
 
@@ -340,6 +358,26 @@ percentage, since it is again a very generic unit. For other relations too, the 
 positives was very large. The large number of false positives, apart from degrading quality of the
 model, make evaluating the quality of matcher very difficult.
 
+As the next step, we integrated Prof. Sunita's unit extractor in the distant supervision pipeline.
+Concretely, we fed the corpus to the unit extractor to get information of the following form
+(sample):
+\begin{tabular}{ll}
+ \hline
+2000064&172010.0::64:72;500.0::157:160;\\
+2000077&75.0:united states dollar:17:19;2010.0::55:67;29.0::69:70;40.0::72:74;75.0:united
+states dollar:102:104;\\
+2000080&50.0::47:49;\\
+2000112&172009.0::56:64;\\
+2000113&0.10000000149011612::58:61;\\
+2000120&3.15564E7:second:113:115;1.0::131:132;\\
+\end{tabular}
+
+Where the format of a single match is sentence id [TAB] Number, unit, startOffset, endOffset;Number2,unit,startOff,endOff
+The knowledge base was also converted to SI units.
+We see lots of true positives for attributes that take value in the higher range. The number of false
+positives has also drastically decreased. Units have been particularly helpful in dealing with the so
+called “match mines”, sentences which have lots of country names and numbers, like score tallies.
+
 \section{Numbers are weak entities: a case for keywords}
 
 \subsection{Motivation}
@@ -402,7 +440,12 @@ Electricity Production & "Electricity\\
 
 \section{Results}
 
-\section{Possibilities}
+Before discussing the results, let us summarize the heuristics:
+
+a) Vanilla: A sentence having a country-number pair $c-n$ is called a match for a relation $R$ if $R(c,n)$ is a fact in the KB.
+b) Unit Based: Feed the corpus to a unit extractor, extract normalized numbers along with units. During matching, both the normalized value of a number
+and the unit are considered.
+c) Keyword based: In addition to matching number and unit, also check whether one of the keywords for a relation is present. 
 
 \section{Rule Based Extraction}
 
