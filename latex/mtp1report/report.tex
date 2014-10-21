@@ -9,18 +9,17 @@
 \usepackage{titling} % Allows custom title configuration
 
 
-\title{Numerical Relation Extraction} % Your article title
+\title{Distant Supervision for Numerical Relation Extraction} % Your article title
 
 \begin{document}
- 
-sg
+
 
 \begin{titlepage}
     \centering
     \vspace*{\baselineskip}
     \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
     \rule{\textwidth}{0.4pt}\\[\baselineskip]
-    {\LARGE \color{blue} Techniques for Numerical Relation Extraction}\\[0.2\baselineskip]
+    {\LARGE \color{blue} Distant Supervision for Numerical Relation Extraction}\\[0.2\baselineskip]
     \rule{ \textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
     \rule{\textwidth}{1.6pt}\\[\baselineskip]
     \scshape
@@ -28,7 +27,7 @@ sg
     Master of Technology \par
     \vspace*{1\baselineskip}
      by \\[\baselineskip]
-    {\Large  Aman Madaan \vspace*{1\baselineskip} \\ Under the Guidance of Prof. Sunita Sarawagi, Prof. Ganesh Ramakrishnan and Prof. Mausam\par}
+    {\large  Aman Madaan \vspace*{1\baselineskip} \\ Under the Guidance of Prof. Sunita Sarawagi,\\ Prof. Ganesh Ramakrishnan and Prof. Mausam\par}
        \begin{figure}[h]
  \centering
  \vspace*{13\baselineskip}
@@ -39,37 +38,37 @@ sg
     {\vspace*{1\baselineskip}  \itshape Department of Computer Science and Engineering \\ Indian Institute of Technology Bombay\par}
     \vfill
  
-    {\scshape April, 2014} \\
+    {\scshape October, 2014} \\
     {\large }\par
   \end{titlepage}
 \newpage
 \maketitle
-
+\tableofcontents
 \begin{abstract}
 The task of numerical relation extraction poses new, hitherto untackled challenges. The bewildering amount of false positives, units, 
 modifiers, time varying relations are just some of the issues that are non existent for standard relation extraction, but become 
 crucial when numbers are involved.
 
-We discuss molding distant supervision for numerical relation extraction. The standard one to one mapping using numbers as the second entity 
-fails. Adding units help in improving the training data to a certain extent. The third heuristic, keyword based pruning yields drastic improvement
-in training data.
+We discuss molding distant supervision for numerical relation extraction. The standard one-to-one mapping using numbers as the second entity 
+fails. Adding units help in improving the training data to a certain extent. The third heuristic, keyword based pruning further improves 
+precision in the matches.
 The analysis of the results from the three heuristics lead to a basic rule based extractor, which performs better than any of the heuristics.
 
 \end{abstract}
 
 \section{Introduction}
 Massive knowledge bases containing the entire information of the web in a neat, ready to process, structured form continue to be a part of an IR researcher's reverie.
+
+
 This is not unexpected; such knowledge bases have potential of revolutionizing the way in which information is searched by users on the web, or exchanged by machines among
 themselves. 
 Clearly, any progress towards a solution will have to deal with intricacies of how facts are expressed in the natural language.
 It turns out, that such intricacies are too many to exhaust. Years of research has went into the aforementioned goal, and still
-are plenty of loose screws. This report discusses one of them, numerical relation extraction.
+there are plenty of loose screws. This report discusses one of them, numerical relation extraction.
 
-Section 2 defines the problem. Section 3 lays the foundation for distant supervision.
 
 
 \subsection{Terminology}
-This report will demand that the reader is on the same page vis-à-vis a few terminologies.
 
 \begin{itemize}
 
@@ -238,14 +237,14 @@ The major contributions of this paper can be listed as follows:
  
 \end{itemize}
 
-\subsection{Learning 5000 relation extractors}
+\subsection{Learning 5000 relation extractors} [\ref{rel}]
 The number of relations typically used in the works were limited to the range of 30-40. 
 This work targeted 5000 relations, which is a big jump. To fight sparsity that will arise 
 in the training data due to a large number of classes, they also train a top level classifier
 which decides which extractor should be used for a particular document. Not all the extractors 
 are employed for a given document.
 
-\subsection{Riedel et. al}
+\subsection{Riedel et. al}[\ref{riedel}]
 Distant supervision assumption does not really holds when the knowledge base is not well aligned with the corpus.
 Another way of saying this would be that the corpus can be expected to consist of sentences that can host entity pairs
 in a wide range of contexts, and the sentences may have nothing to do with the relations in which the entity pairs appear.
@@ -254,33 +253,58 @@ will be mentioned in the sentences that may have nothing to do with the fact tha
 In such cases, it can be argued that the training data generated will be extremely noisy and will lead to poor extraction 
 performance. Riedel et. al relax the distant supervision assumption.
 
-\subsection{MultiR}
+\subsection{MultiR}[\ref{multir}]
 Some of the entity pairs can occur in multiple relationships. For example, an athlete usually \emph{plays for} the 
 country they are \emph{born in}. The \emph{CEO of} a company also \emph{works for} it. The techniques discussed till now are 
 focused on extracting only one of the relations for an entity pair. MultiR relaxes one relation per entity-pair assumption. 
 (Hence the name, multi-relation). MultiR achieves this by modeling both sentence level and corpus level extraction decision.
-The graphical model is as shown in figure [\ref{fig:multir}]
-\begin{figure}[h]
+The graphical model is as shown in figure [\ref{fig:multir}] (taken from [\ref{multir}])
+\begin{figure}[H]
  \centering
  \includegraphics[bb=0 0 720 540,scale=0.45]{./multirmode1.pdf}
  % multirmode1.pdf: 720x540 pixel, 72dpi, 25.40x19.05 cm, bb=0 0 720 540
- \label{fig:multir}
  \caption{MultiR Graphical Model}
+ \label{fig:multir}
 \end{figure}
 
+There are two different types of nodes in the model:
+\begin{itemize}
+
+\item \textbf {a) Sentence Level extractions, Z:}
+The cardinality of these variables is equal to the number of targeted relations + 1 for ``no attachment'', which means that 
+the sentence expresses no relation. This is important for relaxation of the DS assumption.
+
+\item \textbf{b) Corpus level extraction, Y:}
+The Ys are the binary variables, one for each relation. $Y_i$ takes the value of 0 or 1 depending on whether the $ith$ relation is expressed 
+in the corpus or not.
+\end{itemize}
+
+There are 2 factors:
+\begin{itemize}
+\item \textbf{a) Factors local to Z} These factors capture the likelihood of a sentence belonging to one of the relations.
+The usual technique of representing factor tables in log-linear forms is used. The features are as defined by 
+[\ref{mintz}].
+
+\item \textbf{b) Factors between Y and Z} These factors ensure that the probability mass is divided only amongst the possible extractions.
+As shown in the figure, the factor takes a value of 1 only if the corpus level bit is 1 i.e. that relation exists at corpus level \textbf{and} 
+at least one of the sentences also expresses it.
+\end{itemize}
+  
+  
 \section{Numerical Relations}
 Numerical relations are much like the usual entity-entity relations, just more problematic.
 What we call a \emph{numerical relation} will usually be called an attribute colloquially. 
 For example, Camel and 215cm are related via the relation ``Average Height''.
 
 \section{Numerical Relation extraction using MultiR}
-The problem of numerical relation extraction can be easily moulded into the distant supervision framework.
+The problem of numerical relation extraction can be easily cast into the distant supervision framework.
 Recall from section [\ref{ds}] that we need a corpus and a knowledge base to generate the training data for distant supervision.
 We also need to fix on the set of relations that will be targeted. 
 
 \subsection{Relations}
-We selected the following 10 relations for our experiments:
+The following 10 relations were chosen for our experiments:
  \begin{center}
+ \begin{table}[H]
 \begin{tabular}{|l|l|}
 \hline
 Relation Name & Relation Code \\
@@ -298,18 +322,21 @@ Life expectancy at birth, total (years)&SP.DYN.LE00.IN\\
 Population (Total)&SP.POP.TOTL\\
 \hline
 \end{tabular}
+\caption{Selected Relations}
+\label{rels}
+\end{table}
 \end{center}
 
 The relations were selected keeping in mind the availability of sentences which potentially express these facts
-along with difference in units.
+and to have some diversity in units.
 
 \subsection{Knowledge base}
-
-Our knowledge base was derived scrapped from \url{data.worldbank.org}.
+Our knowledge base was derived from \url{data.worldbank.org}.
 It has 4371979 numerical facts about 249 countries ranging over 1281 different attributes. 
 Table [\ref{fig:kb}] shows a sample.
-\begin{center}
-\begin{table}
+
+\begin{table}[H]
+\centering
 \begin{tabular}{|l|l|l|}
 \hline
 Country id & Number & Relation \\
@@ -326,18 +353,15 @@ Country id & Number & Relation \\
 /m/05qkp&62.298927&SP.DYN.LE00.IN\\
 \hline
 \end{tabular}
-
 \caption{A Sample of our KB}
 \label{fig:kb}
 \end{table}
 
-\end{center}
 
 \section{L'homme propose, et Dieu dispose}
 Our life would have been simpler if MultiR would do the desired; extract the numerical relations from the corpus provided
 information about some of the numerical relations. Alas, it was not meant to be. Table [\ref{vanillatable}] contains the results
 from vanilla matching.
-
 
 \begin{center}
 \begin{table}[H]
@@ -697,4 +721,6 @@ POP( Russia, 1), POP( Russia, 2014), POP( Russia, 143,800,000) \\
 \end{tabular}
 
 \input{bib}
+
+\includepdf[pages={1}]{dsreadings.pdf}
 \end{document}
