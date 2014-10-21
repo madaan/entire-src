@@ -4,35 +4,100 @@
 \usepackage{pdfpages}
 \usepackage{url}
 %opening
-\title{On Distant Supervision and its Application for Numerical Relation Extraction}
-\author{}
+\usepackage{listings}
+\usepackage{titling} % Allows custom title configuration
 
+
+\title{Occurrence Statistics of Entities, Relations and Types on the Web} % Your article title
 
 \begin{document}
  
 sg
+
+\begin{titlepage}
+    \centering
+    \vspace*{\baselineskip}
+    \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
+    \rule{\textwidth}{0.4pt}\\[\baselineskip]
+    {\LARGE \color{blue} Occurrence Statistics of Entities, Relations and Types on the Web}\\[0.2\baselineskip]
+    \rule{ \textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
+    \rule{\textwidth}{1.6pt}\\[\baselineskip]
+    \scshape
+    Submitted in partial fulfillment of requirements for the degree of
+    Master of Technology \par
+    \vspace*{1\baselineskip}
+     by \\[\baselineskip]
+    {\Large  Aman Madaan \vspace*{1\baselineskip} \\ Under the Guidance of Prof. Sunita Sarawagi\par}
+       \begin{figure}[h]
+ \centering
+ \vspace*{13\baselineskip}
+ \includegraphics[bb=0 0 229 220,scale=0.35]{./iitb_logo.jpg}
+ % iitb_logo.jpg: 229x220 pixel, 72dpi, 8.08x7.76 cm, bb=0 0 229 220
+\end{figure}
+
+    {\vspace*{1\baselineskip}  \itshape Department of Computer Science and Engineering \\ Indian Institute of Technology Bombay\par}
+    \vfill
+ 
+    {\scshape April, 2014} \\
+    {\large }\par
+  \end{titlepage}
+\newpage
 \maketitle
 
 \begin{abstract}
+The task of numerical relation extraction poses new, hitherto untackled challenges. The bewildering amount of false positives, units, 
+modifiers, time varying relations are just some of the issues that are non existent for standard relation extraction, but become 
+crucial when numbers are involved.
+
+We discuss molding distant supervision for numerical relation extraction. The standard one to one mapping using numbers as the second entity 
+fails. Adding units help in improving the training data to a certain extent. The third heuristic, keyword based pruning yields drastic improvement
+in training data.
+The analysis of the results from the three heuristics lead to a basic rule based extractor, which performs better than any of the heuristics.
 
 \end{abstract}
 
 \section{Introduction}
+Massive knowledge bases containing the entire information of the web in a neat, ready to process, structured form continue to be a part of an IR researcher's reverie.
+This is not unexpected; such knowledge bases have potential of revolutionizing the way in which information is searched by users on the web, or exchanged by machines among
+themselves. 
+Clearly, any progress towards a solution will have to deal with intricacies of how facts are expressed in the natural language.
+It turns out, that such intricacies are too many to exhaust. Years of research has went into the aforementioned goal, and still
+are plenty of loose screws.
 
-\section{Bare Essentials}
-This report will demand that the reader is on the same page vis-a-vis a few terminologies.
-Trading off space and brevity for clarity:
-a)Entity
-b)Entity Pair
-c)Relation
-d)Mention
-e)Match
-f)Extraction
+This report discusses one of them, numerical relation extraction.
+
+\subsection{Terminology}
+This report will demand that the reader is on the same page vis-à-vis a few terminologies.
+
+\begin{itemize}
+
+\item \textbf{a)Entity}
+An entity is something that exists in itself, actually or hypothetically. [\ref{wikientity}]
+
+\item \textbf{b)Relation}
+A relation specifies a concept which binds two entities. For example, creator(Linux, Linus Torvalds).
+
+\item \textbf{c)Mention}
+ A piece of text which expresses a relation. For example, the sentence ``Linus Torvalds is the creator of Linux.''
+
+\item \textbf{d)Match}
+A mention expressing a relation $R$ is called a match for $R$. The criteria for deciding whether the mention $m$ is a match or not 
+can vary. Presence of both the entities is a however a mandatory condition.
+
+\item \textbf{e)Extraction}
+A 3-tuple $R(A, B)$ where $A$ and $B$ are entities related via $R$.
+\end{itemize}
 
 \section{Problem}
+Train extractors that can harness the Web for numerical relations, where relations are 3-tuples linking an entity
+to a number. For example,
+    \begin{itemize}
+	\item  (India, \textbf{economy}, 1.842 trillion USD)
+	\item  (China, \textbf{internet users},  590.56 million)
+	\item  (USA, \textbf{land area}, 2,959,054 square mile)
+    \end{itemize}
+\end{itemize}
 
-The next few sections lay the foundation for discussion of our solution.
-  
 \section{Snowballing}
 Let us motivate the idea by considering the following related problem:
 
@@ -186,8 +251,9 @@ will be mentioned in the sentences that may have nothing to do with the fact tha
 In such cases, it can be argued that the training data generated will be extremely noisy and will lead to poor extraction 
 performance. Riedel et. al relax the distant supervision assumption.
 
-\section{MultiR}
-For our experiments
+\subsection{MultiR}
+Some of the entity pairs can occur in multiple relationships. For example, 
+
 \section{Numerical Relations}
 Numerical relations are much like the usual entity-entity relations, just more problematic.
 What we call a \emph{numerical relation} will usually be called an attribute colloquially. 
@@ -402,37 +468,33 @@ The following figure shows dependency graph for ``The estimated 2014 population 
 Intuitively, it makes sense that the entities which are related will have some dependence on each other in the sentence 
 expressing the relation.
 
-\subsection{Extraction Algorithm}
-\begin{algorithm}
- \KwData{Corpus C, KW(r) : Set of keywords for the relation r, Modifiers : A set of modifying words}
- \KwResult{A set of extractions of the form r(C, N) where C and N are a country and number respectively related via a relation r}
- Break C into a set of sentences, S\;
- \For{each sentence s in S}{
-  let E = all entity pairs in s\;
-  \For{each country-number pair ($C$, $N$) in E}{
-      extract P, the dependency path between $C$ and $N$ \
-      \For{relation r}{
-	keywordCondition = $\exists$ keyword kw $\in$ KW(r) such that kw appears in P \
-	modifierCondition = $\exists$ modifying word mw $\in$ Modifiers such that mw appears in P \;
-	\If{keywordCondition $\and$ !modifierCondition} {\
-	  print r(C, N)
-	}
-      } 
-  }
-}
-
-\caption{Rule Based Relation Extraction}
-\end{algorithm}
 
 \subsection{Example}
-Consider the Sentence ``Germany's population was counted to be 80,219,695 on May 9, 2011, making it the 16th most populous country in the world.''
-The dependency parse graph for this sentence is as shown in [\ref{fig:2}]
+Consider the sentence:
+``The estimated population for 2014 of the Australian continent	is about 36.25 million people''
+and the Country-Number pair (Australian, 36.25)
+The dependency graph of the sentence is as shown in figure [\ref{pos}].
 \begin{figure}[h]
  \centering
- \includegraphics[bb=0 0 1245 177,scale=0.3]{./dep4.png}
- % dep2.png: 1245x177 pixel, 72dpi, 43.92x6.24 cm, bb=0 0 1245 177
- \label{fig:2}
+ \includegraphics[bb=0 0 1292 228,scale=0.3]{./dep_pos.png}
+ \label{pos}
+ % dep_pos.png: 1292x228 pixel, 72dpi, 45.57x8.04 cm, bb=0 0 1292 228
 \end{figure}
+The path between Australia and 36.25 has ``people'', so this will be an extraction.
+
+If we modify the sentence to:
+``The estimated population for 2014 of the Australian continent	increased by about 3.25 million people''
+
+The path will additionally have a modifier, ``increased'', and thus there won't be any extraction.
+\begin{figure}[h]
+ \centering
+ \includegraphics[bb=0 0 1292 228,scale=0.3]{./dep_neg.png}
+ % dep_pos.png: 1292x228 pixel, 72dpi, 45.57x8.04 cm, bb=0 0 1292 228
+ \label{neg}
+\end{figure}
+
+
+
 
 \subsection{Results}
 \subsubsection{Precision and Recall}
@@ -451,7 +513,7 @@ Not Extracted & 7 & N/A \\
   \item Recall: 69.6\%
  \end{itemize}
 
-The precision will increase further on applying unit based pruning.
+The precision should increase further on applying unit based pruning.
 
 \subsubsection{Example Extractions}
 \begin{tabular}{|l|} 

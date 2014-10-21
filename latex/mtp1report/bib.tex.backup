@@ -1,0 +1,17 @@
+\begin{thebibliography}{9}
+ \bibitem{A} \label{snowball}
+ http://dl.acm.org/citation.cfm?id=336644Agichtein, Eugene, and Luis Gravano. "Snowball: Extracting relations from large plain-text collections." Proceedings of the fifth ACM conference on Digital libraries. ACM, 2000.
+ 
+ \bibitem{B} \label{mintz}
+Mintz, Mike, et al. "Distant supervision for relation extraction without labeled data." Proceedings of the Joint Conference of the 47th Annual Meeting of the ACL and the 4th International Joint Conference on Natural Language Processing of the AFNLP: Volume 2-Volume 2. Association for Computational Linguistics, 2009.
+ 
+ \bibitem{C} \label{shortestpathdep}
+ Bunescu, Razvan C., and Raymond J. Mooney. "A shortest path dependency kernel for relation extraction." Proceedings of the conference on Human Language Technology and Empirical Methods in Natural Language Processing. Association for Computational Linguistics, 2005.
+ 
+\bibitem{D} \label{corenlp}
+\url{http://nlp.stanford.edu/software/corenlp.shtml}
+ 
+ \bibitem{E} \label{5000rel}
+ Hoffmann, Raphael, Congle Zhang, and Daniel S. Weld. "Learning 5000 relational extractors." Proceedings of the 48th Annual Meeting of the Association for Computational Linguistics. Association for Computational Linguistics, 2010.
+
+\end{thebibliography}
