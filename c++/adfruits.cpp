@@ -5,61 +5,65 @@ using namespace std;
 
 int dp[MAX][MAX];
 char path[MAX][MAX];
-string lcs(string a, string b) {
-    int al = a.length() - 1;
-    int bl = b.length() - 1;
-
-    for(int i = 0; i <= al; i++) {
-        dp[i][0] = 0;
-    }
-    for(int i = 0; i <= bl; i++) {
-        dp[0][i] = 0;
-    }
-    for(int i = 1; i <= al; i++) {
-        for(int j = 1; j <= bl; j++) {
-            if(a[i] == b[j]) {
-                dp[i][j] = dp[i - 1][j - 1] + 1;
-                path[i][j] = 'd';
-            } else if(dp[i - 1][j] > dp[i][j - 1]) {
-                dp[i][j] = dp[i - 1][j];
-                path[i][j] = 'u';
-            } else {
-                dp[i][j] = dp[i][j - 1];
-                path[i][j] = 'l';
-            }
+string a, b;
+int al, bl;
+int findname(int i, int j) {
+    //printf("findname(%d, %d)\n", i, j);
+    if(dp[i][j] != -1) return dp[i][j];
+    if(a[i] == b[j]) {
+        path[i][j] = 'x';
+        return dp[i][j] = 1 + findname(i + 1, j + 1);
+    } else if(i >= al) {
+        return dp[i][j] = bl - j;
+    } else if(j >= bl) {
+        return dp[i][j] = al - i;
+    } else {
+        int r1 = findname(i + 1, j);
+        int r2 = findname(i, j + 1);
+        if(r1 < r2) { //take r1, go down
+            path[i][j] = 'd';
+        } else {
+            path[i][j] = 'r';
         }
+        return dp[i][j] = 1 + min(r1, r2);
     }
-    int i = al, j = bl;
-    string res;
-    while(i > 0 && j > 0) {
-        if(path[i][j] == 'u') {
-            i--;
+}
+
+string getval() {
+    string res = "";
+    int i = 0, j = 0;
+    while(i < al && j < bl) {
+        if(path[i][j] == 'r') {
+            res += b[j];
+            j++;
         } else if(path[i][j] == 'd') {
             res += a[i];
-            i--; j--;
-        } else {
-            j--;
+            i++;
+        } else if(path[i][j] == 'x') {
+            res += a[i];
+            i++; j++;
         }
     }
-    reverse(res.begin(), res.end());
+    if(i < al) {
+        res += a.substr(i, al);
+    } 
+    if(j < bl) {
+        res += b.substr(j, bl);
+    }
     return res;
 }
 
 
 int main() {
-    char a[200], b[200];
-    while(scanf("%s%s", a + 1, b + 1) != EOF) {
-        string a_str(a + 1);
-        string b_str(b + 1);
-        string lcs_str = lcs(" "+ a_str, " " + b_str);
-        string ans1 = b_left + a_str + b_right;
-        string ans2 = a_left + b_str + a_right;
-        cout
-        if(ans1.length() <= ans2.length()) {
-            cout << ans1 << "\n";
-        } else {
-            cout << ans2 << "\n";
-        }
+    char astr[200], bstr[200];
+    while(scanf("%s%s", astr, bstr) != EOF) {
+        a = string(astr);
+        b = string(bstr);
+        al = a.length();
+        bl = b.length();
+        memset(dp, -1, sizeof(dp));
+        findname(0, 0);
+        cout << getval() << "\n";
     }
     return 0;
 }

@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-#define MAX 350000
+#define MAX 450000
 ll dp[100];
 vector< int > primes;
 
@@ -25,8 +25,6 @@ int getprimebefore(int x) {
     }
     return left;
 }
-
-
 
 
 int main() {
@@ -70,9 +68,8 @@ int main() {
         //cout << "res : " << res << "\n";
         if(res != 0) res++;
         if(prime[dp[n]]) res++;
+        if(dp[n] == 3) res++;
         cout << res << "\n";
     }
     return 0;
 }
-
-
