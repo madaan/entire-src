@@ -3,6 +3,7 @@
 \usepackage[]{algorithm2e}
 \usepackage{pdfpages}
 \usepackage{url}
+\usepackage[backend=bibtex]{biblatex}
 \usepackage{float}
 %opening
 \usepackage{listings}
@@ -10,6 +11,7 @@
 
 
 \title{Distant Supervision for Numerical Relation Extraction} % Your article title
+
 
 \begin{document}
 
@@ -43,7 +45,9 @@
   \end{titlepage}
 \newpage
 \maketitle
+
 \tableofcontents
+\newpage
 \begin{abstract}
 The task of numerical relation extraction poses new, hitherto untackled challenges. The bewildering amount of false positives, units, 
 modifiers, time varying relations are just some of the issues that are non existent for standard relation extraction, but become 
@@ -52,20 +56,24 @@ crucial when numbers are involved.
 We discuss molding distant supervision for numerical relation extraction. The standard one-to-one mapping using numbers as the second entity 
 fails. Adding units help in improving the training data to a certain extent. The third heuristic, keyword based pruning further improves 
 precision in the matches.
-The analysis of the results from the three heuristics lead to a basic rule based extractor, which performs better than any of the heuristics.
+Analysis of the results from the three heuristics lead to a basic rule based extractor, which performs better than any of the heuristics.
+
 
 \end{abstract}
 
+\newpage
 \section{Introduction}
 Massive knowledge bases containing the entire information of the web in a neat, ready to process, structured form continue to be a part of an IR researcher's reverie.
 
-
-This is not unexpected; such knowledge bases have potential of revolutionizing the way in which information is searched by users on the web, or exchanged by machines among
+This is not unexpected; such knowledge bases have potential of revolutionizing the way in which information is searched by users on the web or exchanged by machines among
 themselves. 
 Clearly, any progress towards a solution will have to deal with intricacies of how facts are expressed in the natural language.
-It turns out, that such intricacies are too many to exhaust. Years of research has went into the aforementioned goal, and still
+It turns out that such intricacies are too many to exhaust. Years of research has went into the aforementioned goal, and still
 there are plenty of loose screws. This report discusses one of them, numerical relation extraction.
 
+We start with the problem definition, followed by an explanation of Distant supervision. We then present a summary of some of the
+key works. Subsequently, we discuss casting standard distant supervision for numerical relation extraction and the improvements achieved using
+Units and keywords. Finally, we discuss a simple rule-based relation extractor.
 
 
 \subsection{Terminology}
@@ -73,7 +81,7 @@ there are plenty of loose screws. This report discusses one of them, numerical r
 \begin{itemize}
 
 \item \textbf{a)Entity}
-An entity is something that exists in itself, actually or hypothetically. [\ref{wikientity}
+An entity is something that exists in itself, actually or hypothetically. [\ref{wikientity}]
 
 \item \textbf{b)Relation}
 A relation specifies a concept which binds two entities. For example, creator(Linux, Linus Torvalds).
@@ -695,7 +703,7 @@ Extracted & 16 & 17 \\
 \hline
 Not Extracted & 7 & N/A \\
 \hline
-\end{tabular}
+end{tabular}
  \begin{itemize}
   \item Precision: 48.4\%
   \item Recall: 69.6\%
@@ -721,7 +729,11 @@ POP( Russia, 1), POP( Russia, 2014), POP( Russia, 143,800,000) \\
 \hline
 \end{tabular}
 
-\input{bib}
-
+\section{Conclusion}
+Though numerical relation extraction has been Numerical relation extraction 
+%\input{bib}
+%\bibliographystyle{plane}
+%\bibliography{ref}
 \includepdf[pages={1}]{dsreadings.pdf}
+
 \end{document}
