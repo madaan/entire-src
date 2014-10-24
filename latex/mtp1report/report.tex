@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[]{algorithm2e}
 \usepackage{pdfpages}
+\usepackage{enumitem}
 \usepackage{url}
 \usepackage{biblatex}
 \bibliography{ref}
@@ -63,7 +64,7 @@ Analysis of the results from the three heuristics lead to a basic rule based ext
 
 \newpage
 \section{Introduction}
-Massive knowledge bases containing the entire information of the web in a neat, ready to process, structured form continue to be a part of an IR researcher's reverie.
+Massive knowledge bases containing information encompassed by the Web in a neat, ready to process, structured form continue to be a part of an IR researcher's reverie.
 
 This is not unexpected; such knowledge bases have potential of revolutionizing the way in which information is searched by users on the web or exchanged by machines among
 themselves. 
@@ -81,7 +82,7 @@ Units and keywords. Finally, we discuss a simple rule-based relation extractor.
 \begin{itemize}
 
 \item \textbf{a)Entity}
-An entity is something that exists in itself, actually or hypothetically. \cite{wikientity}
+An entity is something that exists in itself, actually or hypothetically. \footnote{from \url{http://en.wikipedia.org/wiki/Entity}}
 
 \item \textbf{b)Relation}
 A relation specifies a concept which binds two entities. For example, creator(Linux, Linus Torvalds).
@@ -120,26 +121,30 @@ beings form sentences in general.
 \textbf{express a relation} between the entity-pair.}
 
 Command line ninjas will quickly think of the following solution:\\
-grep -i 'entity1' sentences$\vert$ grep -i 'entity2'
+grep -i ``entity1'' sentences$\vert$ grep -i ``entity2''
 
 The intuition behind this perhaps the most obvious solution is that \emph{a sentence
 that houses both the entities can be expected to express a relation between them}.
-A quick web search with the query ``entity1'' and ``entity2'' will show that this 
-intuition is not out of the blue.
+A quick web search with the query \emph{``entity1'' and ``entity2''} will show that this 
+intuition has some weight.
 
 \item \emph{Find what makes these sentences special} \\
 Sentence structure depends on the relation being expressed.
-In verbose, if two sentences express the same relation, there will be (okay, there can be expected to be)
- \emph{features} that are similar in both of them. These include POS tags, words around the entities,
+In verbose, if two sentences express the same relation, we can expect presence of some 
+ \emph{features} that are similar in both of them. These include POS tags, words around the entities and
 dependency path between the entities to name a few.
 
 \end{itemize}
 Putting together the intuitions above, we can solve the problem as follows:
-Collect all the sentences which have SpaceX and Elon Musk in them, extract features 
-from these sentences. Favor those features which repeat.
-Now use this set of features to extract similar pairs from other sentences.
+\begin{enumerate}
+ \item Collect all the sentences which have SpaceX and Elon Musk in them, extract features 
+from these sentences, favor\footnote{By giving them more weight, pruning features that are rare etc.} those features which repeat.
+\item Now use this set of features to extract similar pairs from other sentences.
 A fancier solution would be to reuse the extractions to learn more features, and continuing the process 
 till the point of diminishing returns.
+\end{enumerate}
+
+
 
 This seemingly shaky method actually works \cite{snowball} and is popular by the name of snowballing.
 
@@ -150,9 +155,9 @@ If the idea of Snowball looks convincing, Distant supervision should follow natu
 Earlier, we considered only one relation for one entity pair. Scale the amount of both of these up
 and we have distant supervision.
 The basic setup is as follows:
-\begin{itemize}
+\begin{enumerate}[label=(\alph*)]
 
-\item \textbf{a) KB:} A knowledge base consisting of facts. The facts are 3-tuples; the entities and the corresponding relation.
+\item \textbf{ KB:} A knowledge base consisting of facts. The facts are 3-tuples; the entities and the corresponding relation.
 For example:
 \begin{center}
 
@@ -170,11 +175,12 @@ Alon Musk & SpaceX & Founder Of\\
 
 has 4 different facts
 
-\item \textbf{b) Corpus}
+\item \textbf{Corpus}
 The repository of text where we expect to find the sentences that express facts that we know.
 We need another repository, called the test set, where we will run our extractor to obtain new facts.
 These two can be the same.
-\end{itemize}
+\end{enumerate}
+
 
 \subsection{Distant Supervision Assumption}
 Every sentence that has an entity pair ($e_1$, $e_2$) expresses the relation which exists between ($e_1$, $e_2$).
@@ -200,7 +206,7 @@ We next need to align our knowledge base with the corpus. This process is also c
 
 
 \subsection{Training}
-Recall that obtaining the sentences which express a relation gives us training data, which 
+Recall that obtaining the sentences that express a relation gives us training data, which 
 we want to use to learn relation extractors, our goal.
 There are several ways to achieve this, starting from the naive ways of training sentence 
 level classifier extending to fancier graphical model based learning.
@@ -210,7 +216,7 @@ Recent work has shifted towards modeling extraction using graphical models.
 \section{Survey}
 
 The first distant supervision paper came out in 1999 \cite{craven}. The process has remained more or less the same since the first paper, with 
-different works stemming out of either relaxations of different assumptions made by \cite{craven} or by using a smarter matching algorithm.
+works stemming out of either relaxations of different assumptions made by \cite{craven} or by using a smarter matching algorithm \cite{soderlandtype}.
 
 \subsection{Constructing Biological Knowledge Bases by Extracting Information from Text Sources, Craven and Kumlien 1999, \cite{craven}}
 This was the first work to use distant supervision for creating a repository of biological facts. 
@@ -260,7 +266,7 @@ will be mentioned in the sentences that may have nothing to do with the fact tha
 In such cases, it can be argued that the training data generated will be extremely noisy and will lead to poor extraction 
 performance. Riedel et. al relax the distant supervision assumption.
 
-\subsection{MultiR}\cite{multir}
+\subsection{MultiR \cite{multir}}
 Some of the entity pairs can occur in multiple relationships. For example, an athlete usually \emph{plays for} the 
 country they are \emph{born in}. The \emph{CEO of} a company also \emph{works for} it. The techniques discussed till now are 
 focused on extracting only one of the relations for an entity pair. MultiR relaxes one relation per entity-pair assumption. 
@@ -297,15 +303,22 @@ As shown in the figure, the factor takes a value of 1 only if the corpus level b
 at least one of the sentences also expresses it.
 \end{itemize}
   
-  
-\section{Numerical Relations}
-Numerical relations are much like the usual entity-entity relations, just more problematic.
-What we call a \emph{numerical relation} will usually be called an attribute colloquially. 
-For example, Camel and 215cm are related via the relation ``Average Height''.
+\subsection{Other Works}
+As mentioned, many possibilities in the distant supervision framework have already been explored.
+Zhour et. al \cite{zhou2012multi} present an alternative model, MIML, that relaxes both distant supervision 
+and one relation per entity pair assumption (steve jobs was both CEO and founder of Apple) much like MultiR. The trianing in MIML is logistic regression
+based but is quite time consuming. MultiR employs a perceptron style training algorithm and thus runs much faster.
+Min et. al \cite{min2013distant} argue that since the knowledge bases are incomplete, the extent of false negatives is quite large. 
+Koch et. al \cite{soderlandtype} add type awareness and coreference resolution during matching and extraction.
+Takamatsu et. al \cite{takamatsu2012reducing} try to improve quality of training data by learning patterns which cannot possibly express a relation.
 
 \section{Numerical Relation extraction using MultiR}
+Numerical relations are much like the usual entity-entity relations, just more problematic.
+What we call a \emph{numerical relation} will colloquially be called an attribute. 
+For example, Camel and 215cm are related via the relation ``Average Height''.
+
 The problem of numerical relation extraction can be easily cast into the distant supervision framework.
-Recall from section \cite{ds} that we need a corpus and a knowledge base to generate the training data for distant supervision.
+Recall from section \ref{ds} that we need a corpus and a knowledge base to generate the training data for distant supervision.
 We also need to fix on the set of relations that will be targeted. 
 
 \subsection{Relations}
@@ -340,7 +353,7 @@ and to have some diversity in units.
 \subsection{Knowledge base}
 Our knowledge base was derived from \url{data.worldbank.org}.
 It has 4371979 numerical facts about 249 countries ranging over 1281 different attributes. 
-Table \cite{fig:kb} shows a sample.
+Table \ref{fig:kb} shows a sample.
 
 \begin{table}[H]
 \centering
@@ -367,7 +380,7 @@ Country id & Number & Relation \\
 
 \section{L'homme propose, et Dieu dispose}
 Our life would have been simpler if MultiR would do the desired; extract the numerical relations from the corpus provided
-information about some of the numerical relations. However, as table \cite{vanillatable} shows, the quality of training data
+information about some of the numerical relations. However, as table \ref{vanillatable} shows, the quality of training data
 is so poor that not much can be expected from the extractor obtained.
 
 \begin{center}
@@ -397,8 +410,7 @@ Total Population&0&0&0&0\\
 \end{table}
 \end{center}
 
-The model not doing well may mean several things. Low quality training data being one of the primary reasons.
-Indeed, it turned out that vanilla distant supervision leads to an \textbf{unprecedented} amount of false positives, which are the root cause
+It turns out that vanilla distant supervision leads to an \textbf{unprecedented} amount of false positives, which are the root cause
 of everything that went wrong in the distant supervision pipeline.
 
 \subsection{Numbers and False positives}
@@ -467,7 +479,7 @@ positives has also drastically decreased. Units have been particularly helpful i
 called “match mines”, sentences which have lots of country names and numbers, like score tallies.
 
 \subsection{Results}
-As table \cite{fig:resunits} shows, units help, but not as much as we would have expected.
+As table \ref{fig:resunits} shows, units help, but not as much as we would have expected.
 \begin{center}
 \begin{table}[H]
  \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
@@ -506,43 +518,34 @@ The analysis indicates that we might need some relation specific heuristics.
 \section{Numbers are weak entities: a case for keywords}
 
 \subsection{Motivation}
-Matches from unit extraction showed that in some cases, the sentence that supposedly labeled as a
+Matches from unit extraction showed that in some cases, the sentence is labeled as a
 match for a particular relation has no mention of the relation itself at all.
 For example, consider:
-“In eurozone powerhouse Germany, industrial orders jumped 3.2 percent in June, official data
-showed Thursday, with foreign demand behind a sharp rebound following a surprise drop in May.”
-In this sentence, (Germany, 3.2) was considered as a match pair for the relation Internet user
-percent. Clearly, it has nothing to do with it.
+\emph{“In eurozone powerhouse Germany, industrial orders jumped 3.2 percent in June, official data
+showed Thursday, with foreign demand behind a sharp rebound following a surprise drop in May.”}
+In this sentence, (Germany, 3.2) was considered as a match pair for the relation \emph{Internet user
+percent}. Clearly, it has nothing to do with it.
 
 \subsection{Numerical Relations are Explicit}
 A key observation that can be made by going through the sentences that express numerical relations
 is that one cannot be too poetic while forming a sentence that is supposed to state a numerical fact.
 This is in stark contrast with sentences expressing relations between entity pairs, wherein the
 underlying relation might be implicit. If we want to state GDP of a country in a sentence, there is no
-escape from the words like “GPD” or “gross domestic product” and the likes * .
+escape from the words like “GPD” or “gross domestic product” and the likes \footnote{There can be a few exceptions for unit-less quantities like ``Dell, 49, lives with his family''}.
 
-Compare this with a sentence that must relate Microsoft and Bill Gates. A few ways of stating that
-Microsoft was founded by Bill Gates can be enumerated as follows:
-\begin{itemize}
-\item Bill Gates is the founder of Microsoft
-\item Bill Gates founded Microsoft
-\item Bill Gates is the father of Microsoft
-\item Bill Gates laid the foundation stone of Microsoft
-\item Bill Gates started Microsoft
-\end{itemize}
-
-If this is indeed true, imposing an additional constraint of keyword being present in a sentence in
+If this is indeed true, imposing an additional constraint of a keyword being present in a sentence in
 addition to the fact being present can help in cutting down the number of false positives. We note
 that such a pruning is possible only in case of numerical relations. As mentioned earlier, for real
 world entity pairs, co-incidental matches will be rarer and a constraint on the relation word being
 present will be too restrictive.
+
 \subsection{Approach}
 Let $M_r$ be the set of matches obtained by standard unit + distance based matching for a relation r.
 We prune $M_r$ by picking only sentences which contain one of the words in the set keywords(r).
-The sets keywords(r) are manually crafted and are listed in table \cite{fig:kw}.
+The sets keywords(r) are manually crafted and are listed in table \ref{fig:kw}.
 
 \begin{center}
-\begin{table}
+\begin{table}[H]
  \begin{tabular}{|l|l|}
 \hline \\
  Relation Keywords & (case insensitive)\\
@@ -596,7 +599,6 @@ GDP(\$)&0&0&0&0\\
 
 \section{A summary of the three heuristics}
 
-Before discussing the results, let us summarize the heuristics:
 \begin{itemize}
 \item \textbf{a) Vanilla:} A sentence having a country-number pair $c-n$ is called a match for a relation $R$ if $R(c,n)$ is a fact in the KB.
 \item \textbf{b) Unit Based:} Feed the corpus to a unit extractor, extract normalized numbers along with units. During matching, both the normalized value of a number
@@ -714,6 +716,7 @@ Not Extracted & 7 & N/A \\
 The precision should increase further on applying unit based pruning.
 
 \subsubsection{Example Extractions}
+\resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally 
 \begin{tabular}{|l|} 
 \hline
 Sentence $\rightarrow$ Extraction \\
@@ -729,10 +732,13 @@ India is the world's second-most populous country.\\\ $\rightarrow$ POP( India, 
 According to an official estimate for 1 June 2014, the population of Russia is 143,800,000.\\ $\rightarrow$
 POP( Russia, 1), POP( Russia, 2014), POP( Russia, 143,800,000) \\
 \hline
-\end{tabular}
+\end{tabular}}
 
 \section{Conclusion}
-Though numerical relation extraction has been Numerical relation extraction 
+Existing techniques for relation extraction cannot be directly applied in the case of numerical relations.
+Numbers are not really entities, and thus standard techniques will invite a large amount of false positives in the 
+distant supervision data.
+
 %\input{bib}
 
 \includepdf[pages={1}]{dsreadings.pdf}

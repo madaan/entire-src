@@ -19,6 +19,10 @@
 
 \refsection{0}
   \sortlist{entry}{nty}
+    \entry{wikientity}{misc}{}
+      \field{sortinit}{0}
+      \field{howpublished}{\url{http://en.wikipedia.org/wiki/Entity}}
+    \endentry
     \entry{snowball}{inproceedings}{}
       \name{labelname}{2}{}{%
         {{hash=fe8015d14586e9b47ee6a9b45faf20ab}{Agichtein}{A\bibinitperiod}{Eugene}{E\bibinitperiod}{}{}{}{}}%
@@ -74,23 +78,6 @@
       \field{year}{1999}
       \field{pages}{77\bibrangedash 86}
     \endentry
-    \entry{de2008stanford}{article}{}
-      \name{labelname}{2}{}{%
-        {{hash=13e662301b8832e09ea5cb0cbe4b7daf}{De\bibnamedelima Marneffe}{D\bibinitperiod\bibinitdelim M\bibinitperiod}{Marie-Catherine}{M\bibinithyphendelim C\bibinitperiod}{}{}{}{}}%
-        {{hash=1261894eaefc186bfeabf336e05e6294}{Manning}{M\bibinitperiod}{Christopher\bibnamedelima D}{C\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
-      }
-      \name{author}{2}{}{%
-        {{hash=13e662301b8832e09ea5cb0cbe4b7daf}{De\bibnamedelima Marneffe}{D\bibinitperiod\bibinitdelim M\bibinitperiod}{Marie-Catherine}{M\bibinithyphendelim C\bibinitperiod}{}{}{}{}}%
-        {{hash=1261894eaefc186bfeabf336e05e6294}{Manning}{M\bibinitperiod}{Christopher\bibnamedelima D}{C\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{19cafd5d29e2bbd7ec16b26ac5ece9a4}
-      \strng{fullhash}{19cafd5d29e2bbd7ec16b26ac5ece9a4}
-      \field{sortinit}{D}
-      \field{labeltitle}{Stanford typed dependencies manual}
-      \field{journaltitle}{URL http://nlp. stanford. edu/software/dependencies manual. pdf}
-      \field{title}{Stanford typed dependencies manual}
-      \field{year}{2008}
-    \endentry
     \entry{rel}{inproceedings}{}
       \name{labelname}{3}{}{%
         {{hash=bcb7b3885f48c629c43ddba45c694352}{Hoffmann}{H\bibinitperiod}{Raphael}{R\bibinitperiod}{}{}{}{}}%
@@ -141,30 +128,6 @@
       \field{year}{2011}
       \field{pages}{541\bibrangedash 550}
     \endentry
-    \entry{min2013distant}{inproceedings}{}
-      \name{labelname}{5}{}{%
-        {{hash=053ae51ebf315fd5998c29dac42f4fbf}{Min}{M\bibinitperiod}{Bonan}{B\bibinitperiod}{}{}{}{}}%
-        {{hash=3d96e426faa039bfa33eb6e4c54e8a77}{Grishman}{G\bibinitperiod}{Ralph}{R\bibinitperiod}{}{}{}{}}%
-        {{hash=11602738f8bd9aee99f686724984e0ec}{Wan}{W\bibinitperiod}{Li}{L\bibinitperiod}{}{}{}{}}%
-        {{hash=e4add3f3691a649446d7968a3e28df8a}{Wang}{W\bibinitperiod}{Chang}{C\bibinitperiod}{}{}{}{}}%
-        {{hash=64b699922f463b26e04be983ad356ca5}{Gondek}{G\bibinitperiod}{David}{D\bibinitperiod}{}{}{}{}}%
-      }
-      \name{author}{5}{}{%
-        {{hash=053ae51ebf315fd5998c29dac42f4fbf}{Min}{M\bibinitperiod}{Bonan}{B\bibinitperiod}{}{}{}{}}%
-        {{hash=3d96e426faa039bfa33eb6e4c54e8a77}{Grishman}{G\bibinitperiod}{Ralph}{R\bibinitperiod}{}{}{}{}}%
-        {{hash=11602738f8bd9aee99f686724984e0ec}{Wan}{W\bibinitperiod}{Li}{L\bibinitperiod}{}{}{}{}}%
-        {{hash=e4add3f3691a649446d7968a3e28df8a}{Wang}{W\bibinitperiod}{Chang}{C\bibinitperiod}{}{}{}{}}%
-        {{hash=64b699922f463b26e04be983ad356ca5}{Gondek}{G\bibinitperiod}{David}{D\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{2061711787301a184442b1a0ea8ee42b}
-      \strng{fullhash}{850f164b032f76ce8a82440a7387d6a5}
-      \field{sortinit}{M}
-      \field{labeltitle}{Distant Supervision for Relation Extraction with an Incomplete Knowledge Base.}
-      \field{booktitle}{HLT-NAACL}
-      \field{title}{Distant Supervision for Relation Extraction with an Incomplete Knowledge Base.}
-      \field{year}{2013}
-      \field{pages}{777\bibrangedash 782}
-    \endentry
     \entry{mintz}{inproceedings}{}
       \name{labelname}{4}{}{%
         {{hash=9ecafcb60615f4524d6d5c28243c4d4b}{Mintz}{M\bibinitperiod}{Mike}{M\bibinitperiod}{}{}{}{}}%
@@ -213,76 +176,16 @@
       \field{year}{2010}
       \field{pages}{148\bibrangedash 163}
     \endentry
-    \entry{soderlandtype}{inproceedings}{}
-      \name{labelname}{2}{}{%
-        {{hash=3479d34070076b9b10118c33affd3ac8}{Soderland}{S\bibinitperiod}{Mitchell\bibnamedelimb Koch\bibnamedelimb John\bibnamedelimb Gilmer\bibnamedelima Stephen}{M\bibinitperiod\bibinitdelim K\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim G\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
-        {{hash=b9f6872e03583fdce8c4ad29f6ca48bb}{Weld}{W\bibinitperiod}{Daniel\bibnamedelima S}{D\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
-      }
-      \name{author}{2}{}{%
-        {{hash=3479d34070076b9b10118c33affd3ac8}{Soderland}{S\bibinitperiod}{Mitchell\bibnamedelimb Koch\bibnamedelimb John\bibnamedelimb Gilmer\bibnamedelima Stephen}{M\bibinitperiod\bibinitdelim K\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim G\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
-        {{hash=b9f6872e03583fdce8c4ad29f6ca48bb}{Weld}{W\bibinitperiod}{Daniel\bibnamedelima S}{D\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{759690279a0d6be8ecb725643f0f33d1}
-      \strng{fullhash}{759690279a0d6be8ecb725643f0f33d1}
-      \field{sortinit}{S}
-      \field{labeltitle}{Type-Aware Distantly Supervised Relation Extraction with Linked Arguments}
-      \field{booktitle}{Proceedings of EMNLP 2014}
-      \field{title}{Type-Aware Distantly Supervised Relation Extraction with Linked Arguments}
-    \endentry
-    \entry{takamatsu2012reducing}{inproceedings}{}
-      \name{labelname}{3}{}{%
-        {{hash=a4301d0a162fd0f9c145119a8a9282d3}{Takamatsu}{T\bibinitperiod}{Shingo}{S\bibinitperiod}{}{}{}{}}%
-        {{hash=d5d66641cb883e9b05e0afd9c628daab}{Sato}{S\bibinitperiod}{Issei}{I\bibinitperiod}{}{}{}{}}%
-        {{hash=b01f940f61aac34396c315ca8697b84a}{Nakagawa}{N\bibinitperiod}{Hiroshi}{H\bibinitperiod}{}{}{}{}}%
-      }
-      \name{author}{3}{}{%
-        {{hash=a4301d0a162fd0f9c145119a8a9282d3}{Takamatsu}{T\bibinitperiod}{Shingo}{S\bibinitperiod}{}{}{}{}}%
-        {{hash=d5d66641cb883e9b05e0afd9c628daab}{Sato}{S\bibinitperiod}{Issei}{I\bibinitperiod}{}{}{}{}}%
-        {{hash=b01f940f61aac34396c315ca8697b84a}{Nakagawa}{N\bibinitperiod}{Hiroshi}{H\bibinitperiod}{}{}{}{}}%
-      }
-      \list{organization}{1}{%
-        {Association for Computational Linguistics}%
-      }
-      \strng{namehash}{65f9bc75dfe2a762e5acfe631dc0e9e6}
-      \strng{fullhash}{65f9bc75dfe2a762e5acfe631dc0e9e6}
-      \field{sortinit}{T}
-      \field{labeltitle}{Reducing wrong labels in distant supervision for relation extraction}
-      \field{booktitle}{Proceedings of the 50th Annual Meeting of the Association for Computational Linguistics: Long Papers-Volume 1}
-      \field{title}{Reducing wrong labels in distant supervision for relation extraction}
-      \field{year}{2012}
-      \field{pages}{721\bibrangedash 729}
-    \endentry
-    \entry{zhou2012multi}{article}{}
-      \name{labelname}{4}{}{%
-        {{hash=6b1a37e820a730061851a81dcca2d154}{Zhou}{Z\bibinitperiod}{Zhi-Hua}{Z\bibinithyphendelim H\bibinitperiod}{}{}{}{}}%
-        {{hash=acd98f83dff73c7fb671bbcb6f325ece}{Zhang}{Z\bibinitperiod}{Min-Ling}{M\bibinithyphendelim L\bibinitperiod}{}{}{}{}}%
-        {{hash=ee7b4e508fece52e9f8d79800d8615dd}{Huang}{H\bibinitperiod}{Sheng-Jun}{S\bibinithyphendelim J\bibinitperiod}{}{}{}{}}%
-        {{hash=ed0e3919148dee1412bd829c9a8a18a1}{Li}{L\bibinitperiod}{Yu-Feng}{Y\bibinithyphendelim F\bibinitperiod}{}{}{}{}}%
-      }
-      \name{author}{4}{}{%
-        {{hash=6b1a37e820a730061851a81dcca2d154}{Zhou}{Z\bibinitperiod}{Zhi-Hua}{Z\bibinithyphendelim H\bibinitperiod}{}{}{}{}}%
-        {{hash=acd98f83dff73c7fb671bbcb6f325ece}{Zhang}{Z\bibinitperiod}{Min-Ling}{M\bibinithyphendelim L\bibinitperiod}{}{}{}{}}%
-        {{hash=ee7b4e508fece52e9f8d79800d8615dd}{Huang}{H\bibinitperiod}{Sheng-Jun}{S\bibinithyphendelim J\bibinitperiod}{}{}{}{}}%
-        {{hash=ed0e3919148dee1412bd829c9a8a18a1}{Li}{L\bibinitperiod}{Yu-Feng}{Y\bibinithyphendelim F\bibinitperiod}{}{}{}{}}%
-      }
-      \list{publisher}{1}{%
-        {Elsevier}%
-      }
-      \strng{namehash}{f983d63cead37fbb928f76b24578d29b}
-      \strng{fullhash}{e5e208b7a99c5217900d5312e302e5a7}
-      \field{sortinit}{Z}
-      \field{labeltitle}{Multi-instance multi-label learning}
-      \field{journaltitle}{Artificial Intelligence}
-      \field{number}{1}
-      \field{title}{Multi-instance multi-label learning}
-      \field{volume}{176}
-      \field{year}{2012}
-      \field{pages}{2291\bibrangedash 2320}
-    \endentry
   \endsortlist
-  \missing{hoffmann2011knowledge}
+  \missing{fig:kb}
+  \missing{fig:resunits}
   \missing{pos}
+  \missing{fig:multir}
+  \missing{ds}
+  \missing{fig:kw}
   \missing{fig:1}
+  \missing{vanillatable}
+  \missing{hoffmann2011knowledge}
 \endrefsection
 \endinput
 
