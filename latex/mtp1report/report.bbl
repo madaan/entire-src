@@ -16,37 +16,5 @@
   {}
 \endgroup
 
-
-\refsection{0}
-  \sortlist{entry}{nty}
-    \entry{hoffmann2011knowledge}{inproceedings}{}
-      \name{labelname}{5}{}{%
-        {{hash=bcb7b3885f48c629c43ddba45c694352}{Hoffmann}{H\bibinitperiod}{Raphael}{R\bibinitperiod}{}{}{}{}}%
-        {{hash=ac447dd75e71729237a1aceb9ad8516e}{Zhang}{Z\bibinitperiod}{Congle}{C\bibinitperiod}{}{}{}{}}%
-        {{hash=3e545c74af921165ef29497e8dbd1112}{Ling}{L\bibinitperiod}{Xiao}{X\bibinitperiod}{}{}{}{}}%
-        {{hash=1dbd3a5b42828fb2cebd7786488ba425}{Zettlemoyer}{Z\bibinitperiod}{Luke}{L\bibinitperiod}{}{}{}{}}%
-        {{hash=b9f6872e03583fdce8c4ad29f6ca48bb}{Weld}{W\bibinitperiod}{Daniel\bibnamedelima S}{D\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
-      }
-      \name{author}{5}{}{%
-        {{hash=bcb7b3885f48c629c43ddba45c694352}{Hoffmann}{H\bibinitperiod}{Raphael}{R\bibinitperiod}{}{}{}{}}%
-        {{hash=ac447dd75e71729237a1aceb9ad8516e}{Zhang}{Z\bibinitperiod}{Congle}{C\bibinitperiod}{}{}{}{}}%
-        {{hash=3e545c74af921165ef29497e8dbd1112}{Ling}{L\bibinitperiod}{Xiao}{X\bibinitperiod}{}{}{}{}}%
-        {{hash=1dbd3a5b42828fb2cebd7786488ba425}{Zettlemoyer}{Z\bibinitperiod}{Luke}{L\bibinitperiod}{}{}{}{}}%
-        {{hash=b9f6872e03583fdce8c4ad29f6ca48bb}{Weld}{W\bibinitperiod}{Daniel\bibnamedelima S}{D\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
-      }
-      \list{organization}{1}{%
-        {Association for Computational Linguistics}%
-      }
-      \strng{namehash}{4f32a4d733c8eb8ecc9a587a2bd8721b}
-      \strng{fullhash}{6019caf6b9e2cf8e7c861b88d2490fa3}
-      \field{sortinit}{H}
-      \field{labeltitle}{Knowledge-based weak supervision for information extraction of overlapping relations}
-      \field{booktitle}{Proceedings of the 49th Annual Meeting of the Association for Computational Linguistics: Human Language Technologies-Volume 1}
-      \field{title}{Knowledge-based weak supervision for information extraction of overlapping relations}
-      \field{year}{2011}
-      \field{pages}{541\bibrangedash 550}
-    \endentry
-  \endsortlist
-\endrefsection
 \endinput
 
