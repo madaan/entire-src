@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.5.17)  24 OCT 2014 01:42
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.5.17)  24 OCT 2014 10:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -383,9 +383,14 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 (/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.sty
 Package: biblatex 2013/11/25 v2.8a programmable bibliographies (PK/JW/AB)
 
-(/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex1.sty
-Package: biblatex1 2013/11/25 v2.8a programmable bibliographies (bibtex) (PK/JW
-/AB)
+
+Package biblatex Warning: No "backend" specified, using Biber backend.
+(biblatex)                To use BibTeX, load biblatex with 
+(biblatex)                the "backend=bibtex" option.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex2.sty
+Package: biblatex2 2013/11/25 v2.8a programmable bibliographies (biber) (PK/JW/
+AB)
 
 (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2011/01/03 v2.1 e-TeX tools for LaTeX
@@ -396,6 +401,24 @@ Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
 )
 \etb@tempcnta=\count97
 )
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
 (/usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
 \lrq@indent=\count98
@@ -423,21 +446,24 @@ File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 \c@uniquename=\count116
 \c@refsection=\count117
 \c@refsegment=\count118
-\c@maxextrayear=\count119
-\c@maxextraalpha=\count120
-\c@abbrvpenalty=\count121
-\c@highnamepenalty=\count122
-\c@lownamepenalty=\count123
-\c@maxparens=\count124
-\c@parenlevel=\count125
-\blx@tempcnta=\count126
-\blx@tempcntb=\count127
-\blx@tempcntc=\count128
-\blx@maxsection=\count129
-\blx@maxsegment=\count130
-\blx@notetype=\count131
-\blx@parenlevel@text=\count132
-\blx@parenlevel@foot=\count133
+\c@maxextratitle=\count119
+\c@maxextratitleyear=\count120
+\c@maxextrayear=\count121
+\c@maxextraalpha=\count122
+\c@abbrvpenalty=\count123
+\c@highnamepenalty=\count124
+\c@lownamepenalty=\count125
+\c@maxparens=\count126
+\c@parenlevel=\count127
+\blx@tempcnta=\count128
+\blx@tempcntb=\count129
+\blx@tempcntc=\count130
+\blx@maxsection=\count131
+\blx@maxsegment@0=\count132
+\blx@notetype=\count133
+\blx@parenlevel@text=\count134
+\blx@parenlevel@foot=\count135
+\blx@sectionciteorder@0=\count136
 \labelnumberwidth=\skip62
 \labelalphawidth=\skip63
 \shorthandwidth=\skip64
@@ -447,77 +473,83 @@ File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 \bibinitsep=\skip68
 \bibparsep=\skip69
 \bibhang=\skip70
-\blx@auxin=\read1
-\blx@auxout=\write3
-\c@mincomprange=\count134
-\c@maxcomprange=\count135
-\c@mincompwidth=\count136
-\c@labelname=\count137
-\c@savedlabelname=\count138
-\c@author=\count139
-\c@savedauthor=\count140
-\c@shortauthor=\count141
-\c@savedshortauthor=\count142
-\c@editor=\count143
-\c@savededitor=\count144
-\c@editora=\count145
-\c@savededitora=\count146
-\c@editorb=\count147
-\c@savededitorb=\count148
-\c@editorc=\count149
-\c@savededitorc=\count150
-\c@shorteditor=\count151
-\c@savedshorteditor=\count152
-\c@bookauthor=\count153
-\c@savedbookauthor=\count154
-\c@translator=\count155
-\c@savedtranslator=\count156
-\c@annotator=\count157
-\c@savedannotator=\count158
-\c@commentator=\count159
-\c@savedcommentator=\count160
-\c@introduction=\count161
-\c@savedintroduction=\count162
-\c@foreword=\count163
-\c@savedforeword=\count164
-\c@afterword=\count165
-\c@savedafterword=\count166
-\c@holder=\count167
-\c@savedholder=\count168
-\c@namea=\count169
-\c@savednamea=\count170
-\c@nameb=\count171
-\c@savednameb=\count172
-\c@namec=\count173
-\c@savednamec=\count174
-\c@institution=\count175
-\c@savedinstitution=\count176
-\c@language=\count177
-\c@savedlanguage=\count178
-\c@location=\count179
-\c@savedlocation=\count180
-\c@organization=\count181
-\c@savedorganization=\count182
-\c@origlocation=\count183
-\c@savedoriglocation=\count184
-\c@origpublisher=\count185
-\c@savedorigpublisher=\count186
-\c@pageref=\count187
-\c@savedpageref=\count188
-\c@publisher=\count189
-\c@savedpublisher=\count190
-\c@lista=\count191
-\c@savedlista=\count192
-\c@listb=\count193
-\c@savedlistb=\count194
-\c@listc=\count195
-\c@savedlistc=\count196
-\c@listd=\count197
-\c@savedlistd=\count198
-\c@liste=\count199
-\c@savedliste=\count200
-\c@listf=\count201
-\c@savedlistf=\count202
+\blx@bcfin=\read1
+\blx@bcfout=\write3
+\c@mincomprange=\count137
+\c@maxcomprange=\count138
+\c@mincompwidth=\count139
+Package biblatex Info: Trying to load biblatex default data model...
+Package biblatex Info: ... file 'blx-dm.def' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/blx-dm.def)
+Package biblatex Info: Trying to load biblatex custom data model...
+Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
+\c@afterword=\count140
+\c@savedafterword=\count141
+\c@annotator=\count142
+\c@savedannotator=\count143
+\c@author=\count144
+\c@savedauthor=\count145
+\c@bookauthor=\count146
+\c@savedbookauthor=\count147
+\c@commentator=\count148
+\c@savedcommentator=\count149
+\c@editor=\count150
+\c@savededitor=\count151
+\c@editora=\count152
+\c@savededitora=\count153
+\c@editorb=\count154
+\c@savededitorb=\count155
+\c@editorc=\count156
+\c@savededitorc=\count157
+\c@foreword=\count158
+\c@savedforeword=\count159
+\c@holder=\count160
+\c@savedholder=\count161
+\c@introduction=\count162
+\c@savedintroduction=\count163
+\c@namea=\count164
+\c@savednamea=\count165
+\c@nameb=\count166
+\c@savednameb=\count167
+\c@namec=\count168
+\c@savednamec=\count169
+\c@shortauthor=\count170
+\c@savedshortauthor=\count171
+\c@shorteditor=\count172
+\c@savedshorteditor=\count173
+\c@translator=\count174
+\c@savedtranslator=\count175
+\c@labelname=\count176
+\c@savedlabelname=\count177
+\c@institution=\count178
+\c@savedinstitution=\count179
+\c@lista=\count180
+\c@savedlista=\count181
+\c@listb=\count182
+\c@savedlistb=\count183
+\c@listc=\count184
+\c@savedlistc=\count185
+\c@listd=\count186
+\c@savedlistd=\count187
+\c@liste=\count188
+\c@savedliste=\count189
+\c@listf=\count190
+\c@savedlistf=\count191
+\c@location=\count192
+\c@savedlocation=\count193
+\c@organization=\count194
+\c@savedorganization=\count195
+\c@origlocation=\count196
+\c@savedoriglocation=\count197
+\c@origpublisher=\count198
+\c@savedorigpublisher=\count199
+\c@publisher=\count200
+\c@savedpublisher=\count201
+\c@language=\count202
+\c@savedlanguage=\count203
+\c@pageref=\count204
+\c@savedpageref=\count205
 Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
 
@@ -529,13 +561,13 @@ Package biblatex Info: ... file 'biblatex.def' found.
 
 (/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.def
 File: biblatex.def 
-\c@textcitecount=\count203
-\c@textcitetotal=\count204
-\c@textcitemaxnames=\count205
-\c@biburlnumpenalty=\count206
-\c@biburlucpenalty=\count207
-\c@biburllcpenalty=\count208
-\c@smartand=\count209
+\c@textcitecount=\count206
+\c@textcitetotal=\count207
+\c@textcitemaxnames=\count208
+\c@biburlnumpenalty=\count209
+\c@biburlucpenalty=\count210
+\c@biburllcpenalty=\count211
+\c@smartand=\count212
 )
 Package biblatex Info: Trying to load bibliography style 'numeric'...
 Package biblatex Info: ... file 'numeric.bbx' found.
@@ -547,8 +579,8 @@ Package biblatex Info: ... file 'standard.bbx' found.
 
 (/usr/share/texlive/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
 File: standard.bbx 2013/11/25 v2.8a biblatex bibliography style (PK/JW/AB)
-\c@bbx:relatedcount=\count210
-\c@bbx:relatedtotal=\count211
+\c@bbx:relatedcount=\count213
+\c@bbx:relatedtotal=\count214
 ))
 Package biblatex Info: Trying to load citation style 'numeric'...
 Package biblatex Info: ... file 'numeric.cbx' found.
@@ -575,30 +607,30 @@ File: biblatex.cfg
 )))
 (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count212
+\c@float@type=\count215
 \float@exts=\toks18
 \float@box=\box36
 \@float@everytoks=\toks19
 \@floatcapt=\box37
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count213
+\lst@mode=\count216
 \lst@gtempboxa=\box38
 \lst@token=\toks20
-\lst@length=\count214
+\lst@length=\count217
 \lst@currlwidth=\dimen113
-\lst@column=\count215
-\lst@pos=\count216
+\lst@column=\count218
+\lst@pos=\count219
 \lst@lostspace=\dimen114
 \lst@width=\dimen115
-\lst@newlines=\count217
-\lst@lineno=\count218
+\lst@newlines=\count220
+\lst@lineno=\count221
 \lst@maxwidth=\dimen116
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
-\c@lstnumber=\count219
-\lst@skipnumbers=\count220
+\c@lstnumber=\count222
+\lst@skipnumbers=\count223
 \lst@framebox=\box39
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
@@ -618,10 +650,10 @@ Package biblatex Info: ... file 'english.lbx' found.
 (/usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/english.lbx
 File: english.lbx 2013/11/25 v2.8a biblatex localization (PK/JW/AB)
 )
-\@quotelevel=\count221
-\@quotereset=\count222
+\@quotelevel=\count224
+\@quotereset=\count225
 
-No file report.aux.
+(./report.aux)
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
@@ -637,26 +669,21 @@ LaTeX Font Info:    ... okay on input line 16.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
 \AtBeginShipoutBox=\box40
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+ (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count223
+\scratchcounter=\count226
 \scratchdimen=\dimen117
 \scratchbox=\box41
-\nofMPsegments=\count224
-\nofMParguments=\count225
+\nofMPsegments=\count227
+\nofMParguments=\count228
 \everyMPshowfont=\toks21
-\MPscratchCnt=\count226
+\MPscratchCnt=\count229
 \MPscratchDim=\dimen118
-\MPnumerator=\count227
-\makeMPintoPDFobject=\count228
+\MPnumerator=\count230
+\makeMPintoPDFobject=\count231
 \everyMPtoPDFconversion=\toks22
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
-)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
@@ -672,19 +699,6 @@ Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
 Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
 Package grfext Info: Graphics extension search list:
 (grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
@@ -697,19 +711,16 @@ e
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
-
-
-Package biblatex Warning: Data encoding is 'utf8'.
-(biblatex)                Use backend=biber.
-
-\openout3 = `report-blx.bib'.
+\openout3 = `report.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'report.bbl' not found.
-No file report.bbl.
+Package biblatex Info: ... file 'report.bbl' found.
+
+(./report.bbl)
 Package biblatex Info: Reference section=0 on input line 16.
 Package biblatex Info: Reference segment=0 on input line 16.
-\c@lstlisting=\count229
+\c@lstlisting=\count232
+
 
 Package pdftex.def Warning: Option `bb' does not make sense,
 (pdftex.def)                using `viewport' instead on input line 36.
@@ -732,114 +743,90 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 LaTeX Warning: No \author given.
 
-No file report.toc.
+(./report.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 5.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 5.
+ [1])
 \tf@toc=\write4
 \openout4 = `report.toc'.
 
-[1] [2]
+ [2] [3]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 83.
- (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 83.
 
 
-LaTeX Warning: Reference `wikientity' on page 3 undefined on input line 84.
-
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 93.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 93.
-[3]
-
-LaTeX Warning: Reference `snowball' on page 4 undefined on input line 144.
+LaTeX Warning: Reference `wikientity' on page 4 undefined on input line 84.
 
 [4]
 
-LaTeX Warning: Reference `craven' on page 5 undefined on input line 212.
-
-
-LaTeX Warning: Reference `craven' on page 5 undefined on input line 213.
+LaTeX Warning: Reference `snowball' on page 5 undefined on input line 144.
 
 [5]
 
-LaTeX Warning: Reference `rel' on page 6 undefined on input line 247.
+LaTeX Warning: Reference `craven' on page 6 undefined on input line 212.
 
 
-LaTeX Warning: Reference `riedel' on page 6 undefined on input line 254.
+LaTeX Warning: Reference `craven' on page 6 undefined on input line 213.
+
+[6]
+
+LaTeX Warning: Reference `rel' on page 7 undefined on input line 247.
 
 
-LaTeX Warning: Reference `multir' on page 6 undefined on input line 263.
+LaTeX Warning: Reference `riedel' on page 7 undefined on input line 254.
 
 
-LaTeX Warning: Reference `fig:multir' on page 6 undefined on input line 268.
+LaTeX Warning: Reference `multir' on page 7 undefined on input line 263.
 
 
-LaTeX Warning: Reference `multir' on page 6 undefined on input line 268.
+LaTeX Warning: Reference `multir' on page 7 undefined on input line 268.
 
 
 Package pdftex.def Warning: Option `bb' does not make sense,
 (pdftex.def)                using `viewport' instead on input line 271.
 
-<./multirmode1.pdf, id=35, 722.7pt x 542.025pt>
+<./multirmode1.pdf, id=39, 722.7pt x 542.025pt>
 File: ./multirmode1.pdf Graphic file (type pdf)
  <use ./multirmode1.pdf>
 Package pdftex.def Info: ./multirmode1.pdf used on input line 271.
 (pdftex.def)             Requested size: 325.21278pt x 243.90959pt.
 
-[6]
+[7]
 
-LaTeX Warning: Reference `mintz' on page 7 undefined on input line 293.
+LaTeX Warning: Reference `mintz' on page 8 undefined on input line 293.
 
-[7 <./multirmode1.pdf>]
-
-LaTeX Warning: Reference `ds' on page 8 undefined on input line 308.
-
-
-LaTeX Warning: Reference `fig:kb' on page 8 undefined on input line 343.
-
-[8]
-
-LaTeX Warning: Reference `vanillatable' on page 9 undefined on input line 370.
-
-[9]
+[8 <./multirmode1.pdf>] [9] [10]
 Overfull \hbox (36.77098pt too wide) in paragraph at lines 463--468
 []\OT1/cmr/m/it/10 sentence id [TAB] Num-ber, unit, startOff-set, end-Off-set;N
 umber2,unit,startOff,endOff
  []
 
-[10]
-
-LaTeX Warning: Reference `fig:resunits' on page 11 undefined on input line 470.
-
-
-[11]
-
-LaTeX Warning: Reference `fig:kw' on page 12 undefined on input line 542.
-
-[12]
+[11] [12] [13]
 
 Package pdftex.def Warning: Option `bb' does not make sense,
 (pdftex.def)                using `viewport' instead on input line 609.
 
-<./results.png, id=201, 1306.8825pt x 913.4125pt>
+<./results.png, id=204, 1306.8825pt x 913.4125pt>
 File: ./results.png Graphic file (type png)
  <use ./results.png>
 Package pdftex.def Info: ./results.png used on input line 609.
 (pdftex.def)             Requested size: 341.275pt x 250.9375pt.
- [13]
+ [14]
 
-LaTeX Warning: Reference `corenlp' on page 14 undefined on input line 644.
-
-
-LaTeX Warning: Reference `fig:1' on page 14 undefined on input line 645.
+LaTeX Warning: Reference `corenlp' on page 15 undefined on input line 644.
 
 
 Package pdftex.def Warning: Option `bb' does not make sense,
 (pdftex.def)                using `viewport' instead on input line 648.
 
-<./dep.png, id=205, 993.7125pt x 149.55875pt>
+<./dep.png, id=208, 993.7125pt x 149.55875pt>
 File: ./dep.png Graphic file (type png)
  <use ./dep.png>
 Package pdftex.def Info: ./dep.png used on input line 648.
@@ -849,15 +836,12 @@ Overfull \hbox (52.47893pt too wide) in paragraph at lines 648--650
  [][] 
  []
 
-[14 <./results.png>]
-
-LaTeX Warning: Reference `pos' on page 15 undefined on input line 672.
-
+[15 <./results.png>]
 
 Package pdftex.def Warning: Option `bb' does not make sense,
 (pdftex.def)                using `viewport' instead on input line 675.
 
-<./dep_pos.png, id=209, 1296.845pt x 228.855pt>
+<./dep_pos.png, id=212, 1296.845pt x 228.855pt>
 File: ./dep_pos.png Graphic file (type png)
  <use ./dep_pos.png>
 Package pdftex.def Info: ./dep_pos.png used on input line 675.
@@ -871,7 +855,7 @@ Overfull \hbox (44.05745pt too wide) in paragraph at lines 675--678
 Package pdftex.def Warning: Option `bb' does not make sense,
 (pdftex.def)                using `viewport' instead on input line 687.
 
-<./dep_neg.png, id=211, 1284.8pt x 219.82124pt>
+<./dep_neg.png, id=214, 1284.8pt x 219.82124pt>
 File: ./dep_neg.png Graphic file (type png)
  <use ./dep_neg.png>
 Package pdftex.def Info: ./dep_neg.png used on input line 687.
@@ -881,155 +865,83 @@ Overfull \hbox (44.05745pt too wide) in paragraph at lines 687--690
  [][] 
  []
 
-[15 <./dep.png (PNG copy)> <./dep_pos.png>]
+[16 <./dep.png (PNG copy)> <./dep_pos.png>]
+Overfull \hbox (78.83412pt too wide) in paragraph at lines 715--731
+[] 
+ []
 
-! LaTeX Error: Something's wrong--perhaps a missing \item.
+<dsreadings.pdf, id=219, 1289.81876pt x 2389.92876pt>
+File: dsreadings.pdf Graphic file (type pdf)
+ <use dsreadings.pdf>
+Package pdftex.def Info: dsreadings.pdf used on input line 736.
+(pdftex.def)             Requested size: 1289.81561pt x 2389.92296pt.
+File: dsreadings.pdf Graphic file (type pdf)
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.708   \item P
-               recision: 48.4\%
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+<use dsreadings.pdf>
+Package pdftex.def Info: dsreadings.pdf used on input line 736.
+(pdftex.def)             Requested size: 1289.81561pt x 2389.92296pt.
+ [17 <./dep_neg.png>]
+<dsreadings.pdf, id=226, page=1, 1289.81876pt x 2389.92876pt>
+File: dsreadings.pdf Graphic file (type pdf)
 
+<use dsreadings.pdf, page 1>
+Package pdftex.def Info: dsreadings.pdf, page1 used on input line 736.
+(pdftex.def)             Requested size: 1289.81561pt x 2389.92296pt.
+File: dsreadings.pdf Graphic file (type pdf)
+ <use dsreadings.pdf, page 1>
+Package pdftex.def Info: dsreadings.pdf, page1 used on input line 736.
+(pdftex.def)             Requested size: 456.22581pt x 845.34918pt.
+File: dsreadings.pdf Graphic file (type pdf)
 
-! LaTeX Error: Something's wrong--perhaps a missing \item.
+<use dsreadings.pdf, page 1>
+Package pdftex.def Info: dsreadings.pdf, page1 used on input line 736.
+(pdftex.def)             Requested size: 456.22581pt x 845.34918pt.
+File: dsreadings.pdf Graphic file (type pdf)
+ <use dsreadings.pdf, page 1>
+Package pdftex.def Info: dsreadings.pdf, page1 used on input line 736.
+(pdftex.def)             Requested size: 456.22581pt x 845.34918pt.
+File: dsreadings.pdf Graphic file (type pdf)
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.708   \item P
-               recision: 48.4\%
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+<use dsreadings.pdf, page 1>
+Package pdftex.def Info: dsreadings.pdf, page1 used on input line 736.
+(pdftex.def)             Requested size: 456.22581pt x 845.34918pt.
+ [18 <./dsreadings.pdf, page is rotated 90 degrees>] [19] (./report.aux)
 
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.708   \item P
-               recision: 48.4\%
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.709   \item R
-               ecall: 69.6\%
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+LaTeX Warning: There were undefined references.
 
 
-! LaTeX Error: Something's wrong--perhaps a missing \item.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.709   \item R
-               ecall: 69.6\%
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+Package logreq Info: Writing requests to 'report.run.xml'.
+\openout1 = `report.run.xml'.
 
+ ) 
+Here is how much of TeX's memory you used:
+ 10986 strings out of 493304
+ 171999 string characters out of 6139871
+ 600075 words of memory out of 5000000
+ 14303 multiletter control sequences out of 15000+600000
+ 9977 words of font info for 35 fonts, out of 8000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 44i,18n,48p,816b,932s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on report.pdf (20 pages, 1327073 bytes).
+PDF statistics:
+ 283 PDF objects out of 1000 (max. 8388607)
+ 168 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
 
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.709   \item R
-               ecall: 69.6\%
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.710  \end{itemize}
-                    
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.710  \end{itemize}
-                    
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.710  \end{itemize}
-                    
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.714 \subsubsection
-                    {Example Extractions}
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.714 \subsubsection
-                    {Example Extractions}
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.714 \subsubsection{Example Extractions}
-                                         
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.714 \subsubsection{Example Extractions}
-                                         
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With lu

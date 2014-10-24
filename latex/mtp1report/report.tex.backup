@@ -3,13 +3,14 @@
 \usepackage[]{algorithm2e}
 \usepackage{pdfpages}
 \usepackage{url}
+\usepackage[backend=bibtex]{biblatex}
 \usepackage{float}
 %opening
 \usepackage{listings}
 \usepackage{titling} % Allows custom title configuration
 
-
 \title{Distant Supervision for Numerical Relation Extraction} % Your article title
+
 
 \begin{document}
 
@@ -63,12 +64,15 @@ Analysis of the results from the three heuristics lead to a basic rule based ext
 \section{Introduction}
 Massive knowledge bases containing the entire information of the web in a neat, ready to process, structured form continue to be a part of an IR researcher's reverie.
 
-This is not unexpected; such knowledge bases have potential of revolutionizing the way in which information is searched by users on the web, or exchanged by machines among
+This is not unexpected; such knowledge bases have potential of revolutionizing the way in which information is searched by users on the web or exchanged by machines among
 themselves. 
 Clearly, any progress towards a solution will have to deal with intricacies of how facts are expressed in the natural language.
-It turns out, that such intricacies are too many to exhaust. Years of research has went into the aforementioned goal, and still
+It turns out that such intricacies are too many to exhaust. Years of research has went into the aforementioned goal, and still
 there are plenty of loose screws. This report discusses one of them, numerical relation extraction.
-We start with problem definition, followed by an explanation of Distant supervision. 
+
+We start with the problem definition, followed by an explanation of Distant supervision. We then present a summary of some of the
+key works. Subsequently, we discuss casting standard distant supervision for numerical relation extraction and the improvements achieved using
+Units and keywords. Finally, we discuss a simple rule-based relation extractor.
 
 
 \subsection{Terminology}
@@ -76,7 +80,7 @@ We start with problem definition, followed by an explanation of Distant supervis
 \begin{itemize}
 
 \item \textbf{a)Entity}
-An entity is something that exists in itself, actually or hypothetically. [\ref{wikientity}
+An entity is something that exists in itself, actually or hypothetically. [\ref{wikientity}]
 
 \item \textbf{b)Relation}
 A relation specifies a concept which binds two entities. For example, creator(Linux, Linus Torvalds).
@@ -724,8 +728,12 @@ POP( Russia, 1), POP( Russia, 2014), POP( Russia, 143,800,000) \\
 \hline
 \end{tabular}
 
+\section{Conclusion}
+Though numerical relation extraction has been Numerical relation extraction 
 %\input{bib}
-%\bibliographystyle{plane}
-%\bibliography{ref}
+
 \includepdf[pages={1}]{dsreadings.pdf}
+
+%\bibliographystyle{plain}
+\addbibresource{ref.bib}
 \end{document}

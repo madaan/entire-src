@@ -3,12 +3,12 @@
 \usepackage[]{algorithm2e}
 \usepackage{pdfpages}
 \usepackage{url}
-\usepackage[backend=bibtex]{biblatex}
+\usepackage{biblatex}
+\bibliography{./ref}
 \usepackage{float}
 %opening
 \usepackage{listings}
 \usepackage{titling} % Allows custom title configuration
-
 
 \title{Distant Supervision for Numerical Relation Extraction} % Your article title
 
@@ -703,7 +703,7 @@ Extracted & 16 & 17 \\
 \hline
 Not Extracted & 7 & N/A \\
 \hline
-end{tabular}
+\end{tabular}
  \begin{itemize}
   \item Precision: 48.4\%
   \item Recall: 69.6\%
@@ -719,7 +719,7 @@ Sentence $\rightarrow$ Extraction \\
 At 3.71 million square miles (9.62 million km2) and with around 318 million people,\\ 
 the US is the world's 3rd or 4th-largest country by total area and third-largest by population. \\$\rightarrow$ POP( US, 318) \\
 \hline
-The land area of the contiguous US is 2,959,064 square miles (7,663,941 km2)\\ $\rightarrow$  AGL( US, 2,959,064), AGL( US, 7,663,941) \\
+The land area \cite{hoffmann2011knowledge} of the contiguous US is 2,959,064 square miles (7,663,941 km2)\\ $\rightarrow$  AGL( US, 2,959,064), AGL( US, 7,663,941) \\
 \hline
 With 1,210,193,422 residents reported in the 2011 provisional census,\\ 
 India is the world's second-most populous country.\\\ $\rightarrow$ POP( India, 1,028,737,436)\\ 
@@ -732,8 +732,9 @@ POP( Russia, 1), POP( Russia, 2014), POP( Russia, 143,800,000) \\
 \section{Conclusion}
 Though numerical relation extraction has been Numerical relation extraction 
 %\input{bib}
-%\bibliographystyle{plane}
-%\bibliography{ref}
+
 \includepdf[pages={1}]{dsreadings.pdf}
 
+
+\printbibliography[title=References]
 \end{document}
