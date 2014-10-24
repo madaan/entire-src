@@ -20,13 +20,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5}Survey}{6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}Constructing Biological Knowledge Bases by Extracting Information from Text Sources, Craven and Kumlien 1999}{6}
+\contentsline {subsection}{\numberline {5.1}Constructing Biological Knowledge Bases by Extracting Information from Text Sources, Craven and Kumlien 1999, \cite {craven}}{6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}Distant Supervision for the Web, Mintz et. al 2009}{7}
+\contentsline {subsection}{\numberline {5.2}Distant Supervision for the Web, Mintz et. al 2009 \cite {mintz}}{7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.3}Learning 5000 relation extractors}{7}
+\contentsline {subsection}{\numberline {5.3}Learning 5000 relation extractors \cite {rel}}{7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4}Riedel et. al}{7}
+\contentsline {subsection}{\numberline {5.4}Riedel et. al \cite {riedel}}{7}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {5.5}MultiR}{8}
 \defcounter {refsection}{0}\relax 

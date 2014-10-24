@@ -16,5 +16,192 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \sortlist{entry}{nty}
+    \entry{wikientity}{misc}{}
+      \field{sortinit}{0}
+      \field{howpublished}{\url{http://en.wikipedia.org/wiki/Entity}}
+    \endentry
+    \entry{snowball}{inproceedings}{}
+      \name{labelname}{2}{}{%
+        {{hash=fe8015d14586e9b47ee6a9b45faf20ab}{Agichtein}{A\bibinitperiod}{Eugene}{E\bibinitperiod}{}{}{}{}}%
+        {{hash=27302e481a0cabfe25c125d688df823a}{Gravano}{G\bibinitperiod}{Luis}{L\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{hash=fe8015d14586e9b47ee6a9b45faf20ab}{Agichtein}{A\bibinitperiod}{Eugene}{E\bibinitperiod}{}{}{}{}}%
+        {{hash=27302e481a0cabfe25c125d688df823a}{Gravano}{G\bibinitperiod}{Luis}{L\bibinitperiod}{}{}{}{}}%
+      }
+      \list{organization}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{f1e8f0f3599a4265aff0b0acc191d36e}
+      \strng{fullhash}{f1e8f0f3599a4265aff0b0acc191d36e}
+      \field{sortinit}{A}
+      \field{labeltitle}{Snowball: Extracting relations from large plain-text collections}
+      \field{booktitle}{Proceedings of the fifth ACM conference on Digital libraries}
+      \field{title}{Snowball: Extracting relations from large plain-text collections}
+      \field{year}{2000}
+      \field{pages}{85\bibrangedash 94}
+    \endentry
+    \entry{corenlp}{misc}{}
+      \name{labelname}{1}{}{%
+        {{hash=3d9a53840759b1a0702c0d86e344f3a5}{CoreNLP}{C\bibinitperiod}{Stanford}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=3d9a53840759b1a0702c0d86e344f3a5}{CoreNLP}{C\bibinitperiod}{Stanford}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{3d9a53840759b1a0702c0d86e344f3a5}
+      \strng{fullhash}{3d9a53840759b1a0702c0d86e344f3a5}
+      \field{sortinit}{C}
+      \field{labeltitle}{A Suite of Core NLP Tools}
+      \field{title}{A Suite of Core NLP Tools}
+    \endentry
+    \entry{craven}{inproceedings}{}
+      \true{morelabelname}
+      \name{labelname}{2}{}{%
+        {{hash=fbd15001c622025be930c0fdabc0430d}{Craven}{C\bibinitperiod}{Mark}{M\bibinitperiod}{}{}{}{}}%
+        {{hash=bcacefeff0e0e3b0b4401b286983aac0}{Kumlien}{K\bibinitperiod}{Johan}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \true{moreauthor}
+      \name{author}{2}{}{%
+        {{hash=fbd15001c622025be930c0fdabc0430d}{Craven}{C\bibinitperiod}{Mark}{M\bibinitperiod}{}{}{}{}}%
+        {{hash=bcacefeff0e0e3b0b4401b286983aac0}{Kumlien}{K\bibinitperiod}{Johan}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{8d1105f319201faefd5755c4a0d1d36e}
+      \strng{fullhash}{31e497e3e08a7ed4b9551d1e24352f1d}
+      \field{sortinit}{C}
+      \field{labeltitle}{Constructing biological knowledge bases by extracting information from text sources.}
+      \field{booktitle}{ISMB}
+      \field{title}{Constructing biological knowledge bases by extracting information from text sources.}
+      \field{volume}{1999}
+      \field{year}{1999}
+      \field{pages}{77\bibrangedash 86}
+    \endentry
+    \entry{de2008stanford}{article}{}
+      \name{labelname}{2}{}{%
+        {{hash=13e662301b8832e09ea5cb0cbe4b7daf}{De\bibnamedelima Marneffe}{D\bibinitperiod\bibinitdelim M\bibinitperiod}{Marie-Catherine}{M\bibinithyphendelim C\bibinitperiod}{}{}{}{}}%
+        {{hash=1261894eaefc186bfeabf336e05e6294}{Manning}{M\bibinitperiod}{Christopher\bibnamedelima D}{C\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{hash=13e662301b8832e09ea5cb0cbe4b7daf}{De\bibnamedelima Marneffe}{D\bibinitperiod\bibinitdelim M\bibinitperiod}{Marie-Catherine}{M\bibinithyphendelim C\bibinitperiod}{}{}{}{}}%
+        {{hash=1261894eaefc186bfeabf336e05e6294}{Manning}{M\bibinitperiod}{Christopher\bibnamedelima D}{C\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{19cafd5d29e2bbd7ec16b26ac5ece9a4}
+      \strng{fullhash}{19cafd5d29e2bbd7ec16b26ac5ece9a4}
+      \field{sortinit}{D}
+      \field{labeltitle}{Stanford typed dependencies manual}
+      \field{journaltitle}{URL http://nlp. stanford. edu/software/dependencies manual. pdf}
+      \field{title}{Stanford typed dependencies manual}
+      \field{year}{2008}
+    \endentry
+    \entry{rel}{inproceedings}{}
+      \name{labelname}{3}{}{%
+        {{hash=bcb7b3885f48c629c43ddba45c694352}{Hoffmann}{H\bibinitperiod}{Raphael}{R\bibinitperiod}{}{}{}{}}%
+        {{hash=ac447dd75e71729237a1aceb9ad8516e}{Zhang}{Z\bibinitperiod}{Congle}{C\bibinitperiod}{}{}{}{}}%
+        {{hash=b9f6872e03583fdce8c4ad29f6ca48bb}{Weld}{W\bibinitperiod}{Daniel\bibnamedelima S}{D\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{3}{}{%
+        {{hash=bcb7b3885f48c629c43ddba45c694352}{Hoffmann}{H\bibinitperiod}{Raphael}{R\bibinitperiod}{}{}{}{}}%
+        {{hash=ac447dd75e71729237a1aceb9ad8516e}{Zhang}{Z\bibinitperiod}{Congle}{C\bibinitperiod}{}{}{}{}}%
+        {{hash=b9f6872e03583fdce8c4ad29f6ca48bb}{Weld}{W\bibinitperiod}{Daniel\bibnamedelima S}{D\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
+      }
+      \list{organization}{1}{%
+        {Association for Computational Linguistics}%
+      }
+      \strng{namehash}{f43c73437e601f58c1cbd0b95d0f169d}
+      \strng{fullhash}{f43c73437e601f58c1cbd0b95d0f169d}
+      \field{sortinit}{H}
+      \field{labeltitle}{Learning 5000 relational extractors}
+      \field{booktitle}{Proceedings of the 48th Annual Meeting of the Association for Computational Linguistics}
+      \field{title}{Learning 5000 relational extractors}
+      \field{year}{2010}
+      \field{pages}{286\bibrangedash 295}
+    \endentry
+    \entry{multir}{inproceedings}{}
+      \name{labelname}{5}{}{%
+        {{hash=bcb7b3885f48c629c43ddba45c694352}{Hoffmann}{H\bibinitperiod}{Raphael}{R\bibinitperiod}{}{}{}{}}%
+        {{hash=ac447dd75e71729237a1aceb9ad8516e}{Zhang}{Z\bibinitperiod}{Congle}{C\bibinitperiod}{}{}{}{}}%
+        {{hash=3e545c74af921165ef29497e8dbd1112}{Ling}{L\bibinitperiod}{Xiao}{X\bibinitperiod}{}{}{}{}}%
+        {{hash=1dbd3a5b42828fb2cebd7786488ba425}{Zettlemoyer}{Z\bibinitperiod}{Luke}{L\bibinitperiod}{}{}{}{}}%
+        {{hash=b9f6872e03583fdce8c4ad29f6ca48bb}{Weld}{W\bibinitperiod}{Daniel\bibnamedelima S}{D\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{5}{}{%
+        {{hash=bcb7b3885f48c629c43ddba45c694352}{Hoffmann}{H\bibinitperiod}{Raphael}{R\bibinitperiod}{}{}{}{}}%
+        {{hash=ac447dd75e71729237a1aceb9ad8516e}{Zhang}{Z\bibinitperiod}{Congle}{C\bibinitperiod}{}{}{}{}}%
+        {{hash=3e545c74af921165ef29497e8dbd1112}{Ling}{L\bibinitperiod}{Xiao}{X\bibinitperiod}{}{}{}{}}%
+        {{hash=1dbd3a5b42828fb2cebd7786488ba425}{Zettlemoyer}{Z\bibinitperiod}{Luke}{L\bibinitperiod}{}{}{}{}}%
+        {{hash=b9f6872e03583fdce8c4ad29f6ca48bb}{Weld}{W\bibinitperiod}{Daniel\bibnamedelima S}{D\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
+      }
+      \list{organization}{1}{%
+        {Association for Computational Linguistics}%
+      }
+      \strng{namehash}{4f32a4d733c8eb8ecc9a587a2bd8721b}
+      \strng{fullhash}{6019caf6b9e2cf8e7c861b88d2490fa3}
+      \field{sortinit}{H}
+      \field{labeltitle}{Knowledge-based weak supervision for information extraction of overlapping relations}
+      \field{booktitle}{Proceedings of the 49th Annual Meeting of the Association for Computational Linguistics: Human Language Technologies-Volume 1}
+      \field{title}{Knowledge-based weak supervision for information extraction of overlapping relations}
+      \field{year}{2011}
+      \field{pages}{541\bibrangedash 550}
+    \endentry
+    \entry{mintz}{inproceedings}{}
+      \name{labelname}{4}{}{%
+        {{hash=9ecafcb60615f4524d6d5c28243c4d4b}{Mintz}{M\bibinitperiod}{Mike}{M\bibinitperiod}{}{}{}{}}%
+        {{hash=e154ac06368e85193b3f4aa0d4104740}{Bills}{B\bibinitperiod}{Steven}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=ad87514c28800105e347eecd5770d77c}{Snow}{S\bibinitperiod}{Rion}{R\bibinitperiod}{}{}{}{}}%
+        {{hash=3147296c99a3f829087becd1a4eaec08}{Jurafsky}{J\bibinitperiod}{Dan}{D\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{4}{}{%
+        {{hash=9ecafcb60615f4524d6d5c28243c4d4b}{Mintz}{M\bibinitperiod}{Mike}{M\bibinitperiod}{}{}{}{}}%
+        {{hash=e154ac06368e85193b3f4aa0d4104740}{Bills}{B\bibinitperiod}{Steven}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=ad87514c28800105e347eecd5770d77c}{Snow}{S\bibinitperiod}{Rion}{R\bibinitperiod}{}{}{}{}}%
+        {{hash=3147296c99a3f829087becd1a4eaec08}{Jurafsky}{J\bibinitperiod}{Dan}{D\bibinitperiod}{}{}{}{}}%
+      }
+      \list{organization}{1}{%
+        {Association for Computational Linguistics}%
+      }
+      \strng{namehash}{2dedb9e93f5ffbd825aae8bec79a53b9}
+      \strng{fullhash}{b980cb63fbb3036fedb2d14b6cec441c}
+      \field{sortinit}{M}
+      \field{labeltitle}{Distant supervision for relation extraction without labeled data}
+      \field{booktitle}{Proceedings of the Joint Conference of the 47th Annual Meeting of the ACL and the 4th International Joint Conference on Natural Language Processing of the AFNLP: Volume 2-Volume 2}
+      \field{title}{Distant supervision for relation extraction without labeled data}
+      \field{year}{2009}
+      \field{pages}{1003\bibrangedash 1011}
+    \endentry
+    \entry{riedel}{incollection}{}
+      \name{labelname}{3}{}{%
+        {{hash=6cd024b217f3f2f8126e253b8c84d24d}{Riedel}{R\bibinitperiod}{Sebastian}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=707608a16ad5c73d19d8333ab6855d47}{Yao}{Y\bibinitperiod}{Limin}{L\bibinitperiod}{}{}{}{}}%
+        {{hash=17d73a3a5be48993791cbe4db8855331}{McCallum}{M\bibinitperiod}{Andrew}{A\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{3}{}{%
+        {{hash=6cd024b217f3f2f8126e253b8c84d24d}{Riedel}{R\bibinitperiod}{Sebastian}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=707608a16ad5c73d19d8333ab6855d47}{Yao}{Y\bibinitperiod}{Limin}{L\bibinitperiod}{}{}{}{}}%
+        {{hash=17d73a3a5be48993791cbe4db8855331}{McCallum}{M\bibinitperiod}{Andrew}{A\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{b0b555d27893dfd894e24e6affb113cc}
+      \strng{fullhash}{b0b555d27893dfd894e24e6affb113cc}
+      \field{sortinit}{R}
+      \field{labeltitle}{Modeling relations and their mentions without labeled text}
+      \field{booktitle}{Machine Learning and Knowledge Discovery in Databases}
+      \field{title}{Modeling relations and their mentions without labeled text}
+      \field{year}{2010}
+      \field{pages}{148\bibrangedash 163}
+    \endentry
+  \endsortlist
+  \missing{ds}
+  \missing{fig:1}
+  \missing{hoffmann2011knowledge}
+  \missing{fig:kb}
+  \missing{fig:kw}
+  \missing{fig:resunits}
+  \missing{vanillatable}
+  \missing{pos}
+\endrefsection
 \endinput
 

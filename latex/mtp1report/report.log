@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.7.17)  24 OCT 2014 11:15
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.5.17)  24 OCT 2014 11:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **report.tex
 (./report.tex
 LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 3 languages loaded.
+Babel <3.9h> and hyphenation patterns for 78 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
@@ -716,7 +716,64 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'report.bbl' found.
 
-(./report.bbl)
+(./report.bbl
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                ds
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                fig:1
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                hoffmann2011knowledge
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                fig:kb
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                fig:kw
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                fig:resunits
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                vanillatable
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                pos
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+)
 Package biblatex Info: Reference section=0 on input line 16.
 Package biblatex Info: Reference segment=0 on input line 16.
 \c@lstlisting=\count232
@@ -760,34 +817,7 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 83.
-
-
-LaTeX Warning: Reference `wikientity' on page 4 undefined on input line 84.
-
-[4]
-
-LaTeX Warning: Reference `snowball' on page 5 undefined on input line 144.
-
-[5]
-
-LaTeX Warning: Reference `craven' on page 6 undefined on input line 212.
-
-
-LaTeX Warning: Reference `craven' on page 6 undefined on input line 213.
-
-[6]
-
-LaTeX Warning: Reference `rel' on page 7 undefined on input line 247.
-
-
-LaTeX Warning: Reference `riedel' on page 7 undefined on input line 254.
-
-
-LaTeX Warning: Reference `multir' on page 7 undefined on input line 263.
-
-
-LaTeX Warning: Reference `multir' on page 7 undefined on input line 268.
-
+ [4] [5] [6]
 
 Package pdftex.def Warning: Option `bb' does not make sense,
 (pdftex.def)                using `viewport' instead on input line 271.
@@ -798,11 +828,7 @@ File: ./multirmode1.pdf Graphic file (type pdf)
 Package pdftex.def Info: ./multirmode1.pdf used on input line 271.
 (pdftex.def)             Requested size: 325.21278pt x 243.90959pt.
 
-[7]
-
-LaTeX Warning: Reference `mintz' on page 8 undefined on input line 293.
-
-[8 <./multirmode1.pdf>] [9] [10]
+[7] [8 <./multirmode1.pdf>] [9] [10]
 Overfull \hbox (36.77098pt too wide) in paragraph at lines 463--468
 []\OT1/cmr/m/it/10 sentence id [TAB] Num-ber, unit, startOff-set, end-Off-set;N
 umber2,unit,startOff,endOff
@@ -819,122 +845,103 @@ File: ./results.png Graphic file (type png)
 Package pdftex.def Info: ./results.png used on input line 609.
 (pdftex.def)             Requested size: 341.275pt x 250.9375pt.
  [14]
-
-LaTeX Warning: Reference `corenlp' on page 15 undefined on input line 644.
-
-
-Package pdftex.def Warning: Option `bb' does not make sense,
-(pdftex.def)                using `viewport' instead on input line 648.
-
-<./dep.png, id=208, 993.7125pt x 149.55875pt>
-File: ./dep.png Graphic file (type png)
- <use ./dep.png>
-Package pdftex.def Info: ./dep.png used on input line 648.
-(pdftex.def)             Requested size: 397.47893pt x 59.82257pt.
-
-Overfull \hbox (52.47893pt too wide) in paragraph at lines 648--650
- [][] 
- []
-
 [15 <./results.png>]
 
 Package pdftex.def Warning: Option `bb' does not make sense,
-(pdftex.def)                using `viewport' instead on input line 675.
+(pdftex.def)                using `viewport' instead on input line 650.
+
+<./dep.png, id=211, 993.7125pt x 149.55875pt>
+File: ./dep.png Graphic file (type png)
+ <use ./dep.png>
+Package pdftex.def Info: ./dep.png used on input line 650.
+(pdftex.def)             Requested size: 397.47893pt x 59.82257pt.
+
+Overfull \hbox (52.47893pt too wide) in paragraph at lines 650--652
+ [][] 
+ []
+
+
+Package pdftex.def Warning: Option `bb' does not make sense,
+(pdftex.def)                using `viewport' instead on input line 677.
 
 <./dep_pos.png, id=212, 1296.845pt x 228.855pt>
 File: ./dep_pos.png Graphic file (type png)
  <use ./dep_pos.png>
-Package pdftex.def Info: ./dep_pos.png used on input line 675.
+Package pdftex.def Info: ./dep_pos.png used on input line 677.
 (pdftex.def)             Requested size: 389.05745pt x 68.6572pt.
 
-Overfull \hbox (44.05745pt too wide) in paragraph at lines 675--678
- [][] 
- []
-
-
-Package pdftex.def Warning: Option `bb' does not make sense,
-(pdftex.def)                using `viewport' instead on input line 687.
-
-<./dep_neg.png, id=214, 1284.8pt x 219.82124pt>
-File: ./dep_neg.png Graphic file (type png)
- <use ./dep_neg.png>
-Package pdftex.def Info: ./dep_neg.png used on input line 687.
-(pdftex.def)             Requested size: 389.05745pt x 68.6572pt.
-
-Overfull \hbox (44.05745pt too wide) in paragraph at lines 687--690
+Overfull \hbox (44.05745pt too wide) in paragraph at lines 677--680
  [][] 
  []
 
 [16 <./dep.png (PNG copy)> <./dep_pos.png>]
 
-LaTeX Warning: Citation 'hoffmann2011knowledge' on page 17 undefined on input l
-ine 722.
+Package pdftex.def Warning: Option `bb' does not make sense,
+(pdftex.def)                using `viewport' instead on input line 689.
+
+<./dep_neg.png, id=218, 1284.8pt x 219.82124pt>
+File: ./dep_neg.png Graphic file (type png)
+ <use ./dep_neg.png>
+Package pdftex.def Info: ./dep_neg.png used on input line 689.
+(pdftex.def)             Requested size: 389.05745pt x 68.6572pt.
+
+Overfull \hbox (44.05745pt too wide) in paragraph at lines 689--692
+ [][] 
+ []
 
 
-Overfull \hbox (141.64587pt too wide) in paragraph at lines 715--731
+Overfull \hbox (141.64587pt too wide) in paragraph at lines 717--733
 [] 
  []
 
 <dsreadings.pdf, id=219, 1289.81876pt x 2389.92876pt>
 File: dsreadings.pdf Graphic file (type pdf)
  <use dsreadings.pdf>
-Package pdftex.def Info: dsreadings.pdf used on input line 736.
+Package pdftex.def Info: dsreadings.pdf used on input line 738.
 (pdftex.def)             Requested size: 1289.81561pt x 2389.92296pt.
 File: dsreadings.pdf Graphic file (type pdf)
 
 <use dsreadings.pdf>
-Package pdftex.def Info: dsreadings.pdf used on input line 736.
+Package pdftex.def Info: dsreadings.pdf used on input line 738.
 (pdftex.def)             Requested size: 1289.81561pt x 2389.92296pt.
  [17 <./dep_neg.png>]
 <dsreadings.pdf, id=226, page=1, 1289.81876pt x 2389.92876pt>
 File: dsreadings.pdf Graphic file (type pdf)
 
 <use dsreadings.pdf, page 1>
-Package pdftex.def Info: dsreadings.pdf, page1 used on input line 736.
+Package pdftex.def Info: dsreadings.pdf, page1 used on input line 738.
 (pdftex.def)             Requested size: 1289.81561pt x 2389.92296pt.
 File: dsreadings.pdf Graphic file (type pdf)
  <use dsreadings.pdf, page 1>
-Package pdftex.def Info: dsreadings.pdf, page1 used on input line 736.
+Package pdftex.def Info: dsreadings.pdf, page1 used on input line 738.
 (pdftex.def)             Requested size: 456.22581pt x 845.34918pt.
 File: dsreadings.pdf Graphic file (type pdf)
 
 <use dsreadings.pdf, page 1>
-Package pdftex.def Info: dsreadings.pdf, page1 used on input line 736.
+Package pdftex.def Info: dsreadings.pdf, page1 used on input line 738.
 (pdftex.def)             Requested size: 456.22581pt x 845.34918pt.
 File: dsreadings.pdf Graphic file (type pdf)
  <use dsreadings.pdf, page 1>
-Package pdftex.def Info: dsreadings.pdf, page1 used on input line 736.
+Package pdftex.def Info: dsreadings.pdf, page1 used on input line 738.
 (pdftex.def)             Requested size: 456.22581pt x 845.34918pt.
 File: dsreadings.pdf Graphic file (type pdf)
 
 <use dsreadings.pdf, page 1>
-Package pdftex.def Info: dsreadings.pdf, page1 used on input line 736.
+Package pdftex.def Info: dsreadings.pdf, page1 used on input line 738.
 (pdftex.def)             Requested size: 456.22581pt x 845.34918pt.
- [18 <./dsreadings.pdf, page is rotated 90 degrees>]
-
-LaTeX Warning: Empty bibliography on input line 737.
-
-(./report.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                report
-(biblatex)                and rerun LaTeX afterwards.
-
+ [18 <./dsreadings.pdf, page is rotated 90 degrees>] [19] (./report.aux)
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 10978 strings out of 495017
- 171827 string characters out of 6181021
- 595823 words of memory out of 5000000
- 14049 multiletter control sequences out of 15000+600000
+ 10991 strings out of 493304
+ 172142 string characters out of 6139871
+ 600194 words of memory out of 5000000
+ 14308 multiletter control sequences out of 15000+600000
  9977 words of font info for 35 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
- 44i,18n,45p,816b,798s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 957 hyphenation exceptions out of 8191
+ 44i,18n,49p,814b,937s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texli
@@ -949,10 +956,10 @@ m/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report.pdf (19 pages, 1324643 bytes).
+Output written on report.pdf (20 pages, 1331182 bytes).
 PDF statistics:
- 280 PDF objects out of 1000 (max. 8388607)
- 166 compressed objects within 2 object streams
+ 283 PDF objects out of 1000 (max. 8388607)
+ 168 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  51 words of extra memory for PDF output out of 10000 (max. 10000000)
 
