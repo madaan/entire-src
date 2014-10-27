@@ -1961,27 +1961,27 @@
   <!-- CITATION DATA -->
   <!-- SECTION 0 -->
   <bcf:bibdata section="0">
-    <bcf:datasource type="file" datatype="bibtex">ref.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./ref.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="6">snowball</bcf:citekey>
-    <bcf:citekey order="7">craven</bcf:citekey>
-    <bcf:citekey order="8">craven</bcf:citekey>
-    <bcf:citekey order="9">soderlandtype</bcf:citekey>
-    <bcf:citekey order="10">craven</bcf:citekey>
-    <bcf:citekey order="11">mintz</bcf:citekey>
-    <bcf:citekey order="12">rel</bcf:citekey>
-    <bcf:citekey order="13">riedel</bcf:citekey>
-    <bcf:citekey order="14">multir</bcf:citekey>
-    <bcf:citekey order="15">multir</bcf:citekey>
-    <bcf:citekey order="16">mintz</bcf:citekey>
-    <bcf:citekey order="17">zhou2012multi</bcf:citekey>
-    <bcf:citekey order="18">min2013distant</bcf:citekey>
-    <bcf:citekey order="19">soderlandtype</bcf:citekey>
-    <bcf:citekey order="20">takamatsu2012reducing</bcf:citekey>
-    <bcf:citekey order="21">de2008stanford</bcf:citekey>
-    <bcf:citekey order="22">corenlp</bcf:citekey>
-    <bcf:citekey order="23">hoffmann2011knowledge</bcf:citekey>
+    <bcf:citekey order="1">wikientity</bcf:citekey>
+    <bcf:citekey order="2">snowball</bcf:citekey>
+    <bcf:citekey order="3">craven</bcf:citekey>
+    <bcf:citekey order="4">craven</bcf:citekey>
+    <bcf:citekey order="5">rel</bcf:citekey>
+    <bcf:citekey order="6">riedel</bcf:citekey>
+    <bcf:citekey order="7">multir</bcf:citekey>
+    <bcf:citekey order="8">fig:multir</bcf:citekey>
+    <bcf:citekey order="9">mintz</bcf:citekey>
+    <bcf:citekey order="10">ds</bcf:citekey>
+    <bcf:citekey order="11">fig:kb</bcf:citekey>
+    <bcf:citekey order="12">vanillatable</bcf:citekey>
+    <bcf:citekey order="13">fig:resunits</bcf:citekey>
+    <bcf:citekey order="14">fig:kw</bcf:citekey>
+    <bcf:citekey order="15">corenlp</bcf:citekey>
+    <bcf:citekey order="16">fig:1</bcf:citekey>
+    <bcf:citekey order="17">pos</bcf:citekey>
+    <bcf:citekey order="18">hoffmann2011knowledge</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" type="entry" label="nty">
   <bcf:sorting>
