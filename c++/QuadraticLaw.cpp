@@ -1,44 +1,16 @@
 // Paste me into the FileEdit configuration dialog
 
-#include <bits/stdc++.h>
+#include <string>
+#include <vector>
+#include <math.h>
 using namespace std;
 
-class PotentialGeometricSequence {
+class QuadraticLaw {
 public:
-   int numberOfSubsequences( vector <int> d ) {
-        int l = d.size();
-        int diff = d[1] - d[0];
-        int i = 2;
-        vector<int> lens;
-        int st = 0;
-        bool in1 = false;
-        while(i < l) {
-            printf("here");
-            in1 = false;
-            int ip  = i;
-            while(i < l && (d[i] - d[i - 1] == diff)) {
-                i++;
-                printf("i = %d\n", i);
-                in1 = true;
-            }
-            printf("i = %d adding %d\n", i, i - st);
-            lens.push_back(i - st);
-            st = i - 1;
-            diff = d[i] - d[i - 1];
-            if(i == ip) { 
-                printf("here!");
-            }
-            printf("here <>, i = %d, l = %d", i, l);
-        }
-        int res = 0;
-        for(vector<int>::iterator i = lens.begin(); i != lens.end(); i++) {
-            int val = *i;
-            res += ((val * (val - 1)) / 2);
-        }
-        printf("\n");
-        res += l;
-        if(l == 2) res++;
-        return res;
+   long long getTime( long long d ) {
+        long long result = (-1l + sqrtl(1l + 4l * d)) / 2l;
+        return result;
+ 
    }
 };
 
@@ -80,7 +52,7 @@ namespace moj_harness {
 		}
 	}
 	
-	int verify_case(int casenum, const int &expected, const int &received, std::clock_t elapsed) { 
+	int verify_case(int casenum, const long long &expected, const long long &received, std::clock_t elapsed) { 
 		std::cerr << "Example " << casenum << "... "; 
 		
 		string verdict;
@@ -120,70 +92,94 @@ namespace moj_harness {
 	int run_test_case(int casenum__) {
 		switch (casenum__) {
 		case 0: {
-			int d[]                   = {6, 6};
-			int expected__            = 3;
+			long long d               = 1;
+			long long expected__      = 0;
 
 			std::clock_t start__      = std::clock();
-			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));
+			long long received__      = QuadraticLaw().getTime(d);
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}
 		case 1: {
-			int d[]                   = {1,2,4};
-			int expected__            = 5;
+			long long d               = 2;
+			long long expected__      = 1;
 
 			std::clock_t start__      = std::clock();
-			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));
+			long long received__      = QuadraticLaw().getTime(d);
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}
 		case 2: {
-			int d[]                   = {3,2,1,0};
-			int expected__            = 10;
+			long long d               = 5;
+			long long expected__      = 1;
 
 			std::clock_t start__      = std::clock();
-			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));
+			long long received__      = QuadraticLaw().getTime(d);
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}
 		case 3: {
-			int d[]                   = {1,2,4,8,16};
-			int expected__            = 9;
+			long long d               = 6;
+			long long expected__      = 2;
 
 			std::clock_t start__      = std::clock();
-			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));
+			long long received__      = QuadraticLaw().getTime(d);
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}
 		case 4: {
-			int d[]                   = {1,3,5,5,5,5,64,4,23,2,3,4,5,4,3};
-			int expected__            = 37;
+			long long d               = 7;
+			long long expected__      = 2;
 
 			std::clock_t start__      = std::clock();
-			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));
+			long long received__      = QuadraticLaw().getTime(d);
+			return verify_case(casenum__, expected__, received__, clock()-start__);
+		}
+		case 5: {
+			long long d               = 1482;
+			long long expected__      = 38;
+
+			std::clock_t start__      = std::clock();
+			long long received__      = QuadraticLaw().getTime(d);
+			return verify_case(casenum__, expected__, received__, clock()-start__);
+		}
+		case 6: {
+			long long d               = 1000000000000000000LL;
+			long long expected__      = 999999999;
+
+			std::clock_t start__      = std::clock();
+			long long received__      = QuadraticLaw().getTime(d);
+			return verify_case(casenum__, expected__, received__, clock()-start__);
+		}
+		case 7: {
+			long long d               = 31958809614643170LL;
+			long long expected__      = 178770270;
+
+			std::clock_t start__      = std::clock();
+			long long received__      = QuadraticLaw().getTime(d);
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}
 
 		// custom cases
 
-/*      case 5: {
-			int d[]                   = ;
-			int expected__            = ;
+/*      case 8: {
+			long long d               = ;
+			long long expected__      = ;
 
 			std::clock_t start__      = std::clock();
-			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));
+			long long received__      = QuadraticLaw().getTime(d);
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}*/
-/*      case 6: {
-			int d[]                   = ;
-			int expected__            = ;
+/*      case 9: {
+			long long d               = ;
+			long long expected__      = ;
 
 			std::clock_t start__      = std::clock();
-			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));
+			long long received__      = QuadraticLaw().getTime(d);
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}*/
-/*      case 7: {
-			int d[]                   = ;
-			int expected__            = ;
+/*      case 10: {
+			long long d               = ;
+			long long expected__      = ;
 
 			std::clock_t start__      = std::clock();
-			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));
+			long long received__      = QuadraticLaw().getTime(d);
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}*/
 		default:

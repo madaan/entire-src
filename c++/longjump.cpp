@@ -1,4 +1,3 @@
-
 //sg
 #include <algorithm>
 #include <bitset>
@@ -69,9 +68,15 @@ int main() {
     }
     pi bpair = canMeasure(scale, y);
     pi gpair = canMeasure(scale, x);
-    bool bn = (bpair.first == -1);
-    bool gn = (gpair.first == -1);
-    if(bn && gn) {
+    bool bneed = (bpair.first == -1);
+    bool gneed = (gpair.first == -1);
+    if(!bneed && !gneed) { // 0
+        cout << "0\n";
+    } else if(bneed && !gneed) {
+        cout << "1\n" << y << "\n";
+    } else if(!bneed && gneed) {
+        cout << "1\n" << x << "\n";
+    } else {
         vi scaleboy(scale);
         //first insert boy's scale, then girl's
         vi::iterator loc = lower_bound(all(scale), y);
@@ -97,13 +102,6 @@ int main() {
             }
         }
         return 0;
-    }
-    if(bn) {
-        cout << "1\n" << y << "\n";
-    } else if(gn) {
-        cout << "1\n" << x << "\n";
-    } else {
-        cout << "0\n";
     }
     return 0;
 }

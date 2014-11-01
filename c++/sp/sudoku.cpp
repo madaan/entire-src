@@ -1,8 +1,20 @@
 //sg
 #include<bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 typedef vector< vector < int > > MAT;
 vector< MAT > sols;
+int getVar(MAT a, MAT b) {
+    int var = 0;
+    for(int i = 0; i < 4; i++) { 
+        for(int j = 0; j < 4; j++) {
+            int diff = (a[i][j] - b[i][j]);
+            int absDiff = diff * diff;
+            var += absDiff;
+        }
+    }
+    return var;
+}
 
 void find_empty(int &r, int &c, MAT m) {
     for(int i = 0; i < 4; i++) {
@@ -109,8 +121,8 @@ void dump(MAT m) {
     }
 }
 
+#define INF 10000
 int main() {
-    MAT x(4, vector<int>(4, 0));
     /*
     int arr[][4] = {
         {1,2,3,4},
@@ -121,7 +133,31 @@ int main() {
         x[i] = vector<int>(arr[i], arr[i] + 4);
     }
     */
+     int t;
+    MAT x(4, vector<int>(4, 0));
     gen(x);
-    cout << sols.size();
+    int numSols = sols.size();
+    /*
+    cout << numSols << "\n";
+    for(int i = 0; i < numSols; i++) {
+        //dump(sols[i]);
+        //cout << "\n";
+
+    }
+    */
+    cin >> t;
+    while(t--) {
+        MAT ip(4, vector<int>(4, 0));
+        for(int i = 0; i < 4; i++) { 
+            for(int j = 0; j < 4; j++) {
+                cin >> ip[i][j];
+            }
+        }
+        int minVar = INF;
+        for(int i = 0; i < numSols; i++) {
+            minVar = min(minVar, getVar(sols[i], ip));
+        }
+        cout << minVar << "\n";
+    }
     return 0;
 }
