@@ -1,43 +1,63 @@
 // Paste me into the FileEdit configuration dialog
 
+#include <string>
+#include <vector>
 #include <bits/stdc++.h>
 using namespace std;
 
-class PotentialGeometricSequence {
-public:
-   int numberOfSubsequences( vector <int> d ) {
-        int l = d.size();
-        int diff = d[1] - d[0];
-        int i = 2;
-        vector<int> lens;
-        int st = 0;
-        bool in1 = false;
-        while(i < l) {
-            printf("here");
-            in1 = false;
-            int ip  = i;
-            while(i < l && (d[i] - d[i - 1] == diff)) {
-                i++;
-                printf("i = %d\n", i);
-                in1 = true;
-            }
-            printf("i = %d adding %d\n", i, i - st);
-            lens.push_back(i - st);
-            st = i - 1;
-            diff = d[i] - d[i - 1];
-            if(i == ip) { 
-                printf("here!");
-            }
-            printf("here <>, i = %d, l = %d", i, l);
-        }
+class SortishDiv2 {
+    
+    int getinv(vector< int > a) {
         int res = 0;
-        for(vector<int>::iterator i = lens.begin(); i != lens.end(); i++) {
-            int val = *i;
-            res += ((val * (val - 1)) / 2);
+        for(int i = 0, l = a.size(); i < l; i++) {
+            for(int j = i + 1; j < l; j++) {
+            if(a[i] < a[j]) {
+                res++;
+            }
         }
-        printf("\n");
-        res += l;
-        if(l == 2) res++;
+        }
+        return res;
+    }
+public:
+   int ways( int sortedness, vector <int> seq ) {
+        vector< bool > present(101, false);
+        vector< int > there;
+        vector< int > missingind;
+        for(int i = 0, l = seq.size(); i < l; i++) {
+            if(seq[i] == 0) {
+                missingind.push_back(i);
+            } else {
+                there.push_back(seq[i]);
+                present[seq[i]] = true;
+            }
+        }
+        vector< int > rem;
+        int res = 0;
+        int remaining = sortedness - getinv(there);
+        if(remaining == 0) {
+            if(seq.size() == there.size()) {
+                return 1;
+            }
+        }
+        for(int i = 0; i < seq.size(); i++) {
+            if(!present[i + 1]) {
+                rem.push_back(i + 1);
+            }
+        }
+        sort(rem.begin(), rem.end());
+        do {
+            for(int i = 0; i < missingind.size(); i++) {
+                seq[missingind[i]] = rem[i];
+            }
+            for(int i = 0; i < seq.size(); i++) {
+                cout << seq[i] << " ";
+            }
+            cout << "\t" << getinv(seq) << "\n";
+            if(getinv(seq) == sortedness) {
+                res++;
+            }
+        }while(next_permutation(rem.begin(), rem.end()));
+        
         return res;
    }
 };
@@ -120,70 +140,69 @@ namespace moj_harness {
 	int run_test_case(int casenum__) {
 		switch (casenum__) {
 		case 0: {
-			int d[]                   = {6, 6};
-			int expected__            = 3;
+			int sortedness            = 5;
+			int seq[]                 = {4, 0, 0, 2, 0};
+			int expected__            = 2;
 
 			std::clock_t start__      = std::clock();
-			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));
+			int received__            = SortishDiv2().ways(sortedness, vector <int>(seq, seq + (sizeof seq / sizeof seq[0])));
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}
 		case 1: {
-			int d[]                   = {1,2,4};
+			int sortedness            = 4;
+			int seq[]                 = {0, 0, 0, 0};
 			int expected__            = 5;
 
 			std::clock_t start__      = std::clock();
-			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));
+			int received__            = SortishDiv2().ways(sortedness, vector <int>(seq, seq + (sizeof seq / sizeof seq[0])));
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}
 		case 2: {
-			int d[]                   = {3,2,1,0};
-			int expected__            = 10;
+			int sortedness            = 2;
+			int seq[]                 = {1, 3, 2};
+			int expected__            = 1;
 
 			std::clock_t start__      = std::clock();
-			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));
+			int received__            = SortishDiv2().ways(sortedness, vector <int>(seq, seq + (sizeof seq / sizeof seq[0])));
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}
 		case 3: {
-			int d[]                   = {1,2,4,8,16};
-			int expected__            = 9;
+			int sortedness            = 2;
+			int seq[]                 = {1, 2, 0, 5, 0, 0};
+			int expected__            = 0;
 
 			std::clock_t start__      = std::clock();
-			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));
-			return verify_case(casenum__, expected__, received__, clock()-start__);
-		}
-		case 4: {
-			int d[]                   = {1,3,5,5,5,5,64,4,23,2,3,4,5,4,3};
-			int expected__            = 37;
-
-			std::clock_t start__      = std::clock();
-			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));
+			int received__            = SortishDiv2().ways(sortedness, vector <int>(seq, seq + (sizeof seq / sizeof seq[0])));
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}
 
 		// custom cases
 
-/*      case 5: {
-			int d[]                   = ;
+/*      case 4: {
+			int sortedness            = ;
+			int seq[]                 = ;
 			int expected__            = ;
 
 			std::clock_t start__      = std::clock();
-			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));
+			int received__            = SortishDiv2().ways(sortedness, vector <int>(seq, seq + (sizeof seq / sizeof seq[0])));
+			return verify_case(casenum__, expected__, received__, clock()-start__);
+		}*/
+/*      case 5: {
+			int sortedness            = ;
+			int seq[]                 = ;
+			int expected__            = ;
+
+			std::clock_t start__      = std::clock();
+			int received__            = SortishDiv2().ways(sortedness, vector <int>(seq, seq + (sizeof seq / sizeof seq[0])));
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}*/
 /*      case 6: {
-			int d[]                   = ;
+			int sortedness            = ;
+			int seq[]                 = ;
 			int expected__            = ;
 
 			std::clock_t start__      = std::clock();
-			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));
-			return verify_case(casenum__, expected__, received__, clock()-start__);
-		}*/
-/*      case 7: {
-			int d[]                   = ;
-			int expected__            = ;
-
-			std::clock_t start__      = std::clock();
-			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));
+			int received__            = SortishDiv2().ways(sortedness, vector <int>(seq, seq + (sizeof seq / sizeof seq[0])));
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}*/
 		default:

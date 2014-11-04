@@ -1981,9 +1981,7 @@
     <bcf:citekey order="20">takamatsu2012reducing</bcf:citekey>
     <bcf:citekey order="21">de2008stanford</bcf:citekey>
     <bcf:citekey order="22">corenlp</bcf:citekey>
-    <bcf:citekey order="23">fig:1</bcf:citekey>
-    <bcf:citekey order="24">pos</bcf:citekey>
-    <bcf:citekey order="25">hoffmann2011knowledge</bcf:citekey>
+    <bcf:citekey order="23">hoffmann2011knowledge</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" type="entry" label="nty">
   <bcf:sorting>

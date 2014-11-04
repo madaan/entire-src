@@ -59,7 +59,6 @@ fails. Adding units help in improving the training data to a certain extent. The
 precision in the matches.
 Analysis of the results from the three heuristics lead to a basic rule based extractor, which performs better than any of the heuristics.
 
-
 \end{abstract}
 
 \newpage
@@ -82,7 +81,11 @@ Units and keywords. Finally, we discuss a simple rule-based relation extractor.
 \begin{itemize}
 
 \item \textbf{a)Entity}
+<<<<<<< HEAD
 An entity is something that exists in itself, actually or hypothetically. \cite{wikientity}
+=======
+An entity is something that exists in itself, actually or hypothetically. \footnote{from \url{http://en.wikipedia.org/wiki/Entity}}
+>>>>>>> 1c0990ad8c6d25d54322048b0c116e7da51da64a
 
 \item \textbf{b)Relation}
 A relation specifies a concept which binds two entities. For example, creator(Linux, Linus Torvalds).
@@ -143,9 +146,15 @@ from these sentences, favor\footnote{By giving them more weight, pruning feature
 A fancier solution would be to reuse the extractions to learn more features, and continuing the process 
 till the point of diminishing returns.
 \end{enumerate}
+<<<<<<< HEAD
 
 
 
+=======
+
+
+
+>>>>>>> 1c0990ad8c6d25d54322048b0c116e7da51da64a
 This seemingly shaky method actually works \cite{snowball} and is popular by the name of snowballing.
 
 \section{Distant Supervision: Snowball scaled up}
@@ -531,7 +540,11 @@ A key observation that can be made by going through the sentences that express n
 is that one cannot be too poetic while forming a sentence that is supposed to state a numerical fact.
 This is in stark contrast with sentences expressing relations between entity pairs, wherein the
 underlying relation might be implicit. If we want to state GDP of a country in a sentence, there is no
+<<<<<<< HEAD
 escape from the words like “GPD” or “gross domestic product” and the likes \footnote{There can be a few exceptions for unit-less quantities like ``Dell, 49, lives with his family''}.
+=======
+escape from the words like “GDP” or “gross domestic product” and the likes \footnote{There can be a few exceptions for unit-less quantities like ``Dell, 49, lives with his family''}.
+>>>>>>> 1c0990ad8c6d25d54322048b0c116e7da51da64a
 
 If this is indeed true, imposing an additional constraint of a keyword being present in a sentence in
 addition to the fact being present can help in cutting down the number of false positives. We note
@@ -599,7 +612,6 @@ GDP(\$)&0&0&0&0\\
 
 \section{A summary of the three heuristics}
 
-Before discussing the results, let us summarize the heuristics:
 \begin{itemize}
 \item \textbf{a) Vanilla:} A sentence having a country-number pair $c-n$ is called a match for a relation $R$ if $R(c,n)$ is a fact in the KB.
 \item \textbf{b) Unit Based:} Feed the corpus to a unit extractor, extract normalized numbers along with units. During matching, both the normalized value of a number
@@ -647,7 +659,11 @@ Refer \cite{de2008stanford} for a detailed explanation of all the dependencies w
 We define a dependency path between two words ``A'' and ``B'' as the shortest path between them in the dependency graph.
 The dependency graph consists of one node for each of the words, and the dependencies are the collapsed typed dependencies 
 as obtained from the stanford dependency parser. \cite{corenlp}. 
+<<<<<<< HEAD
 Figure \cite{fig:1} shows dependency graph for ``The estimated 2014 population of Zambia is 15,200,000, which ranks 70th in the world.''
+=======
+Figure \ref{fig:1} shows dependency graph for ``The estimated 2014 population of Zambia is 15,200,000, which ranks 70th in the world.''
+>>>>>>> 1c0990ad8c6d25d54322048b0c116e7da51da64a
 \begin{figure*}
  \centering
  \includegraphics[bb=0 0 990 149, scale = 0.4]{./dep.png}
@@ -674,10 +690,15 @@ Changed''}.
 Consider the sentence:
 ``The estimated population for 2014 of the Australian continent	is about 36.25 million people''
 and the Country-Number pair (Australian, 36.25)
+<<<<<<< HEAD
 The dependency graph of the sentence is as shown in figure \cite{pos}.
+=======
+The dependency graph of the sentence is as shown in figure \ref{pos}.
+>>>>>>> 1c0990ad8c6d25d54322048b0c116e7da51da64a
 \begin{figure}[H]
  \centering
  \includegraphics[bb=0 0 1292 228,scale=0.3]{./dep_pos.png}
+ \caption{Rule based extraction: positive example}
  \label{pos}
  % dep_pos.png: 1292x228 pixel, 72dpi, 45.57x8.04 cm, bb=0 0 1292 228
 \end{figure}
@@ -691,6 +712,7 @@ The path will additionally have a modifier, ``increased'', and thus there won't 
  \centering
  \includegraphics[bb=0 0 1292 228,scale=0.3]{./dep_neg.png}
  % dep_pos.png: 1292x228 pixel, 72dpi, 45.57x8.04 cm, bb=0 0 1292 228
+ \caption{Rule based extraction: negative example}
  \label{neg}
 \end{figure}
 
@@ -736,9 +758,36 @@ POP( Russia, 1), POP( Russia, 2014), POP( Russia, 143,800,000) \\
 \end{tabular}}
 
 \section{Conclusion}
-Though numerical relation extraction has been Numerical relation extraction 
+Existing techniques for relation extraction cannot be directly applied in the case of numerical relations.
+There are several differences:
+\begin{enumerate}
+ \item \textbf{Numbers are weak entities}\\ Numbers don't really have an identity of their own, and thus can appear in many contexts
+ with entities whose particular attribute they represent. This results in huge amounts of false positives.
+ \item \textbf{Numerical relations are multifarious}\\ Often, numerical facts appear in a modified form of the original attribute. For example, 
+ a sentence can express population, female/male population, population below the age of 14 or a change in population. 
+ \item \textbf{Numerical relations are explicit}\\ Sentences expressing a numerical fact can be expected to have keywords expressing the relation being expressed.
+ Since such sentences are relatively dull, such set of keywords for each relation can be expected to be relatively small as compared to entity-entity relations.
+\end{enumerate}
+
+
+These differences motivate heuristics like adding units and keywords based checks to the matching process. Such heuristics help in improving the training data, 
+but prove scant for dealing with several other complexities involved in sentences expressing numerical facts.
+For example, sentences expressing a change in the quantity, (``Internet user population of India \emph{increased} by 5\%'')
+and not the absolute value degrade the performance of extractors.
+
+A rule based extractor formed out of the insights obtained by analysis of the above heuristics gives promising results.
+There are several areas of immediate improvement though. Most notably, the set of keywords for each relation, which is 
+presently hand crafted, can be enriched to a great extent by using topic modeling.It remains to be seen whether insights from rule based extractor would be helpful in modifying the
+distant supervision framework to accommodate numbers.
+
+Units form a natural way of segmenting relations being targeted. Training a separate extractor for each unit type and 
+using unit identifier to route an entity-number pair to the correct extractor is another idea that remains to be explored.
 %\input{bib}
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1c0990ad8c6d25d54322048b0c116e7da51da64a
 \includepdf[pages={1}]{dsreadings.pdf}
 \printbibliography[title=References]
 \end{document}

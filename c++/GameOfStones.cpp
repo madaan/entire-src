@@ -1,44 +1,50 @@
 // Paste me into the FileEdit configuration dialog
 
-#include <bits/stdc++.h>
+#include <string>
+#include <vector>
+#include<bits/stdc++.h>
+
 using namespace std;
 
-class PotentialGeometricSequence {
+class GameOfStones {
 public:
-   int numberOfSubsequences( vector <int> d ) {
-        int l = d.size();
-        int diff = d[1] - d[0];
-        int i = 2;
-        vector<int> lens;
-        int st = 0;
-        bool in1 = false;
-        while(i < l) {
-            printf("here");
-            in1 = false;
-            int ip  = i;
-            while(i < l && (d[i] - d[i - 1] == diff)) {
-                i++;
-                printf("i = %d\n", i);
-                in1 = true;
-            }
-            printf("i = %d adding %d\n", i, i - st);
-            lens.push_back(i - st);
-            st = i - 1;
-            diff = d[i] - d[i - 1];
-            if(i == ip) { 
-                printf("here!");
-            }
-            printf("here <>, i = %d, l = %d", i, l);
+   bool isint(double x) {
+       return (floor(x) == x);
+   }
+   int count( vector <int> stones ) {
+       int mine = *(min(stones.begin(), stones.end()));
+       vector< int> diff(stones.size());
+       bool iseven = false, isodd = false;
+       int sum = 0;
+       for(int i = 0; i < stones.size(); i++) {
+           diff[i] = stones[i] - mine;
+           if(diff[i] % 2 == 0) {
+               iseven = true;
+           } else {
+               isodd = true;
+           }
+           sum += diff[i];
+       }
+
+       if(!(isodd ^ iseven)) {
+           return -1;
+       }
+       int res = 0;
+       double avg = double(sum) / stones.size();
+       sum = avg;
+       if(sum % 2 != 0 || !isint(avg)) { 
+               return -1;
         }
-        int res = 0;
-        for(vector<int>::iterator i = lens.begin(); i != lens.end(); i++) {
-            int val = *i;
-            res += ((val * (val - 1)) / 2);
-        }
-        printf("\n");
-        res += l;
-        if(l == 2) res++;
-        return res;
+
+       for(int i = 0, l = stones.size(); i < l; i++) {
+           if(diff[i] < sum) {
+                res += ((sum - diff[i]) / 2);
+           }
+       }
+       return res;
+       
+
+
    }
 };
 
@@ -120,70 +126,70 @@ namespace moj_harness {
 	int run_test_case(int casenum__) {
 		switch (casenum__) {
 		case 0: {
-			int d[]                   = {6, 6};
+			int stones[]              = {7, 15, 9, 5};
 			int expected__            = 3;
 
 			std::clock_t start__      = std::clock();
-			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));
+			int received__            = GameOfStones().count(vector <int>(stones, stones + (sizeof stones / sizeof stones[0])));
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}
 		case 1: {
-			int d[]                   = {1,2,4};
-			int expected__            = 5;
+			int stones[]              = {10, 16};
+			int expected__            = -1;
 
 			std::clock_t start__      = std::clock();
-			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));
+			int received__            = GameOfStones().count(vector <int>(stones, stones + (sizeof stones / sizeof stones[0])));
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}
 		case 2: {
-			int d[]                   = {3,2,1,0};
-			int expected__            = 10;
+			int stones[]              = {2, 8, 4};
+			int expected__            = -1;
 
 			std::clock_t start__      = std::clock();
-			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));
+			int received__            = GameOfStones().count(vector <int>(stones, stones + (sizeof stones / sizeof stones[0])));
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}
 		case 3: {
-			int d[]                   = {1,2,4,8,16};
-			int expected__            = 9;
+			int stones[]              = {17};
+			int expected__            = 0;
 
 			std::clock_t start__      = std::clock();
-			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));
+			int received__            = GameOfStones().count(vector <int>(stones, stones + (sizeof stones / sizeof stones[0])));
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}
 		case 4: {
-			int d[]                   = {1,3,5,5,5,5,64,4,23,2,3,4,5,4,3};
-			int expected__            = 37;
+			int stones[]              = {10, 15, 20, 12, 1, 20};
+			int expected__            = -1;
 
 			std::clock_t start__      = std::clock();
-			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));
+			int received__            = GameOfStones().count(vector <int>(stones, stones + (sizeof stones / sizeof stones[0])));
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}
 
 		// custom cases
 
 /*      case 5: {
-			int d[]                   = ;
+			int stones[]              = ;
 			int expected__            = ;
 
 			std::clock_t start__      = std::clock();
-			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));
+			int received__            = GameOfStones().count(vector <int>(stones, stones + (sizeof stones / sizeof stones[0])));
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}*/
 /*      case 6: {
-			int d[]                   = ;
+			int stones[]              = ;
 			int expected__            = ;
 
 			std::clock_t start__      = std::clock();
-			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));
+			int received__            = GameOfStones().count(vector <int>(stones, stones + (sizeof stones / sizeof stones[0])));
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}*/
 /*      case 7: {
-			int d[]                   = ;
+			int stones[]              = ;
 			int expected__            = ;
 
 			std::clock_t start__      = std::clock();
-			int received__            = PotentialGeometricSequence().numberOfSubsequences(vector <int>(d, d + (sizeof d / sizeof d[0])));
+			int received__            = GameOfStones().count(vector <int>(stones, stones + (sizeof stones / sizeof stones[0])));
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}*/
 		default:
