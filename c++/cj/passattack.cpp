@@ -59,7 +59,7 @@ ll solve(int n, int m) {
     ll res = abmodn(m, n, MOD);
     ll temp = 0;
     for(int i = 1; i < m; i++) {
-        temp += (C[m][i] * solve(n, m - i));
+        temp = (temp + C[m][i] * solve(n, m - i)) % MOD;
     }
     dp[n][m] = mod(res + mod(-temp, MOD), MOD);
     //cout << "solve(" << n << ", " << m << ") = " << dp[n][m] << "\n";

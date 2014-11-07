@@ -80,7 +80,5 @@ int main() {
         cout << "\n";
     }
     cout << sols.size() << "\n";
-
-
     return 0;
 }
