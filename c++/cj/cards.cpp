@@ -1,15 +1,28 @@
 //sg
 #include<bits/stdc++.h>
 using namespace std;
-vector< int >  delRep(vector< int > arr, bool &del) {
-    del = false;
-    vector< int > res;
-    for(int i = 0, n = arr.size(); i < n; i++) {
-        if(i < n - 2 && arr[i] == arr[i + 1] && arr[i + 1] == arr[i + 2]) {
-            del = true;
-            i+=2;
-        } else {
-            res.push_back(arr[i]);
+int delRep(vector< int > arr) {
+    bool foundRep = false;
+    int l = arr.size();
+    while(true) {
+        l = arr.size();
+        for(int i = 0; i <  l - 2; i++) {
+            if(arr[i] != 0 && arr[i] == arr[i + 1] && arr[i + 1] == arr[i + 2]) {
+                arr[i] = arr[i + 1] = arr[i + 2] = 0;
+                foundRep = true;
+                break;
+            }
+        }
+        if(!foundRep) {
+            break;
+        }
+        arr.erase(remove(arr.begin(), arr.end(), 0), arr.end());
+        foundRep = false;
+    }
+    int res = 0;
+    for(int i = 0; i < l; i++) {
+        if(arr[i] != 0) {
+            res++;
         }
     }
     return res;
@@ -22,20 +35,10 @@ int main() {
         int n, k;
         cin >> n >> k;
         vector< int > arr(n);
-        vector< int > res(n);
         for(int i = 0; i < n; i++) {
             cin >> arr[i];
-            res[i] = arr[i];
         }
-        bool valid = true;
-        while(valid) {
-            //cout << "\n";
-            for(int i = 0 ; i < res.size(); i++) {
-              //  cout << res[i] << " ";
-            }
-            res = delRep(res, valid);
-        }
-        cout << res.size() << "\n";
+        cout << delRep(arr) << "\n";
     }
     return 0;
 }

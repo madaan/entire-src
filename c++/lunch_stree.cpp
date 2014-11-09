@@ -46,6 +46,14 @@ void init() {
       t[x][y] = f(t[x][y-1], t[x+(1<<(y-1))][y-1]);
 }
 
+void set(int x, int v) {
+  t[x][0] = a[x] = v;
+  for (int y = 1; y <= n; y++) {
+    int xx = x-(x&((1<<y)-1));
+    t[xx][y] = f(t[xx][y-1], t[xx+(1<<(y-1))][y-1]);
+  }
+}
+
 int get(int i, int j) {
   int res = 0, h = 0; j++;
   while (i+(1<<h) <= j) {
