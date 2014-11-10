@@ -1,4 +1,3 @@
-
 //sg
 #include <algorithm>
 #include <bitset>
@@ -22,14 +21,14 @@
 #include <stack>
 #include <utility>
 #include <vector>
- 
+
 using namespace std;
- 
+
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
- 
+
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -45,7 +44,7 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
- 
+
 const int oo = 2000000009;
 const double eps = 1e-9;
 int main() {
@@ -53,4 +52,3 @@ int main() {
     scanf("%d", &n);
     fr(i, n - 1) {
         scanf("%d", &temp);
-

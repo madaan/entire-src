@@ -1,9 +1,7 @@
 //sg
 #include<stdio.h>
 #include<string.h>
-
 char ip[1000009];
-
 void trim(char *ptr) {
     int len = strlen(ptr);
     int decimalLoc = 0;
@@ -34,7 +32,6 @@ void trim(char *ptr) {
         printf("0\n");
         return;
     }
-
     int rightOk = len - 1; //index from where the right is okay
     if(foundDec && ptr[len - 1] == '0') { //need to trim from right
         int i = 0;
@@ -42,13 +39,12 @@ void trim(char *ptr) {
         }
         rightOk = i;
     }
-
     if(!foundDec) { //no decimal
         ptr[rightOk + 1] = '\0';
         printf("%s\n", ptr + leftOk);
     } else {
         if(leftOk == decimalLoc && rightOk == leftOk) {
-           printf("0\n");
+            printf("0\n");
         } else if(rightOk == decimalLoc) {
             ptr[rightOk] = '\0';
             printf("%s\n", ptr + leftOk);
@@ -60,7 +56,6 @@ void trim(char *ptr) {
     }
     return;
 }
-
 int main() {
     char rules[250];
     int t, N;

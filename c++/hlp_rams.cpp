@@ -1,5 +1,5 @@
 //sg
-//The number of odd numbers in the Nth row of the pascal's triangle is 
+//The number of odd numbers in the Nth row of the pascal's triangle is
 //2^(number of ones) in binary representation of N
 #include<stdio.h>
 typedef unsigned long long ll;
@@ -14,7 +14,6 @@ int numOnes(ll N) {
     }
     return 1 << numOnes;
 }
-
 int main() {
     int t;
     ll N;

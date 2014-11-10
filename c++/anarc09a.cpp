@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <iostream>
 #include <string>
-
 int process(char *str)
 {
     std::stack<char> st;
@@ -18,20 +17,16 @@ int process(char *str)
             if(st.empty() || st.top() == '}') { //push this
                 unbalanced++;
                 st.push('{');
-                }
+            }
             else {
-    //printf("%s, %d", unbal.c_str(), ops);
+                //printf("%s, %d", unbal.c_str(), ops);
                 st.pop();
             }
         }
     }
-    
+
     return (st.size()  /2 ) + unbalanced;
 }
-
-
-
-
 int main()
 {
     char ip[2100];

@@ -1,6 +1,6 @@
 //sg
 #include<stdio.h>
-#define MODN 1000000007 
+#define MODN 1000000007
 typedef long long ll;
 /*
 ll gcd(ll a, ll b) {
@@ -12,13 +12,11 @@ ll gcd(ll a, ll b) {
     }
     return a;
 }
-
 void reduce(ll& a, ll& b) {
     ll gcdab = gcd(a, b);
     a = a / gcdab;
     b = b / gcdab;
 }
-
 ll C(ll n, ll k) {
     if(n <= 0) {
         return 0;
@@ -27,7 +25,7 @@ ll C(ll n, ll k) {
     if(k > n / 2) {
         k = n - k;
     }
-    
+
     ll numEle, denEle;
     for(ll i = 1; i <= k; i++) {
         numEle = n - k + i;
@@ -41,7 +39,6 @@ ll C(ll n, ll k) {
     return num / den;
 }
 */
-
 ll C(ll n) {
     if(n <= 0) {
         return 0;
@@ -50,9 +47,6 @@ ll C(ll n) {
     //ll res = (((n) % MODN) * ((n - 1) % MODN)) / 2;
     return res;
 }
-
-
-
 int main() {
     ll t;
     ll N, a1, a2, b1, b2, c1, c2;
@@ -68,7 +62,6 @@ int main() {
             continue;
         }
         N = N - (a1 + b1 + c1); //get rilld of the lower bounlldary first
-
         if(N < 0) {
             printf("0\n");
             continue;
@@ -82,4 +75,4 @@ int main() {
     }
     return 0;
 }
-    
+

@@ -1,4 +1,3 @@
-
 //sg
 #include<bits/stdc++.h>
 using namespace std;
@@ -21,7 +20,6 @@ int lcs(string &a, string &b) {
     }
     return dp[al % 2][bl];
 }
-
 void rev(string &a) {
     for(int i = 0; i < n / 2; i++) {
         a[i] ^= a[n - i - 1];
@@ -29,7 +27,6 @@ void rev(string &a) {
         a[i] ^= a[n - i - 1];
     }
 }
-
 int main() {
     char a[5005];
     scanf("%d", &n);

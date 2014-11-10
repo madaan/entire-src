@@ -1,7 +1,6 @@
 //sg
 #include<stdio.h>
 typedef long long ll;
-
 ll hcf(ll a, ll b) {
     ll temp;
     while(b != 0) {
@@ -11,7 +10,6 @@ ll hcf(ll a, ll b) {
     }
     return a;
 }
-
 int main() {
     int t;
     ll m, n;
@@ -20,7 +18,7 @@ int main() {
     scanf("%d", &t);
     while(t--) {
         scanf("%lld%lld", &m, &n);
-        
+
         num = (m / 2) * ((n + 1) / 2) + ((m + 1) / 2) * (n / 2);
         den = m * n;
         ll d_p = 0, nu_p = 0, hcf_nd;
@@ -31,7 +29,6 @@ int main() {
             num = num / hcf_nd;
             den = den / hcf_nd;
         }
-
         printf("%lld/%lld\n", num, den);
     }
     return 0;

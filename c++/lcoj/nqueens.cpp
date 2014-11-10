@@ -4,14 +4,13 @@ using namespace std;
 class Solution {
     typedef vector< string > BOARD;
     vector< BOARD > sols;
-    public:
+public:
     vector<vector<string> > solveNQueens(int n) {
         BOARD b(n, string(n, '.'));
         //cout << b.size() << " " << b[0].size() << "\n";
         nqueens(0, n, b);
         return sols;
     }
-
     void nqueens(int c, int n, BOARD b) {
         if(c >= n) {
             sols.push_back(BOARD(b));
@@ -25,7 +24,6 @@ class Solution {
             }
         }
     }
-
     bool ok(int r, int c, const BOARD &b, int n) {
         if(r >= n || c >= n || r < 0 || c < 0) {
             return false;
@@ -43,19 +41,19 @@ class Solution {
                 return false;
             }
         }
-        
+
         for(int i = r - 1, j = c - 1; i >= 0 && j >= 0; i--, j--) {
             if(b[i][j] == 'Q') {
                 return false;
             }
         }
-        
+
         for(int i = r + 1, j = c - 1; i < n && j >= 0; i++, j--) {
             if(b[i][j] == 'Q') {
                 return false;
             }
         }
-        
+
         for(int i = r - 1, j = c + 1; i >= 0 && j < n; i--, j++) {
             if(b[i][j] == 'Q') {
                 return false;
@@ -63,9 +61,7 @@ class Solution {
         }
         return true;
     }
-
 };
-
 void dump(vector<string> &b, int n) {
     for(int i = 0; i < b.size(); i++) {
         cout << b[i] << "\n";

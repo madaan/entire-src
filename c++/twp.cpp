@@ -11,7 +11,6 @@ int main(int argc, char *argv[]) {
         printf("%-4d ", n - i);
     }
     int numSpaces = (partLen - 1) * 5;
-
     for(int i = 0; i < partLen - 1; i++) {
         printf("\n%-4d ", ++colStart);
         for(int j = 0; j < numSpaces; j++) {
@@ -19,7 +18,6 @@ int main(int argc, char *argv[]) {
         }
         printf("%-4d", --colEnd);
     }
-
     printf("\n");
     //Take care of the last row
     for(int i = 0; i <= partLen; i++) {
@@ -28,5 +26,4 @@ int main(int argc, char *argv[]) {
     printf("\n");
     return 0;
 }
-    
 

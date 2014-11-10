@@ -21,14 +21,14 @@
 #include <stack>
 #include <utility>
 #include <vector>
- 
+
 using namespace std;
- 
+
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
- 
+
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -47,41 +47,36 @@ typedef vector<string> vs;
 typedef pair<string, string> pstr;
 const int oo = 2000000009;
 const double eps = 1e-9;
-
 vector< pstr > names;
-
 int dp[100009][3];
 vi order;
 int n;
-
 void solve(int n) {
-        if(names[order[2]].first > names[order[1]].first || names[order[2]].first > names[order[1]].second) {
-            dp[2][0] = 1;
-        }
-        if(names[order[2]].second > names[order[1]].first || names[order[2]].second > names[order[1]].second) {
-            dp[2][1] = 1;
-        }
+    if(names[order[2]].first > names[order[1]].first || names[order[2]].first > names[order[1]].second) {
+        dp[2][0] = 1;
+    }
+    if(names[order[2]].second > names[order[1]].first || names[order[2]].second > names[order[1]].second) {
+        dp[2][1] = 1;
+    }
     for(int i = 3; i <= n; i++) {
-    if(dp[i - 1][0]) {
-        if(names[order[i]].first > names[order[i - 1]].first) {
-            dp[i][0] = 1;
+        if(dp[i - 1][0]) {
+            if(names[order[i]].first > names[order[i - 1]].first) {
+                dp[i][0] = 1;
+            }
+            if(names[order[i]].second > names[order[i - 1]].first) {
+                dp[i][1] = 1;
+            }
         }
-        if(names[order[i]].second > names[order[i - 1]].first) {
-            dp[i][1] = 1;
+        if(dp[i - 1][1]) {
+            if(names[order[i]].first > names[order[i - 1]].second) {
+                dp[i][0] = 1;
+            }
+            if(names[order[i]].second > names[order[i - 1]].second) {
+                dp[i][1] = 1;
+            }
         }
-    }
-    if(dp[i - 1][1]) {
-        if(names[order[i]].first > names[order[i - 1]].second) {
-            dp[i][0] = 1;
-        }
-        if(names[order[i]].second > names[order[i - 1]].second) {
-            dp[i][1] = 1;
-        }
-    }
     }
 }
-         
-
 
 int main() {
     string fn, ln;

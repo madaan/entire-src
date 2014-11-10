@@ -26,7 +26,7 @@ int main() {
             st.push(i);
         }
     }
-     while(!st.empty()) {
+    while(!st.empty()) {
         minf[st.top()] = n - st.top();
         st.pop();
     }

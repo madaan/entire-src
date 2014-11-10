@@ -3,11 +3,9 @@
 using namespace std;
 typedef vector< string > BOARD;
 typedef vector< string > PIECE;
-
 bool isComp(char a, char b) {
     return (a == '.' || b == '.');
 }
-
 bool putPiece(PIECE p, BOARD &b, int col, int row) {
     int ph = p.size();
     int pw = p[0].length();
@@ -25,7 +23,6 @@ bool putPiece(PIECE p, BOARD &b, int col, int row) {
         }
     }
 }
-
 bool canPlace(PIECE p, BOARD b, int col, int lastRow) {
     int ph = p.size();
     int pw = p[0].length();
@@ -42,9 +39,6 @@ bool canPlace(PIECE p, BOARD b, int col, int lastRow) {
     }
     return true;
 }
-
-
-    
 
 int place(PIECE &p, BOARD &b, int x, vector< int > &top) {
     int span = p[0].length();
@@ -71,7 +65,6 @@ int place(PIECE &p, BOARD &b, int x, vector< int > &top) {
     }
     return 1;
 }
-
 void dumpBoard(BOARD &b) {
     int h = b.size();
     int w = b[0].length();
@@ -79,11 +72,9 @@ void dumpBoard(BOARD &b) {
         cout << b[i] << "\n";
     }
 }
-
 bool lineDel(string x) {
     return (x.find('.') == string::npos);
 }
-
 BOARD lineMerge(BOARD &b) {
     int bh = b.size();
     int bw = b[0].length();
@@ -97,8 +88,6 @@ BOARD lineMerge(BOARD &b) {
     }
     return bup;
 }
-
-
 int main() {
     const char *p11[] = {"x.", "xx", ".x"};
     const char *p12[] = {".xx", "xx."};
@@ -128,7 +117,6 @@ int main() {
     const char *p72[] = {".x", "xx", ".x"};
     const char *p73[] = {"xxx", ".x."};
     const char *p74[] = {"x.", "xx", "x."};
-
     PIECE p[] = {
         vector<string>(p11, p11 + 3),
         vector<string>(p12, p12 + sizeof(p12) / sizeof(p12[0])),
@@ -160,7 +148,6 @@ int main() {
         vector<string>(p74, p74 + sizeof(p74) / sizeof(p74[0]))
     };
     vector<PIECE> piece(p, p + sizeof(p) / sizeof(p[0]));
-
     int t;
     cin >> t;
     for(int tt = 1; tt <= t; tt++) {
@@ -180,7 +167,6 @@ int main() {
             }
             b = lineMerge(b);
         }
-
         if(!over) {
             dumpBoard(b);
         }

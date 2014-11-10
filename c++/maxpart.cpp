@@ -1,14 +1,11 @@
 //sg
 #include<bits/stdc++.h>
 using namespace std;
-
-
 int arr[100];
 bool iscomp(int i, int j) {
     int diff = arr[i] - arr[j];
     return (abs(diff) <= abs(i - j));
 }
-
 int dp[100];
 int main() {
     int n;

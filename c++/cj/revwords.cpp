@@ -14,8 +14,6 @@ void process(string temp) {
     }
     cout << parts.top() << "\n";
 }
-
-
 int main() {
     int t;
     cin >> t;

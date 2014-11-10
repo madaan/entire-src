@@ -22,15 +22,15 @@ int main() {
         for(int i = 0; i < pts.size(); i++) {
             int pt_a = pts[i].first;
             int pt_b = pts[i].second;
-                for(int j = i; j < pts.size(); j++) {
-                    if(i != j) {
-                        if(pts[j].first < pt_a && pts[j].second > pt_b) {
-                            res++;
-                        }else if(pts[j].first > pt_a && pts[j].second < pt_b) {
-                            res++;
-                        }
+            for(int j = i; j < pts.size(); j++) {
+                if(i != j) {
+                    if(pts[j].first < pt_a && pts[j].second > pt_b) {
+                        res++;
+                    } else if(pts[j].first > pt_a && pts[j].second < pt_b) {
+                        res++;
                     }
                 }
+            }
         }
         cout << res << "\n";
     }

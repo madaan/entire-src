@@ -12,7 +12,6 @@ ull mpow(ull a, ull b) {
     }
     return res;
 }
-
 int main() {
     int t;
     cin >> t;
@@ -47,4 +46,3 @@ int main() {
     }
     return 0;
 }
-

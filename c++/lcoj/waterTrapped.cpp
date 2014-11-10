@@ -36,7 +36,7 @@ int trap(int A[], int n) {
     }
     */
     for(int i = 0; i < n - 1;) {
-        if(nextBig[i] != -1) { 
+        if(nextBig[i] != -1) {
             int nxt = nextBig[i]; //water will fill between i and nxt
             int j = i + 1;
             while(j < nxt) {
@@ -63,7 +63,6 @@ int trap(int A[], int n) {
     }
     return res;
 }
-
 int main() {
     //int arr[] = {0,1,0,2,1,0,1,3,2,1,2,1};
     //int arr[] = {0,7,1,4,6};

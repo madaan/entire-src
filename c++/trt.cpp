@@ -23,8 +23,6 @@ int cost(int i, int j) {
     //printf("dp[%d][%d] = %d age = %d, v[%d] = %d i = %d, j = %d\n", i + 1, j, dp[i + 1][j], age, i, v[i], i, j);
     return dp[i][j];
 }
-
-
 int main() {
     memset(dp, -1, sizeof(dp));
     scanf("%d", &n);
@@ -34,4 +32,3 @@ int main() {
     printf("%d\n", cost(0, n - 1));
     return 0;
 }
-

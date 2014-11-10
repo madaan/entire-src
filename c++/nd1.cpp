@@ -1,4 +1,3 @@
-
 //sg
 #include <algorithm>
 #include <bitset>
@@ -22,14 +21,14 @@
 #include <stack>
 #include <utility>
 #include <vector>
- 
+
 using namespace std;
- 
+
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
- 
+
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -48,28 +47,24 @@ typedef vector<string> vs;
 typedef pair<string, string> pstr;
 const int oo = 2000000009;
 const double eps = 1e-9;
-
 bool inorder_first(pstr &i, pstr &im1) {
     if((i.first > im1.first) || (i.second > im1.first)) {
         return true;
-    }else if((i.first > im1.second) || (i.second > im1.second)) {
+    } else if((i.first > im1.second) || (i.second > im1.second)) {
         im1.first.swap(im1.second);
         return true;
     }
     return false;
 }
-
 bool inorder(pstr &i, pstr &im1) {
     if((i.first > im1.first)) {
         return true;
-    }else if((i.first > im1.second)) {
+    } else if((i.first > im1.second)) {
         im1.first.swap(im1.second);
         return true;
     }
     return false;
 }
-
-
 int main() {
     int n;
     vector< pstr > names;
@@ -85,10 +80,9 @@ int main() {
         cin >> order[i];
     }
     if(!inorder_first(names[order[n]], names[order[n - 1]])) {
-            cout << "NO\n";
-            return 0;
+        cout << "NO\n";
+        return 0;
     }
-
     for(int i = n - 1; i >= 2; i--) {
         if(!inorder(names[order[i]], names[order[i - 1]])) {
             cout << "NO\n";
@@ -98,4 +92,3 @@ int main() {
     cout << "YES\n";
     return 0;
 }
-

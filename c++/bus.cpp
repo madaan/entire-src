@@ -6,7 +6,6 @@ int main() {
     cin >> k;
     //first row
     cout << "+------------------------+\n";
-
     int r1 = (k + 1) / 3;
     int r2 = (k) / 3;
     int r3 = (k - 1) / 3;
@@ -23,7 +22,7 @@ int main() {
         r2 = 1;
     }
     cout << "|";
-    
+
     for(int i = 0; i < r1; i++) {
         cout << "O.";
     }
@@ -31,7 +30,6 @@ int main() {
         cout << "#.";
     }
     cout <<"|D|)\n";
-
     cout << "|";
     for(int i = 0; i < r2; i++) {
         cout << "O.";
@@ -40,7 +38,6 @@ int main() {
         cout << "#.";
     }
     cout <<"|.|\n";
-
     cout << "|";
     if(k > 2) {
         cout << "O.";
@@ -48,7 +45,6 @@ int main() {
         cout << "#.";
     }
     cout << "......................|\n";
-
     cout << "|";
     for(int i = 0; i < r3; i++) {
         cout << "O.";
@@ -56,9 +52,7 @@ int main() {
     for(int i = 0; i < (11 - r3); i++) {
         cout << "#.";
     }
-
     cout <<"|.|)\n";
     cout << "+------------------------+\n";
     return 0;
 }
-

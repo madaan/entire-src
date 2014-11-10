@@ -10,19 +10,18 @@ using namespace std;
 #define abs(a, b) (a > b ? (a - b) : (b - a))
 #define min(a, b) (a < b ? a : b)
 typedef pair<int, pair<int, int> > key_vertex;
-typedef vector<int> vi; 
-typedef vector<vi> vvi; 
-typedef pair<int,int> ii; 
-#define sz(a) int((a).size()) 
-#define pb push_back 
-#define all(c) (c).begin(),(c).end() 
-#define tr(c,i) for(typeof((c).begin()) i = (c).begin(); i != (c).end(); i++) 
-#define present(c,x) ((c).find(x) != (c).end()) 
-#define cpresent(c,x) (find(all(c),x) != (c).end()) 
+typedef vector<int> vi;
+typedef vector<vi> vvi;
+typedef pair<int,int> ii;
+#define sz(a) int((a).size())
+#define pb push_back
+#define all(c) (c).begin(),(c).end()
+#define tr(c,i) for(typeof((c).begin()) i = (c).begin(); i != (c).end(); i++)
+#define present(c,x) ((c).find(x) != (c).end())
+#define cpresent(c,x) (find(all(c),x) != (c).end())
 char graph[55][55];
-//returns the distances from the X to all the $s. 
+//returns the distances from the X to all the $s.
 //Basically uses dijkstra to achieve this.
-
 int getEdgeWeight(int fi, int fj, int ti, int tj) {
     char from = graph[fi][fj];
     char to = graph[ti][tj];
@@ -47,18 +46,15 @@ int getEdgeWeight(int fi, int fj, int ti, int tj) {
         return 2;
     }
 }
-
 class VertexComparison {
-    public:
+public:
     bool operator() (key_vertex k1, key_vertex k2) {
         return k1.first > k2.first;
     }
 };
-
 int D[55][55]; //the total distance required for the dijkstra
 int N, M;
 priority_queue<key_vertex, vector<key_vertex>, VertexComparison > Q;
-
 void relax(int i1, int j1, int i2, int j2) {
     if(i2 < 0 || j2 < 0 || i2 > M - 1 || j2 > N - 1) {
         return;
@@ -69,12 +65,11 @@ void relax(int i1, int j1, int i2, int j2) {
     int ewt = getEdgeWeight(i1, j1, i2, j2);
     if(D[i2][j2] > D[i1][j1] + ewt) {
         D[i2][j2] = D[i1][j1] + ewt;
-        Q.push(key_vertex(D[i2][j2], ii(i2, j2))); 
+        Q.push(key_vertex(D[i2][j2], ii(i2, j2)));
         //printf("Pushed : (%d, %d)\n", i2, j2);
         //printf("Updated D[%d][%d] = %d\n", i2, j2, D[i2][j2]);
     }
 }
-
 vector<int> getDistances() {
     int srcJ, srcI;
     //fill in the edge weights
@@ -97,14 +92,13 @@ vector<int> getDistances() {
         ii coord = currBest.second;
         int i = coord.first;
         int j = coord.second;
-
         //there can only be 4 adjacent vertices, test them all
         relax(i, j, i - 1, j); //top
         relax(i, j, i, j - 1); //left
         relax(i, j, i + 1, j); //bottom
         relax(i, j, i, j + 1); //right
     }
-vi res;
+    vi res;
     for(int i = 0; i < M; i++) {
         for(int j = 0; j < N; j++) {
             if(graph[i][j] == '$') {
@@ -112,11 +106,9 @@ vi res;
             }
         }
     }
-return res;
+    return res;
 
-  
 }
-
 class BestPartition {
     vi distances;
     vi assignment;
@@ -125,7 +117,7 @@ class BestPartition {
     int cumuA, cumuB;
     int lastA, lastB;
     vi A, B;
-    public:
+public:
     BestPartition(vi& distances) {
         this->distances.assign(all(distances));
         for(int i = 0; i < distances.size(); i++) {
@@ -136,7 +128,6 @@ class BestPartition {
         cumuB = cumuA = 0;
         lastB = lastA = 0;
     }
-
     int getClusterDiff() {
         vi delA, delB;
         int sumA = 0, sumB = 0;
@@ -155,7 +146,7 @@ class BestPartition {
         }
         return abs(sumA, sumB);
     }
-    
+
     void findBestAssignment(int i) {
         if(i == distances.size()) {
             lastA = A.empty() ? 0 : A.back();
@@ -166,27 +157,26 @@ class BestPartition {
             }
             return;
         }
-            assignment[i] = 0;
-            cumuA += (distances[i] * 2);
-            A.pb(distances[i]);
-            findBestAssignment(i + 1);
-            A.pop_back();
-            cumuA -= (distances[i] * 2);
-            
-            assignment[i] = 1;
-            cumuB += (distances[i] * 2);
-            B.pb(distances[i]);
-            findBestAssignment(i + 1);
-            B.pop_back();
-            cumuB -= (distances[i] * 2);
+        assignment[i] = 0;
+        cumuA += (distances[i] * 2);
+        A.pb(distances[i]);
+        findBestAssignment(i + 1);
+        A.pop_back();
+        cumuA -= (distances[i] * 2);
+
+        assignment[i] = 1;
+        cumuB += (distances[i] * 2);
+        B.pb(distances[i]);
+        findBestAssignment(i + 1);
+        B.pop_back();
+        cumuB -= (distances[i] * 2);
     }
-    
+
     int getBestAssignmentCost() {
         findBestAssignment(0);
         return currBestFinishTime;
     }
 };
-
 int main() {
     int t;
     scanf("%d", &t);

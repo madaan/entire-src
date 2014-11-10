@@ -3,7 +3,6 @@
 using namespace std;
 double dp[401][80001];
 int level[80001]; //returns the level of a number
-
 void fillLevel() {
     int total = 1;
     for(int lvl = 1; total < 80001; lvl++) {
@@ -13,7 +12,6 @@ void fillLevel() {
         }
     }
 }
-
 int solve(double x) {
     int lvl = 1;
     dp[1][1] = x;
@@ -38,7 +36,6 @@ int solve(double x) {
         atleastOne = false;
     }
 }
-
 int main() {
     fillLevel();
     int t;

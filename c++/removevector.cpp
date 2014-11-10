@@ -18,8 +18,6 @@ int main() {
         cout << A[i] << " ";
     }
 
-    
     cout << "\n";
     return 0;
 }
-

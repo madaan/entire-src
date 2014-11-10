@@ -36,15 +36,10 @@ int main() {
         neighbors[INT(ip[i])].insert(INT(ip[i + 1]));
     }
     neighbors[INT(ip[l - 1])].insert(INT(ip[l - 2]));
-
-
-
-
     int curr = INT(ip[0]);
     min_val[curr] = 0;
     min_index[curr] = 0;
     path[0] = 0;
-
     for(int i = 1; i < l - 1; i++) {
         int curr = INT(ip[i]);
         int next = INT(ip[i + 1]);
@@ -56,7 +51,6 @@ int main() {
         //for current, you will get the current minimum itself
         path[i] = min(min_val[curr], min(next_val, prev_val)) + 1;
         //printf("At %d (%d), prev = %d, next = %d, curr = %d\n", i, curr, prev_val, next_val, min_val[curr]);
-
         if(path[i] < min_val[curr]) {
             //printf("%d %d\n", min_val[curr], path[i]);
             min_val[curr] = path[i];
@@ -77,8 +71,6 @@ int main() {
                 min_val[next] = min_val[curr] + 1;
                 min_index[next] = i + 1;
             }
-
-
         }
     }
     curr = INT(ip[l - 1]);
@@ -98,5 +90,4 @@ int main() {
     */
     printf("%d\n", path[l - 1]);
     return 0;
-
 }

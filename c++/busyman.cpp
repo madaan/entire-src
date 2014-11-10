@@ -4,18 +4,16 @@
 #include <vector>
 struct activity
 {
-    public:
+public:
     int start, end;
     activity(int s, int e) {
         start = s;
         end = e;
     }
 };
-
 bool comp (activity a1, activity a2) {
     return a1.end < a2.end;
 }
-
 int main()
 {
     int t, num_acts, start, end;
@@ -39,8 +37,6 @@ int main()
         }
         printf("%d\n", max_taken);
         actlist.clear();
-
     }
-
     return 0;
 }

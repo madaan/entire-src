@@ -7,7 +7,6 @@
 using namespace std;
 typedef long long int ll;
 typedef vector<long long int> vll;
-
 long long getMaxArea(vll heights) {
     ll numVals = heights.size();
     ll currMaxArea = 0;
@@ -20,11 +19,11 @@ long long getMaxArea(vll heights) {
             while(!st.empty() && heights[st.top()] > heights[i]) {
                 lastPopped = st.top();
                 st.pop();
-            ll numBarBefore = st.empty() ? i : i - st.top() - 1;
-            ll area = heights[lastPopped] * numBarBefore;
-            if(area > currMaxArea) {
-                currMaxArea = area;
-            }
+                ll numBarBefore = st.empty() ? i : i - st.top() - 1;
+                ll area = heights[lastPopped] * numBarBefore;
+                if(area > currMaxArea) {
+                    currMaxArea = area;
+                }
             }
             st.push(i);
         }
@@ -43,16 +42,14 @@ long long getMaxArea(vll heights) {
     return currMaxArea;
 }
 
-    
-#define pb push_back 
+#define pb push_back
 int main() {
     //ll arr[] = {3, 2, 3};
     //ll arr[] = {6, 2, 5, 4, 5, 1, 6};
-    
-    ll arr[100010];
-    
-    while(true) {
 
+    ll arr[100010];
+
+    while(true) {
         int nums;
         scanf("%d", &nums);
         if(nums == 0) {

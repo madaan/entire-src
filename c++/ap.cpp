@@ -14,22 +14,23 @@ int main() {
         int a, b;
         scanf("%d%d", &a, &b);
         if(a > b) {
-            a ^= b; b ^= a; a ^= b;
+            a ^= b;
+            b ^= a;
+            a ^= b;
         }
         if(a == b) {
             printf("1\n%d\n", a);
         } else if(abs(a - b) == 1) {
             printf("2\n%d %d", a - 1, b + 1);
         } else {
-            
+
             int mid = ((a + b) / 2);
             int d = b - a;
-            if(d % 2 == 0) { 
+            if(d % 2 == 0) {
                 printf("3\n%d %d %d\n",  a - d, mid, b + d);
             } else {
                 printf("2\n%d %d\n",  a - d, b + d);
             }
-
         }
         return 0;
     }
@@ -47,8 +48,8 @@ int main() {
     }
     sort(cards.begin(), cards.end());
     if(allSame) {
-            printf("1\n%d\n", cards[0]);
-            return 0;
+        printf("1\n%d\n", cards[0]);
+        return 0;
     }
     int d1 = cards[1] - cards[0];
     int d2 = cards[2] - cards[1];
@@ -95,13 +96,12 @@ int main() {
         return 0;
     }
     if(inv == 1) {
-
         int mp = (cards[locInv] + cards[locInv - 1]) / 2;
         if(d == (cards[locInv] - mp)) {
             if((cards[locInv] - cards[locInv - 1]) % 2 == 0)
-            printf("1\n%d\n", mp);
+                printf("1\n%d\n", mp);
             else
-            printf("0\n");
+                printf("0\n");
         } else {
             printf("0\n");
         }

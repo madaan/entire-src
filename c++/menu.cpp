@@ -1,12 +1,10 @@
 //sg
 #include <stdio.h>
-
 float B[55][30]; //total benefit
 float C[55][30]; //total cost
 int prev[55][30]; //the dish cooked on the previous day
 float dishInfo[55][2]; //information about the dishes
 int dish_sequence[55];
-
 #define COST 0
 #define BENIFIT 1
 #define max(a, b) ((a > b) ? (a) : (b))
@@ -19,13 +17,11 @@ bool budget_condition(float a, float budget, int day, int DAYS) {
         return a < budget;
     }
 }
-
 int main()
 {
     int DAYS, NUM_DISHES, BUDGET;
     float benefit;
     while(true) {
-
         scanf("%d%d%d", &DAYS, &NUM_DISHES, &BUDGET);
         if(DAYS == 0) {
             break;
@@ -33,23 +29,23 @@ int main()
         for(int i = 1; i <= NUM_DISHES; i++) {
             scanf("%f%f", &dishInfo[i][COST], &dishInfo[i][BENIFIT]);
         }
-    
-        
+
+
         for(int i = 1; i <= NUM_DISHES; i++) {
             for(int j = 0; j < DAYS; j++) {
                 B[i][j] = INIT;
             }
         }
-    
-    
+
+
         //initialize dishes for day 0
         for(int dish = 1; dish <= NUM_DISHES; dish++) {
             B[dish][0] = dishInfo[dish][BENIFIT];
             C[dish][0] = dishInfo[dish][COST];
             prev[dish][0] = dish + 1 % NUM_DISHES;
         }
-    
-    
+
+
         for(int day = 1; day < DAYS; day++) {//for all day s
             for(int dish_c = 1; dish_c <= NUM_DISHES; dish_c++) {
                 for(int dish_p = 1; dish_p <= NUM_DISHES; dish_p++) {
@@ -66,15 +62,15 @@ int main()
                                 benefit = dishInfo[dish_c][BENIFIT] * 0.5;
                             }
                         } else {
-                                benefit = dishInfo[dish_c][BENIFIT];
+                            benefit = dishInfo[dish_c][BENIFIT];
                         }
                         if(B[dish_c][day] <  B[dish_p][day - 1] + benefit) {
-                           //printf("Replacing B[%d][%d] = %f (from dish %d)  with %f (dish %d)\n", 
-                           //         dish_c, day, B[dish_c][day], prev[dish_c][day], B[dish_p][day - 1] + benefit, dish_p);
-                           B[dish_c][day] =  B[dish_p][day - 1] + benefit;
-                           //printf("%f\n", B[2][1]);
-                           C[dish_c][day] = C[dish_p][day - 1] + dishInfo[dish_c][COST];
-                           prev[dish_c][day] = dish_p;
+                            //printf("Replacing B[%d][%d] = %f (from dish %d)  with %f (dish %d)\n",
+                            //         dish_c, day, B[dish_c][day], prev[dish_c][day], B[dish_p][day - 1] + benefit, dish_p);
+                            B[dish_c][day] =  B[dish_p][day - 1] + benefit;
+                            //printf("%f\n", B[2][1]);
+                            C[dish_c][day] = C[dish_p][day - 1] + dishInfo[dish_c][COST];
+                            prev[dish_c][day] = dish_p;
                         } else if(B[dish_c][day] ==  B[dish_p][day - 1] + benefit) {
                             if(C[dish_c][day] > C[dish_p][day - 1] + dishInfo[dish_c][COST]) { //update
                                 prev[dish_c][day] = dish_p;
@@ -85,13 +81,13 @@ int main()
                         B[dish_c][day] = EXCEEDED;
                     }
                 }
-            } 
+            }
         }
-    
-        
-    
+
+
+
         float max_dish = -2  //so that it picks up -1
-            , min_cost = 10000000;
+                         , min_cost = 10000000;
         for(int i = 1; i <= NUM_DISHES; i++) {
             for(int j = 0; j < DAYS ; j++) {
                 printf("%5f      ", B[i][j]);
@@ -111,12 +107,12 @@ int main()
                 }
             }
         }
-    
+
         if(max_dish == EXCEEDED) {
             printf("0.0\n\n");
         } else {
             printf("%.1f\n", max_dish);
-        
+
             for(int i = DAYS - 1; i >= 0; i--) {
                 dish_sequence[i] = hook;
                 hook = prev[hook][i];
@@ -129,4 +125,3 @@ int main()
     }
     return 0;
 }
-

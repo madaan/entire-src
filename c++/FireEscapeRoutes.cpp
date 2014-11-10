@@ -7,7 +7,6 @@ vector<int> adjacency[100005];
 struct Component {
     int numElements;
 };
-
 Component component[100005];
 char visited[100005];
 stack<int> dfs;
@@ -20,9 +19,7 @@ void init()
     while (!dfs.empty()) {
         dfs.pop();
     }
-
 }
-
 int getPossibilityCount(int N)
 {
     int result = 1;
@@ -31,7 +28,6 @@ int getPossibilityCount(int N)
     }
     return (result % 1000000007);
 }
-
 int main()
 {
     int N, M;
@@ -42,16 +38,12 @@ int main()
     int cases;
     scanf("%d", &cases);
     while (cases--) {
-
         //Initialize data structures for this case
         init();
         componentElementCount = 1;
         componentNumber = 1;
         //Initialization over
-
-
         scanf("%d%d", &N, &M);
-
         for (int i = 0; i < M; i++) {
             scanf("%d%d", &a, &b);
             if (a > b) {
@@ -62,20 +54,15 @@ int main()
             adjacency[a].push_back(b);
             adjacency[b].push_back(a);
         }
-
         //now go through all the lists
-
         for (int i = 1; i <= N; i++) {
-
             //is the node already visited?
             if (visited[i] == '1') {
                 continue;
             }
-
             //if it's not taken, run a dfs
             //push the source
             dfs.push(i);
-
             do {
                 //pop
                 temp = dfs.top();
@@ -90,16 +77,12 @@ int main()
                     }
                 }
             } while (!dfs.empty());
-
             component[componentNumber].numElements = componentElementCount++;
             componentNumber++;
             componentElementCount = 1;
         }
-
         printf("%d %d\n", componentNumber - 1, getPossibilityCount(componentNumber - 1));
-
     }
-
     /*for(int i = 1;i <= N; i++) {
         printf("%d : ", i);
         for(vector<int>::iterator it = adjacency[i].begin(); it != adjacency[i].end(); ++it)
@@ -108,8 +91,6 @@ int main()
             }
             printf("\n");
     }
-
     /**/
     return 0;
-
 }

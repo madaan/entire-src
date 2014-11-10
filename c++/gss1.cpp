@@ -2,9 +2,7 @@
 #include<cstdio>
 #define max(a, b) ((a > b) ? a : b)
 #define MAX 50005
-
 int arr[MAX];
-
 int getMax(int x, int y) {
     int sum = arr[x];
     int maxSum = sum;
@@ -14,7 +12,6 @@ int getMax(int x, int y) {
     }
     return maxSum;
 }
-
 int main() {
     int n, m;
     int x, y;

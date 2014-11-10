@@ -3,13 +3,10 @@
 using namespace std;
 int l, d, n;
 vector< string > dict;
-
 map< pair <char, int> , vector< bool > * > setwordsmap;
 void setWords(char c, int pos, vector< bool > &setwords) {
-     setwords = *setwordsmap[pair<char, int> (c, pos)];
+    setwords = *setwordsmap[pair<char, int> (c, pos)];
 }
-
-
 void init() {
     for(int pos = 0; pos < l; pos++) {
         for(char c = 'a'; c <= 'z'; c++) {
@@ -17,25 +14,21 @@ void init() {
             vector<bool> &sw = *setwords;
             for(int i = 0; i < d; i++) {
                 if(dict[i][pos] == c) {
-                sw[i] = true;
+                    sw[i] = true;
                 }
             }
             setwordsmap[pair<char, int>(c, pos)] = setwords;
         }
     }
 }
-
-
 vector<bool> getPosWords(string opts, int pos, vector< bool > &flags) {
     for(int i = 0; i < opts.length(); i++) {
         setWords(opts[i], pos, flags);
     }
     return flags;
 }
-
-
 int solve(vector< string > opts) {
-   vector< vector< bool > > flags(l, vector<bool>(d,  false));
+    vector< vector< bool > > flags(l, vector<bool>(d,  false));
     for(int i = 0; i < l; i++) {
         getPosWords(opts[i], i, flags[i]);
         cout << "pos : " << i << "\n";
@@ -51,14 +44,13 @@ int solve(vector< string > opts) {
             fflag[j] = fflag[j] & flags[i][j];
         }
     }
-        for(int j = 0; j < d; j++) {
-            if(fflag[j]) {
-                res++;
-            }
+    for(int j = 0; j < d; j++) {
+        if(fflag[j]) {
+            res++;
         }
+    }
     return res;
 }
-
 int main() {
     cin >> l >> d >> n;
     string temp;

@@ -4,17 +4,14 @@ using namespace std;
 struct pt
 {
     int x, y;
-    pt(int x, int y):x(x), y(y){
+    pt(int x, int y):x(x), y(y) {
     }
 };
-
-
 //rotate P about R by 90 deg
 void rotate(pt &P, pt &R) {
     P.x = Rx + Ry - Py;
     P.y = -Rx + Ry + Px;
 }
-
 int main() {
     pt ini[4], home[4];
     int n;
@@ -31,11 +28,6 @@ int main() {
                 for(int rn = 0; rn < seq[ptn]; rn++) {
                     rotat
 
-                
-
-    return 0;
-}
-
-
-            
+                    return 0;
+                }
 

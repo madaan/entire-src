@@ -3,7 +3,6 @@
 using namespace std;
 vector< int > adj[101];
 int child[101];
-
 int count(int node, int par) {
     for(int i = 0, l = adj[node].size(); i < l; i++) {
         int nbr = adj[node][i];
@@ -14,7 +13,6 @@ int count(int node, int par) {
     child[node] += 1;
     return child[node];
 }
-
 int res(int node, int par) {
     int ans = 0;
     for(int i = 0, l = adj[node].size(); i < l; i++) {
@@ -23,11 +21,10 @@ int res(int node, int par) {
             ans++;
         }
         if(nbr != par)
-        ans += res(nbr, node);
+            ans += res(nbr, node);
     }
     return ans;
 }
-
 int main() {
     int n, m;
     int a, b;

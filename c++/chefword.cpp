@@ -2,7 +2,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 typedef vector< vector < double > > DMAT;
-
 DMAT mul(DMAT A, DMAT B) {
     DMAT C(26, vector<double>(26, 0.0));
     for(int i = 0; i < 26; i++) {
@@ -14,7 +13,6 @@ DMAT mul(DMAT A, DMAT B) {
     }
     return C;
 }
-
 DMAT powmat(DMAT a, int k) {
     if(k == 1) {
         return a;
@@ -25,7 +23,6 @@ DMAT powmat(DMAT a, int k) {
     DMAT half = powmat(a, k / 2);
     return mul(half, half);
 }
-                
 
 double getTransProb(DMAT &charProb, string a, string b) {
     if(a.length() != b.length()) {
@@ -37,7 +34,6 @@ double getTransProb(DMAT &charProb, string a, string b) {
     }
     return res;
 }
-        
 
 int main() {
     int t;
@@ -55,7 +51,6 @@ int main() {
             }
         }
         DMAT finalMat = powmat(probmat, k);
-
         /*
         for(int i = 0; i < 26; i++) {
             for(int j = 0; j < 26; j++) {

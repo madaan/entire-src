@@ -27,12 +27,12 @@ public:
         this->s1 = s1;
         this->s2 = s2;
         this->s3 = s3;
-        
+
         if((l1 + l2) != l3) {
             return false;
         }
         memset(dp, -1, sizeof(dp));
         return check(0, 0) == 1 ? true : false;
-    
+
     }
 };

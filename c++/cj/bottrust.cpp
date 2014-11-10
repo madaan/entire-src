@@ -10,7 +10,8 @@ int main() {
         cin >> n;
         int ctime = 0, last_o = 1, last_b = 1, last_ot = 0, last_bt = 0;
         for(int i = 0; i < n; i++) {
-            char c; int sw;
+            char c;
+            int sw;
             cin >> c >> sw;
             if(c == 'B') {
                 int timeSinceLast = abs(last_bt - ctime);

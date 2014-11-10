@@ -3,7 +3,6 @@
 using namespace std;
 typedef long long ll;
 #define MAX 100009
-
 int people[MAX];
 ll cumPeople[MAX];
 #define Int(x) int x; scanf("%d", &x);
@@ -21,14 +20,13 @@ ll getLongStationSeq(ll At, ll Bt) {
     while(right < At) {
         while(left < right) {
             if((peopleSeen - people[left] + people[right]) < Bt) {
-            peopleSeen = peopleSeen - people[left];
+                peopleSeen = peopleSeen - people[left];
                 left++;
                 break;
             }
             peopleSeen = peopleSeen - people[left];
             left++;
         }
-
         //printf("After Left C: left = %lld right = %lld\n", left, right);
         if(left == right) {
             while(left < At) {
@@ -42,7 +40,6 @@ ll getLongStationSeq(ll At, ll Bt) {
         if(right >= At) {
             break;
         }
-
         /*Expand a window to right*/
         //the variable right is the edge to be tested
         //printf("After Equal C: left = %lld right = %lld\n", left, right);
@@ -65,7 +62,7 @@ ll getLongStationSeq(ll At, ll Bt) {
             numStationsBest = numStations;
             peopleSeenBest = peopleSeen;
         }
-    
+
     }
     if(bestLeft == 0) {
         peopleSeenBest = cumPeople[bestRight];
@@ -74,14 +71,13 @@ ll getLongStationSeq(ll At, ll Bt) {
     }
     printf("%lld %lld\n",peopleSeenBest, numStationsBest);
 }
-
-
 int main() {
     Int(t);
     while(t--) {
-        Int(At);Int(Bt);
-            scanf("%d", &people[0]);
-            cumPeople[0] =  people[0];
+        Int(At);
+        Int(Bt);
+        scanf("%d", &people[0]);
+        cumPeople[0] =  people[0];
         for(int i = 1; i < At; i++) {
             scanf("%d", &people[i]);
             cumPeople[i] = cumPeople[i - 1] + people[i];
@@ -90,6 +86,4 @@ int main() {
     }
     return 0;
 }
-
-        
 

@@ -5,15 +5,12 @@ char str[1000];
 bool checkLapin(char *str) {
     int lhf[26], rhf[26];
     int l = strlen(str);
-
     int t;
     if(l % 2 == 0) {
         t = l/2;
     } else {
         t = l/2 + 1;
     }
-
-
     for(int i = 0; i < 26; i++) {
         lhf[i] = rhf[i] = 0;
     }

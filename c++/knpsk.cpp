@@ -21,14 +21,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
-
 using namespace std;
-
 typedef unsigned long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
-
 // Basic macros
 #define st          first
 #define se          second
@@ -49,13 +46,11 @@ ll dp[MAX];
 const int oo = 2000000009;
 const double eps = 1e-9;
 vector<pi> w2Items, w1Items, items;
-
 //returns the cheapest item for a given wt
 ll cheapest(ll wt) {
     ll w = wt;
     ll costc = 0;
     ll wcum = 0;
-
     tr(items, i) {
         pi curr = *i;
         ll wtcurr = curr.second;
@@ -72,9 +67,6 @@ ll cheapest(ll wt) {
     }
     return -1; //cannot find the right wt
 }
-
-
-
 ll minv[MAX];
 int num2, num1;
 ll M = 0;
@@ -104,51 +96,38 @@ void makeMin() {
             }
         } else {
             minv[i] = 2; //TODO
-    }
-    for(int i = 0; i <= M; i++) {
-        printf("minv[%d] = %lld\n", i, minv[i]);
-    }
-}
-
-void printRange() {
-    for(int i = 1; i <= M; i++) {
-        printf("%lld ", SUM - minv[M - i]);
-    }
-    printf("\n");
-}
-
-
-int main() {
-    ll n;
-    scanf("%lld", &n);
-    ll w, c;
-    for(int i = 0; i < n; i++) {
-        scanf("%lld%lld", &w, &c);
-        M += w;
-        SUM += c;
-        if(w == 1) {
-            w1Items.pu(pi(c, w));
-        } else {
-            w2Items.pu(pi(c, w));
         }
-        items.pu(pi(c, w));
+        for(int i = 0; i <= M; i++) {
+            printf("minv[%d] = %lld\n", i, minv[i]);
+        }
     }
-    num1 = w1Items.size();
-    num2 = w2Items.size();
-    sort(all(w2Items));
-    sort(all(w1Items));
-    //sort(all(items));
-    makeMin();
-    printRange();
-    return 0;
-}
-
-
-
-
-
-
-
-
-
-
+    void printRange() {
+        for(int i = 1; i <= M; i++) {
+            printf("%lld ", SUM - minv[M - i]);
+        }
+        printf("\n");
+    }
+    int main() {
+        ll n;
+        scanf("%lld", &n);
+        ll w, c;
+        for(int i = 0; i < n; i++) {
+            scanf("%lld%lld", &w, &c);
+            M += w;
+            SUM += c;
+            if(w == 1) {
+                w1Items.pu(pi(c, w));
+            } else {
+                w2Items.pu(pi(c, w));
+            }
+            items.pu(pi(c, w));
+        }
+        num1 = w1Items.size();
+        num2 = w2Items.size();
+        sort(all(w2Items));
+        sort(all(w1Items));
+        //sort(all(items));
+        makeMin();
+        printRange();
+        return 0;
+    }

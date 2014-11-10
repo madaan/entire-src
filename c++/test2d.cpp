@@ -1,9 +1,7 @@
 //sg
 #include <stdio.h>
 int tester(int *a, int m, int n) {
-
 }
-
 int main()
 {
     int m = 4, n;

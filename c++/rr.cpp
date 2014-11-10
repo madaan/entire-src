@@ -10,8 +10,8 @@ int main()
 {
     MinHeap minH;
     MaxHeap maxH;
-    enum OP {ADD = 1, SUB}; 
-    int cases, //total cases 
+    enum OP {ADD = 1, SUB};
+    int cases, //total cases
         op, //current operation
         N; // total number of elements now
     LL arg;
@@ -26,7 +26,7 @@ int main()
             if(N/3 == 0) {
                 maxH.push(arg);
                 continue;
-            }else if(N/3 == 1 && NPrev/3 == 0) { //first time we can have an element in the minHeap
+            } else if(N/3 == 1 && NPrev/3 == 0) { //first time we can have an element in the minHeap
                 if(arg > maxH.top()) {
                     minH.push(arg);
                 } else {
@@ -34,7 +34,7 @@ int main()
                     maxH.pop();
                     maxH.push(arg);
                 }
-            }else if(N/3 == NPrev/3) { //someone has to move
+            } else if(N/3 == NPrev/3) { //someone has to move
                 /*printf("Someone needs to move\n");
                 printf("Adding : %lld\n", arg);*/
                 if(arg > minH.top()) {
@@ -45,13 +45,12 @@ int main()
                 } else {
                     maxH.push(arg);
                 }
-
             } else { // N/3 > NPrev / 3, since N has only increased
-                    maxH.push(arg);
-                    minH.push(maxH.top());
-                    maxH.pop();
-                }
-        
+                maxH.push(arg);
+                minH.push(maxH.top());
+                maxH.pop();
+            }
+
         } else { //time to show
             if(N/3 == 0) {
                 printf("No reviews yet\n");

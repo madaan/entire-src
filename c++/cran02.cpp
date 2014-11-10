@@ -67,7 +67,7 @@ int main() {
             listSz = temp->size();
             res += ((listSz * (listSz - 1)) / 2);
         }
-            
+
         /*
         tr(indexMap, i) {
             temp = (*i).second;
@@ -83,4 +83,3 @@ int main() {
     }
     return 0;
 }
-

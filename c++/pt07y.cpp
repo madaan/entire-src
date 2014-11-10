@@ -11,7 +11,7 @@ class Graph
     int n;
     vector<bool> visited;
     vector<int> parent;
-    public:
+public:
     Graph(int n) {
         this -> n = n;
         adj = new list<int>[n + 1];
@@ -47,7 +47,6 @@ class Graph
         }
         return true;
     }
-
     bool simpleDFS(int src, int par) {
         visited[src] = true;
         bool res = true;
@@ -71,7 +70,6 @@ class Graph
         return res;
     }
 };
-
 int main() {
     int n, m;
     int a, b;

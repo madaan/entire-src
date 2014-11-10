@@ -25,11 +25,3 @@ int main() {
                 vno++;
             }
             adj[vname[str1]].push_back(str2);
-
-
-
-
-
-
-
-

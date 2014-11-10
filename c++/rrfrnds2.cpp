@@ -21,14 +21,14 @@
 #include <stack>
 #include <utility>
 #include <vector>
- 
+
 using namespace std;
- 
+
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
- 
+
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -44,14 +44,13 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
- 
+
 const int oo = 2000000009;
 const double eps = 1e-9;
 #define MAX 2009
 typedef unsigned long long ui;
 #define BITLEN 64
 ui adj[MAX][500];
-
 /*
  * Takes a BITLEN bit string and returns a number
  */
@@ -66,7 +65,6 @@ ui numBer(char *str) {
     }
     return res;
 }
-
 int amat[MAX][MAX];
 bool haveCommonNbr(int i, int j, int numParts) {
     for(int k = 0; k <= numParts; k++) {
@@ -76,16 +74,13 @@ bool haveCommonNbr(int i, int j, int numParts) {
     }
     return false;
 }
-
 void printStr(ui num) {
     for(int i = 0; i < BITLEN; i++) {
         printf("%c", (num & (1 << (BITLEN - i - 1))) ? '1' : '0');
     }
     printf("\n");
 }
-
 char adjStr[MAX][MAX];
-
 int main() {
     int n;
     scanf("%d", &n);
@@ -97,7 +92,7 @@ int main() {
             adj[i][p] = numBer(adjStr[i] + BITLEN * p);
         }
     }
-    
+
     ll res = 0;
     for(int i = 0; i < n; i++) {
         for(int j = i + 1; j < n; j++) {

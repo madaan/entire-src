@@ -21,14 +21,14 @@
 #include <stack>
 #include <utility>
 #include <vector>
- 
+
 using namespace std;
- 
+
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
- 
+
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -44,22 +44,22 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
- 
+
 const int oo = 2000000009;
 const double eps = 1e-9;
 ll gcd (ll a, ll b )
 {
-  ll c;
-  while ( a != 0 ) {
-     c = a; a = b%a;  b = c;
-  }
-  return b;
+    ll c;
+    while ( a != 0 ) {
+        c = a;
+        a = b%a;
+        b = c;
+    }
+    return b;
 }
-
 ll lcm(ll a, ll b) {
     return (a * b) / gcd(a, b);
 }
-
 ll dp[100009];
 // A function to print all prime factors of a given number n
 set<int> primeFactors(int n)
@@ -71,7 +71,7 @@ set<int> primeFactors(int n)
         primes.insert(2);
         n = n/2;
     }
- 
+
     // n must be odd at this point.  So we can skip one element (Note i = i +2)
     for (int i = 3; i <= sqrt(n); i = i+2)
     {
@@ -82,14 +82,13 @@ set<int> primeFactors(int n)
             n = n/i;
         }
     }
- 
+
     // This condition is to handle the case whien n is a prime number
     // greater than 2
     if (n > 2)
         primes.insert(n);
     return primes;
 }
-
 int main3() {
     int t, n, temp;
     scanf("%d", &t);
@@ -100,8 +99,6 @@ int main3() {
         for(int i = 1; i <= n; i++) {
             primes.push_back(primeFactors(i));
         }
-
-
     }
 }
 int main() {
@@ -132,7 +129,6 @@ int main() {
     }
     return 0;
 }
-
 int main1() {
     int t, n;
     scanf("%d", &t);
@@ -152,7 +148,7 @@ int main1() {
             scanf("%d", &a);
             gcdtill = gcd(gcdtill, a);
             //cout << "gcdtill " << gcdtill << "\n";
-            if(gcdtill == 1 && (a % 2 != 0 || a % 2 == 0 && !e)){
+            if(gcdtill == 1 && (a % 2 != 0 || a % 2 == 0 && !e)) {
                 dp[i] = dp[i - 1] + 1;
             } else {
                 gcdtill = a;
@@ -162,10 +158,10 @@ int main1() {
             if(a % 2 == 0) {
                 e = true;
             }
-            
+
             ans = max(ans, dp[i]);
         }
-        
+
         printf("%lld\n", ans == 1 ? -1 : ans);
     }
     return 0;

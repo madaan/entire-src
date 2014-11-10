@@ -1,11 +1,9 @@
 //sg
 #include<bits/stdc++.h>
 using namespace std;
-
 typedef unsigned long long ll;
 typedef pair<ll, pair<int, int> > span;
 typedef pair<int, int> pi;
-
 bool comp(span a, span b) {
     if(a.first == b.first) {
         return a.second.second > b.second.second;
@@ -14,7 +12,6 @@ bool comp(span a, span b) {
 }
 vector<pi> taken;
 list<pi> rngs;
-
 bool ok(pi x, pi y) {
     pi a, b;
     if(x.first < y.first) {
@@ -31,7 +28,6 @@ bool ok(pi x, pi y) {
     }
     return true;
 }
-
 bool iscmpt(span x) {
     pi crds = x.second;
     int l = taken.size();
@@ -42,7 +38,6 @@ bool iscmpt(span x) {
     }
     return true;
 }
-
 int rem(pi x) {
     int res = 0;
     for(list<pi>::iterator i = rngs.begin(); i != rngs.end(); i++) {
@@ -52,22 +47,20 @@ int rem(pi x) {
     }
     return res;
 }
-
 void clear(pi x) {
     list<pi>::iterator i = rngs.begin();
     while (i != rngs.end())
     {
-    if(!ok(x, *i))
-    {
-        rngs.erase(i++);  // alternatively, i = items.erase(i);
-    }
-    else
-    {
-        ++i;
-    }
+        if(!ok(x, *i))
+        {
+            rngs.erase(i++);  // alternatively, i = items.erase(i);
+        }
+        else
+        {
+            ++i;
+        }
     }
 }
-
 int main() {
     int n, m, k;
     cin >> n >> m >> k;
@@ -76,7 +69,6 @@ int main() {
         cin >> arr[i];
     }
     vector<span> spans;
-
     for(int i = 1; i <= n - m + 1; i++) {
         ll sum = 0;
         for(int j = 0; j < m; j++) {
@@ -89,7 +81,6 @@ int main() {
     for(int i = 0; i < spans.size(); i++) {
         printf("%lld : %d - %d\n", spans[i].first, (spans[i].second).first, spans[i].second.second);
     }
-
     ll res = 0;
     int numSpans = spans.size();
     int picked = 0;
@@ -104,7 +95,6 @@ int main() {
         }
     }
     //cout << picked << "\n";
-
     cout << res << "\n";
     return 0;
 }

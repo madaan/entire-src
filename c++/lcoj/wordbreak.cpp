@@ -5,7 +5,6 @@ class Solution {
 public:
     string s;
     unordered_set<string> dict;
-
     int dp[10000];
     bool solve(int st) {
         if(dp[st] != -1) {
@@ -23,7 +22,6 @@ public:
         }
         return dp[st] = res;
     }
-
     bool wordBreak(string s, unordered_set<string> &dict) {
         memset(dp, -1, sizeof(dp));
         this->s = s;
@@ -31,7 +29,6 @@ public:
         return solve(0);
     }
 };
-
 int main() {
     Solution s;
     ifstream i("t", ios::in);
@@ -44,4 +41,4 @@ int main() {
     cout << s.wordBreak("acaaaaabbbdbcccdcdaadcdccacbcccabbbbcdaaaaaadb", dict);
     return 0;
 }
-    
+

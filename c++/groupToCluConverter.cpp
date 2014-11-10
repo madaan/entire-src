@@ -5,7 +5,6 @@
 using namespace std;
 main()
 {
-fstream f;
-f.open("sgtest.groups",ios::in);
-
+    fstream f;
+    f.open("sgtest.groups",ios::in);
 }

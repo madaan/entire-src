@@ -14,11 +14,9 @@ int nearestBinSearch(int l, int r, int x) {
         } else {
             r = mid - 1;
         }
-
     }
     return l;
 }
-
 int main(int argc, char *argv[]) {
     for(int i = 0; i < 10; i++) {
         arr[i] = i * 3;
@@ -31,6 +29,5 @@ int main(int argc, char *argv[]) {
     printf("\n");
     int index = nearestBinSearch(1, 9, atoi(argv[1]));
     printf("arr[%d] = %d\n", index, arr[index]);
-
     return 0;
 }

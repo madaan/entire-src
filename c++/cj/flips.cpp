@@ -25,7 +25,6 @@ set< string > getflips(vs &elec, vs &dev) {
     }
     return flips;
 }
-
 vs flip(vs &strs, string fstr) {
     vs res(n, string(l, ' '));
     for(ui i = 0 ; i < strs.size(); i++) {
@@ -37,9 +36,8 @@ vs flip(vs &strs, string fstr) {
             }
         }
     }
-        return res;
+    return res;
 }
-
 bool isFlipValid(string flipString, vs &elec, vs &dev) {
     vs flipped = flip(elec, flipString);
     map< string, int > count;
@@ -62,7 +60,6 @@ bool isFlipValid(string flipString, vs &elec, vs &dev) {
     //flip(elec, flipString);
     return res;
 }
-
 void updateMin(int &ans, string f) {
     int l = 0;
     for(ui i = 0, len = f.length(); i < len; i++) {
@@ -79,7 +76,6 @@ int ones(string s) {
     }
     return res;
 }
-
 int main() {
     int t;
     cin >> t;
@@ -104,7 +100,6 @@ int main() {
             prep.push_back(vis(ones(*flip), *flip));
         }
         sort(prep.begin(), prep.end());
-
         for(int i = 0, ps = prep.size(); i < ps; i++) {
             //cout << *flip << "\n";
             bool res = isFlipValid(prep[i].second, elec, dev);

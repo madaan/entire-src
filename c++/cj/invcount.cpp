@@ -2,7 +2,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 int countInversions(vector<string> &names, int n) {
-    
+
     int inv = 0;
     for(int i = 2; i <= n; i++) {
         int j = i;
@@ -19,10 +19,7 @@ int countInversions(vector<string> &names, int n) {
         }
     }
     return inv;
-
-
 }
-
 int main() {
     int t;
     cin >> t;

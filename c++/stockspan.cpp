@@ -21,10 +21,8 @@ vector< int > span(vector< int > arr) {
         st.pop();
         res[curr] = curr;
     }
-
     return res;
 }
-
 int main() {
     int arr[] = {6, 2, 5, 4, 5, 1, 6};
     vector< int > vec(arr, arr + 7);

@@ -1,4 +1,3 @@
-
 //sg
 #include<bits/stdc++.h>
 using namespace std;
@@ -14,7 +13,6 @@ void dump(CMAT x) {
         cout << "\n";
     }
 }
-
 int nbr(int i, int j, CMAT x) {
     int res = 0;
     static int moves[8][2] = {{-1,0}, {-1, -1}, {0, -1}, {1, -1}, {1, 0}, {1, 1}, {0, 1}, {-1, 1}};
@@ -28,7 +26,6 @@ int nbr(int i, int j, CMAT x) {
     }
     return res;
 }
-
 IMAT genImat(CMAT x) {
     IMAT res(R, vector<int>(C, 0));
     for(int i = 0; i < R; i++)
@@ -36,7 +33,6 @@ IMAT genImat(CMAT x) {
             res[i][j] = nbr(i, j, x);
     return res;
 }
-
 //recursively opens all zeroes
 bool open(int i, int j, IMAT sol, BMAT &opened) {
     static int moves[8][2] = {{-1,0}, {-1, -1}, {0, -1}, {1, -1}, {1, 0}, {1, 1}, {0, 1}, {-1, 1}};
@@ -51,7 +47,6 @@ bool open(int i, int j, IMAT sol, BMAT &opened) {
         opened[ti][tj] = true;
     }
 }
-
 bool sat(BMAT b, CMAT x) {
     for(int r = 0; r < R; r++) {
         for(int c = 0; c < C; c++) {
@@ -62,7 +57,6 @@ bool sat(BMAT b, CMAT x) {
     }
     return true;
 }
-
 int main() {
     int t;
     int M;
@@ -87,7 +81,6 @@ int main() {
                 }
             }
         }
-
         for(int i = 0; i < R; i++) {
             for(int j = 0; j < C; j++) {
                 if(m[i][j] != '*' && !opened[i][j]) {

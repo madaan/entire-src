@@ -3,8 +3,6 @@
 using namespace std;
 typedef pair<int, int> pi;
 typedef vector<pi> spans;
-
-
 void getspan(string s, spans &res) {
     int i = 0;
     s += '#';
@@ -18,7 +16,6 @@ void getspan(string s, spans &res) {
         res.push_back(pi(s[i - 1] - 48, sl));
     }
 }
-
 void explode(string s, char on, vector<int> &brksups) {
     stringstream ss(s);
     string item;
@@ -26,20 +23,35 @@ void explode(string s, char on, vector<int> &brksups) {
         brksups.push_back(atoi(item.c_str()));
     }
 }
-
 string countword(int num) {
-if(num == 2) { return "double";}
-if(num == 3) { return "triple";}
-if(num == 4) { return "quadruple";}
-if(num == 5) { return "quintuple";}
-if(num == 6) { return "sextuple";}
-if(num == 7) { return "septuple";}
-if(num == 8) { return "octuple";}
-if(num == 9) { return "nonuple";}
-if(num == 10) { return "decuple";}
+    if(num == 2) {
+        return "double";
+    }
+    if(num == 3) {
+        return "triple";
+    }
+    if(num == 4) {
+        return "quadruple";
+    }
+    if(num == 5) {
+        return "quintuple";
+    }
+    if(num == 6) {
+        return "sextuple";
+    }
+    if(num == 7) {
+        return "septuple";
+    }
+    if(num == 8) {
+        return "octuple";
+    }
+    if(num == 9) {
+        return "nonuple";
+    }
+    if(num == 10) {
+        return "decuple";
+    }
 }
-
-
 void readparts(vector<spans> parts) {
     string numword[] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
     for(int i = 0; i < parts.size(); i++) {
@@ -55,12 +67,11 @@ void readparts(vector<spans> parts) {
                     cout << numword[num] << " ";
                 }
             }
-                cout << numword[num] << " ";
+            cout << numword[num] << " ";
         }
     }
     cout << "\n";
 }
-
 int main() {
     int t;
     cin >> t;

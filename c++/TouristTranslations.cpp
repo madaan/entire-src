@@ -1,3 +1,2 @@
 //sg
 #include<stdio.h>
-

@@ -1,6 +1,5 @@
 #include<iostream>
 using namespace std;
-
 double upow(double x, unsigned int n) {
     if(n == 0) return 1;
     if(n == 1) return x;
@@ -18,8 +17,8 @@ double pow(double x, int n) {
     } else {
         return upow(x, n);
     }
-}int main() {
-
+}
+int main() {
     cout << pow(1.00000, -2147483648) << "\n";
     int a = -2147483648;
     cout << a << "\n";

@@ -1,7 +1,6 @@
 //sg
 #include<bits/stdc++.h>
 using namespace std;
-
 #define MAX 1000009
 typedef long long ll;
 ll dp[MAX];
@@ -44,7 +43,6 @@ int res(int x, int d) {
     }
     return ans + to_string(d).length() + 1;
 }
-
 int main() {
     int t;
     cin >> t;

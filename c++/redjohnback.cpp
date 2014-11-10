@@ -4,10 +4,8 @@ typedef long long ll;
 #define MAX 450000
 ll dp[100];
 vector< int > primes;
-
 //returns the last index i where x <= primes[i]
 int getprimebefore(int x) {
-
     int left = 0;
     int right = 1;
     while(primes[right] < x) {
@@ -25,8 +23,6 @@ int getprimebefore(int x) {
     }
     return left;
 }
-
-
 int main() {
     dp[0] = 0;
     dp[1] = dp[2] = dp[3] = 1;
@@ -56,7 +52,6 @@ int main() {
     }
     cout << "\n";
     */
-        
 
     int t;
     cin >> t;

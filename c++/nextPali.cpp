@@ -21,14 +21,14 @@
 #include <stack>
 #include <utility>
 #include <vector>
- 
+
 using namespace std;
- 
+
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
- 
+
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -44,15 +44,13 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
- 
+
 const int oo = 2000000009;
 const double eps = 1e-9;
 string s;
 int n, p;
 char limit;
-
 char alpha[] = "abcdefghijklmnopqrstuvwxyz";
-
 char nxt(char p, char pp) {
     for(char c = 'a'; c <= limit; c++) {
         if(c != p && c != pp) {
@@ -62,7 +60,6 @@ char nxt(char p, char pp) {
     }
     return '1'; //something is really bad
 }
-
 char nxt(char p) {
     for(char c = 'a'; c <= limit; c++) {
         if(c != p) {
@@ -72,9 +69,6 @@ char nxt(char p) {
     }
     return '1'; //something is really bad
 }
-
-
-
 bool isOk(int pos, char c) {
     if(pos == 0) {
         return true;
@@ -84,11 +78,10 @@ bool isOk(int pos, char c) {
     }
     return ((c != s[pos - 1]) && (c != s[pos - 2]));
 }
-
 string getgreedy(int pos) {
     string apnd = string("");
     string ori = s.substr(0, pos);
-    
+
     for(int i = pos; i < n; i++) {
         if(i == 1) {
             char r = nxt(s[i - 1]);
@@ -100,12 +93,10 @@ string getgreedy(int pos) {
             s[i] = r;
             apnd += r;
         }
-
     }
     ori += apnd;
     return ori;
 }
-
 int main() {
     cin >> n >> p;
     limit = 'a' + p - 1;

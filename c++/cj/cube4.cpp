@@ -6,8 +6,6 @@ int maze[MAX][MAX];
 int dp[MAX][MAX];
 int from[MAX][MAX];
 int s;
-
-
 int solve(int dp[][MAX], int r, int c) {
     if(dp[r][c] != 0) {
         return dp[r][c];
@@ -27,7 +25,6 @@ int solve(int dp[][MAX], int r, int c) {
     }
     return dp[r][c];
 }
-
 int main() {
     int t;
     cin >> t;
@@ -41,7 +38,6 @@ int main() {
         }
         memset(dp, 0, sizeof(dp));
         //for all the numbers, fill dp
-
         for(int i = 0; i < s; i++) {
             for(int j = 0; j < s; j++) {
                 if(dp[i][j] == 0) solve(dp, i, j);
@@ -54,7 +50,7 @@ int main() {
         for(int i = 0; i < s; i++) {
             for(int j = 0; j < s; j++) {
                 //cout << " " << dp[i][j];
-                if(((dp[i][j] == res) && maze[i][j] < lm) || (dp[i][j] > res)){
+                if(((dp[i][j] == res) && maze[i][j] < lm) || (dp[i][j] > res)) {
                     res = dp[i][j];
                     maxi = i;
                     maxj = j;
@@ -84,14 +80,7 @@ int main() {
             }
         }
         */
-
         cout << maze[maxi][maxj] << " " << res<< "\n";
     }
     return 0;
 }
-
-
-
-
-
-

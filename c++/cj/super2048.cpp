@@ -15,16 +15,14 @@ vector<int> up(vector<int> ip) {
     }
     return res;
 }
-
 void print(MAT m, int r, int c) {
-        for(int i = 0; i < r; i++) {
-         for(int j = 0; j < c; j++) {
+    for(int i = 0; i < r; i++) {
+        for(int j = 0; j < c; j++) {
             cout << m[i][j] << " ";
-         }
-         cout << "\n";
         }
+        cout << "\n";
+    }
 }
-
 void xpose(MAT &ip, int r, int c) {
     for(int i = 0; i < r; i++) {
         for(int j = i + 1; j < c; j++) {
@@ -34,7 +32,6 @@ void xpose(MAT &ip, int r, int c) {
         }
     }
 }
-
 void upmat(MAT &ip, int r, int c) {
     for(int j = 0; j < c; j++) {
         int ptr = 0;
@@ -63,7 +60,6 @@ void upmat(MAT &ip, int r, int c) {
         }
     }
 }
-
 void downmat(MAT &ip, int r, int c) {
     for(int j = 0; j < c; j++) {
         int ptr = r - 1;
@@ -91,20 +87,19 @@ void downmat(MAT &ip, int r, int c) {
         }
     }
 }
-
-
 int main() {
     int t;
     cin >> t;
     for(int qq = 1; qq <= t; qq++) {
         printf("Case #%d:\n", qq);
-        int n; string dir;
+        int n;
+        string dir;
         cin >> n >> dir;
         MAT mat(n, vector< int> (n, 0));
         for(int i = 0; i < n; i++) {
-        for(int j = 0; j < n; j++) {
-            cin >> mat[i][j];
-        }
+            for(int j = 0; j < n; j++) {
+                cin >> mat[i][j];
+            }
         }
         if(dir == "up") {
             upmat(mat, n, n);
@@ -123,4 +118,4 @@ int main() {
     }
     return 0;
 }
-   
+

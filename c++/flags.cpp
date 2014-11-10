@@ -8,8 +8,6 @@ ll res(ll n) {
     ans += (n * (n - 1) * (n - 1) * 2);
     return ans;
 }
-
-
 int main() {
     int t;
     ll n;
@@ -21,4 +19,3 @@ int main() {
     return 0;
 }
 
-        

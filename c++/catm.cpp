@@ -31,7 +31,6 @@ void checkDia(int mx, int my, int c1x, int c1y, int c2x, int c2y) {
     }
 }
 
-    
 int main() {
     int m, n;
     int k;
@@ -56,8 +55,7 @@ int main() {
         } else {
             checkDia(mx, my, c2x, c2y, c1x, c1y);
         }
-
     }
     return 0;
 }
-    
+

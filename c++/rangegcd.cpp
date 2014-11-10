@@ -1,60 +1,50 @@
 //sg
 #include<bits/stdc++.h>
 using namespace std;
-
 int t[131072][18];
 int a[131072];
 int N, n;
-
 void setvals(int nn) {
     n = ceil(log(nn)/log(2));
     N = pow(2, n);
 }
-
-
-
-
 int f(int a, int b)
 {
     if ( b == 0 )
         return a ;
     return f( b, a%b ) ;
 }
-
 void init() {
-  for (int x = 0; x < N; x++)
-    t[x][0] = a[x];
-  for (int y = 1; y <= n; y++)
-    for (int x = 0; x < N; x+=(1<<y))
-      t[x][y] = f(t[x][y-1], t[x+(1<<(y-1))][y-1]);
+    for (int x = 0; x < N; x++)
+        t[x][0] = a[x];
+    for (int y = 1; y <= n; y++)
+        for (int x = 0; x < N; x+=(1<<y))
+            t[x][y] = f(t[x][y-1], t[x+(1<<(y-1))][y-1]);
 }
-
 void set(int x, int v) {
-  t[x][0] = a[x] = v;
-  for (int y = 1; y <= n; y++) {
-    int xx = x-(x&((1<<y)-1));
-    t[xx][y] = f(t[xx][y-1], t[xx+(1<<(y-1))][y-1]);
-  }
+    t[x][0] = a[x] = v;
+    for (int y = 1; y <= n; y++) {
+        int xx = x-(x&((1<<y)-1));
+        t[xx][y] = f(t[xx][y-1], t[xx+(1<<(y-1))][y-1]);
+    }
 }
-
 int get(int i, int j) {
-  int res = 0, h = 0; j++;
-  while (i+(1<<h) <= j) {
-    while ((i&((1<<(h+1))-1)) == 0 && i+(1<<(h+1)) <= j) h++;
-    res = f(res, t[i][h]);
-    i += (1<<h);
-  }
-  while (i < j) {
-    while (i+(1<<h) > j) h--;
-    res = f(res, t[i][h]);
-    i += (1<<h);
-  }
-  return res;
+    int res = 0, h = 0;
+    j++;
+    while (i+(1<<h) <= j) {
+        while ((i&((1<<(h+1))-1)) == 0 && i+(1<<(h+1)) <= j) h++;
+        res = f(res, t[i][h]);
+        i += (1<<h);
+    }
+    while (i < j) {
+        while (i+(1<<h) > j) h--;
+        res = f(res, t[i][h]);
+        i += (1<<h);
+    }
+    return res;
 }
-
 int nn;
 typedef long long ll;
-
 //first point where gcd <= q
 int binL(int i, int q) {
     int l = i, r = nn;
@@ -68,7 +58,6 @@ int binL(int i, int q) {
     }
     return r;
 }
-
 //first point where gcd < q
 int binR(int i, int q) {
     int l = i, r = nn;
@@ -82,8 +71,6 @@ int binR(int i, int q) {
     }
     return r;
 }
-
-
 ll fastsolve(int q) {
     ll res = 0;
     for(int i = 0; i < nn; i++) {
@@ -100,8 +87,6 @@ ll fastsolve(int q) {
     }
     return res;
 }
-
-
 ll solve(int q) {
     ll res = 0;
     for(int i = 0; i < nn; i++) {
@@ -119,7 +104,6 @@ ll solve(int q) {
     }
     return res;
 }
-
 int main() {
     cin >> nn;
     for(int i = 0; i < nn; i++) {

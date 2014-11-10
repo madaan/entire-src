@@ -21,14 +21,14 @@
 #include <stack>
 #include <utility>
 #include <vector>
- 
+
 using namespace std;
- 
+
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
- 
+
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -44,7 +44,7 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
- 
+
 const int oo = 2000000009;
 const double eps = 1e-9;
 #define MAX 2009
@@ -52,7 +52,7 @@ list<int> adj[MAX];
 int adjMat[MAX][MAX];
 int dist[MAX][MAX];
 int visited[MAX][MAX];
-    ll res = 0;
+ll res = 0;
 int flag[MAX];
 void bfs(int s) {
     queue<int> q;
@@ -70,7 +70,7 @@ void bfs(int s) {
         if(cdis >= 2) { //no point in exploring further, need only close friends
             continue;
         }
-    
+
         tr(adj[ele], i) {
             //printf("%d ", *i);
             if(visited[s][*i] == 0) {
@@ -81,8 +81,6 @@ void bfs(int s) {
         }
     }
 }
-
-
 int main() {
     int n;
     scanf("%d", &n);
@@ -114,10 +112,7 @@ int main() {
         //printf("got : %lld\n", res);
         //memset(dist, 0, sizeof(dist[0]) * MAX);
         //memset(visited, 0, sizeof(visited[0]) * MAX);
-
     }
     printf("%lld\n", res);
     return 0;
 }
-
-

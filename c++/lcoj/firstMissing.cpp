@@ -8,7 +8,6 @@ int getSum(int n) {
         return ((n + 1) / 2) * n;
     }
 }
-
 int firstMissingPositive(int A[], int n) {
     int nm, nx, pm, px;
     bool neg = false, pos = false;
@@ -48,15 +47,12 @@ int firstMissingPositive(int A[], int n) {
     cout << negSum << "\n";
     cout << iposSum << "\n";
     cout << inegSum << "\n";
-
     if(iposSum > posSum) {
         return iposSum - posSum;
     } else {
         return -(inegSum - negSum);
     }
 }
-
-
 int main() {
     int a[] = {3, 4, -1, 1};
     cout << firstMissingPositive(a, 4) << "\n";

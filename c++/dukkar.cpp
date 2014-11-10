@@ -1,7 +1,6 @@
 //sg
 #include<stdio.h>
 typedef long long ll;
-
 ll getDiv(ll N, int p) {
     if(N == p) {
         return N - 1;
@@ -15,7 +14,6 @@ ll getDiv(ll N, int p) {
     }
     return Nb + 1 - res;
 }
-
 int main() {
     int t, p;
     ll N;

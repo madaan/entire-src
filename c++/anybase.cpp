@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 int checkPali(long long *arr, int n)
 {
     int i = 0;
@@ -13,9 +12,8 @@ int checkPali(long long *arr, int n)
     }
     return 1;
 }
-
 long long res[100];
-void decToBase(long long n, long long b, int *l) 
+void decToBase(long long n, long long b, int *l)
 {
     long long i = 0;
     while(n) {
@@ -30,7 +28,7 @@ int main(int agc, char *av[])
     int T;
     scanf("%d", &T);
     long long ar[] = {12, 11, 10, 11, 12};
-   // if(checkPali(decToBase(N, i), i)) {
+    // if(checkPali(decToBase(N, i), i)) {
     int l;
     while(T--) {
         scanf("%lld", &N);
@@ -38,7 +36,6 @@ int main(int agc, char *av[])
             printf("2\n");
             continue;
         }
-
         for(long long i = 2; i < N; i++) {
             decToBase(N, i, &l);
             if(checkPali(res, l)) {
@@ -47,5 +44,5 @@ int main(int agc, char *av[])
             }
         }
     }
-   return 0;
-} 
+    return 0;
+}

@@ -21,14 +21,14 @@
 #include <stack>
 #include <utility>
 #include <vector>
- 
+
 using namespace std;
- 
+
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
- 
+
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -44,7 +44,7 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
- 
+
 const int oo = 2000000009;
 const double eps = 1e-9;
 #define MAX 10009
@@ -87,7 +87,6 @@ int handleQuery0(int dish1, int dish2) {
     return 0;
 }
 */
-
 int handleQuery1(int dishNumber) {
     int realChef = dishNumber;
     while(realChef != wasBeatenBy[realChef]) {
@@ -95,7 +94,6 @@ int handleQuery1(int dishNumber) {
     }
     return realChef;
 }
-
 int handleQuery0(int dish1, int dish2) {
     int chef1 = handleQuery1(dish1);
     int chef2 = handleQuery1(dish2);
@@ -105,7 +103,6 @@ int handleQuery0(int dish1, int dish2) {
     //path compression
     wasBeatenBy[dish1] = chef1;
     wasBeatenBy[dish2] = chef2;
-
     int chef1Best = chefMax[chef1];
     int chef2Best = chefMax[chef2];
     if(chef1Best > chef2Best) { //chef1 wins
@@ -115,19 +112,17 @@ int handleQuery0(int dish1, int dish2) {
     }
     return 0;
 }
-
 #define gc getchar_unlocked
 int read_int() {
-  char c = gc();
-  while(c<'0' || c>'9') c = gc();
-  int ret = 0;
-  while(c>='0' && c<='9') {
-    ret = 10 * ret + c - 48;
-    c = gc();
-  }
-  return ret;
+    char c = gc();
+    while(c<'0' || c>'9') c = gc();
+    int ret = 0;
+    while(c>='0' && c<='9') {
+        ret = 10 * ret + c - 48;
+        c = gc();
+    }
+    return ret;
 }
-
 int main() {
     int t, n, q;
     scanf("%d", &t);
@@ -137,7 +132,7 @@ int main() {
         //memset(dishChef, 0, MAX * sizeof(int));
         memset(wasBeatenBy, 0, MAX * sizeof(int));
         //memset(chefMax, 0, MAX * sizeof(int));
-    
+
         //get the dishes
         scanf("%d", &n);
         for(int i = 1; i <= n; i++) {
@@ -165,8 +160,3 @@ int main() {
     }
     return 0;
 }
-
-
-
-
-

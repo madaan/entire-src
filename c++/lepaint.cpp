@@ -24,14 +24,14 @@
 #include <stack>
 #include <utility>
 #include <vector>
- 
+
 using namespace std;
- 
+
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
- 
+
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -47,12 +47,11 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
- 
+
 double prob[2][MAXN][MAXK];
 int modInverse[MAXN];
 typedef pair<int, int> pi;
 map<int, list<int>* > mulInv;
-
 void makeMulInv(int n, int c) {
     for(int i = 0; i < c; i++) {
         list<int> *temp = new list<int>(1, 1);
@@ -64,8 +63,6 @@ void makeMulInv(int n, int c) {
         }
     }
 }
-
-            
 
 void updateProbs(int n, int c, int l, int r, int iter) {
     int prev, curr;
@@ -85,7 +82,7 @@ void updateProbs(int n, int c, int l, int r, int iter) {
     for(int i = l; i <= r; i++) {
         prob[curr][i][0] = prob[prev][i][0] + w;
         for(int j = 1; j < c; j++) {
-          //  prob[curr][i][j] = 0.5 * prob[prev][i][j] + (1.0 / 6) * (prob[prev][i][j] + prob[prev][i][modInverse[j]]);
+            //  prob[curr][i][j] = 0.5 * prob[prev][i][j] + (1.0 / 6) * (prob[prev][i][j] + prob[prev][i][modInverse[j]]);
             double temp = 0;
             //prob[curr][i][j] = 0.5 * prob[prev][i][1] + (1.0 / 6) * (prob[prev][i][1] + prob[prev][i][modInverse[1]]);
             list<int> *mulInvsList = mulInv[j];
@@ -105,7 +102,6 @@ void updateProbs(int n, int c, int l, int r, int iter) {
         }
     }
 }
-
 double getavg(int n, int c, int k) {
     double res = 0;
     int curr;
@@ -116,12 +112,11 @@ double getavg(int n, int c, int k) {
     }
     for(int i = 1; i <= n; i++) {
         for(int j = 1; j < c; j++) {
-        res = res + j * prob[curr][i][j];
+            res = res + j * prob[curr][i][j];
         }
     }
     return res;
 }
-
 int main() {
     int t;
     int n, c, k, l, r;
@@ -134,7 +129,7 @@ int main() {
             for(int j = 0; j < c; j++) {
                 prob[0][i][j] = 0;
             }
-                prob[0][i][1] = 1;
+            prob[0][i][1] = 1;
         }
         for(int i = 1; i <= k; i++) {
             scanf("%d%d", &l, &r);

@@ -3,16 +3,13 @@
 typedef long long ll;
 #define MAX 100009
 double cache[MAX];
-
 void makeCache() {
     double currSum = 2.5;
-
     for(int i = 3; i < MAX; i++) {
         cache[i] = (currSum + i) / i;
         currSum += cache[i];
     }
 }
-
 double expectedVal(int n) {
     if(n == 0) {
         return 0;
@@ -30,7 +27,6 @@ double expectedVal(int n) {
     cache[n] = res / n;
     return cache[n];
 }
-
 int main() {
     cache[0] = 0;
     cache[1] = 1;
@@ -44,6 +40,3 @@ int main() {
     }
     return 0;
 }
-
-
-

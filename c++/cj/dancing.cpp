@@ -12,7 +12,7 @@ int main() {
         for(int i = 0; i < n; i++) {
             int total;
             cin >> total;
-            
+
             if(total >= (p * 3)) {
                 res++;
                 continue;
@@ -29,4 +29,3 @@ int main() {
     }
     return 0;
 }
-

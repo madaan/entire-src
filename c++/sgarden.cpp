@@ -21,14 +21,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
-
 using namespace std;
-
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
-
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -44,7 +41,6 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
-
 const int oo = 2000000009;
 const double eps = 1e-9;
 #define MOD 1000000007
@@ -62,9 +58,8 @@ void fillPrimeFactors(ll n)
         count++;
         n = n/2;
     }
-
     primeFactorMap[2] = max(count, primeFactorMap[2]);
- 
+
     // n must be odd at this point.  So we can skip one element (Note i = i +2)
     for (ll i = 3; i <= sqrt(n); i = i+2)
     {
@@ -76,16 +71,14 @@ void fillPrimeFactors(ll n)
             //printf("%d ", i);
             n = n/i;
         }
-
         primeFactorMap[i] = max(count, primeFactorMap[i]);
     }
- 
+
     // This condition is to handle the case whien n is a prime number
     // greater than 2
     if (n > 2)
         primeFactorMap[n] = max(primeFactorMap[n], 1);
 }
-
 ll lcmList(vector<ll> nums) {
     for(int i = 0; i < nums.size(); i++) {
         fillPrimeFactors(nums[i]);
@@ -100,8 +93,6 @@ ll lcmList(vector<ll> nums) {
     }
     return res;
 }
-
-
 int main() {
     int t, n, temp;
     /*
@@ -124,7 +115,6 @@ int main() {
         vector<long long> listLens;
         ll res = 1;
         while(true) {
-
             //look for something which is not yet assigned a set
             found = false;
             for(k = start; k <= n; k++) {
@@ -137,7 +127,6 @@ int main() {
             if(!found) { //our job is done
                 break;
             }
-
             //printf("starting at %d\n", start);
             k = start; //overloading of notation
             ll inSet = 1;
@@ -152,7 +141,7 @@ int main() {
             //printf("res = %lld\n", res);
             listLens.push_back(inSet);
         }
-        
+
         printf("%lld\n", lcmList(listLens) % MOD);
     }
     return 0;

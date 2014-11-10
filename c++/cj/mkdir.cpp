@@ -1,7 +1,6 @@
 //sg
 #include<bits/stdc++.h>
 using namespace std;
-
 vector<string> getcomps(string temp) {
     vector<string> comps;
     comps.push_back(string("/"));
@@ -33,7 +32,7 @@ int main() {
             vector<string> comps = getcomps(newDir);
             for(int j = 0; j < comps.size(); j++) {
                 if(present.find(comps[j]) == present.end()) {
-                    
+
                     present.insert(comps[j]);
                     res++;
                 }

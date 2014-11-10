@@ -1,7 +1,6 @@
 //sg
 #include<bits/stdc++.h>
 using namespace std;
-
 void rev(string &str) {
     int l = str.length();
     for(int i = 0; i < l / 2; i++) {
@@ -10,7 +9,6 @@ void rev(string &str) {
         str[i] ^= str[l - i - 1];
     }
 }
-
 void rotate(vector< string > &mat) {
     int r = mat.size();
     int c = mat[0].size();
@@ -24,9 +22,7 @@ void rotate(vector< string > &mat) {
     for(int i = 0; i < r; i++) {
         rev(mat[i]);
     }
-
 }
-
 bool searchRow(vector < string > &mat, char col, int k) {
     int r = mat.size();
     int c = r;
@@ -44,7 +40,6 @@ bool searchRow(vector < string > &mat, char col, int k) {
     }
     return false;
 }
-
 bool searchCol(vector < string > &mat, char col, int k) {
     int r = mat.size();
     int c = r;
@@ -62,40 +57,37 @@ bool searchCol(vector < string > &mat, char col, int k) {
     }
     return false;
 }
-
-
 bool searchDiagR(int i, int j, int n, char ele, vector < string > &mat, int k) {
     int sl = 0;
     while(i < n && j < n && mat[i][j] == ele) {
-        i++;j++;
+        i++;
+        j++;
         sl++;
     }
     return sl >= k;
 }
-
 bool searchDiagL(int i, int j, int n, char ele, vector < string > &mat, int k) {
     int sl = 0;
     while(i < n && j >= 0 && mat[i][j] == ele) {
-        i++;j--;
+        i++;
+        j--;
         sl++;
     }
     return sl >= k;
 }
-
 bool searchDiag(vector < string > &mat, char ele, int k) {
     int n = mat[0].length();
     bool res = false;
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < n; j++) {
-        res = res | searchDiagL(i, j, n,  ele, mat, k);
-        res = res | searchDiagR(i, j, n, ele, mat, k);
-        res = res | searchDiagL(j, i, n, ele, mat, k);
-        res = res | searchDiagR(j, i, n, ele, mat, k);
-    }
+            res = res | searchDiagL(i, j, n,  ele, mat, k);
+            res = res | searchDiagR(i, j, n, ele, mat, k);
+            res = res | searchDiagL(j, i, n, ele, mat, k);
+            res = res | searchDiagR(j, i, n, ele, mat, k);
+        }
     }
     return res;
 }
-
 void gravity(vector< string > &mat) {
     int r = mat.size();
     int c = mat[0].size();
@@ -107,18 +99,14 @@ void gravity(vector< string > &mat) {
             }
         }
         int tl = temp.length();
-        for(int dots = 0; dots < r - tl;dots++) {
+        for(int dots = 0; dots < r - tl; dots++) {
             mat[dots][i] = '.';
         }
         for(int p = 0; p < tl; p++) {
             mat[p + r - tl][i] = temp[p];
         }
-
-
     }
 }
-
-
 int main() {
     int t;
     cin >> t;
@@ -132,10 +120,10 @@ int main() {
             cin >> temp;
             mat.push_back(temp);
         }
-        
+
         rotate(mat);
         gravity(mat);
-        
+
         /*
         for(int i = 0; i < n; i++) {
             cout << "\n" << mat[i];

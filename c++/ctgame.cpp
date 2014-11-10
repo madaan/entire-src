@@ -9,7 +9,6 @@
 using namespace std;
 typedef int ll;
 typedef vector<long long int> vll;
-
 long long getMaxArea(int *heights, int numVals) {
     long long currMaxArea = 0;
     ll lastPopped;
@@ -21,11 +20,11 @@ long long getMaxArea(int *heights, int numVals) {
             while(!st.empty() && heights[st.top()] > heights[i]) {
                 lastPopped = st.top();
                 st.pop();
-            ll numBarBefore = st.empty() ? i : i - st.top() - 1;
-            long long area = heights[lastPopped] * numBarBefore;
-            if(area > currMaxArea) {
-                currMaxArea = area;
-            }
+                ll numBarBefore = st.empty() ? i : i - st.top() - 1;
+                long long area = heights[lastPopped] * numBarBefore;
+                if(area > currMaxArea) {
+                    currMaxArea = area;
+                }
             }
             st.push(i);
         }
@@ -44,8 +43,7 @@ long long getMaxArea(int *heights, int numVals) {
     return currMaxArea;
 }
 
-    
-#define pb push_back 
+#define pb push_back
 #define ini(a, v)   memset(a, v, sizeof(a))
 #define max(a, b) (a > b ? a : b)
 #define tr(res, i) for(typeof(res.begin()) i = res.begin(); i != res.end(); i++)
@@ -62,7 +60,6 @@ int main() {
             mat[0][i] = 0;
         }
         //memset(mat, 0, sizeof(mat[0][0]) * 1100 * 1100);
-
         for(int i = 1; i <= M; i++) {
             for(int j = 1; j <= N;) {
                 scanf("%s", temp);
@@ -77,5 +74,3 @@ int main() {
     }
     return 0;
 }
-
-

@@ -6,11 +6,11 @@ using namespace std;
 template <class T>
 class Heap
 {
-    protected:
-        enum { MAX = 1000};
-        T heap_arr[MAX];
-        int curr_elems;
-    public:
+protected:
+    enum { MAX = 1000};
+    T heap_arr[MAX];
+    int curr_elems;
+public:
     int par(int i) {
         return ((i - 1) / 2);
     }
@@ -20,16 +20,13 @@ class Heap
     int rchild(int i) {
         return heap_arr[2 * i + 2];
     }
-
     virtual void heapify_up() = 0;
     virtual void heapify_down() = 0;
-
     void insert(int x) {
         heap_arr[curr_elems] = x;
         heapify_up();
         curr_elems++;
     }
-
     int delete_elem() {
         if(curr_elems == 0) {
             return -99999;
@@ -40,7 +37,6 @@ class Heap
         curr_elems--;
         return res;
     }
-
     void dump() {
         for(int i = 0; i < curr_elems; i++) {
             cout << heap_arr[i] << " ";
@@ -48,11 +44,10 @@ class Heap
         cout << "\n";
     }
 };
-
 template <typename T>
-class MinHeap : public Heap<T> 
+class MinHeap : public Heap<T>
 {
-    public:
+public:
     void heapify_up() {
         int i = Heap<T>::curr_elems;
         while(i > 0 && (Heap<T>::heap_arr[Heap<T>::par(i)] > Heap<T>::heap_arr[i])) {
@@ -63,7 +58,6 @@ class MinHeap : public Heap<T>
             i = parI;
         }
     }
-
     void heapify_down() {
         int i = 0;
         while() {
@@ -82,12 +76,9 @@ class MinHeap : public Heap<T>
     }
 };
 
-
-
-    
 int main() {
     MinHeap<int> h;
-    for(int i = 10; i > 0; i--) { 
+    for(int i = 10; i > 0; i--) {
         h.insert(i);
         h.dump();
     }

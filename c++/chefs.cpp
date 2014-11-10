@@ -17,7 +17,6 @@ int main()
     freopen("TEST", "r", stdin);
 #endif
     cin >> cases;
-
     for (int t = 0; t < cases; t++) {
         cin >> m >> n;
         NI[t] = n;
@@ -25,9 +24,7 @@ int main()
 #ifdef DEBUG
         cout << "NO PROBLEM HERE";
 #endif
-
 //first row
-
         for (int i = 0; i < n; i++) {
             cin >> chefSpeciality[i][0];
             (chefSpeciality[i][0])--;

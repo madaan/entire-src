@@ -31,10 +31,8 @@ public:
         return finalStr;
     }
 };
-
 int main() {
     Solution s;
     cout << s.convert("ABC", 2) << "\n";
     return 0;
 }
-

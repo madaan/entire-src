@@ -1,6 +1,5 @@
 //sg
 #include<bits/stdc++.h>
-
 using namespace std;
 typedef pair<int, int> pi;
 typedef vector< vector <int> >  MAT;
@@ -19,7 +18,6 @@ vector< pi > getvalnbrs(pi coord) {
     vector< pi > res;
     int i = coord.first;
     int j = coord.second;
-
     if(i > 0 && P[i - 1][j] != -1) {
         res.push_back(pi(i - 1, j));
     }
@@ -34,7 +32,6 @@ vector< pi > getvalnbrs(pi coord) {
     }
     return res;
 }
-
 /*
 int getval(pi coord, MAT &mat) {
     int i = coord.first;
@@ -42,17 +39,13 @@ int getval(pi coord, MAT &mat) {
     return mat[i][j];
 }
 */
-
 #define getval(A, B) B[A.first][A.second]
-
-
 void disp(pi x) {
     cout << x.first << ", " << x.second << "\n";
 }
 bool equals(pi a, pi b) {
     return a.first == b.first && a.second == b.second;
 }
-
 void mazesolve(pi start, pi end) {
     queue<pi> st;
     MAT visited(n, vector < int > (m, 0));
@@ -75,7 +68,7 @@ void mazesolve(pi start, pi end) {
             continue;
         }
         setval(visited, curr, 1);
-        
+
         vector< pi > nbrs = getvalnbrs(curr);
         int ckey = getval(curr, key);
         for(int i = 0; i < nbrs.size(); i++) {
@@ -109,7 +102,6 @@ void mazesolve(pi start, pi end) {
         cout << maxwt + P[end.first][end.second] << "\n";
     }
 }
-
 int main() {
     int t;
     cin >> t;

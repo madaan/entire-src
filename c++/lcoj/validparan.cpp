@@ -4,7 +4,6 @@ using namespace std;
 bool isOpen(char c) {
     return c == '(' || c == '[' || c == '{';
 }
-
 bool isClosing(char c) {
     return c == ')' || c == ']' || c == '}';
 }
@@ -17,7 +16,6 @@ bool matches(char o, char c) {
         return c == '}';
     }
 }
-
 bool isValid(string s) {
     stack<char> st;
     int i = 0;
@@ -44,7 +42,6 @@ bool isValid(string s) {
     }
     return st.empty();
 }
-
 int main() {
     cout << isValid("[])") << "\n";
     return 0;

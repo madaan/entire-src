@@ -25,7 +25,6 @@ ll dfs(int src) {
     }
     return elems;
 }
-
 ll dfsdrive() {
     vector< ll > comps;
     for(int i = 0; i < n; i++) {
@@ -45,11 +44,10 @@ ll dfsdrive() {
         cumsize[i] = cumsize[i - 1] + comps[i];
     }
     for(int i = 0, l = comps.size(); i < l; i++) {
-            res += (comps[i] * (cumsize[l - 1] - cumsize[i]));
+        res += (comps[i] * (cumsize[l - 1] - cumsize[i]));
     }
     return res;
 }
-
 int main() {
     int a, b;
     cin >> n >> I;
@@ -59,6 +57,5 @@ int main() {
         adj[b].push_back(a);
     }
     cout << dfsdrive() << "\n";
-
     return 0;
 }

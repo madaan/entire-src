@@ -5,7 +5,6 @@ int m, n;
 #define MAX 250
 int dp[MAX][MAX];
 char val[MAX][MAX];
-
 int solve(int r, int c) {
     if(dp[r][c] != -1) {
         return dp[r][c];
@@ -30,7 +29,6 @@ int solve(int r, int c) {
     }
     return dp[r][c];
 }
-
 int main() {
     int t;
     cin >> t;
@@ -38,7 +36,7 @@ int main() {
         cin >> m >> n;
         memset(dp, -1, sizeof(dp));
         for(int i = 1; i <= m; i++) {
-                scanf("%s", val[i] + 1);
+            scanf("%s", val[i] + 1);
         }
         int res = 0;
         solve(1, 1);

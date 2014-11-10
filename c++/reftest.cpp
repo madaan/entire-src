@@ -9,7 +9,6 @@ int main()
 {
     int a = 12;
     float b = 1.3f;
-
     foo(a);
     return 0;
 }

@@ -23,12 +23,11 @@
 #include <utility>
 #include <vector>
 using namespace std;
-
 typedef long long ll;
 typedef vector<long long> vi;
 typedef pair<long long,long long> pi;
 typedef vector<string> vs;
- 
+
 // Basic macros
 #define st          first
 #define se          second
@@ -43,22 +42,19 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (long long)(x.size())
-
 vector<pi> vp;
 #define MAX 1000010
 class BIT
 {
-
     long long *tree;
     long long MAXINDEX;
-    public:
+public:
     BIT(long long mi):MAXINDEX(mi)
     {
         tree = new long long[MAXINDEX + 1];
     }
-
     //returns the cumulative frequency at the given position
-    long long read(long long loc) 
+    long long read(long long loc)
     {
         long long ret = 0;
         while(loc > 0) {
@@ -67,7 +63,6 @@ class BIT
         }
         return ret;
     }
-
     //updates the cumulative frequency at all the required places
     void update(long long loc, long long val)
     {
@@ -76,12 +71,10 @@ class BIT
             loc = loc + (loc & -loc);
         }
     }
-
-    void setmax(long long in) 
+    void setmax(long long in)
     {
         MAXINDEX = in;
     }
-
     void refresh()
     {
         memset(tree, 0, sizeof(long long)*(MAXINDEX + 1));
@@ -89,7 +82,6 @@ class BIT
     }
 };
 
-    
 int main()
 {
     int T;
@@ -121,6 +113,5 @@ int main()
         printf("Test case %lld: %lld\n", t + 1, crossing);
         vp.clear();
     }
-
     return 0;
 }

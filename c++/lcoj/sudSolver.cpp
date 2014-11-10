@@ -7,7 +7,7 @@ public:
         vector< bool > rowMap(10, false);
         for(int i = 0; i < 9; i++) {
             if(r[i] != '.')
-            rowMap[r[i] - 48] = true; 
+                rowMap[r[i] - 48] = true;
         }
         for(int i = 1; i < 10; i++) {
             if(!rowMap[i]) {
@@ -20,7 +20,7 @@ public:
         vector< bool > colMap(10, false);
         for(int i = 0; i < 9; i++) {
             if(b[i][cn - 48] != '.')
-            colMap[b[i][cn] - 48] = true;
+                colMap[b[i][cn] - 48] = true;
         }
         for(int i = 1; i < 10; i++) {
             if(!colMap[i]) {
@@ -29,15 +29,14 @@ public:
         }
         return true;
     }
-
     bool subCheck(vector< vector< char> > &b) {
         for(int roff = 0; roff < 9; roff += 3) {
             for(int coff = 0; coff < 9; coff += 3) {
                 vector< bool > subMap(10, false);
                 for(int i = 0; i < 3; i++) {
                     for(int j = 0; j < 3; j++) {
-                        if(b[i + roff][j + coff] != '.') 
-                        subMap[b[i + roff][j + coff] - 48] = true;
+                        if(b[i + roff][j + coff] != '.')
+                            subMap[b[i + roff][j + coff] - 48] = true;
                     }
                 }
                 for(int i = 1; i < 10; i++) {
@@ -49,10 +48,6 @@ public:
         }
         return true;
     }
-
-
-
-
     bool isValidSudoku(vector<vector<char> > &board) {
         for(int i = 0; i < 9; i++) {
             if(!checkRow(board[i]) || !checkCol(board, i)) {
@@ -61,7 +56,6 @@ public:
         }
         return subCheck(board);
     }
-
     void getNxt(vector<vector<char> > &board, int &r, int &c) {
         for(int i = 0; i < 9; i++) {
             for(int j = 0; j < 9; j++) {
@@ -74,7 +68,6 @@ public:
         }
         r = -1;
     }
-
     void dump(vector< vector < char > > board) {
         for(int i = 0; i < 9; i++) {
             for(int j = 0; j < 9; j++) {
@@ -83,7 +76,6 @@ public:
             cout << "\n";
         }
     }
-
     void solve(vector< vector < char > > board, vector< vector < char >  > &res, bool found) {
         if(found) {
             return;
@@ -110,10 +102,9 @@ public:
             for(int rr = 0; rr < 3; rr++) {
                 for(int cc = 0; cc < 3; cc++) {
                     if(board[roff + rr][coff + cc] != '.')
-                    used[board[roff + rr][coff + cc] - 48] = true;
+                        used[board[roff + rr][coff + cc] - 48] = true;
                 }
             }
-
         }
         for(int i = 1; i <= 9; i++) {
             if(used[i]) continue;
@@ -122,8 +113,6 @@ public:
             if(found) return;
         }
     }
-
-
     void solveSudoku(vector<vector<char> > &board) {
         int bh = board.size();
         int bw = board[0].size();
@@ -136,10 +125,7 @@ public:
             }
         }
     }
-
-
 };
-
 int main() {
     char const *str[] = {"..9748...","7........",".2.1.9...","..7...24.",".64.1.59.",".98...3..","...8.3.2.","........6","...2759.."};
     //char const *str[] = {"519748632","783652419","426139875","357986241","264317598","198524367","975863124","832491756","641275983"};
