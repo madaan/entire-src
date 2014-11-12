@@ -18,7 +18,6 @@ public:
         }
         return true;
     }
-
     int evalRPN(vector<string> &tokens) {
         int tl = tokens.size();
         stack<int> opstack;
@@ -46,7 +45,6 @@ public:
         }
         return opstack.top();
     }
-
 };
 int main() {
     vector<string> str;

@@ -82,7 +82,6 @@ public:
         } else {
             curr -> next = NULL;
         }
-
         return head;
     }
 };

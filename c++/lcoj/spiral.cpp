@@ -8,7 +8,6 @@ vector<int> spiralOrder(vector<vector<int> > &mat) {
         return res;
     }
     int m = mat[0].size();
-
     int r_l = -1, r_b = n, c_l = -1, c_r = m;
     int i = 0, j = 0;
     bool l, r, d, u;
@@ -57,7 +56,6 @@ vector<int> spiralOrder(vector<vector<int> > &mat) {
     }
     return res;
 }
-
 int main() {
     vector< vector<int> > a;
     spiralOrder(a);

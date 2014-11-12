@@ -15,7 +15,6 @@ public:
             }
             st.push(x);
         }
-
     }
     void pop() {
         if(st.empty()) {
@@ -35,7 +34,6 @@ public:
             return -1;
         }
         return st.top();
-
     }
     int getMin() {
         if(st.empty()) {

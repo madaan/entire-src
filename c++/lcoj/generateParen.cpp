@@ -6,7 +6,6 @@ void genParens(int n, int lp, int rp, string res) {
     if(lp == n && rp == n) {
         cout << res << "\n";
     }
-
     if(lp < n) {
         res += '(';
         genParens(n, lp + 1, rp, res);
@@ -23,4 +22,3 @@ int main() {
     genParens(30, 0, 0, temp);
     return 0;
 }
-
