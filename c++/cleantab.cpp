@@ -118,7 +118,6 @@ public:
             }
         }
     }
-
     void updatePages() {
         tr(customers, i) {
             if(refTimes[*i].front() < ts) {

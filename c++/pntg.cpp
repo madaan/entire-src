@@ -21,14 +21,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
-
 using namespace std;
-
 typedef unsigned long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
-
 // Basic macros
 #define st          first
 #define se          second
@@ -44,7 +41,6 @@ typedef vector<string> vs;
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
 #define tr(c,i) for(typeof((c).begin()) i = (c).begin(); i != (c).end(); i++)
-
 const int oo = 2000000009;
 const double eps = 1e-9;
 int main() {

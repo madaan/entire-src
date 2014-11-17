@@ -15,7 +15,7 @@ public:
     public:
         MyLRUQueue() {
             front = 0;
-            back = 0;
+            back = 1;
             keys.push_back(-2);
         }
         void updateLRU(int x) {
@@ -25,7 +25,7 @@ public:
                 //cout << "Invalidating : at " << prevIndex << " val : " << keys[prevIndex] << "\n";
                 keys[prevIndex] = -2;
             }
-            posMap[x] = back + 1;
+            posMap[x] = back;
             keys.push_back(x);
             back++;
         }

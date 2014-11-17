@@ -76,9 +76,7 @@ int main()
 #endif
             }
         }
-
         //find the begining of the list :
-
         iter=&((tour.begin())->second);
         while(iter->prev)
         {

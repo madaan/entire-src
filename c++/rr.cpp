@@ -50,7 +50,6 @@ int main()
                 minH.push(maxH.top());
                 maxH.pop();
             }
-
         } else { //time to show
             if(N/3 == 0) {
                 printf("No reviews yet\n");

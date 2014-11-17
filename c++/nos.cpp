@@ -25,7 +25,6 @@ ll C(ll n, ll k) {
     if(k > n / 2) {
         k = n - k;
     }
-
     ll numEle, denEle;
     for(ll i = 1; i <= k; i++) {
         numEle = n - k + i;
@@ -75,4 +74,3 @@ int main() {
     }
     return 0;
 }
-

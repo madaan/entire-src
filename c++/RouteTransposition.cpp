@@ -21,7 +21,6 @@ void storeInMatrix(char * msg,char  matrix[][4],int rows)
         for(int j=0; j<4; j++)
         {
             matrix[i][j]=msg[i*4+j];
-
         }
     }
 }
@@ -63,7 +62,6 @@ bool movable(bool visited[][6],int i,int j,int D)
             visited[i][0]=true;
             visited[i][4]=true;
         }
-
         D=DOWN;
         int i,j;
         i=0,j=4;
@@ -85,10 +83,8 @@ bool movable(bool visited[][6],int i,int j,int D)
                 else
                 {
                     break;
-
                 }
             }
-
         }
         if(D==UP)
         {
@@ -106,7 +102,6 @@ bool movable(bool visited[][6],int i,int j,int D)
             else
             {
                 break;
-
             }
         }
         if(D==LEFT)
@@ -124,7 +119,6 @@ bool movable(bool visited[][6],int i,int j,int D)
             else
             {
                 break;
-
             }
         }
         if(D==DOWN)
@@ -137,7 +131,6 @@ bool movable(bool visited[][6],int i,int j,int D)
             }
         }
     }
-
     for(int i=0; i<nr; i++)
     {
         route[rc][0]=i;
@@ -157,7 +150,6 @@ void routeTransposition()
     l=strlen(msg);
     if(l&1) //l not power of 2
     {
-
         np=power2(l);
         for(int i=l; i<np; i++)
         {
@@ -166,12 +158,10 @@ void routeTransposition()
         msg[np]='\0';
     }
     //cout<<msg<<"\n";
-
     storeInMatrix(msg,matrix,np/4);
     //dumpMatrix(matrix,np/4);
 }
 int main()
 {
     routeTransposition();
-
 }

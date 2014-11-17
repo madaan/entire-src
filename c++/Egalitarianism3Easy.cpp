@@ -60,7 +60,6 @@ public:
                 adj[i][j] = 100;
             }
         }
-
         for(int i = 0; i < n - 1; i++) {
             adj[a[i]][b[i]] = len[i];
             adj[b[i]][a[i]] = len[i];

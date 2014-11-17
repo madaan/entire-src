@@ -15,7 +15,6 @@ int main ()
             for(int j=i; j<=n-i; j++)
                 for(int k=i; k<=j; k++)
                     x++;
-
         clock_t end = clock();
         seconds = (float)(end - start) / CLOCKS_PER_SEC;
         printf("\n%f",seconds);

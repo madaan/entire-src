@@ -59,7 +59,6 @@ void fillPrimeFactors(ll n)
         n = n/2;
     }
     primeFactorMap[2] = max(count, primeFactorMap[2]);
-
     // n must be odd at this point.  So we can skip one element (Note i = i +2)
     for (ll i = 3; i <= sqrt(n); i = i+2)
     {
@@ -73,7 +72,6 @@ void fillPrimeFactors(ll n)
         }
         primeFactorMap[i] = max(count, primeFactorMap[i]);
     }
-
     // This condition is to handle the case whien n is a prime number
     // greater than 2
     if (n > 2)
@@ -141,7 +139,6 @@ int main() {
             //printf("res = %lld\n", res);
             listLens.push_back(inSet);
         }
-
         printf("%lld\n", lcmList(listLens) % MOD);
     }
     return 0;

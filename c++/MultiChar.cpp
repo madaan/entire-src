@@ -5,7 +5,6 @@ using namespace std;
 struct tester
 {
     char a[4];
-
     char b[4];
 };
 int main()

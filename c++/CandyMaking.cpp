@@ -7,7 +7,6 @@ typedef pair<int, int> pi;
 class CandyMaking {
 public:
     double findSuitableDensity( vector <int> containerVolume, vector <int> desiredWeight ) {
-
         double res = 0, minres = 1000000000.0;
         for(int i = 0; i < containerVolume.size(); i++) {
             double d = double(desiredWeight[i]) / containerVolume[i];
@@ -41,7 +40,6 @@ void run_test(int casenum = -1, bool quiet = false) {
         }
         return;
     }
-
     int correct = 0, total = 0;
     for (int i=0;; ++i) {
         int x = run_test_case(i);
@@ -52,7 +50,6 @@ void run_test(int casenum = -1, bool quiet = false) {
         correct += x;
         ++total;
     }
-
     if (total == 0) {
         std::cerr << "No test cases run." << std::endl;
     } else if (correct < total) {
@@ -61,7 +58,6 @@ void run_test(int casenum = -1, bool quiet = false) {
         std::cerr << "All " << total << " tests passed!" << std::endl;
     }
 }
-
 static const double MAX_DOUBLE_ERROR = 1e-9;
 static bool topcoder_fequ(double expected, double result) {
     if (std::isnan(expected)) {
@@ -88,19 +84,15 @@ double moj_relative_error(double expected, double result) {
     }
     return std::fabs(result-expected) / std::fabs(expected);
 }
-
 int verify_case(int casenum, const double &expected, const double &received, std::clock_t elapsed) {
     std::cerr << "Example " << casenum << "... ";
-
     string verdict;
     vector<string> info;
     char buf[100];
-
     if (elapsed > CLOCKS_PER_SEC / 200) {
         std::sprintf(buf, "time %.2fs", elapsed * (1.0/CLOCKS_PER_SEC));
         info.push_back(buf);
     }
-
     if (topcoder_fequ(expected, received)) {
         verdict = "PASSED";
         double rerr = moj_relative_error(expected, received);
@@ -111,7 +103,6 @@ int verify_case(int casenum, const double &expected, const double &received, std
     } else {
         verdict = "FAILED";
     }
-
     std::cerr << verdict;
     if (!info.empty()) {
         std::cerr << " (";
@@ -122,12 +113,10 @@ int verify_case(int casenum, const double &expected, const double &received, std
         std::cerr << ")";
     }
     std::cerr << std::endl;
-
     if (verdict == "FAILED") {
         std::cerr << "    Expected: " << expected << std::endl;
         std::cerr << "    Received: " << received << std::endl;
     }
-
     return verdict == "PASSED";
 }
 int run_test_case(int casenum__) {

@@ -68,10 +68,7 @@ main()
 // 	count4=count7=0;
 //       break;
 //        }
-
         }
-
-
     }
     cout<<"ans= "<<pairs<<endl;
 }

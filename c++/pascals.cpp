@@ -1,9 +1,7 @@
 // A simple O(n^3) program for Pascal's Triangle
 #include <stdio.h>
-
 // See http://www.geeksforgeeks.org/archives/25621 for details of this function
 int binomialCoeff(int n, int k);
-
 // Function to print first n lines of Pascal's Triangle
 void printPascal(int n)
 {
@@ -23,7 +21,6 @@ void printPascal(int n)
         printf("%d. %d %d\n", line, even, odd);
     }
 }
-
 // See http://www.geeksforgeeks.org/archives/25621 for details of this function
 int binomialCoeff(int n, int k)
 {
@@ -37,7 +34,6 @@ int binomialCoeff(int n, int k)
     }
     return res;
 }
-
 // Driver program to test above function
 int main()
 {

@@ -22,7 +22,6 @@ int main() {
         r2 = 1;
     }
     cout << "|";
-
     for(int i = 0; i < r1; i++) {
         cout << "O.";
     }

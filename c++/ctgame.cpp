@@ -42,7 +42,6 @@ long long getMaxArea(int *heights, int numVals) {
     }
     return currMaxArea;
 }
-
 #define pb push_back
 #define ini(a, v)   memset(a, v, sizeof(a))
 #define max(a, b) (a > b ? a : b)

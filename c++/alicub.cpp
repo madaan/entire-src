@@ -74,17 +74,14 @@ int main() {
             scanf("%d", &state[i]);
         }
         num_ones = count_ones();
-
         for(int i = 1; i <= 16; i++) {
             //  printf("%d ", state[i]);
         }
         //printf("\n");
         if(num_ones > 3) {
-
             printf("more\n");
             continue;
         }
-
         for(list<int>::iterator  i = on_states.begin(); i != on_states.end(); i++) {
             //printf("%d\n", *i);
             total_dist += find_distance(*i);

@@ -21,14 +21,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
-
 using namespace std;
-
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
-
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first

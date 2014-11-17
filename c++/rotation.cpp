@@ -25,7 +25,6 @@ void right_shift(int A[MAX], int units) {
     rev(A, n - units + 1, n);
     rev(A, 1, n);
 }
-
 void shift(int A[MAX], int units) {
     if(units < 0) {
         left_shift(A, -units);

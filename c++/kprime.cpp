@@ -40,7 +40,6 @@ int main()
                 res++;
             }
         }
-
         printf("%d\n", res);
     }
     return 0;

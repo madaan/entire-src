@@ -7,7 +7,6 @@ using namespace std;
 boost::mutex mutex;
 void runnable(int id,int x,int y,string str)
 {
-
     char progressStr[100];
     char progressBar[100];
     progressBar[0]='#';
@@ -15,11 +14,9 @@ void runnable(int id,int x,int y,string str)
     int pl=1;
     initscr();
     //waste time
-
     for(int i=0; i<100000; i++)
     {
         id+i*i+id;
-
         if(id%1000)
         {
             /*if we do not lock the stream, we will get scrambled output
@@ -35,10 +32,7 @@ void runnable(int id,int x,int y,string str)
             refresh();
             mutex.unlock();
             //cout<<endl<<id <<" : "<< (float)i/100 <<" Percent completed";
-
-
         }
-
     }
     endwin();
 }
@@ -52,16 +46,12 @@ int main(int argc,char * argv[])
         workerF1.join();
         workerF2.join();
         workerF3.join();
-
         workerF1.join();
-
     }
     else
     {
         runnable(1,10,10,string("Thread 1"));
         runnable(2,10,20,string("Thread 2"));
         runnable(3,10,30,string("Thread 3"));
-
     }
-
 }

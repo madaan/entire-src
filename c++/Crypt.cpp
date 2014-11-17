@@ -66,7 +66,6 @@ void createCryptKey(char * seed,char * key)
         }
     }
 }
-
 char * encrypt(char  * message,char * key)
 {
     int l=strlen(message);

@@ -75,7 +75,6 @@ public:
         }
     }
 };
-
 int main() {
     MinHeap<int> h;
     for(int i = 10; i > 0; i--) {

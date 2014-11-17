@@ -59,7 +59,6 @@ int main() {
         }
     }
     for(int i = n; i >= 1; i--) {
-
         if(!visited[i])  {
             key[i] = 0;
             dfs(i);

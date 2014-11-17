@@ -18,8 +18,5 @@ class MyClass
 int main()
 {
     std::cout << SO(int) << "\n" << SO(char) << "\n" << SO(MyClass);
-
-
     return 0;
 }
-

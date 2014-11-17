@@ -24,14 +24,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
-
 using namespace std;
-
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
-
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -47,7 +44,6 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
-
 double prob[2][MAXN][MAXK];
 int modInverse[MAXN];
 typedef pair<int, int> pi;
@@ -63,7 +59,6 @@ void makeMulInv(int n, int c) {
         }
     }
 }
-
 void updateProbs(int n, int c, int l, int r, int iter) {
     int prev, curr;
     if(iter % 2 == 0) {

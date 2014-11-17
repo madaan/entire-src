@@ -25,7 +25,6 @@ public:
     int getMaxSequence()
     {
         int L[MAX]= {0};
-
         int max=0;
         L[0]=1;
         for(int i=1; i<noEle; i++)

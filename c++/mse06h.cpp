@@ -27,7 +27,6 @@ typedef long long ll;
 typedef vector<long long> vi;
 typedef pair<long long,long long> pi;
 typedef vector<string> vs;
-
 // Basic macros
 #define st          first
 #define se          second
@@ -81,7 +80,6 @@ public:
         //ini(tree, 0);
     }
 };
-
 int main()
 {
     int T;

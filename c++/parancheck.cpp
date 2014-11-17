@@ -35,7 +35,6 @@ void listParan(char *str, int l) {
         return;
     }
     int no = 0, nc = 0;
-
     for(int i = 0; i < l; i++) {
         if(str[i] == '(') {
             no++;

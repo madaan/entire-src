@@ -12,7 +12,6 @@ main()
     for(int t=0; t<cases; t++)
     {
         scanf("%s",N);
-
         for( i=0; N[i]!='\0'; i++)
         {
             if((	N[i]=='7')||(N[i]=='4'))
@@ -23,7 +22,6 @@ main()
         lcount[t]=i-count;
         count=0;
     }
-
     for(int t=0; t<cases; t++)
     {
         cout<<lcount[t]<<endl;

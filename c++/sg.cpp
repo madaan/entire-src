@@ -21,14 +21,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
-
 using namespace std;
-
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
-
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -44,7 +41,6 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
-
 const int oo = 2000000009;
 const double eps = 1e-9;
 void disp5() {
@@ -69,7 +65,6 @@ int main() {
     cout << "YES\n";
     int type;
     int arr[] = {4, 5, 6, 7};
-
     for(int i = 0; i < 4; i++) {
         if((n - arr[i]) % 4 == 0) {
             type = arr[i];
@@ -107,5 +102,3 @@ int main() {
     }
     return 0;
 }
-
-

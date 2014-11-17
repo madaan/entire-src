@@ -24,7 +24,6 @@ int process(char *str)
             }
         }
     }
-
     return (st.size()  /2 ) + unbalanced;
 }
 int main()

@@ -23,14 +23,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
-
 using namespace std;
-
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
-
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -97,9 +94,7 @@ void makePrevCompatible (int n) {
     for(int i = 1; i < n; i++) { //
         prevCompatible[i] = nearestBinSearch(0, i - 1, orders[i].second.start);
     }
-
 }
-
 ll findMaxWeight(int n) {
     if(n < 0) {
         return -1;
@@ -148,4 +143,3 @@ int main() {
     }
     return 0;
 }
-

@@ -77,7 +77,6 @@ int main() {
         printf("2\n");
         return 0;
     }
-
     vvi adj(10);
     //compress input to reduce all runnings of greater than 2
     int nl;

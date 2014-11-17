@@ -38,9 +38,6 @@ int getvc(int r, int par) {
     vc[r] = min(selected, notSelected);
     return vc[r];
 }
-
-
-
 int main() {
     int n, a, b, q;
     scanf("%d", &n);

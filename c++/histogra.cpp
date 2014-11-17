@@ -41,14 +41,11 @@ long long getMaxArea(vll heights) {
     }
     return currMaxArea;
 }
-
 #define pb push_back
 int main() {
     //ll arr[] = {3, 2, 3};
     //ll arr[] = {6, 2, 5, 4, 5, 1, 6};
-
     ll arr[100010];
-
     while(true) {
         int nums;
         scanf("%d", &nums);

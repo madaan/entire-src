@@ -31,7 +31,6 @@ void quickSort(int * a,int l,int r)
     int p;
     if(l<r)
     {
-
         p=partition(a,l,r);
 //   cout<<"\nP = "<<p;
         quickSort(a,l,p-1);
@@ -42,7 +41,6 @@ int main()
 {
     int i,n,max=0,maxIn=0,cases;
     scanf("%d",&cases);
-
     for(int t=0; t<cases; t++)
     {
         scanf("%d",&n);

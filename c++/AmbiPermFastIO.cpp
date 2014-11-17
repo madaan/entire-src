@@ -14,7 +14,6 @@ void convert(int * b)
         {
             b[i+1]=a[i]-48;
         }
-
     }
 }
 int isAmbiguous(int * a,int n)
@@ -37,7 +36,6 @@ int main()
     int arr[100002],//the array
         n,//number of elements
         i;//simple iterator
-
     while(scanf("%d",&n)&&(n!=0))
     {
         cin.getline(starr,'\n');

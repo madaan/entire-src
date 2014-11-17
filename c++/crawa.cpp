@@ -21,14 +21,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
-
 using namespace std;
-
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
-
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -58,7 +55,6 @@ const char *check(int x, int y) {
         } else if(x % 2 != 0 && x >= y) {
             ry;
         }
-
     }
     if(x < 0 && y > 0) { //top half
         if(y % 2 == 0 && abs(x) <= y) {
@@ -83,7 +79,6 @@ const char *check(int x, int y) {
     }
     rn;
 }
-
 int main() {
     int t;
     int x, y;
@@ -94,9 +89,7 @@ int main() {
             printf("YES\n");
             continue;
         }
-
         printf("%s\n", check(x, y));
     }
     return 0;
 }
-

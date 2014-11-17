@@ -19,7 +19,6 @@ public:
     int status()
     {
         int temp=ipodCount;
-
         ipodCount=100;
         return temp;
     }
@@ -130,7 +129,6 @@ public:
             cost=ag.calCost(buya)+bz.calCost(buyb);
             return cost;
         }
-
     }
 };
 int main()
@@ -145,7 +143,6 @@ int main()
         cin>>ipstr;
         cout<<(Decider::CostCalculator(b,a,ipstr.countryCode,ipstr.units))<<":";
         cout<<b.status()<<":"<<a.status()<<endl;
-
     }
     return 0;
 }

@@ -1,6 +1,5 @@
 #include <boost/thread/thread.hpp>
 #include <iostream>
-
 void hello()
 {
     std::cout <<
@@ -8,11 +7,9 @@ void hello()
               << std::endl;
 }
 boost::mutex io_mutex;
-
 struct count
 {
     count(int id) : id(id) { }
-
     void operator()()
     {
         for (int i = 0; i < 9920; ++i)
@@ -41,7 +38,6 @@ public:
 int main(int argc, char* argv[])
 {
     boost::thread thrd(&hello);
-
     count c1(1);
     count c2(2);
     count c3(3);
@@ -55,8 +51,6 @@ int main(int argc, char* argv[])
     boost::thread thrd2(count(2));
     boost::thread thrd3(count(3));
     boost::thread thrd4(count(4));
-
-
     thrd1.join();
     thrd2.join();
     thrd3.join();

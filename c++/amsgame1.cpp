@@ -6,7 +6,6 @@ using namespace std;
 typedef unsigned long long LL;
 typedef pair<int, int> PII;
 map<PII, LL> cache;
-
 LL gcd(LL a, LL b)
 {
     while (b > 0)

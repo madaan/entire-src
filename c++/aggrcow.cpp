@@ -67,11 +67,9 @@ int main() {
     int t;
     int N, C;
     scanf("%d", &t);
-
     while(t--) {
         vll nums(0);
         scanf("%d%d", &N, &C);
-
         for(int i = 0; i < N; i++) {
             scanf("%lld", &temp);
             nums.pb(temp);

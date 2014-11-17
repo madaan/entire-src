@@ -28,7 +28,6 @@ void quickSort(int * a,int l,int r)
     int p;
     if(l<r)
     {
-
         p=partition(a,l,r);
 //   cout<<"\nP = "<<p;
         quickSort(a,l,p-1);
@@ -50,5 +49,4 @@ main()
         cout<<" "<<a[i];
     }
     cout<<endl;
-
 }

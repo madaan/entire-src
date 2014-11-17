@@ -21,14 +21,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
-
 using namespace std;
-
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
-
 // Basic macros
 #define st          first
 #define se          second
@@ -43,7 +40,6 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
-
 const int oo = 2000000009;
 const double eps = 1e-9;
 map<pi, int> countMap;
@@ -51,7 +47,6 @@ int main()
 {
     char a[] = "0100101";
     int l = strlen(a);
-
     fr(i, l) {
         cuma[i] = cuma[i - 1];
         cumb[i] = cumb[i - 1];

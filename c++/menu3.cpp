@@ -31,23 +31,17 @@ int main()
         for(int i = 1; i <= NUM_DISHES; i++) {
             scanf("%f%f", &dishInfo[i][COST], &dishInfo[i][BENIFIT]);
         }
-
-
         for(int i = 1; i <= NUM_DISHES; i++) {
             for(int j = 0; j < DAYS; j++) {
                 B[i][j] = INIT;
             }
         }
-
-
         //initialize dishes for day 0
         for(int dish = 1; dish <= NUM_DISHES; dish++) {
             B[dish][0] = dishInfo[dish][BENIFIT];
             C[dish][0] = dishInfo[dish][COST];
             prev[dish][0] = dish + 1 % NUM_DISHES;
         }
-
-
         for(int day = 1; day < DAYS; day++) {//for all day s
             for(int dish_c = 1; dish_c <= NUM_DISHES; dish_c++) {
                 for(int dish_p = 1; dish_p <= NUM_DISHES; dish_p++) {
@@ -85,9 +79,6 @@ int main()
                 }
             }
         }
-
-
-
         float max_dish = -2  //so that it picks up -1
                          , min_cost = 10000000;
         for(int i = 1; i <= NUM_DISHES /2; i++) {
@@ -109,12 +100,10 @@ int main()
                 }
             }
         }
-
         if(max_dish == EXCEEDED) {
             printf("0.0\n\n");
         } else {
             printf("%.1f\n", max_dish);
-
             for(int i = DAYS - 1; i >= 0; i--) {
                 dish_sequence[i] = hook;
                 hook = prev[hook][i];

@@ -43,7 +43,6 @@ public:
         }
     }
 };
-
 void init() {
     numWords = 0;
     for(int i = 0; i < MAX; i++) {
@@ -71,7 +70,6 @@ int solve(int wordIndex, int abbrIndex) {
     if(abbrLeft < wordsLeft) { //won't be able to give atleast one char to each of the words
         //printf("2. solve(%d, %d) >", wordIndex, abbrIndex);
         //printf("Setting dp[%d][%d] to  %d\n", wordIndex, abbrIndex, 0);
-
         return (dp[wordIndex][abbrIndex] = 0);
     }
     if(wordIndex != numWords && abbrIndex == abbrLen || wordIndex == numWords && abbrIndex != abbrLen) {
@@ -156,7 +154,6 @@ int main() {
             } else {
                 printf("%s can be formed in %d ways\n", abbr_bu.c_str(), res);
             }
-
         }
         ignored.clear();
     }

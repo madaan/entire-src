@@ -20,7 +20,6 @@ public:
     Event()
     {
     }
-
 };
 int partition(Event e[],int k,int r)
 {
@@ -78,7 +77,6 @@ int binSearch(Event e[],int si,int N)
         }
         mid=(l+r)/2;
     }
-
     while(e[mid].et<=si)
     {
         mid++;
@@ -87,15 +85,12 @@ int binSearch(Event e[],int si,int N)
 }
 /* H(i) : Number of activities that finish
  * before ith activity starts*/
-
 void calculateH(int H[],Event e[],int N)
 {
     for(int i=1; i<=N; i++)
     {
         H[i]=binSearch(e,e[i].st,N);
-
     }
-
 }
 long long int organize(Event e[],int H[],int N)
 {

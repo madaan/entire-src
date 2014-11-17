@@ -34,4 +34,3 @@ int main()
     cout<<divisor(2,0,errorhandler2)<<"\n";
     return 0;
 }
-

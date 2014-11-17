@@ -23,7 +23,6 @@ int main() {
         } else if(abs(a - b) == 1) {
             printf("2\n%d %d", a - 1, b + 1);
         } else {
-
             int mid = ((a + b) / 2);
             int d = b - a;
             if(d % 2 == 0) {

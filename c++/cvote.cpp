@@ -30,7 +30,6 @@ int main()
         chef2Count[chefName]++;
         country2Count[chef2Country[chefName]]++;
     }
-
     int maxCount = -1;
     std::string maxCountChef;
     for(Str2Int::iterator x= chef2Count.begin(); x != chef2Count.end(); x++) {
@@ -39,7 +38,6 @@ int main()
             maxCountChef = x->first;
         }
     }
-
     maxCount = -1;
     std::string maxCountCountry;
     for(Str2Int::iterator x= country2Count.begin(); x != country2Count.end(); x++) {

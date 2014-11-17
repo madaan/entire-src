@@ -21,15 +21,12 @@
 #include <stack>
 #include <utility>
 #include <vector>
-
 using namespace std;
-
 typedef long long ll;
 typedef vector<ll> vi;
 typedef pair<ll,ll> pi;
 typedef pair<ll, ll> pll;
 typedef vector<string> vs;
-
 // Basic macros
 #define st          first
 #define se          second
@@ -59,7 +56,6 @@ int main() {
         numberDist.pu(pll(dist, i));
     }
     sort(all(numberDist));
-
     ll componentNumber = 1;
     pll firstNode = numberDist[0];
     ll nodenumber = firstNode.second;

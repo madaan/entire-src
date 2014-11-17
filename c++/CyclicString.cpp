@@ -20,7 +20,6 @@ class CyclicString
 public :
     CyclicString(char str[])
     {
-
         len=strlen(str);
         strcpy(this->str,str);
     }

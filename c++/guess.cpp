@@ -18,7 +18,6 @@ int main() {
     scanf("%d", &t);
     while(t--) {
         scanf("%lld%lld", &m, &n);
-
         num = (m / 2) * ((n + 1) / 2) + ((m + 1) / 2) * (n / 2);
         den = m * n;
         ll d_p = 0, nu_p = 0, hcf_nd;

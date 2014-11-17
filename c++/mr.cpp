@@ -33,9 +33,7 @@ int menu(int budget, int day, int prev_dish, int times_prev_dish)
         return 0;
     }
     int maxin = -1;
-
     ret = -INF;
-
     for(int i = 1; i <= NUM_DISHES; i++) {
         int rem = budget - cost[i];
         if(rem < 0 || (rem == 0 && day - 1 > 0)) {
@@ -72,7 +70,6 @@ int menu(int budget, int day, int prev_dish, int times_prev_dish)
     //std::cout << hook[budget][day][prev_dish] << "\n";
     return ret;
 }
-
 void dumpstates(int budget, int day)
 {
     int n = hook[budget][day][0];
@@ -116,4 +113,3 @@ int main()
     }
     return 0;
 }
-

@@ -98,7 +98,6 @@ int getIndex(char * arr,char c,int seedL)
         }
     }
     return -1;
-
 }
 void mapSeed(char * sortedS,char * original,int seedL,int * result)
 {
@@ -108,9 +107,7 @@ void mapSeed(char * sortedS,char * original,int seedL,int * result)
         index=getIndex(original,sortedS[i],seedL);
         //cout<<"Search for "<<sortedS[i]<<" Returned "<<index<<"\n";
         result[index]=SEQ++;
-
     }
-
 }
 int main()
 {
@@ -151,5 +148,4 @@ int main()
         //c[i].msg[c[i].iter]='\0';
         c[i].chain();
     }
-
 }

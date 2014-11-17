@@ -37,7 +37,6 @@ public:
             }
         }
         return res;
-
     }
 };
 // BEGIN CUT HERE
@@ -57,7 +56,6 @@ void run_test(int casenum = -1, bool quiet = false) {
         }
         return;
     }
-
     int correct = 0, total = 0;
     for (int i=0;; ++i) {
         int x = run_test_case(i);
@@ -68,7 +66,6 @@ void run_test(int casenum = -1, bool quiet = false) {
         correct += x;
         ++total;
     }
-
     if (total == 0) {
         std::cerr << "No test cases run." << std::endl;
     } else if (correct < total) {
@@ -77,25 +74,20 @@ void run_test(int casenum = -1, bool quiet = false) {
         std::cerr << "All " << total << " tests passed!" << std::endl;
     }
 }
-
 int verify_case(int casenum, const int &expected, const int &received, std::clock_t elapsed) {
     std::cerr << "Example " << casenum << "... ";
-
     string verdict;
     vector<string> info;
     char buf[100];
-
     if (elapsed > CLOCKS_PER_SEC / 200) {
         std::sprintf(buf, "time %.2fs", elapsed * (1.0/CLOCKS_PER_SEC));
         info.push_back(buf);
     }
-
     if (expected == received) {
         verdict = "PASSED";
     } else {
         verdict = "FAILED";
     }
-
     std::cerr << verdict;
     if (!info.empty()) {
         std::cerr << " (";
@@ -106,12 +98,10 @@ int verify_case(int casenum, const int &expected, const int &received, std::cloc
         std::cerr << ")";
     }
     std::cerr << std::endl;
-
     if (verdict == "FAILED") {
         std::cerr << "    Expected: " << expected << std::endl;
         std::cerr << "    Received: " << received << std::endl;
     }
-
     return verdict == "PASSED";
 }
 int run_test_case(int casenum__) {

@@ -3,6 +3,7 @@
 using namespace std;
 typedef long long ll;
 int main() {
+    //simple, collect the number of minimum that are there from each of the positions and set the current element to be the maximum of (minimum + 1 and prev + 1)
     ll n;
     cin >> n;
     ll ans = 0;

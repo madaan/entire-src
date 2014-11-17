@@ -23,7 +23,6 @@ DMAT powmat(DMAT a, int k) {
     DMAT half = powmat(a, k / 2);
     return mul(half, half);
 }
-
 double getTransProb(DMAT &charProb, string a, string b) {
     if(a.length() != b.length()) {
         return 0;
@@ -34,7 +33,6 @@ double getTransProb(DMAT &charProb, string a, string b) {
     }
     return res;
 }
-
 int main() {
     int t;
     scanf("%d", &t);

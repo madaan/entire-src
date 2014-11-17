@@ -52,4 +52,3 @@ int main() {
     cout << res << "\n";
     return 0;
 }
-

@@ -5,11 +5,9 @@
 #include <algorithm>
 #include <cstring>
 using namespace std;
-
 const int MAXN = 100090;
 const int MAXK = 10;
 typedef long long T;
-
 T cumBIT[MAXK][MAXN+10];
 T howMany[MAXK][MAXN+10];
 vector<int> values;
@@ -22,14 +20,11 @@ void update(int idx, int k, int n, T val)
         idx+=(idx&-idx);
     }
 }
-
 T getValue(int idx, int k)
 {
     T ret = 0;
     while(idx>0) {
-
         ret+=cumBIT[k][idx];
-
         idx-=(idx& (-idx));
     }
     return ret;
@@ -41,7 +36,6 @@ struct myclass {
 } myobject;
 int main()
 {
-
     memset(cumBIT,0,sizeof(cumBIT));
     int n,k = 2, temp1;
     cin>>n;
@@ -52,7 +46,6 @@ int main()
         values[i] = -values[i];
     }
     vector<int> temp = values;
-
     sort(values.begin(),values.end());
     mapIndex[values[0]]=1;
     for(int i=1; i<n; i++) {
@@ -60,7 +53,6 @@ int main()
             mapIndex[values[i]]=i+1;
         }
     }
-
     values=temp;
     T ret = 0;
     for(int i=0; i<n; i++) {

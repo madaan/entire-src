@@ -41,12 +41,10 @@ int getMin(char ip[], int N) {
             }
         }
     }
-
     //   cout << "l = " << l << endl;
     //printMat(arr, N);
     return arr[1][N];
 }
-
 int main() {
     int t;
     scanf("%d", &t);

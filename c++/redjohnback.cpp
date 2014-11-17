@@ -52,7 +52,6 @@ int main() {
     }
     cout << "\n";
     */
-
     int t;
     cin >> t;
     while(t--) {

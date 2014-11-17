@@ -17,7 +17,6 @@ int main()
     int n=4;
     for(int i=0; i<10; i++)
     {
-
         n++;
         pthread_create(&id[i],NULL,func,(&i));
         pthread_join(id[i],&exs);

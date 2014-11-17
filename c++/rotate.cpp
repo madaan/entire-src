@@ -27,7 +27,5 @@ int main() {
             for(int ptn = 0; ptn < 4; ptn++) {
                 for(int rn = 0; rn < seq[ptn]; rn++) {
                     rotat
-
                     return 0;
                 }
-

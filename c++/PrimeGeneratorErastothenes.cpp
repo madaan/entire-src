@@ -20,7 +20,6 @@ bool isPrime(long n)
     {
         return false;
     }
-
     if((n>10)&&(n%10==5))
     {
         return false;
@@ -30,7 +29,6 @@ bool isPrime(long n)
     {
         if(n%i==0)
         {
-
             return false;
         }
     }
@@ -69,7 +67,6 @@ void getPrimes(long l,long u)
     {
         p++;
     }
-
     //start the sieve of erastothenes
     //terminates automatically when there are no more numbers that
     //can be marked
@@ -82,7 +79,6 @@ void getPrimes(long l,long u)
         // 2. mark all the multiples of p
         while(index<uindex)
         {
-
             if(!check[index])
             {
                 check[index]=true;
@@ -115,13 +111,11 @@ void getPrimes(long l,long u)
         //repeat the procedure
     }
     //dump all the numbers that are unchecked
-
     for(j=0; j<(u-l+1); j++)
     {
         if(!check[j])
             printf("%ld\n",numbers[j]);
     }
-
 }
 int main(int argc,char * argv[])
 {

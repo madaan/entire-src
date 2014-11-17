@@ -5,7 +5,6 @@ using namespace std;
 char * decimalToBin(unsigned long long decimal,int bit)
 {
     char *res=new char[sizeof(char)*(bit+1)];
-
     int i=0;
     unsigned long long mask=1<<(bit-1);
     while(i<bit)
@@ -44,11 +43,8 @@ int main()
 {
     short a=23,b=43;
     unsigned long long x=83343;
-
     printf("\n%s",decimalToBin(a,8));
     printf("\n%s",decimalToBin(b,16));
     printf("\n%lld",binToDec(decimalToBin(x,31),31));
-
-
     return 0;
 }

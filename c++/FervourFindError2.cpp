@@ -77,7 +77,6 @@ int main() //c++ ,main must return int
     cout<<"\ns2==";//print the extra equal
     s2.display();
 }//end
-
 /* Output on my PC
  * s3=this is round2_lvl1(addr=0x91b8048)
 to err is human

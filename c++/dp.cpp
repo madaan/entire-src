@@ -107,7 +107,6 @@ vector<int> getDistances() {
         }
     }
     return res;
-
 }
 class BestPartition {
     vi distances;
@@ -146,7 +145,6 @@ public:
         }
         return abs(sumA, sumB);
     }
-
     void findBestAssignment(int i) {
         if(i == distances.size()) {
             lastA = A.empty() ? 0 : A.back();
@@ -163,7 +161,6 @@ public:
         findBestAssignment(i + 1);
         A.pop_back();
         cumuA -= (distances[i] * 2);
-
         assignment[i] = 1;
         cumuB += (distances[i] * 2);
         B.pb(distances[i]);
@@ -171,7 +168,6 @@ public:
         B.pop_back();
         cumuB -= (distances[i] * 2);
     }
-
     int getBestAssignmentCost() {
         findBestAssignment(0);
         return currBestFinishTime;

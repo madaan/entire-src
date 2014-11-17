@@ -21,14 +21,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
-
 using namespace std;
-
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
-
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -44,7 +41,6 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
-
 const int oo = 2000000009;
 const double eps = 1e-9;
 ll gcd (ll a, ll b )
@@ -71,7 +67,6 @@ set<int> primeFactors(int n)
         primes.insert(2);
         n = n/2;
     }
-
     // n must be odd at this point.  So we can skip one element (Note i = i +2)
     for (int i = 3; i <= sqrt(n); i = i+2)
     {
@@ -82,7 +77,6 @@ set<int> primeFactors(int n)
             n = n/i;
         }
     }
-
     // This condition is to handle the case whien n is a prime number
     // greater than 2
     if (n > 2)
@@ -158,10 +152,8 @@ int main1() {
             if(a % 2 == 0) {
                 e = true;
             }
-
             ans = max(ans, dp[i]);
         }
-
         printf("%lld\n", ans == 1 ? -1 : ans);
     }
     return 0;

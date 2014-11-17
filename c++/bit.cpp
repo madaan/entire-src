@@ -27,7 +27,6 @@ typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
-
 // Basic macros
 #define st          first
 #define se          second

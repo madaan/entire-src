@@ -32,7 +32,6 @@ int main()
             rs1 += w[i];
         }
 //    printf("rs= %d, ls = %d\n", rs, ls);
-
         if(ls > rs) {
             sum = ls - rs;
         } else {

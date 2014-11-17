@@ -62,7 +62,6 @@ ll getLongStationSeq(ll At, ll Bt) {
             numStationsBest = numStations;
             peopleSeenBest = peopleSeen;
         }
-
     }
     if(bestLeft == 0) {
         peopleSeenBest = cumPeople[bestRight];
@@ -86,4 +85,3 @@ int main() {
     }
     return 0;
 }
-

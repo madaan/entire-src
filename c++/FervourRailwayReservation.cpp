@@ -9,7 +9,6 @@ int ticketNum; //uniqueId
 void printMargins()
 {
     cout<<"\n\n\t#######FERVOUR 2012##########\n\n\n";
-
 }
 void displayMenu()
 {
@@ -63,7 +62,6 @@ public:
     }
     void displayDetails()
     {
-
         cout<<"\n\t___________________________";
         cout<<"\n\t1) Name : "<<name;
         cout<<"\n\t2) Age : "<<age;
@@ -74,7 +72,6 @@ public:
         cout<<"\n\t7) Source place : "<<src;
         cout<<"\n\t8) Destination place : "<<dest;
         cout<<"\n\t___________________________\n";
-
     }
 };
 class BookingHandler
@@ -98,32 +95,24 @@ public:
             ofstream orec("sgrecords.dat",ios::binary|ios::out);
             orec.seekp(sizeof(p)*(numRec));
             orec.write((char *)&p,sizeof(p));
-
             cout<<"\n\nInvalidation Successful!";
             irec.close();
             orec.close();
-
-
         }
-
     }
     void searchAndDelete(long target)
     {
-
         Person p;
         int i=1;
         cout<<"\nSearching...\n";
         int numRec=searchAndDisplay(target);
         if(numRec!=-1)
         {
-
             cout<<"\nRecord Found,Record Number "<<numRec<<" Will Now Be Deleted...\n";
             ifstream irec("sgrecords.dat",ios::binary);
             ofstream orec("sgrecordstemp.dat",ios::binary|ios::trunc);
-
             while(!irec.eof()) //print all but this record
             {
-
                 if(i==numRec)
                 {
                     i++;
@@ -131,7 +120,6 @@ public:
                     printf("\nAt:%d",irec.tellg());
                     irec.read((char *)&p,sizeof(p));  //just advance the pointer
                     irec.read((char *)&p,sizeof(p));  //just advance the pointer
-
                     // irec.seekg((sizeof(p)*numRec));
                     printf("\nAt:%d",irec.tellg());
                     if(irec.eof())
@@ -141,7 +129,6 @@ public:
                     cout<<"Skipping : ";
                     //p.displayDetails();
                     continue;
-
                 }
                 cout<<"Writing "<<i<<"\n";
                 irec.read((char *)&p,sizeof(p));
@@ -153,11 +140,8 @@ public:
             orec.close();
             remove("sgrecords.dat");
             rename("sgrecordstemp.dat","sgrecords.dat");
-
-
         }
     }
-
     int searchAndDisplay(long target)
     {
         int recordNumber=0; //after How Many Records was the required record found,to be used by searchAndCancel()
@@ -188,20 +172,14 @@ public:
                 cout<<"\t\t\nSorry ,The Record Was Found In Our Database,But The Booking Was Cancelled!\nPlease Contact 9989-913333 for support\nThank You!\n";
                 found=true;
                 break;
-
             }
-
-
         }
         if(!found)
         {
             printMargins();
             cout<<"\t\t\nSorry ,The Record Was Not Found In Our Database,Please Contact 9989-913333 for support\nThank You!";
             recordNumber=-1;
-
-
         }
-
         f.close();
         return recordNumber;
     }
@@ -225,7 +203,6 @@ public:
         printMargins();
         cout<<"\n\n####		Ticket Booked!		###\n\n";
     }
-
     //need not call these functions from outside
 private:
     void writeDetails(Person p)
@@ -262,15 +239,11 @@ private:
             cin>>p.gender;
             if((p.gender=='m')||(p.gender=='M')||(p.gender=='F')||(p.gender=='f'))
                 genderOk=true;
-
-
         }
         cout<<"\nEnter Source place :";
         cin>>p.src;
         cout<<"\nEnter Destination place :";
         cin>>p.dest;
-
-
         //_________AUTOMATIC ASSIGNMENTS BEGIN_______________
         p.valid=true;
         //assign UID
@@ -279,7 +252,6 @@ private:
         time_t t = time(0);   // get time now
         struct tm * now = localtime( & t );
         sprintf(p.date,"%d/%d/%d", (now->tm_year + 1900),(now->tm_mon + 1),now->tm_mday);
-
         //assign a train ,randomly
         int r=(now->tm_sec)%3;
         switch(r)
@@ -329,7 +301,6 @@ int main()
             cin>>ticketToQuery;
             b.searchAndDisplay(ticketToQuery);
             break;
-
         case 4:
             cout<<"\nEnter The Ticket Number To Cancel : ";
             cin>>ticketToCancel;
@@ -337,13 +308,11 @@ int main()
             break;
         case 5:
             exit(0);
-
         default:
             cout<<"\nWrong Choice";
             continue;
         }
     }
     //write the final value of UID now
-
     return 0;
 }

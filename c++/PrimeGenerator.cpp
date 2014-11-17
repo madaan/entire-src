@@ -21,7 +21,6 @@ bool isPrime(long n)
     {
         return false;
     }
-
     if((n>10)&&(n%10==5))
     {
         return false;
@@ -31,7 +30,6 @@ bool isPrime(long n)
     {
         if(n%i==0)
         {
-
             return false;
         }
     }
@@ -40,7 +38,6 @@ bool isPrime(long n)
 //calculating a^b%c
 int mod(int a,int b,int c)
 {
-
 }
 main()
 {

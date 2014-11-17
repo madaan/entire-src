@@ -63,12 +63,10 @@ int main(int ac, char *argv[])
                 rc++;
             }
         }
-
         vector<int> numbers;
         string p(str), ts;
         char *tp = NULL;
         i = 0;
-
         while(i < rc) {
             ts = p.substr(record[i][0], record[i][2]);
             if(ts.size() == 0) {
@@ -76,7 +74,6 @@ int main(int ac, char *argv[])
                 continue;
             }
 #ifdef debu
-
             printf("%4d %4d %4d %s\n", record[i][0], record[i][1], record[i][2], ts.c_str());
 #endif
             j = 0;
@@ -101,4 +98,3 @@ int main(int ac, char *argv[])
     }
     return 0;
 }
-

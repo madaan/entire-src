@@ -104,7 +104,6 @@ int getIndex(char * arr,char c,int seedL)
         }
     }
     return -1;
-
 }
 void mapSeed(char * sortedS,char * original,int seedL,int * result)
 {
@@ -116,9 +115,7 @@ void mapSeed(char * sortedS,char * original,int seedL,int * result)
         cout<<"Search for "<<sortedS[i]<<" Returned "<<index<<"\n";
 #endif
         result[index]=SEQ++;
-
     }
-
 }
 void encryptC(char * msg,char *CK)
 {
@@ -192,6 +189,5 @@ int main()
     encryptC(tmpmsg,SECOND_LEVEL_CIPHER);
     encryptC(tempSeed,FIRST_LEVEL_CIPHER);
     cout<<"\n\nENCRYPTED MESSAGE : "<<tmpmsg<<"\nENCRYPTED SEED : "<<tempSeed;
-
     return 0;
 }

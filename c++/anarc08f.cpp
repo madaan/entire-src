@@ -66,12 +66,9 @@ int main() {
         for(int i  = 0; i < n; i++) {
             adj[i][i] = 0;
         }
-
         if(n == 0) {
             return 0;
         }
-
-
         for(int i = 0; i <= c; i++) { //read the jobs
             cin >> joblist[i];
         }
@@ -85,7 +82,6 @@ int main() {
             if(nodeMap.find(from) == nodeMap.end()) {
                 nodeMap[from] = locationNumber++;
             }
-
             cin >> distanceString;
             cin >> to;
             if(nodeMap.find(to) == nodeMap.end()) {
@@ -123,4 +119,3 @@ int main() {
     }
     return 0;
 }
-

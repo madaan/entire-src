@@ -14,7 +14,6 @@ int getMinOps() {
     for(int offset = 1; offset < l; offset++) {
         for(int i = 0; i  < 4; i++) {
             if(l - offset - 1 + i == l) {
-
                 int temp = getInt(ip, l - offset - 1, l - offset - 1 + i);
                 int getInt(string ip, int l, int r) {
                     return atoi(ip.substr(l, r - l + 1).c_str());
@@ -25,4 +24,3 @@ int getMinOps() {
                     cout << getInt(s, 1, 3) << endl;
                     return 0;
                 }
-

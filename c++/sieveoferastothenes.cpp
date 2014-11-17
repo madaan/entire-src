@@ -24,7 +24,6 @@ int main(int argc, char * argv[]) {
         if(mark[i]) {
             printf("%d ",i);
         }
-
     }
     printf("\n");
     return 0;

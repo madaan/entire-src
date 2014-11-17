@@ -27,7 +27,6 @@ int main()
             int sChar2,eChar2;
             //read first
             scanf("%s",buff);
-
             sChar=static_cast<int>(buff[0])-97;
             eChar=static_cast<int>(buff[1])-97;
             //read next
@@ -63,11 +62,9 @@ int main()
             for(int j=0; j<26; j++)
             {
                 diff=end[j]-start[j];
-
                 if((diff>1)||(diff< -1))
                 {
                     isOrderable=false;
-
                     break;
                 }
                 else if(diff==1)
@@ -100,13 +97,11 @@ int main()
                 {
                     inBetween++;
                 }
-
             }
             if(!foundStart||!foundEnd) //eq to inBetween!=N-2
             {
                 isOrderable=false;
             }
-
         } //end case for N!=2
         if(isOrderable)
         {
@@ -122,4 +117,3 @@ int main()
     }
     return 0;
 }
-

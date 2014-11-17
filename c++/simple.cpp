@@ -37,7 +37,6 @@ int main() {
     s -> area();
     s = &r;
     s->area();
-
     c.version();
     r.version();
     return 0;

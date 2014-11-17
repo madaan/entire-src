@@ -53,11 +53,9 @@ void assignLabels(int numRec)
         while(prevNum==ph1[j])
         {
             labelledph1[j++]=label;
-
 //     cout<<"\nAssigning "<<label<<" to "<<ph1[j-1]<<endl;
         }
         assignLabelsToPh2(prevNum,label,numRec); //now label ph2
-
         prevNum=ph1[j];
         label++;
     }
@@ -82,9 +80,7 @@ void assignLabelsToUnlabelledPh2(int numRec,int label)  //pass 2
         if(labelledph2[i]==0)
         {
             assignLabelsToPh2(ph2[i],label++,numRec);
-
         }
-
     }
     cout<<"\nDONE\n";
 }

@@ -1,7 +1,6 @@
 //sg
 #include<bits/stdc++.h>
 using namespace std;
-
 class Solution {
 public:
     vector< vector< int > > dp;
@@ -18,7 +17,6 @@ public:
         if(i == m - 1) {
             return dp[i][j] = lastRowFree;
         }
-
         if(j == n - 1) { 
             return dp[i][j] = lastColFree;
         }
@@ -57,11 +55,9 @@ public:
             }
         }
         dp = vector< vector<int> > (m + 1, vector<int>(n + 1, -1));
-
         return ans(0, 0);
     }
 };
-
 int main() {
     int arr[3][3] = {{0, 0, 0}, {0, 1, 0}, {0, 0, 0}};
     vector<int> a(arr[0], arr[0] + 3);

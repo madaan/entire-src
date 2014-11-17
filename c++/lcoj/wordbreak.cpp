@@ -15,7 +15,6 @@ public:
         }
         string cs = s.substr(st);
         if(dict.find(cs) != dict.end() && (st + ) {
-
             //at this point, all the cuttings are a solution
             string res = "";
             int prev = 0;

@@ -1,7 +1,6 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-
 struct NODE
 {
     int cost;
@@ -9,7 +8,6 @@ struct NODE
     char city2[51];
     NODE* next;
 };
-
 void insertnode(NODE** start)
 {
     char ch;
@@ -20,7 +18,6 @@ void insertnode(NODE** start)
     temp->cost = 0;
     scanf("%c", &ch);
     temp->next=NULL;
-
     if(*start==NULL)
         *start=temp;
     else
@@ -29,29 +26,23 @@ void insertnode(NODE** start)
         *start=temp;
     }
 }
-
 int main()
 {
     int t,i,n,j,sum;
     NODE *start=NULL,*start1=NULL,*temp,*temp1,*temp2;
-
     scanf("%d",&t);
     for(i=0; i<t; i++)
     {
         scanf("%d",&n);
         for(j=0; j<n-1; j++)
             insertnode(&start);
-
         temp=start;
-
         start1=start;
         start=start->next;
         start1->next=NULL;
-
         temp=start;
         temp1=start1;
         temp2=start;
-
         while(temp!=NULL)
         {
             if(strcmp(temp->city1,temp1->city2)==0)
@@ -72,7 +63,6 @@ int main()
                 temp=temp->next;
             }
         }
-
         temp=start;
         temp2=start;
         while(temp!=NULL)
@@ -94,7 +84,6 @@ int main()
                 temp=temp->next;
             }
         }
-
         temp=start1;
         sum=0;
         while(temp!=NULL)

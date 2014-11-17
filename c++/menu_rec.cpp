@@ -40,8 +40,5 @@ float menu[25][
             for(int i = 1; i <= NUM_DISHES; i++) {
                 scanf("%f%f", &dishInfo[i][COST], &dishInfo[i][BENIFIT]);
             }
-
-
         }
     }
-
