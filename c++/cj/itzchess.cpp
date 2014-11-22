@@ -133,6 +133,7 @@ int getb(BOARD b, int i, int j) {
     return pcldu(b, i, j) + pcldd(b, i, j) + pcru(b, i, j) + pcrd(b, i, j);
 }
 int getkn(BOARD b, int i, int j) {
+    //This Bug, I tell you :/
     static int moves[4][2] = {{-1, -1}, {1, -1},  {1, 1}, {-1, 1}};
     int ans = 0;
     for(int m = 0; m < 4; m++) {
