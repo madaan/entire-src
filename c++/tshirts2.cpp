@@ -1,4 +1,3 @@
-
 //sg
 #include <algorithm>
 #include <bitset>
@@ -22,14 +21,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
-
 using namespace std;
-
 typedef long long ll;
 typedef vector<long long> vi;
 typedef pair<long long,long long> pi;
 typedef vector<string> vs;
-
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -45,7 +41,6 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (long long)(x.size())
-
 #define MAX 105
 const long long int MOD = 1000000007;
 void split(char* str, set<long long> &shirtNums)
@@ -59,7 +54,6 @@ void split(char* str, set<long long> &shirtNums)
         token = strtok_r(NULL,delim,&saveptr);
     }
 }
-
 class tshirtSet {
 public:
     long long a, b; //shouldn't really be public
@@ -77,15 +71,14 @@ public:
             int sn = atoi(token);
             shirtNums.insert(atoi(token));
             token = strtok_r(NULL,delim,&saveptr);
-             if(sn <= 63) {
+            if(sn <= 63) {
                 a = a | (1LL << sn);
             } else {
                 b = b | (1LL << (sn - 64));
             }
-             numShirts++;
+            numShirts++;
         }
     }
-
     void printShirts() {
         for(int i = 1; i < 64; i++) {
             if(a & (1LL << i)) {
@@ -98,7 +91,6 @@ public:
             }
         }
     }
-
     void setShirts() {
         numShirts = 0;
         shirtNums.clear();
@@ -115,50 +107,46 @@ public:
             }
         }
     }
-
     tshirtSet() {
         this->a = 0;
         this->b = 0;
         this->numShirts = 0;
     }
-
     tshirtSet(long long a, long long b, long long numShirts) {
         this->a = a;
         this->b = b;
         this->numShirts = numShirts;
     }
-
     tshirtSet isect(tshirtSet &s1, tshirtSet &s2) {
         return tshirtSet(s1.a & s2.a, s1.b & s2.b, min(s1.numShirts, s2.numShirts));
     }
-
     bool isSet(int i) {
         if(i < 64) {
-            return !((a & (1LL << i)) == 0); // bitwise have lower precedence than == 
+            return !((a & (1LL << i)) == 0); // bitwise have lower precedence than ==
         } else {
             return !((b & (1LL << (i - 64))) == 0);
         }
     }
-
 };
 ll mod(ll a, ll m)
 {
-return (a % m + m) % m;
+    return (a % m + m) % m;
 }
-
 long long int repCount[12];
 int n;
 const long long oo = 2000000009;
 const double eps = 1e-9;
 tshirtSet shirtSets[12];
-
 void update(int friendStr) {
     int numReps = 0;
     int reps[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     long long ta, tb;
     for(int i = 1; i <= n; i++) {
         if((friendStr & (1 << (i - 1)))) {
-            if(numReps == 0) { ta = shirtSets[i].a; tb = shirtSets[i].b;}
+            if(numReps == 0) {
+                ta = shirtSets[i].a;
+                tb = shirtSets[i].b;
+            }
             ta = (ta & shirtSets[i].a);
             tb = (tb & shirtSets[i].b);
             numReps++;
@@ -190,7 +178,6 @@ void update(int friendStr) {
     printf("%d => %lld\n", numReps, val);
     repCount[numReps] = mod(repCount[numReps] + val, MOD);
 }
-
 typedef unsigned long long ull;
 ll res;
 int tmap[110];
@@ -235,4 +222,3 @@ int main() {
     }
     return 0;
 }
-

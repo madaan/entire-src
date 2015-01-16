@@ -1,4 +1,3 @@
-
 //sg
 #include <algorithm>
 #include <bitset>
@@ -22,14 +21,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
- 
 using namespace std;
- 
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
- 
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -45,7 +41,6 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
- 
 const int oo = 2000000009;
 const double eps = 1e-9;
 int main() {
@@ -76,18 +71,15 @@ int main() {
     }
     cout << "\n";
     */
-        int minPos = min_element(hts.begin() + 1, hts.end()) - (hts.begin());
-        int maxPos = max_element(hts.begin() + 1, hts.end()) - (hts.begin());
-        //cout << minPos << "\n";
-        //cout << maxPos << "\n";
-        int minEle = hts[minPos];
-        int maxEle = hts[maxPos];
-  cout << maxEle - minEle << " " << m << "\n";   
+    int minPos = min_element(hts.begin() + 1, hts.end()) - (hts.begin());
+    int maxPos = max_element(hts.begin() + 1, hts.end()) - (hts.begin());
+    //cout << minPos << "\n";
+    //cout << maxPos << "\n";
+    int minEle = hts[minPos];
+    int maxEle = hts[maxPos];
+    cout << maxEle - minEle << " " << m << "\n";
     for(int i = 0, l = moves.size(); i < l; i++) {
         cout << moves[i].first << " " << moves[i].second << "\n";
     }
     return 0;
 }
-
-
-

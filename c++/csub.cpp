@@ -4,14 +4,13 @@
 typedef long long ll;
 ll res(ll numOnes) {
     ll ans = 0;
-    if(numOnes % 2 == 0) { 
+    if(numOnes % 2 == 0) {
         ans = (numOnes / 2) * (numOnes - 1);
     } else {
         ans = ((numOnes - 1) / 2) * (numOnes);
     }
     return ans + numOnes;
 }
-
 char ip[MAX];
 int main() {
     int t, n;

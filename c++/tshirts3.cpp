@@ -21,14 +21,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
-
 using namespace std;
-
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
-
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -45,7 +42,6 @@ typedef vector<string> vs;
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
 #define MOD 1000000007
-
 const int oo = 2000000009;
 const double eps = 1e-9;
 int toint(const string &s) {
@@ -84,7 +80,6 @@ ll ways(int mask, int nextT) {
     }
     return dp[mask][nextT] = ans;
 }
-
 int main() {
     int k, t;
     string ss, temp;
@@ -105,14 +100,10 @@ int main() {
             while(s >> temp) {
                 owners[toint(temp)].push_back(i);
             }
-
         }
-
-     for(int i=1; i<=100; i++)
+        for(int i=1; i<=100; i++)
             sort(owners[i].begin(), owners[i].end());
-
         printf("%lld\n", ways(0, 1));
     }
     return 0;
 }
-

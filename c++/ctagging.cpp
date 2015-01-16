@@ -21,14 +21,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
- 
 using namespace std;
- 
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
- 
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -44,38 +41,36 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
- 
 const int oo = 2000000009;
 const double eps = 1e-9;
-
 int main() {
     int t, n, m, a, b, temp;
     vector<pi> nums, maxm;
-        cin >> n >> m;
-        for(int i = 0; i < n; i++) {
-            scanf("%d", &temp);
-            nums.pu(pi(temp, i));
-        }
-        sort(all(nums));
-        for(int i = 0; i < nums.size(); i++) {
-            //cout << nums[i].second << " : " << nums[i].first << "\n";
-            maxm.pu(pi(nums[i].second, nums[i].first));
-        }
-        int res = 0;
-        for(int i = 0; i < m; i++) {
-            cin >> a >> b;
-            a--;
-            b--;
-            //cout << "a : " << a << "b : " << b << "\n";
-            res = 0;
-            int found = 0;
-            for(int j = maxm.size() - 1; j >= 0 && found < 2; j--) {
-                if(maxm[j].first != a && maxm[j].first != b) {
-                    res += maxm[j].second;
-                    found++;
-                }
+    cin >> n >> m;
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &temp);
+        nums.pu(pi(temp, i));
+    }
+    sort(all(nums));
+    for(int i = 0; i < nums.size(); i++) {
+        //cout << nums[i].second << " : " << nums[i].first << "\n";
+        maxm.pu(pi(nums[i].second, nums[i].first));
+    }
+    int res = 0;
+    for(int i = 0; i < m; i++) {
+        cin >> a >> b;
+        a--;
+        b--;
+        //cout << "a : " << a << "b : " << b << "\n";
+        res = 0;
+        int found = 0;
+        for(int j = maxm.size() - 1; j >= 0 && found < 2; j--) {
+            if(maxm[j].first != a && maxm[j].first != b) {
+                res += maxm[j].second;
+                found++;
             }
-            cout << res << "\n";
         }
-        return 0;
+        cout << res << "\n";
+    }
+    return 0;
 }

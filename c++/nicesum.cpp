@@ -1,4 +1,3 @@
-
 //sg
 #include <algorithm>
 #include <bitset>
@@ -22,14 +21,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
- 
 using namespace std;
- 
 typedef unsigned long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
- 
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -45,7 +41,6 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
- 
 const int oo = 2000000009;
 const double eps = 1e-9;
 const ll MOD =  1000000007l;
@@ -54,8 +49,6 @@ ll xf;
 bool rangeCheck(ll k) {
     return (xf + k * b <= a * b + b - 1);
 }
-
-
 ll getmaxk() {
     ll left = 1, right = 2;
     while(rangeCheck(right)) {
@@ -72,7 +65,6 @@ ll getmaxk() {
     }
     return left;
 }
-
 void solve() {
     ll res = 0;
     for(int mod = 1; mod < b; mod++) {
@@ -83,10 +75,8 @@ void solve() {
         ksum = ksum + (xf * (kmax + 1)) % MOD;
         res = (res + ksum) % MOD;
     }
-
     cout << res << "\n";
 }
-
 int main() {
     cin >> a >> b;
     solve();

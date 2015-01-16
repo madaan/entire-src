@@ -1,13 +1,11 @@
 //sg
 #include<stdio.h>
-
 #include<string.h>
-
 class MaxKeeper {
     char *maxArr;
     int l;
     int presentMax;
-    public:
+public:
     MaxKeeper(int l) {
         this->l = l;
         presentMax = 0;
@@ -20,7 +18,7 @@ class MaxKeeper {
                 res++;
             }
         }
-    return res;
+        return res;
     }
     void update(char *arr) {
         int ones = getNumOnes(arr);
@@ -29,7 +27,6 @@ class MaxKeeper {
             presentMax = ones;
         }
     }
-
     char *getMax() {
         return maxArr;
     }
@@ -41,13 +38,12 @@ void dumpBin(char *arr, int i, int l) {
         m->update(arr);
         //printf("%s\n", arr);
         return;
-    } 
+    }
     arr[i] = '0';
     dumpBin(arr, i + 1, l);
     arr[i] = '1';
     dumpBin(arr, i + 1, l);
 }
-
 int main() {
     int l = 30;
     m  = new MaxKeeper(l);
@@ -56,5 +52,3 @@ int main() {
     printf("%s\n", m->getMax());
     return 0;
 }
-
-

@@ -12,20 +12,18 @@ int key[MAX][MAX];
 int visited[MAX][MAX];
 int H, W;
 int maxKey;
-
 void checkAndPush(queue<pi> &Q, int i, int j, int c_i, int c_j, char desired_ele) {
-        if(grid[i][j] == desired_ele && !visited[i][j]) {
-            Q.push(pi(i,j));
-            key[i][j] = key[c_i][c_j] + 1;
-            //printf("Pushing : G(%d, %d) = %c\n", i, j, grid[i][j]);
-            //printf("Key     : K(%d, %d) = %d\n", i, j, key[i][j]);
-            if(key[i][j] > maxKey) {
-                maxKey = key[i][j];
-            }
-            visited[i][j] = 1;
+    if(grid[i][j] == desired_ele && !visited[i][j]) {
+        Q.push(pi(i,j));
+        key[i][j] = key[c_i][c_j] + 1;
+        //printf("Pushing : G(%d, %d) = %c\n", i, j, grid[i][j]);
+        //printf("Key     : K(%d, %d) = %d\n", i, j, key[i][j]);
+        if(key[i][j] > maxKey) {
+            maxKey = key[i][j];
         }
+        visited[i][j] = 1;
+    }
 }
-
 //the pair signifies i, j
 void bfs(int si, int sj) {
     queue<pi> Q;
@@ -50,10 +48,8 @@ void bfs(int si, int sj) {
         if(c_j < W - 1 && c_i > 0) checkAndPush(Q, c_i - 1, c_j + 1, c_i, c_j, desired_ele); //top right
         if(c_i < H - 1 && c_j > 0) checkAndPush(Q, c_i + 1, c_j - 1, c_i, c_j, desired_ele); //left bottom
         if(c_i < H - 1 && c_j < W - 1) checkAndPush(Q, c_i + 1, c_j + 1, c_i, c_j, desired_ele); //right bottom
-
     }
 }
-
 int main() {
     int caseNumber = 1;
     while(true) {
@@ -64,7 +60,6 @@ int main() {
         for(int i = 0; i < H; i++) {
             scanf("%s", grid[i]);
         }
-
         memset(key, 0, sizeof(key[0][0]) * MAX * MAX);
         memset(visited, 0, sizeof(visited[0][0]) * MAX * MAX);
         maxKey = 0;
@@ -73,9 +68,9 @@ int main() {
                 if(grid[i][j] == 'A') {
                     bfs(i, j);
                 }
-        }
+            }
         }
         printf("Case %d: %d\n", caseNumber++, maxKey);
-        }
+    }
     return 0;
 }

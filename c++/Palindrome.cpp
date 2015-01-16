@@ -47,7 +47,6 @@ bool isPali(char num[])
         }
     }
     return true;
-
 }
 int main()
 {
@@ -62,9 +61,6 @@ int main()
             cout << "\n";
             rem--;
         }
-
     }
     return 0;
 }
-
-

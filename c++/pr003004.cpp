@@ -3,7 +3,7 @@
 #include <stdlib.h>
 typedef long long ll;
 long long sum_power_10[] = {
-    0, 
+    0,
     45,
     900,
     13500,
@@ -12,9 +12,8 @@ long long sum_power_10[] = {
     27000000,
     315000000,
     3600000000
-    };
-
-long long power10[] = { 
+};
+long long power10[] = {
     1,
     10,
     100,
@@ -25,22 +24,19 @@ long long power10[] = {
     10000000,
     100000000,
     1000000000
-    };
-
-
-//returns the most significant digit and the power of 
+};
+//returns the most significant digit and the power of
 //10 supporting it. For eg, for 2214, returns 2 and 3
 //respectively.
 void get_msd(int number, int *msd, int *power_msd) {
     int power = 0;
-    while(number / 10) { 
+    while(number / 10) {
         number = number / 10;
         power++;
     }
     *msd = number;
     *power_msd = power;
 }
-
 int chop_msd(int n) {
     char number[100];
     sprintf(number, "%d", n);
@@ -50,7 +46,6 @@ int chop_msd(int n) {
         return atoi(number + 1);
     }
 }
-
 long long int digc(int c)
 {
     int msd, power_msd, i;
@@ -77,8 +72,6 @@ ll sumDigs(ll n) {
     }
     return sumDigs;
 }
-
-
 int sumTill[] = {
     0,
     1,
@@ -89,8 +82,8 @@ int sumTill[] = {
     21,
     28,
     36,
-    45};
-
+    45
+};
 ll rec(ll num, ll mult) {
     if(num <= 0) {
         return 0;
@@ -116,7 +109,6 @@ int main(int argc, char *argv[])
             //printf("%lld\n", rec(b, 1) - rec(a - 1, 1));
             printf("%lld\n", digc(b) - digc(a - 1));
         }
-    } 
-   return 0;
+    }
+    return 0;
 }
-

@@ -23,12 +23,10 @@
 #include <utility>
 #include <vector>
 using namespace std;
-
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
- 
 // Basic macros
 #define st          first
 #define se          second
@@ -62,7 +60,6 @@ int main()
         arr[i] = arr[i] + arr[i - 1];
         freqcount[arr[i]]++;
     }
-
     int scanned = 0;
     int halfway = (n + 1) / 2;
     rep(i, 0, k) {

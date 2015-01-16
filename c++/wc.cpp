@@ -4,7 +4,6 @@
 #include<string.h>
 #include<iostream>
 using namespace std;
-
 using namespace std;
 double wc(char * str)
 {
@@ -13,11 +12,8 @@ double wc(char * str)
     int den[500] = {0};
     int dcntr = 0;
     double num = 1, d = 1;
-
     double div = 1000000007;
-
     for (int i = 0; i < l; i++)
-
     {
         insCount[str[i]]++;
         if (insCount[str[i]] > 1) { //found this one twice,will generate a denominator
@@ -35,10 +31,8 @@ double wc(char * str)
             // num=fmod(num,div);
         }
     }
-
     return fmod(num, div);
 }
-
 main()
 {
     int n, n1;

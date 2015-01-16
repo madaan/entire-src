@@ -18,11 +18,10 @@ string sentence, abbr;
 int sentenceLen, abbrLen, numWords;
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 vector<string> significantWords;
-
 class OccurrenceCounter {
     int lenPhrase, lenPattern;
     string phrase, pattern;
-    public:
+public:
     OccurrenceCounter(string phrase, string pattern) {
         this->phrase = phrase;
         this->pattern = pattern;
@@ -44,10 +43,6 @@ class OccurrenceCounter {
         }
     }
 };
-
-
-
-    
 void init() {
     numWords = 0;
     for(int i = 0; i < MAX; i++) {
@@ -58,7 +53,6 @@ void init() {
     }
     significantWords.clear();
 }
-
 int solve(int wordIndex, int abbrIndex) {
     int wordsLeft = numWords - wordIndex; //to go
     int abbrLeft = abbrLen - abbrIndex;
@@ -76,7 +70,6 @@ int solve(int wordIndex, int abbrIndex) {
     if(abbrLeft < wordsLeft) { //won't be able to give atleast one char to each of the words
         //printf("2. solve(%d, %d) >", wordIndex, abbrIndex);
         //printf("Setting dp[%d][%d] to  %d\n", wordIndex, abbrIndex, 0);
-        
         return (dp[wordIndex][abbrIndex] = 0);
     }
     if(wordIndex != numWords && abbrIndex == abbrLen || wordIndex == numWords && abbrIndex != abbrLen) {
@@ -104,7 +97,6 @@ int solve(int wordIndex, int abbrIndex) {
     }
     return (dp[wordIndex][abbrIndex] = res);
 }
-
 std::vector<std::string> &split(const std::string &s, char delim, std::vector<std::string> &elems) {
     std::stringstream ss(s);
     std::string item;
@@ -113,13 +105,11 @@ std::vector<std::string> &split(const std::string &s, char delim, std::vector<st
     }
     return elems;
 }
-
 std::vector<std::string> split(const std::string &s, char delim) {
     std::vector<std::string> elems;
     split(s, delim, elems);
     return elems;
 }
-
 int main() {
     int ignoredWords;
     string temp;
@@ -164,7 +154,6 @@ int main() {
             } else {
                 printf("%s can be formed in %d ways\n", abbr_bu.c_str(), res);
             }
-            
         }
         ignored.clear();
     }

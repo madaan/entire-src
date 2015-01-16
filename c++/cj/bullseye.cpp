@@ -6,7 +6,6 @@ ll r, t;
 ll val(ll k) {
     return 2l * k * k + (2l * r - 1l) * k;
 }
-
 ll getval() {
     ll left = 0, right = 1;
     //obtain the range
@@ -15,11 +14,11 @@ ll getval() {
         right = right * 2;
         //cout << left << " " << right << "\n";
     }
-    
+
     while(right - left > 1) {
         //cout << left << " " << right << "\n";
         ll mid = left + ((right - left) / 2l);
-            //cout << val(mid) << "\n";
+        //cout << val(mid) << "\n";
         //cout << "l = " << l << "\nmid = " << mid << "\nr = " << r << "val = " << val(mid) << "\n\n";
         if(val(mid) > t) {
             right = mid;
@@ -27,10 +26,9 @@ ll getval() {
             left = mid;
         }
     }
-    //l is the first point where we become > 
+    //l is the first point where we become >
     return left;
 }
-
 int main() {
     int cases;
     cin >> cases;

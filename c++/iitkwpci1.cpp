@@ -11,7 +11,6 @@ vector<bool> visited(MAXN, false);
 vector<int> vn(MAXN, 0);
 vector<int> smallestPerm(MAXN, 0);
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
-
 void updatePerm() {
     if(smallestPerm.empty()) {
         return;
@@ -29,13 +28,11 @@ void updatePerm() {
     for(int i = 0; i < values.size(); i++) {
         smallestPerm[indexes[i]] = values[i];
     }
-
 }
-
 void dfs(int i) {
     //printf("visiting %d\n", i);
     list<int>::iterator nbr = adj[i].begin();
-    for(;nbr != adj[i].end(); nbr++) {
+    for(; nbr != adj[i].end(); nbr++) {
         if(!visited[*nbr]) {
             connectedComps.push_back(pi(vn[*nbr], *nbr));
             visited[*nbr] = true;
@@ -43,7 +40,6 @@ void dfs(int i) {
         }
     }
 }
-
 void drive() {
     for(int i = 1; i <= n; i++) {
         if(!visited[i]) {
@@ -54,16 +50,14 @@ void drive() {
             dfs(i);
         }
     }
-            updatePerm();
+    updatePerm();
 }
-
 int main() {
     int t;
     int temp, a, b;
     scanf("%d", &t);
     while(t--) {
         fill(visited.begin(), visited.end(), false);
-
         scanf("%d%d", &n, &m);
         for(int i = 1; i <= n; i++) {
             adj[i].clear();
@@ -85,7 +79,7 @@ int main() {
     return 0;
 }
 =======
-vector<int> vertexValue;
+    vector<int> vertexValue;
 int main() {
     int t;
     scanf("%d", &t);
@@ -95,5 +89,4 @@ int main() {
         for(int i = 1; i <= n; i++) {
             scanf("%d", &temp);
             vertexValue[i] = temp;
-
->>>>>>> 66dbee581d3557e9f5ceb7f68eca868605e08a05
+            >>>>>>> 66dbee581d3557e9f5ceb7f68eca868605e08a05

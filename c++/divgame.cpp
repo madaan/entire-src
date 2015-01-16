@@ -4,15 +4,13 @@
 bool isPrime(long long a)
 {
     long long b = sqrt(a); // only need to test up to the square root of the input
-
     for (long long i = 2; i <= b; i++)
     {
         if (a % i == 0)
-           return false;
-   }
-
-   // if the loop completed, a is prime
-   return true;
+            return false;
+    }
+    // if the loop completed, a is prime
+    return true;
 }
 bool mikeWins(long long N) {
     //mike wins only if the following conditions are not there
@@ -27,9 +25,7 @@ bool mikeWins(long long N) {
     }
     return true;
 }
-
 int main() {
-
     int t;
     long long N;
     scanf("%d", &t);

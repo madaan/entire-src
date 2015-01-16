@@ -1,4 +1,3 @@
-
 //sg
 #include <algorithm>
 #include <bitset>
@@ -22,14 +21,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
- 
 using namespace std;
- 
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
- 
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -45,7 +41,6 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
- 
 const int oo = 2000000009;
 const double eps = 1e-9;
 #define MAX 100009
@@ -57,7 +52,6 @@ int n, m;
 vector<bool> visited(MAX, false);
 int cbl[MAX];
 int dperm[MAX];
-
 void updatePerm() {
     if(connectedComps.empty()) {
         return;
@@ -66,11 +60,10 @@ void updatePerm() {
     int r = connectedComps[connectedComps.size() - 1];
     sort(dperm + l, dperm + r + 1);
 }
-
 void dfs(int i) {
     //printf("visiting %d\n", i);
     list<int>::iterator nbr = adj[i].begin();
-    for(;nbr != adj[i].end(); nbr++) {
+    for(; nbr != adj[i].end(); nbr++) {
         if(!visited[*nbr]) {
             connectedComps.push_back(*nbr);
             visited[*nbr] = true;
@@ -78,7 +71,6 @@ void dfs(int i) {
         }
     }
 }
-
 void drive() {
     for(int i = 1; i <= n; i++) {
         if(!visited[i]) {
@@ -91,8 +83,6 @@ void drive() {
     }
     updatePerm();
 }
-
-
 int main() {
     int t;
     scanf("%d", &t);
@@ -127,5 +117,4 @@ int main() {
         }
     }
     return 0;
-
 }

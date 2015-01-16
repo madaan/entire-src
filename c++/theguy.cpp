@@ -24,7 +24,3 @@ int main() {
     cout << "I become the guy.\n";
     return 0;
 }
-
-
-
-

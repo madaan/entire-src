@@ -29,7 +29,6 @@ int main() {
         }
     }
     sort(hts.begin(), hts.end());
-
     int o1 = hts[4];
     int o2 = hts[5];
     if(o1 == o2) {
@@ -37,6 +36,5 @@ int main() {
     } else {
         cout << "Bear\n";
     }
-
     return 0;
 }

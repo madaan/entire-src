@@ -7,12 +7,9 @@ int arr[201][201];
 int one[201], zero[201];
 char ip[201];
 #define max(a, b) ((a > b) ? a : b)
-
- int getMin(char ip[], int N) {
-
-        zero[0] = 0;
-        one[0] = 0;
-
+int getMin(char ip[], int N) {
+    zero[0] = 0;
+    one[0] = 0;
     for(int i = 1; i <= N; i++) {
         one[i] = one[i - 1];
         zero[i] = zero[i - 1];
@@ -39,18 +36,15 @@ char ip[201];
     for(int l = 2; l <= N; l++) {
         for(int i = 1; i <= N - l + 1; i++) {
             int j = i + l - 1;
-                for(int k = i; k <j; k++) {
-                    arr[i][j] = max(arr[i][j], arr[i][k] + arr[k + 1][j]);
-                }
+            for(int k = i; k <j; k++) {
+                arr[i][j] = max(arr[i][j], arr[i][k] + arr[k + 1][j]);
             }
         }
- 
-     //   cout << "l = " << l << endl;
+    }
+    //   cout << "l = " << l << endl;
     //printMat(arr, N);
     return arr[1][N];
 }
-
-   
 int main() {
     int t;
     scanf("%d", &t);
@@ -66,5 +60,3 @@ int main() {
     }
     return 0;
 }
-
-

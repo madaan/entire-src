@@ -1,6 +1,5 @@
 //sg
 #include<stdio.h>
-
 int main() {
     enum dir {UPR, UPL, DOWNR, DOWNL, OVER};
     int t;
@@ -24,4 +23,3 @@ int main() {
     }
     return 0;
 }
-

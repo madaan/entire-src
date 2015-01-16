@@ -3,13 +3,12 @@
 using namespace std;
 class QuadraticLaw
 {
-    public:
+public:
     long long getTime(long long d) {
         long long result = (-1l + sqrtl(1l + 4l * d)) / 2l;
         return result;
     }
 };
-
 int main() {
     QuadraticLaw ql;
     cout << ql.getTime(1) << "\n";
@@ -19,7 +18,6 @@ int main() {
     cout << ql.getTime(7) << "\n";
     cout << ql.getTime(1482) << "\n";
     cout << ql.getTime(1482) << "\n";
-
     cout << ql.getTime(1000000000000000000) << "\n";
     cout << ql.getTime(31958809614643170) << "\n";
     cout << ql.getTime(999999998999999999) << "\n";

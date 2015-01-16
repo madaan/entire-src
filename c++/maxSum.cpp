@@ -17,4 +17,3 @@ int main() {
     printf("%d\n", maxSum);
     return 0;
 }
-

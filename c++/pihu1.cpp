@@ -5,7 +5,6 @@ using namespace std;
 typedef long long ll;
 #define MAX 1100
 ll arr[MAX];
-
 int bsearch(ll l, ll r, ll x) {
     ll mid;
     while(l <= r) {
@@ -21,7 +20,6 @@ int bsearch(ll l, ll r, ll x) {
     }
     return -1;
 }
-
 int main() {
     ll t, n, p;
     bool found = false;

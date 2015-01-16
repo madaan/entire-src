@@ -23,12 +23,10 @@
 #include <utility>
 #include <vector>
 using namespace std;
-
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
- 
 // Basic macros
 #define st          first
 #define se          second
@@ -43,18 +41,15 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
-
 int tree[100];
-
-int read(int idx){
-	int sum = 0;
-	while (idx > 0){
-		sum += tree[idx];
-		idx -= (idx & -idx);
-	}
-	return sum;
+int read(int idx) {
+    int sum = 0;
+    while (idx > 0) {
+        sum += tree[idx];
+        idx -= (idx & -idx);
+    }
+    return sum;
 }
-
 int main()
 {
     int n, k;
@@ -62,5 +57,4 @@ int main()
     rep(i, 1, k) scanf("%d", tree + i);
     printf("%d\n", read(4));
     return 0;
-
 }

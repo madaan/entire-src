@@ -10,7 +10,6 @@ int n, k;
 ll mod(ll a, ll b) {
     return (a % b + b) % b;
 }
-
 void fill() {
     dp[0] = 1;
     for(int i = 1; i <= n; i++) {
@@ -20,14 +19,12 @@ void fill() {
         }
     }
 }
-
 void dpCum() {
     ans[0] = dp[0];
     for(int i = 1; i <= n; i++) {
         ans[i] = (ans[i - 1] + dp[i]);
     }
 }
-
 int main() {
     int t, a, b;
     n = MAX - 1;

@@ -21,14 +21,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
- 
 using namespace std;
- 
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
- 
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -44,7 +41,6 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
- 
 const int oo = 2000000009;
 const double eps = 1e-9;
 #define MAX 100005
@@ -52,7 +48,7 @@ list<int> adj[MAX];
 int label[MAX];
 ll dp[MAX][2];
 const ll MOD = 1000000007;
-//dp[v][k] is the number of ways of dividing the tree such that the subtree 
+//dp[v][k] is the number of ways of dividing the tree such that the subtree
 //rooted at v has k black vertices and all the other subtrees have exactly one black vertex
 void numWays(int v, int p) {
     dp[v][0] = 1 - label[v];
@@ -70,7 +66,6 @@ void numWays(int v, int p) {
         dp[v][1] %= MOD;
         dp[v][0] += dp[*u][0] * cum[0];
         dp[v][0] %= MOD;
-
         //child u is not included
         dp[v][1] += dp[*u][1] * cum[1];
         dp[v][1] %= MOD;
@@ -78,7 +73,6 @@ void numWays(int v, int p) {
         dp[v][0] %= MOD;
     }
 }
-
 int main() {
     int n, temp;
     scanf("%d", &n);

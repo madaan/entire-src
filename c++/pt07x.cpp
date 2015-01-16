@@ -4,16 +4,14 @@
 #include<set>
 #include<list>
 using namespace std;
-
 class Graph
 {
-    public:
+public:
     int n;
     list<int> *adj;
     vector<bool> visited;
     vector<int> degree;
     vector<bool> marked;
-
     Graph(int n) {
         this -> n = n;
         adj = new list<int>[n + 1];
@@ -27,7 +25,6 @@ class Graph
         degree[a]++;
         degree[b]++;
     }
-
     void dfs(int curr) {
         if(degree[curr] == 1) {
             //printf("returning for %d\n", curr);
@@ -64,7 +61,6 @@ int main() {
         printf("%d\n", q - 1);
         return 0;
     }
-
     Graph g(n);
     for(int i = 0; i < n - 1; i++) {
         scanf("%d%d", &from, &to);

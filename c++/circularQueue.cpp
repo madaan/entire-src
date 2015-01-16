@@ -2,9 +2,9 @@
 #include<cstdio>
 template <class T>
 class CircularQueue {
-static int MAX;
+    static int MAX;
     T buff[10];
-    public:
+public:
     int in, out, n;
     CircularQueue(int n) {
         this -> n = 0;
@@ -19,7 +19,6 @@ static int MAX;
         out = (out + 1) % n;
         return res;
     }
-
     void insert(T ele) {
         if((in + 1) % n == out) {
             printf("Buffer full\n");
@@ -35,4 +34,3 @@ int main() {
     CircularQueue<int> c(5);
     return 0;
 }
-

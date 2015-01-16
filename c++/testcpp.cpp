@@ -3,31 +3,25 @@
 using namespace std;
 class A {
     int a;
-    public:
+public:
     void func() {
         cout << "A func\n";
     }
 };
-
 class B : public A {
     int b;
-    public:
+public:
     virtual void func() {
         cout << "B func\n";
     }
 };
-
 class C : public B {
     int b;
-    public:
+public:
     void func() {
         cout << "C func\n";
     }
 };
-
-
-
-
 int main() {
     A *bs = new C();
     bs->func();
@@ -35,4 +29,3 @@ int main() {
     c.func();
     return 0;
 }
-

@@ -21,14 +21,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
- 
 using namespace std;
- 
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
- 
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -44,12 +41,10 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
- 
 const int oo = 2000000009;
 const double eps = 1e-9;
 ll n, a, b;
 ll target;
-
 ll binsearch() {
     ll l = 1;
     ll r = 6000000000ll;
@@ -64,17 +59,13 @@ ll binsearch() {
     }
     return l;
 }
-
-
 int main() {
     cin >> n >> a >> b;
-    
     double target = 6ll * n;
     if(target <= (a * b)) {
         cout << (a * b) << "\n" << a << " " << b << "\n";
         return 0;
     }
-
     ll na = ceil(target / b);
     ll nb = ceil(target / a);
     ll a1 = a * nb;
@@ -86,4 +77,3 @@ int main() {
     }
     return 0;
 }
-

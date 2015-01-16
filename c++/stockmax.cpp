@@ -6,8 +6,6 @@ typedef long long ll;
 ll a[MAX];
 ll cum[MAX];
 ll n;
-
-
 ll solve() {
     ll res = 0;
     vector< ll > bought;
@@ -20,7 +18,6 @@ ll solve() {
             cmax = a[i];
         }
     }
-
     for(ll i = 1; i <= n - 1; i++) {
         if(shouldbuy[i]) {
             //cout << "buying " << i << "\n";
@@ -37,7 +34,6 @@ ll solve() {
     }
     return res;
 }
-
 int main() {
     ll t;
     cin >> t;

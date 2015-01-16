@@ -2,7 +2,6 @@
 #include<stdlib.h>
 #include<stdio.h>
 typedef long long ll;
-
 ll sumDigs(ll n) {
     int sumDigs = 0;
     while(n) {
@@ -11,7 +10,6 @@ ll sumDigs(ll n) {
     }
     return sumDigs;
 }
-
 ll sumDigsTill(ll n) {
     ll res = 0;
     for(int i = 0; i <= n; i++) {
@@ -19,11 +17,8 @@ ll sumDigsTill(ll n) {
     }
     return res;
 }
-
 int main(int argc, char *argv[]) {
     ll n = atol(argv[1]);
     printf("%lld\n", sumDigsTill(n));
     return 0;
 }
-
-

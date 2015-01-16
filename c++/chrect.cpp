@@ -14,7 +14,7 @@ int main()
                 printf("%d\n", K);
             }
         } else if(M == 1) {
-                if(N <= 2) {
+            if(N <= 2) {
                 printf("0\n");
             } else {
                 printf("%d\n", K);

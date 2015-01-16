@@ -4,8 +4,8 @@
 using namespace std;
 #define tr(v, i) for(auto i = v.begin(); i != v.end(); i++)
 class KiloMan {
-	public:
-	int hitsTaken(vector <int> pattern, string jumps) {
+public:
+    int hitsTaken(vector <int> pattern, string jumps) {
         int hits = 0;
         for(int i = 0; i < pattern.size(); i++) {
             if(jumps[i] == 'S') {
@@ -17,10 +17,8 @@ class KiloMan {
             }
         }
         return hits;
-	}
+    }
 };
-
-
 // Powered by FileEdit
 // Powered by moj 4.18 [modified TZTester]
 // Powered by CodeProcessor

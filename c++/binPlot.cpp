@@ -3,37 +3,35 @@
 #define MAX_VAL 100
 main()
 {
-int arr[MAX_VAL],n,i;
-scanf("%d",&n);
-for(i=0;i<n;i++)
-{
-scanf("%d",&arr[i]);
+    int arr[MAX_VAL],n,i;
+    scanf("%d",&n);
+    for(i=0; i<n; i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    printf("\n");
+    for(i=0; i<n; i++)
+    {
+        if(arr[i])
+        {
+            printf(" _____");
+        }
+        else
+        {
+            printf("      ");
+        }
+    }
+    printf("\n");
+    for(i=0; i<n; i++)
+    {
+        if(arr[i])
+        {
+            printf(" _____");
+        }
+        else
+        {
+            printf("|     |");
+        }
+    }
+    printf("\n");
 }
-printf("\n");
-for(i=0;i<n;i++)
-{
-if(arr[i])
-{
-printf(" _____");
-}
-else
-{
-printf("      ");
-}
-}
-printf("\n");	
-for(i=0;i<n;i++)
-{
-
-if(arr[i])
-{
-printf(" _____");
-}
-else
-{
-
-printf("|     |");
-}
-}
-printf("\n");
-}	

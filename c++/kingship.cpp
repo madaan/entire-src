@@ -29,5 +29,4 @@ int main()
         printf("%lld\n", cost);
     }
     return 0;
- 
 }

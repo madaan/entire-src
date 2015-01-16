@@ -21,6 +21,3 @@ int main() {
     printf("%d\n", mnz);
     return 0;
 }
-
-    
-

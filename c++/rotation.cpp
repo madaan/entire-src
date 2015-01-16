@@ -2,14 +2,11 @@
 #include<bits/stdc++.h>
 #define MAX 100009
 int n, m;
-
 int mod(int a, int n) {
     int r = (a % n + (n)) % (n);
     if(r == 0) return n;
     return r;
-
 }
-
 void rev(int A[MAX], int l, int r) {
     int mid = l + (r - l + 1) / 2;
     for(int i = l, j = r; i < mid; i++,j--) {
@@ -18,21 +15,16 @@ void rev(int A[MAX], int l, int r) {
         A[i] ^= A[j];
     }
 }
-
 void left_shift(int A[MAX], int units) {
     rev(A, 1, units);
     rev(A, units + 1, n);
     rev(A, 1, n);
 }
-
 void right_shift(int A[MAX], int units) {
     rev(A, 1,  n - units);
     rev(A, n - units + 1, n);
     rev(A, 1, n);
 }
-
-
-    
 void shift(int A[MAX], int units) {
     if(units < 0) {
         left_shift(A, -units);
@@ -40,7 +32,6 @@ void shift(int A[MAX], int units) {
         right_shift(A, units);
     }
 }
-
 int main() {
     int A[MAX];
     int rot = 0;
@@ -68,4 +59,3 @@ int main() {
     }
     return 0;
 }
-

@@ -1,10 +1,8 @@
 // Paste me into the FileEdit configuration dialog
-
 #include <string>
 #include <vector>
 #include <iostream>
 using namespace std;
-
 class Target {
 public:
     vector <string> draw( int n ) {
@@ -38,17 +36,14 @@ public:
         for(int j = 1; j <= n; j+=2) {
             res[mid - 1][j] = sp;
         }
-
         vector<string> sh;
         for(int i = mid - 2; i >=0; i--) {
             sh.push_back(res[i]);
         }
         res.insert(res.end(), sh.begin(), sh.end());
         return res;
-
     }
 };
-
 // BEGIN CUT HERE
 #include <cstdio>
 #include <ctime>
@@ -66,7 +61,6 @@ void run_test(int casenum = -1, bool quiet = false) {
         }
         return;
     }
-
     int correct = 0, total = 0;
     for (int i=0;; ++i) {
         int x = run_test_case(i);
@@ -77,7 +71,6 @@ void run_test(int casenum = -1, bool quiet = false) {
         correct += x;
         ++total;
     }
-
     if (total == 0) {
         std::cerr << "No test cases run." << std::endl;
     } else if (correct < total) {
@@ -86,7 +79,6 @@ void run_test(int casenum = -1, bool quiet = false) {
         std::cerr << "All " << total << " tests passed!" << std::endl;
     }
 }
-
 template<typename T> std::ostream& operator<<(std::ostream &os, const vector<T> &v) {
     os << "{";
     for (typename vector<T>::const_iterator vi=v.begin(); vi!=v.end(); ++vi) {
@@ -105,25 +97,20 @@ template<> std::ostream& operator<<(std::ostream &os, const vector<string> &v) {
     os << " }";
     return os;
 }
-
 int verify_case(int casenum, const vector <string> &expected, const vector <string> &received, std::clock_t elapsed) {
     std::cerr << "Example " << casenum << "... ";
-
     string verdict;
     vector<string> info;
     char buf[100];
-
     if (elapsed > CLOCKS_PER_SEC / 200) {
         std::sprintf(buf, "time %.2fs", elapsed * (1.0/CLOCKS_PER_SEC));
         info.push_back(buf);
     }
-
     if (expected == received) {
         verdict = "PASSED";
     } else {
         verdict = "FAILED";
     }
-
     std::cerr << verdict;
     if (!info.empty()) {
         std::cerr << " (";
@@ -134,21 +121,17 @@ int verify_case(int casenum, const vector <string> &expected, const vector <stri
         std::cerr << ")";
     }
     std::cerr << std::endl;
-
     if (verdict == "FAILED") {
         std::cerr << "    Expected: " << expected << std::endl;
         std::cerr << "    Received: " << received << std::endl;
     }
-
     return verdict == "PASSED";
 }
-
 int run_test_case(int casenum__) {
     switch (casenum__) {
     case 0: {
         int n                     = 49;
         string expected__[]       = {"#####", "#   #", "# # #", "#   #", "#####" };
-
         std::clock_t start__      = std::clock();
         vector <string> received__ = Target().draw(n);
         return verify_case(casenum__, vector <string>(expected__, expected__ + (sizeof expected__ / sizeof expected__[0])), received__, clock()-start__);
@@ -156,7 +139,6 @@ int run_test_case(int casenum__) {
     case 1: {
         int n                     = 9;
         string expected__[]       = {"#########", "#       #", "# ##### #", "# #   # #", "# # # # #", "# #   # #", "# ##### #", "#       #", "#########" };
-
         std::clock_t start__      = std::clock();
         vector <string> received__ = Target().draw(n);
         return verify_case(casenum__, vector <string>(expected__, expected__ + (sizeof expected__ / sizeof expected__[0])), received__, clock()-start__);
@@ -164,7 +146,6 @@ int run_test_case(int casenum__) {
     case 2: {
         int n                     = 13;
         string expected__[]       = {"#############", "#           #", "# ######### #", "# #       # #", "# # ##### # #", "# # #   # # #", "# # # # # # #", "# # #   # # #", "# # ##### # #", "# #       # #", "# ######### #", "#           #", "#############" };
-
         std::clock_t start__      = std::clock();
         vector <string> received__ = Target().draw(n);
         return verify_case(casenum__, vector <string>(expected__, expected__ + (sizeof expected__ / sizeof expected__[0])), received__, clock()-start__);
@@ -172,18 +153,14 @@ int run_test_case(int casenum__) {
     case 3: {
         int n                     = 17;
         string expected__[]       = {"#################", "#               #", "# ############# #", "# #           # #", "# # ######### # #", "# # #       # # #", "# # # ##### # # #", "# # # #   # # # #", "# # # # # # # # #", "# # # #   # # # #", "# # # ##### # # #", "# # #       # # #", "# # ######### # #", "# #           # #", "# ############# #", "#               #", "#################" };
-
         std::clock_t start__      = std::clock();
         vector <string> received__ = Target().draw(n);
         return verify_case(casenum__, vector <string>(expected__, expected__ + (sizeof expected__ / sizeof expected__[0])), received__, clock()-start__);
     }
-
     // custom cases
-
     /*      case 4: {
     			int n                     = ;
     			string expected__[]       = ;
-
     			std::clock_t start__      = std::clock();
     			vector <string> received__ = Target().draw(n);
     			return verify_case(casenum__, vector <string>(expected__, expected__ + (sizeof expected__ / sizeof expected__[0])), received__, clock()-start__);
@@ -191,7 +168,6 @@ int run_test_case(int casenum__) {
     /*      case 5: {
     			int n                     = ;
     			string expected__[]       = ;
-
     			std::clock_t start__      = std::clock();
     			vector <string> received__ = Target().draw(n);
     			return verify_case(casenum__, vector <string>(expected__, expected__ + (sizeof expected__ / sizeof expected__[0])), received__, clock()-start__);
@@ -199,7 +175,6 @@ int run_test_case(int casenum__) {
     /*      case 6: {
     			int n                     = ;
     			string expected__[]       = ;
-
     			std::clock_t start__      = std::clock();
     			vector <string> received__ = Target().draw(n);
     			return verify_case(casenum__, vector <string>(expected__, expected__ + (sizeof expected__ / sizeof expected__[0])), received__, clock()-start__);
@@ -209,8 +184,6 @@ int run_test_case(int casenum__) {
     }
 }
 }
-
-
 #include <cstdlib>
 int main(int argc, char *argv[]) {
     if (argc == 1) {

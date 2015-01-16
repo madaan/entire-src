@@ -23,14 +23,13 @@ int getvc(int r, int par) {
             numChild++;
             tr(adj[*i], j) { //for all grandchildren
                 if(*j != r && *j != *i) { //for all children
-                //printf("here child : %d, gc : %d\n", *i, *j);
-                notSelected += getvc(*j, *i);
+                    //printf("here child : %d, gc : %d\n", *i, *j);
+                    notSelected += getvc(*j, *i);
+                }
             }
         }
     }
-    }
     notSelected += numChild;
-
     int selected = 1;
     //you are selected, your children may/not be
     tr(adj[r], i) { //for all adj

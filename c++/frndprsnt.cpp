@@ -21,14 +21,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
- 
 using namespace std;
- 
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
- 
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -44,22 +41,18 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
- 
 const int oo = 2000000009;
 const double eps = 1e-9;
-
 bool check(ll n, ll cnt, ll p) {
     return (n - (n / p)) < cnt;
 }
-
 //returns the first n for which there are sufficient elements
 //that when div by p do not leave a remainder
-
 ll firstn(ll cnt, ll p) {
     ll l = 0, r = 1;
     while(check(r, cnt, p)) {
-         l = r;
-         r = r * 2;
+        l = r;
+        r = r * 2;
     }
     while(r - l > 1) {
         ll mid = l + (r - l) / 2;
@@ -71,7 +64,6 @@ ll firstn(ll cnt, ll p) {
     }
     return l + 1;
 }
-
 ll gcd(ll a, ll b) {
     while(b) {
         ll tmp = a;
@@ -94,7 +86,6 @@ ll solve(ll cnt1, ll cnt2, ll x, ll y) {
     nc2 += (n - n / y); //to simulate search from n
     return firstn(nc2, y);
 }
-
 int main() {
     ll cnt1, cnt2, x, y;
     cin >> cnt1 >> cnt2 >> x >> y;

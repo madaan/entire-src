@@ -4,14 +4,13 @@ using namespace std;
 int mat[1000][1000];
 int n, nn;
 bool allthere(vector<bool> psnt) {
-for(int i = 1; i <= nn; i++) {
+    for(int i = 1; i <= nn; i++) {
         if(!psnt[i]) {
             return false;
         }
     }
     return true;
 }
-
 bool colCheck() {
     bool res = true;
     for(int c = 0; c < nn; c++) {
@@ -27,7 +26,6 @@ bool colCheck() {
     }
     return res;
 }
-
 bool rowCheck() {
     bool res = true;
     for(int r = 0; r < nn; r++) {
@@ -43,7 +41,6 @@ bool rowCheck() {
     }
     return res;
 }
-
 bool rangeCheck(int i, int j) {
     vector<bool> psnt(nn + 1, false);
     for(int r = i; r < i + n; r++) {
@@ -54,7 +51,6 @@ bool rangeCheck(int i, int j) {
     }
     return allthere(psnt);
 }
-
 bool subcheck() {
     bool res = true;
     for(int i = 0; i < nn; i += n) {
@@ -64,7 +60,6 @@ bool subcheck() {
     }
     return res;
 }
-
 int main() {
     int t;
     cin >> t;

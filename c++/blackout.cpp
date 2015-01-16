@@ -17,15 +17,12 @@ int caracasCumulative[MAX][MAX];
 int areaZone[MAX];
 int peopleZone[MAX];
 vector<pi> areaPop;
-
 /**
  * Can be improved to O(1)
  */
 int getPeopleLiving(int i1, int j1, int i2, int j2) {
     return caracasCumulative[i2][j2] - caracasCumulative[i2][j1 - 1] - caracasCumulative[i1 - 1][j2] + caracasCumulative[i1 - 1][j1 - 1];
-    
 }
-
 int maxArea(int i, int peopleLeft) {
     //printf("maxArea(%d, %d)\n", i, peopleLeft);
     if(peopleLeft <= 0 || i == Q) {
@@ -40,7 +37,6 @@ int maxArea(int i, int peopleLeft) {
         }
         return cache[i + 1][peopleLeft];
     }
-                
     if(cache[i + 1][peopleLeft - people] == -1) {
         cache[i + 1][peopleLeft - people] = maxArea(i + 1, peopleLeft - people);
     }
@@ -49,7 +45,6 @@ int maxArea(int i, int peopleLeft) {
     }
     return max(cache[i + 1][peopleLeft - people] + area, cache[i + 1][peopleLeft]);
 }
-
 int main() {
     memset(cache, -1, sizeof(cache[0][0]) * MAX * MAX);
     scanf("%d%d%d%d", &N, &M, &Q, &K);
@@ -70,5 +65,3 @@ int main() {
     printf("%d\n", maxArea(0, K));
     return 0;
 }
-
-

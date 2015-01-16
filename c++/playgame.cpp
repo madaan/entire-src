@@ -21,14 +21,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
- 
 using namespace std;
- 
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
- 
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -44,14 +41,12 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
- 
 const int oo = 2000000009;
 const double eps = 1e-9;
 #define MAX 100009
 ll dp[MAX];
 ll arr[MAX];
 int n;
-
 ll solve(int i) {
     if(i >= n) {
         return oo;
@@ -65,7 +60,6 @@ ll solve(int i) {
     ll res3 = arr[i] + arr[i + 1] + arr[i + 2] + min(solve(i + 3), min(solve(i + 4), solve(i + 5)));
     return dp[i] = max(res1, max(res2, res3));
 }
-
 int main() {
     int t;
     cin >> t;

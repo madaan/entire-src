@@ -26,7 +26,6 @@ void relax(int curr, int nbr) {
         Q.push(ii(key[nbr], nbr));
     }
 }
-
 char *compress(int l, int& nl) {
     char *nip = new char[l + 1];
     int i = 2;
@@ -48,20 +47,16 @@ char *compress(int l, int& nl) {
                 return nip;
             }
         }
-            nip[j] = ip[i];
-            p2 = p1;
-            p1 = ip[i];
-            i++;
-            j++;
-        }
+        nip[j] = ip[i];
+        p2 = p1;
+        p1 = ip[i];
+        i++;
+        j++;
+    }
     nip[j] = '\0';
     nl = j;
     return nip;
 }
-
-
-
-
 int main() {
     scanf("%s", ip);
     int l = strlen(ip);
@@ -82,7 +77,6 @@ int main() {
         printf("2\n");
         return 0;
     }
-    
     vvi adj(10);
     //compress input to reduce all runnings of greater than 2
     int nl;
@@ -95,7 +89,6 @@ int main() {
     }
     Q.push(ii(0, 0));
     key[0] = 0;
-
     while(!Q.empty()) {
         ii top_element = Q.top();
         Q.pop();

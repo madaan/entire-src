@@ -23,14 +23,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
- 
 using namespace std;
- 
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
- 
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -54,18 +51,15 @@ struct Order
     int cost;
 };
 typedef pair<int, Order> po;
-
 bool compare(const po &i, const po &j)
 {
     return i.first < j.first;
 }
-
 //Data Structures
 int prevCompatible[MAXJ];
 ll cache[MAXJ];
 vector<po> orders;
 vector<int> endTimes;
-
 void makePrevCompatible2 (int n) {
     prevCompatible[0] = -1;
     for(int i = 1; i < n; i++) { //
@@ -78,7 +72,6 @@ void makePrevCompatible2 (int n) {
         }
     }
 }
-
 int nearestBinSearch(int l, int r, int x) {
     int mid, lprev;
     lprev = l;
@@ -90,23 +83,18 @@ int nearestBinSearch(int l, int r, int x) {
         } else {
             r = mid - 1;
         }
-
     }
     if(endTimes[l] > x) {
         return -1;
     }
     return l;
 }
-
-
 void makePrevCompatible (int n) {
     prevCompatible[0] = -1;
     for(int i = 1; i < n; i++) { //
         prevCompatible[i] = nearestBinSearch(0, i - 1, orders[i].second.start);
     }
-    
 }
- 
 ll findMaxWeight(int n) {
     if(n < 0) {
         return -1;
@@ -117,14 +105,12 @@ ll findMaxWeight(int n) {
     int pc = prevCompatible[n];
     ll choice1 = orders[n].second.cost;
     if(pc != -1) { //noone is compatible
-    choice1 += findMaxWeight(pc);
+        choice1 += findMaxWeight(pc);
     }
     ll choice2 = findMaxWeight(n - 1);
     cache[n] = max(choice1, choice2);
     return cache[n];
 }
-
-
 int main() {
     int t, n;
     scanf("%d", &t);
@@ -157,7 +143,3 @@ int main() {
     }
     return 0;
 }
-
-
-        
-

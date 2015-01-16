@@ -11,7 +11,6 @@ int main() {
         left[line2[i]] = line2[i - 1];
         left[line3[i]] = line3[i - 1];
     }
-
     for(int i = 0; i < line1.length() - 1; i++) {
         right[line1[i]] = line1[i + 1];
         right[line2[i]] = line2[i + 1];
@@ -33,11 +32,3 @@ int main() {
     cout << "\n";
     return 0;
 }
-
-
-
-
-
-
-
-

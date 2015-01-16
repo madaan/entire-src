@@ -15,8 +15,6 @@ int distFrom[MAXN];
 int distTo[MAXN];
 int almostDist[MAXN];
 int shortestPath;
-
-
 void dijkstra(int key[], int src, bool transpose = false, bool ignoreEdges = false) {
     priority_queue<pi, vector<pi>, greater<pi> > Q;
     for(int i = 0; i < MAXN; i++) {
@@ -42,7 +40,6 @@ void dijkstra(int key[], int src, bool transpose = false, bool ignoreEdges = fal
                     continue;
                 }
             }
-
             if(edgeWeight != UNDEF) {
                 //printf("%d -> %d edgeWeight = %d key[i] = %d\n", currVertex, i, decisionValue, key[i]);
                 if((key[currVertex] + edgeWeight) < key[i]) {
@@ -54,8 +51,6 @@ void dijkstra(int key[], int src, bool transpose = false, bool ignoreEdges = fal
         }
     }
 }
-
-
 int main() {
     int N, M;
     int S, D;
@@ -83,6 +78,3 @@ int main() {
     }
     return 0;
 }
-
-
-

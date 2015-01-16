@@ -16,10 +16,10 @@ int main()
         for(int i = 0; i < 10001; i += 10) {
             E = ct1 * (i - ct2);
             if(E > max) {
-               max = E;
+                max = E;
             }
         }
         printf("%lf\n", M + max);
-    } 
+    }
     return 0;
 }

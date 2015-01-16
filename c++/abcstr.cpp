@@ -1,4 +1,3 @@
-
 //sg
 #include <algorithm>
 #include <bitset>
@@ -22,14 +21,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
- 
 using namespace std;
- 
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
- 
 // Basic macros
 #define st          first
 #define se          second
@@ -44,19 +40,17 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
- 
 const int oo = 2000000009;
 const double eps = 1e-9;
-int cum[1000010][3]; 
+int cum[1000010][3];
 #define alleq(i) (cum[i][0] == cum[i][1] && cum[i][1] == cum[i][2] && cum[i][0] == cum[i][2])
-
 bool eq(int l, int r) {
     int a, b, c;
-   /* if(l == 0) {
-        a = cum[r][0];
-        b = cum[r][1];
-        c = cum[r][2];
-    } else {*/
+    /* if(l == 0) {
+         a = cum[r][0];
+         b = cum[r][1];
+         c = cum[r][2];
+     } else {*/
     a = cum[r][0] - cum[l - 1][0];
     b = cum[r][1] - cum[l - 1][1];
     c = cum[r][2] - cum[l - 1][2];
@@ -64,8 +58,6 @@ bool eq(int l, int r) {
     //printf("l = %d, r = %d \n a = %d, b = %d, c = %d\n", l, r, a, b, c);
     return (a == b) && (b == c) && (a == c);
 }
-
-
 int main()
 {
     char s[1000010];
@@ -89,7 +81,6 @@ int main()
             }
         }
     }
-
     printf("%lld\n", match);
     return 0;
 }

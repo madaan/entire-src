@@ -15,7 +15,6 @@ int bsearch(int arr[], int n) {
     }
     return l;
 }
-
 int main() {
     int arr[] = {-2,-1,0,1,2,3,6,10000,10000};
     int possibleAns = bsearch(arr, 7);
@@ -27,5 +26,3 @@ int main() {
     }
     return 0;
 }
-    
-

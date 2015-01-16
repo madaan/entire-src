@@ -2,7 +2,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 typedef unsigned long long ll;
-
 ll strInt(string path) {
     ll n = path.length();
     ll res = 0;
@@ -15,8 +14,6 @@ ll strInt(string path) {
     return res;
 }
 
-
-    
 ll findPos(ll p, ll q) {
     string path = "";
     while(!(p == 1 && q == 1)) {
@@ -31,7 +28,6 @@ ll findPos(ll p, ll q) {
     path = "1" + path;
     return strInt(path);
 }
-
 void llStr2(ll n, string &bin) {
     while(n > 0) {
         if(n & 1) {
@@ -43,16 +39,11 @@ void llStr2(ll n, string &bin) {
         //cout << bin << "\n" << n << "\n";
     }
 }
-
-
-
-
 void findElem(ll n) {
     string bin;
     llStr2(n, bin);
     ll p = 1, q = 1;
     //cout << bin << "\n";
-
     for(int i = 1; i < bin.length(); i++) {
         if(bin[i] == '0') { //left
             q = p + q;
@@ -62,7 +53,6 @@ void findElem(ll n) {
     }
     cout << p << " " << q << "\n";
 }
-
 int main() {
     int t, id;
     cin >> t;

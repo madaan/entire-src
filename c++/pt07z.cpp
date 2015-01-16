@@ -29,7 +29,6 @@ void bfs(int src, int &farthest_val, int &farthest_vert, int n) {
         }
     }
 }
-
 int main() {
     int n, a, b;
     scanf("%d", &n);

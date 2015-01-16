@@ -1,7 +1,6 @@
 //sg
 #include<bits/stdc++.h>
 using namespace std;
-
 //typedefs
 typedef unsigned long long ll;
 typedef pair<ll, pair<int, int> > span;
@@ -11,14 +10,12 @@ int numSpans;
 int n, m, k;
 #define max 5009
 ll dp[max][max];
-
 bool comp(span a, span b) {
     if(a.first == b.first) {
         return a.second.second > b.second.second;
     }
     return a.first > b.first;
 }
-
 bool ok(pi x, pi y) {
     pi a, b;
     if(x.first < y.first) {
@@ -35,7 +32,6 @@ bool ok(pi x, pi y) {
     }
     return true;
 }
-
 //returns the next compatible span
 int nxt(int i) {
     for(int j = i + 1; j < numSpans; j++) {
@@ -45,12 +41,10 @@ int nxt(int i) {
     }
     return numSpans;
 }
-
-
 ll getm(int i, int picked) {
     cout << "getm( " << i << ", " << picked << ")\n";
     if(dp[i][picked] != -1) return dp[i][picked];
-    if((picked == k) || (i == numSpans)){ 
+    if((picked == k) || (i == numSpans)) {
         return dp[i][picked] = 0;
     }
     int ni = nxt(i);
@@ -59,7 +53,6 @@ ll getm(int i, int picked) {
     a += spans[i].first;
     return (dp[i][picked] = a > b ? a : b);
 }
-
 int main() {
     memset(dp, -1, sizeof(dp));
     cin >> n >> m >> k;
@@ -67,7 +60,6 @@ int main() {
     for(int i = 1; i <= n; i++) {
         cin >> arr[i];
     }
-
     for(int i = 1; i <= n - m + 1; i++) {
         ll sum = 0;
         for(int j = 0; j < m; j++) {

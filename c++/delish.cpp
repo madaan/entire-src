@@ -19,7 +19,6 @@ void kadane(int i, int j, ll &gmax, int &starts, vi ar) {
         }
     }
 }
-
 int main() {
     int t;
     scanf("%d", &t);

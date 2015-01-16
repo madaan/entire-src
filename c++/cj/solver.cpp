@@ -16,7 +16,6 @@ void processeq(string eq) {
     int number;
     getline(ss, a, '+');
     getline(ss, b, '=');
-
     ss >> number;
     if(a == b) {
         //self loop
@@ -46,7 +45,6 @@ void processeq(string eq) {
         edgeset.insert(pi(bn, an));
     }
 }
-
 pi getsd(string eq) {
     //cout << "-> " << eq << "\n";
     stringstream ss(eq);
@@ -60,7 +58,6 @@ pi getsd(string eq) {
     }
     return pi(vmap[a], vmap[b]);
 }
-
 #define INF 1000000000
 void findpath(int &pathLen, int &pathVal, int src, int dest) {
     queue<int> qq;
@@ -69,7 +66,7 @@ void findpath(int &pathLen, int &pathVal, int src, int dest) {
     vector< int > key(vno, INF);
     key[src] = 0;
     //cout << "From " << src << "to" << dest << "\n";
-    
+
     qq.push(src);
     while(!qq.empty()) {
         int curr = qq.front();
@@ -77,19 +74,19 @@ void findpath(int &pathLen, int &pathVal, int src, int dest) {
         if(visited[curr]) continue;
         //cout << "Popped : " << curr << "\n";
         visited[curr] = true;
-        
+
         for(int i = 0; i < adj[curr].size(); i++) {
             int nbr = adj[curr][i];
             //cout << "nbr : " << nbr << "\n";
             if(!visited[nbr]) {
                 if((key[curr] + 1) % 2 !=0) {
-                key[nbr] = min(key[nbr], key[curr] + 1);
-                if(key[nbr] % 2 != 0) {
-                    wt[nbr] = wtmap[pi(curr, nbr)] + wt[curr];
-                } else {
-                    wt[nbr] = wt[curr] - wtmap[pi(curr, nbr)];
-                }
-                qq.push(nbr);
+                    key[nbr] = min(key[nbr], key[curr] + 1);
+                    if(key[nbr] % 2 != 0) {
+                        wt[nbr] = wtmap[pi(curr, nbr)] + wt[curr];
+                    } else {
+                        wt[nbr] = wt[curr] - wtmap[pi(curr, nbr)];
+                    }
+                    qq.push(nbr);
                 }
             }
         }
@@ -97,8 +94,6 @@ void findpath(int &pathLen, int &pathVal, int src, int dest) {
     pathLen = key[dest];
     pathVal = wt[dest];
 }
-
-
 void self(int src) {
     queue<int> qq;
     vector< bool > visited(vno, false);
@@ -106,7 +101,7 @@ void self(int src) {
     vector< int > key(vno, INF);
     key[src] = 0;
     //cout << "From " << src << "to" << dest << "\n";
-    
+
     qq.push(src);
     while(!qq.empty()) {
         int curr = qq.front();
@@ -132,10 +127,6 @@ void self(int src) {
         }
     }
 }
-
-
-
-
 int main() {
     int t;
     cin >> t;
@@ -149,7 +140,6 @@ int main() {
         for(int i = 0; i < 10009; i++) {
             adj[i].clear();
         }
-
         string eqstring;
         for(int i = 0; i < n; i++) {
             cin >> eqstring;
@@ -182,7 +172,6 @@ int main() {
             } else if(smap.find(sd.first) != smap.end() && smap.find(sd.second) != smap.end()) {
                 cout << eqstring << "=" << smap[sd.first] + smap[sd.second] << "\n";
             }
-
         }
     }
     return 0;

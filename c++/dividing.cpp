@@ -9,7 +9,6 @@ int main()
         scanf("%lld", &n);
         sum += n;
     }
-
     if(sum == expected) {
         printf("YES\n");
     } else {

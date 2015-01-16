@@ -2,7 +2,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define MAX 110
-
 int dp[MAX][MAX];
 char path[MAX][MAX];
 string a, b;
@@ -28,7 +27,6 @@ int findname(int i, int j) {
         return dp[i][j] = 1 + min(r1, r2);
     }
 }
-
 string getval() {
     string res = "";
     int i = 0, j = 0;
@@ -41,19 +39,18 @@ string getval() {
             i++;
         } else if(path[i][j] == 'x') {
             res += a[i];
-            i++; j++;
+            i++;
+            j++;
         }
     }
     if(i < al) {
         res += a.substr(i, al);
-    } 
+    }
     if(j < bl) {
         res += b.substr(j, bl);
     }
     return res;
 }
-
-
 int main() {
     char astr[200], bstr[200];
     while(scanf("%s%s", astr, bstr) != EOF) {

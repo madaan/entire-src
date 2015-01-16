@@ -19,14 +19,11 @@ void f(int pos, int leftSum) {
             //printf("here pos = %d ls=%d\n", pos, leftSum);
             f(i + 1, sum);
         }
-
     }
 }
-
 int main() {
     int i = 1;
     while(true) {
-
         scanf("%s", ip);
         if(!strcmp("bye", ip)) {
             return 0;
@@ -40,6 +37,3 @@ int main() {
     }
     return 0;
 }
-
-
-

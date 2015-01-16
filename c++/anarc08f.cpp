@@ -11,9 +11,8 @@
 using namespace std;
 typedef long long ll;
 int adj[MAXL][MAXL];
-
 void readDist(string distanceString, string from, string to, map<string, int>& vertextMap) {
-    bool toA = false, toB = false;    
+    bool toA = false, toB = false;
     if(distanceString[0] == '<') { //toA
         toA = true;
     }
@@ -33,27 +32,24 @@ void readDist(string distanceString, string from, string to, map<string, int>& v
     int distValue = atoi(dist);
     int A = vertextMap[from];
     int B = vertextMap[to];
-
     if(toB) {
         if(distValue < adj[A][B])
-        adj[A][B] = distValue;
+            adj[A][B] = distValue;
     }
     if(toA) {
         if(distValue < adj[B][A])
-        adj[B][A] = distValue;
+            adj[B][A] = distValue;
     }
 }
-
 void floydWarshall(int n) {
-for(int k = 0; k < n; k++) {
-    for(int i = 0; i < n; i++) {
-        for(int j = 0; j < n; j++) {
-                    adj[i][j] = min(adj[i][j], adj[i][k] + adj[k][j]);
+    for(int k = 0; k < n; k++) {
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < n; j++) {
+                adj[i][j] = min(adj[i][j], adj[i][k] + adj[k][j]);
             }
         }
     }
 }
-
 int main() {
     int n, c, r;
     string joblist[1100];
@@ -70,53 +66,45 @@ int main() {
         for(int i  = 0; i < n; i++) {
             adj[i][i] = 0;
         }
-        
         if(n == 0) {
             return 0;
         }
-        
-        
         for(int i = 0; i <= c; i++) { //read the jobs
             cin >> joblist[i];
         }
         string garage = joblist[0];
         joblist[c + 1] = garage;
-
         //now read the edges
         string from, to, distanceString;
         int locationNumber = 0;
         for(int i = 1; i <= r; i++) {
-
             cin >> from;
             if(nodeMap.find(from) == nodeMap.end()) {
                 nodeMap[from] = locationNumber++;
             }
-            
             cin >> distanceString;
-
             cin >> to;
             if(nodeMap.find(to) == nodeMap.end()) {
                 nodeMap[to] = locationNumber++;
             }
-
             bool twoWay = false;
             int fromId, toId;
             readDist(distanceString, from, to, nodeMap);
             //printf("%s (%d) to %s (%d)\n", from.c_str(), nodeMap[from], to.c_str(), nodeMap[to]);
         }
-       if(c == 0) {
+        if(c == 0) {
             printf("%d. 0\n", testCaseNumber++);
             continue;
-        } 
-       floydWarshall(n);
-       /*
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < n; j++) {
-                printf("%d ", adj[i][j]);
-            }
-            printf("\n");
         }
-        */
+        floydWarshall(n);
+        /*
+         for(int i = 0; i < n; i++) {
+             for(int j = 0; j < n; j++) {
+                 printf("%d ", adj[i][j]);
+             }
+             printf("\n");
+         }
+         */
         //now read the joblist to get the distance
         ll totalDist = 0;
         int nextJob, prevJob;
@@ -131,9 +119,3 @@ int main() {
     }
     return 0;
 }
-    
-
-
-
-
-

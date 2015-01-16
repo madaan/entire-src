@@ -21,14 +21,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
-
 using namespace std;
-
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
-
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -44,12 +41,9 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
-
 const int oo = 2000000009;
 const double eps = 1e-9;
 char str[10];
-
-
 int main() {
     int n;
     scanf("%d", &n);
@@ -59,44 +53,41 @@ int main() {
         printf("espeon\n");
     }
     else {
-    scanf("%s", str);
-    string vr[] = {"jolteon", "flareon", "umbreon", "leafeon", "glaceon", "sylveon"};
-    bool fs[] = {true, true, true, true, true, true};
-    set<int> feasibleSet(fs, fs + 6);
-    set<string> searchStrings;
-    char temp[10];
-    int i, j;
-    i = j = 0;
-    while(str[i]) {
-        j= 0;
-        if(str[i] != '.') {
-        while(str[i] && str[i] != '.') {
-            temp[j++] = str[i++];
+        scanf("%s", str);
+        string vr[] = {"jolteon", "flareon", "umbreon", "leafeon", "glaceon", "sylveon"};
+        bool fs[] = {true, true, true, true, true, true};
+        set<int> feasibleSet(fs, fs + 6);
+        set<string> searchStrings;
+        char temp[10];
+        int i, j;
+        i = j = 0;
+        while(str[i]) {
+            j= 0;
+            if(str[i] != '.') {
+                while(str[i] && str[i] != '.') {
+                    temp[j++] = str[i++];
+                }
+                temp[j] = '\0';
+                searchStrings.insert(string(temp));
+            }
+            i++;
         }
-        temp[j] = '\0';
-        searchStrings.insert(string(temp));
-        }
-        i++;
-    }
-    tr(searchStrings, ss) {
-        for(int i = 0; i < 6; i++) {
-            if(fs[i]) {
-                //printf("%s\n", (*ss).c_str());
-                if((vr[i]).find(*ss) == string::npos) {
-                    fs[i] = false;
+        tr(searchStrings, ss) {
+            for(int i = 0; i < 6; i++) {
+                if(fs[i]) {
+                    //printf("%s\n", (*ss).c_str());
+                    if((vr[i]).find(*ss) == string::npos) {
+                        fs[i] = false;
+                    }
                 }
             }
         }
-    }
-    for(int i = 0; i < 6; i++) {
-        if(fs[i]) {
-            printf("%s\n", vr[i].c_str());
-            break;
+        for(int i = 0; i < 6; i++) {
+            if(fs[i]) {
+                printf("%s\n", vr[i].c_str());
+                break;
+            }
         }
-    }
     }
     return 0;
 }
-
-
-

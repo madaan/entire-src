@@ -12,7 +12,6 @@ double surviesTill(int H, int P, int A) {
     //printf("root1 = %f, root2 = %f\n", root1, root2);
     return ceil(root1);
 }
-
 int main() {
     int t, H, P, A;
     scanf("%d", &t);
@@ -27,4 +26,3 @@ int main() {
     }
     return 0;
 }
-

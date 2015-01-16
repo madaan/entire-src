@@ -21,14 +21,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
-
 using namespace std;
-
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
-
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -44,10 +41,8 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
-
 #define INF 2000000009
 const double eps = 1e-9;
-
 class CLEANTAB {
     int m, n;
     int MAX_N, MAX_C;
@@ -99,7 +94,6 @@ public:
         }
         return pageFaults + n; //count intial too
     }
-
     //returns the customer who will not order for the longest period of time
     void getBestPageToDel(int &maxTC, int &maxTV) {
         maxTV = 0;
@@ -110,7 +104,6 @@ public:
             }
         }
     }
-
     void getBestPageSlow(int &cust, int &val) {
         vector<int>::iterator it, maxIt;
         tr(frame, i) {
@@ -125,7 +118,6 @@ public:
             }
         }
     }
-            
     void updatePages() {
         tr(customers, i) {
             if(refTimes[*i].front() < ts) {
@@ -136,7 +128,6 @@ public:
             }
         }
     }
-
     void readRefString() {
         int temp;
         for(int i = 0; i < m; i++) {
@@ -146,7 +137,6 @@ public:
             refTimes[temp].push_back(i);
         }
     }
-
     //eats the reference string till there is a page fault
     void eatTillFault() {
         ts = 0;
@@ -155,8 +145,6 @@ public:
         }
     }
 };
-
-
 int main() {
     int t;
     scanf("%d", &t);

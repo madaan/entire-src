@@ -16,7 +16,6 @@ void floydWarshall(int n) {
         }
     }
 }
-
 int main() {
     int t;
     int n, a, b;

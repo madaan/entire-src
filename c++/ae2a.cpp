@@ -1,13 +1,11 @@
 //sg
 #include<stdio.h>
 #include<string.h>
-
 #define MAXN 1010
 #define MAXK 6060
 #define UNDEF 1.0
 typedef long long ll;
 double cache[MAXN][MAXK];
-
 double f(int n, int k) {
     //printf("f(%d, %d)\n", n, k);
     if(n > 1000) {
@@ -36,7 +34,6 @@ double f(int n, int k) {
     cache[n][k] = (temp / 6);
     return cache[n][k];
 }
-
 int main() {
     int t, n, k;
     scanf("%d", &t);

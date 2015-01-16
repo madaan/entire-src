@@ -1,7 +1,6 @@
 //sg
 #include<bits/stdc++.h>
 using namespace std;
-
 int numdiff(string a, string b) {
     int res = 0;
     for(int i = 0; i < a.length(); i++) {
@@ -11,8 +10,6 @@ int numdiff(string a, string b) {
     }
     return res;
 }
-
-
 int main() {
     int n, m, k, x;
     int res = 0;

@@ -2,13 +2,11 @@
 #include<bits/stdc++.h>
 #define MAX 1100
 using namespace std;
-
 int pos[10][MAX];
 bool visited[MAX];
 int key[MAX];
 vector<int> adj[MAX];
 int ans;
-
 void dfs(int s) {
     visited[s] = true;
     //printf("%d\n", s);
@@ -22,7 +20,6 @@ void dfs(int s) {
     ans = max(ans, key[s]);
     //printf("%d\n", s);
 }
-
 void dfsmin(int s) {
     visited[s] = true;
     //printf("%d\n", s);
@@ -36,7 +33,6 @@ void dfsmin(int s) {
     }
     //printf("%d\n", s);
 }
-
 #define INF 100000
 int main() {
     int n, k;
@@ -63,7 +59,6 @@ int main() {
         }
     }
     for(int i = n; i >= 1; i--) {
-        
         if(!visited[i])  {
             key[i] = 0;
             dfs(i);

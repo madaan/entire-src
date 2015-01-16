@@ -12,7 +12,6 @@ ll solve() {
     }
     return dp[n - 1];
 }
-
 int main() {
     int t;
     cin >> t;

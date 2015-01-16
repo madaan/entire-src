@@ -21,15 +21,11 @@
 #include <stack>
 #include <utility>
 #include <vector>
- 
 using namespace std;
- 
-
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 typedef vector<string> vs;
- 
 // Basic macros
 #define tr(v, i) for(typeof(v.begin()) i = v.begin(); i != v.end(); i++)
 #define st          first
@@ -45,7 +41,6 @@ typedef vector<string> vs;
 #define pu          push_back
 #define mp          make_pair
 #define sz(x)       (int)(x.size())
- 
 const int oo = 2000000009;
 const double eps = 1e-9;
 int ck[500];
@@ -59,7 +54,6 @@ bool isspecial(char c) {
     }
     return false;
 }
-
 int getc() {
     int condSat = 0;
     int l = strlen(str);
@@ -72,7 +66,7 @@ int getc() {
     }
     if(l > 10) {
         condSat++;
-    }   
+    }
     bool unq = true;
     bool hasUpper = false;
     bool hasLower = false;
@@ -81,14 +75,14 @@ int getc() {
     bool hasSpl = false;
     for(int i = 0; i < l; i++) {
         if(isspecial(str[i])) {
-                hasSpl = true;
+            hasSpl = true;
         }
         if(isalpha(str[i])) {
             alpha = true;
         }
         if(isdigit(str[i])) {
             digit = true;
-        } 
+        }
         if(isupper(str[i])) {
             hasUpper = true;
         }
@@ -106,7 +100,7 @@ int getc() {
     }
     if(alpha) {
         condSat++;
-    } 
+    }
     if(digit) {
         condSat++;
     }
@@ -118,9 +112,6 @@ int getc() {
     }
     return condSat;
 }
-
-
-
 int main() {
     int t;
     scanf("%d", &t);
@@ -129,7 +120,7 @@ int main() {
         scanf("%s", str);
         int cons = getc();
         printf("Case #%d:\n", i++);
-        //printf("cons : %d\n", cons);    
+        //printf("cons : %d\n", cons);
         if(cons < 4) {
             printf("weak\n");
         } else if(cons >= 6) {
@@ -140,4 +131,3 @@ int main() {
     }
     return 0;
 }
-

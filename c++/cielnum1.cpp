@@ -13,17 +13,14 @@ int analyze(int *arr, LL i) {
     }
     return 1;
 }
-
 bool cielNumber(int *arr) {
     if(arr[8] >= arr[5] && arr[5] >= arr[3]) {
         //if(!arr[0] && !arr[1] && !arr[2] && !arr[4] && !arr[6] && !arr[7] && !arr[9]) {
-            return true;
+        return true;
         //}
     }
     return false;
 }
-
-
 int main()
 {
     LL i =  1;
@@ -44,7 +41,3 @@ int main()
     }
     return 0;
 }
-
-
-
-    

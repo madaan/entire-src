@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stack>
 #include <stdlib.h>
-bool paranChecker(char *str) 
+bool paranChecker(char *str)
 {
     std::stack<char> st;
     if(str == NULL) {
@@ -12,7 +12,6 @@ bool paranChecker(char *str)
     if(strlen(str) == 0) {
         return true;
     }
-
     int i = 0;
     while(str[i]) {
         if(str[i] == ')') {
@@ -28,16 +27,14 @@ bool paranChecker(char *str)
     }
     return st.empty();
 }
-
 int n;
 void listParan(char *str, int l) {
-   //printf("len = %d str = %s\n", l, str); 
+    //printf("len = %d str = %s\n", l, str);
     if(l == n && paranChecker(str)) {
-            printf("%s\n", str);
-            return;
-        }
+        printf("%s\n", str);
+        return;
+    }
     int no = 0, nc = 0;
-    
     for(int i = 0; i < l; i++) {
         if(str[i] == '(') {
             no++;
@@ -49,24 +46,21 @@ void listParan(char *str, int l) {
         return;
     }
     if((l > n / 2) &&(no == 0 || nc == 0)) {
-            return;
+        return;
     }
-
-
     if(l < n) { //currently a valid paran
         if(no < n / 2) {
-        char *str1 = new char[l + 2];
-        strcpy(str1, str);
-        listParan(strcat(str1, "("), l + 1);
-        } 
+            char *str1 = new char[l + 2];
+            strcpy(str1, str);
+            listParan(strcat(str1, "("), l + 1);
+        }
         if(nc < n / 2) {
-        char *str2 = new char[l + 2];
-        strcpy(str2, str);
-        listParan(strcat(str2, ")"), l + 1);
+            char *str2 = new char[l + 2];
+            strcpy(str2, str);
+            listParan(strcat(str2, ")"), l + 1);
         }
     }
-
-}   
+}
 int main(int c, char *v[])
 {
     n = atoi(v[1]);
@@ -75,7 +69,3 @@ int main(int c, char *v[])
     listParan(str, 0);
     return 0;
 }
-
-
-
-

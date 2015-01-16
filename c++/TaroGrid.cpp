@@ -3,7 +3,6 @@
 #include <string>
 #include <vector>
 using namespace std;
-
 class TaroGrid {
 public:
     int getNumber( vector <string> grid ) {
@@ -37,7 +36,6 @@ public:
         return max;
     }
 };
-
 // BEGIN CUT HERE
 #include <cstdio>
 #include <ctime>
@@ -55,7 +53,6 @@ void run_test(int casenum = -1, bool quiet = false) {
         }
         return;
     }
-
     int correct = 0, total = 0;
     for (int i=0;; ++i) {
         int x = run_test_case(i);
@@ -66,7 +63,6 @@ void run_test(int casenum = -1, bool quiet = false) {
         correct += x;
         ++total;
     }
-
     if (total == 0) {
         std::cerr << "No test cases run." << std::endl;
     } else if (correct < total) {
@@ -75,25 +71,20 @@ void run_test(int casenum = -1, bool quiet = false) {
         std::cerr << "All " << total << " tests passed!" << std::endl;
     }
 }
-
 int verify_case(int casenum, const int &expected, const int &received, std::clock_t elapsed) {
     std::cerr << "Example " << casenum << "... ";
-
     string verdict;
     vector<string> info;
     char buf[100];
-
     if (elapsed > CLOCKS_PER_SEC / 200) {
         std::sprintf(buf, "time %.2fs", elapsed * (1.0/CLOCKS_PER_SEC));
         info.push_back(buf);
     }
-
     if (expected == received) {
         verdict = "PASSED";
     } else {
         verdict = "FAILED";
     }
-
     std::cerr << verdict;
     if (!info.empty()) {
         std::cerr << " (";
@@ -104,21 +95,17 @@ int verify_case(int casenum, const int &expected, const int &received, std::cloc
         std::cerr << ")";
     }
     std::cerr << std::endl;
-
     if (verdict == "FAILED") {
         std::cerr << "    Expected: " << expected << std::endl;
         std::cerr << "    Received: " << received << std::endl;
     }
-
     return verdict == "PASSED";
 }
-
 int run_test_case(int casenum__) {
     switch (casenum__) {
     case 0: {
         string grid[]             = {"W"};
         int expected__            = 1;
-
         std::clock_t start__      = std::clock();
         int received__            = TaroGrid().getNumber(vector <string>(grid, grid + (sizeof grid / sizeof grid[0])));
         return verify_case(casenum__, expected__, received__, clock()-start__);
@@ -128,7 +115,6 @@ int run_test_case(int casenum__) {
                                      "BW"
                                     };
         int expected__            = 1;
-
         std::clock_t start__      = std::clock();
         int received__            = TaroGrid().getNumber(vector <string>(grid, grid + (sizeof grid / sizeof grid[0])));
         return verify_case(casenum__, expected__, received__, clock()-start__);
@@ -139,7 +125,6 @@ int run_test_case(int casenum__) {
                                      "BWB"
                                     };
         int expected__            = 3;
-
         std::clock_t start__      = std::clock();
         int received__            = TaroGrid().getNumber(vector <string>(grid, grid + (sizeof grid / sizeof grid[0])));
         return verify_case(casenum__, expected__, received__, clock()-start__);
@@ -151,7 +136,6 @@ int run_test_case(int casenum__) {
                                      "BWWW"
                                     };
         int expected__            = 3;
-
         std::clock_t start__      = std::clock();
         int received__            = TaroGrid().getNumber(vector <string>(grid, grid + (sizeof grid / sizeof grid[0])));
         return verify_case(casenum__, expected__, received__, clock()-start__);
@@ -162,7 +146,6 @@ int run_test_case(int casenum__) {
                                      "BWB"
                                     };
         int expected__            = 3;
-
         std::clock_t start__      = std::clock();
         int received__            = TaroGrid().getNumber(vector <string>(grid, grid + (sizeof grid / sizeof grid[0])));
         return verify_case(casenum__, expected__, received__, clock()-start__);
@@ -178,18 +161,14 @@ int run_test_case(int casenum__) {
                                      "WWBBWWBB"
                                     };
         int expected__            = 2;
-
         std::clock_t start__      = std::clock();
         int received__            = TaroGrid().getNumber(vector <string>(grid, grid + (sizeof grid / sizeof grid[0])));
         return verify_case(casenum__, expected__, received__, clock()-start__);
     }
-
     // custom cases
-
     /*      case 6: {
     			string grid[]             = ;
     			int expected__            = ;
-
     			std::clock_t start__      = std::clock();
     			int received__            = TaroGrid().getNumber(vector <string>(grid, grid + (sizeof grid / sizeof grid[0])));
     			return verify_case(casenum__, expected__, received__, clock()-start__);
@@ -197,7 +176,6 @@ int run_test_case(int casenum__) {
     /*      case 7: {
     			string grid[]             = ;
     			int expected__            = ;
-
     			std::clock_t start__      = std::clock();
     			int received__            = TaroGrid().getNumber(vector <string>(grid, grid + (sizeof grid / sizeof grid[0])));
     			return verify_case(casenum__, expected__, received__, clock()-start__);
@@ -205,7 +183,6 @@ int run_test_case(int casenum__) {
     /*      case 8: {
     			string grid[]             = ;
     			int expected__            = ;
-
     			std::clock_t start__      = std::clock();
     			int received__            = TaroGrid().getNumber(vector <string>(grid, grid + (sizeof grid / sizeof grid[0])));
     			return verify_case(casenum__, expected__, received__, clock()-start__);
@@ -215,8 +192,6 @@ int run_test_case(int casenum__) {
     }
 }
 }
-
-
 #include <cstdlib>
 int main(int argc, char *argv[]) {
     if (argc == 1) {

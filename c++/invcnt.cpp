@@ -3,7 +3,6 @@
 using namespace std;
 #define MAXIDX 10000009
 int tree[MAXIDX];
-
 int read(int idx) {
     int res = 0;
     while(idx > 0) {
@@ -12,7 +11,6 @@ int read(int idx) {
     }
     return res;
 }
-
 void update(int idx, int value) {
     while(idx < MAXIDX) {
         tree[idx] += value;

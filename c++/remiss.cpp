@@ -10,5 +10,4 @@ int main()
         printf("%d %d\n", max(a, b), a + b);
     }
     return 0;
-
 }
