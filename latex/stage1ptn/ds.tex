@@ -1,0 +1,171 @@
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{bbding}
+\usepackage{default}
+\usepackage{soul}
+\makeatletter
+\newcommand\SoulColor{%
+  \let\set@color\beamerorig@set@color
+  \let\reset@color\beamerorig@reset@color}
+\makeatother
+
+\newcommand*\MyPitem{%
+  \item[\color{green}\scalebox{0.9}{\textbullet}]}
+\newcommand*\MyCitem{%
+  \item[\color{red}\scalebox{0.9}{\textbullet}]}
+
+\begin{document}
+\begin{frame}{Distant Supervision}
+\begin{itemize}
+ \item Manual labeling of the entire corpus is not possible
+ \item Weak Supervision as a middle ground
+  \item Use Heuristics to align a table of facts with the corpus
+  \item Fuzzy training 
+  
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Distant Supervision}{Example}
+\begin{itemize}
+ 
+\item Born - In database
+ \begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Donald Knuth & Wisconsin \\
+Srinivasa Ramanujan & Erode \\
+Alan Turing & London \\
+\hline
+\end{tabular}
+\end{center}
+\item Given Sentences
+\begin{itemize}
+\item Srinivasa Ramanujan was born in his maternal grandmother’s home in Erode.
+\item Srinivasa Ramanujan was born in Erode, Tamilnadu, India, on 22nd December, 1887.
+\item Turing was born in Paddington, London, while his father was on leave from his position with the Indian Civil Service (ICS) at Chhatrapur, Bihar
+\item Alan Turing biopic The Imitation Game named as London film festival opener.
+\end{itemize}
+\end{itemize}
+ 
+\end{frame}
+
+\begin{frame}{Distant Supervision}{Example}
+\begin{itemize}
+ 
+\item Born - In database
+ \begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Donald Knuth & Wisconsin \\
+\SoulColor\hl{Srinivasa Ramanujan} & \SoulColor\hl{Erode} \\
+Alan Turing & London \\
+\hline
+\end{tabular}
+\end{center}
+\item Given Sentences
+\setbeamercolor{normal text}{fg=gray,bg=}
+\setbeamercolor{alerted text}{fg=black,bg=}
+\usebeamercolor{normal text}
+\begin{itemize}
+\item \alert<+> {\SoulColor\hl{Srinivasa Ramanujan} was born in his maternal grandmother’s home in \SoulColor\hl{Erode}.} \alert{LABEL : BornIn}
+\item Srinivasa Ramanujan was born in Erode, Tamilnadu, India, on 22nd December, 1887.
+\item Turing was born in Paddington, London, while his father was on leave from his position with the Indian Civil Service (ICS) at Chhatrapur, Bihar
+\item Alan Turing biopic The Imitation Game named as London film festival opener.
+\end{itemize}
+\end{itemize}
+ 
+\end{frame}
+
+\begin{frame}{Distant Supervision}{Example}
+\begin{itemize}
+ 
+\item Born - In database
+ \begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Donald Knuth & Wisconsin \\
+\SoulColor\hl{Srinivasa Ramanujan} & \SoulColor\hl{Erode} \\
+Alan Turing & London \\
+\hline
+\end{tabular}
+\end{center}
+\item Given Sentences
+\setbeamercolor{normal text}{fg=gray,bg=}
+\setbeamercolor{alerted text}{fg=black,bg=}
+\usebeamercolor{normal text}
+\begin{itemize}
+\item Srinivasa Ramanujan was born in his maternal grandmother’s home in Erode.
+\item \alert<+> {\SoulColor\hl{Srinivasa Ramanujan} was born in \SoulColor\hl{Erode}, Tamilnadu, India, on 22nd December, 1887.}
+\item Turing was born in Paddington, London, while his father was on leave from his position with the Indian Civil Service (ICS) at Chhatrapur, Bihar
+\item Alan Turing biopic The Imitation Game named as London film festival opener.
+\end{itemize}
+\end{itemize}
+ 
+\end{frame}
+
+\begin{frame}{Distant Supervision}{Example}
+\begin{itemize}
+ 
+\item Born - In database
+ \begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Donald Knuth & Wisconsin \\
+Srinivasa Ramanujan & Erode \\
+\SoulColor\hl{Alan Turing} & \SoulColor\hl{London} \\
+\hline
+\end{tabular}
+\end{center}
+\item Given Sentences
+\setbeamercolor{normal text}{fg=gray,bg=}
+\setbeamercolor{alerted text}{fg=black,bg=}
+\usebeamercolor{normal text}
+\begin{itemize}
+\item Srinivasa Ramanujan was born in his maternal grandmother’s home in Erode.
+\item Srinivasa Ramanujan was born in Erode, Tamilnadu, India, on 22nd December, 1887.
+\item \alert<+> {\SoulColor\hl{Turing} was born in Paddington, \SoulColor\hl{London}, while his father was on leave from his position with the Indian Civil Service (ICS) at Chhatrapur, Bihar}
+\item Alan Turing biopic The Imitation Game named as London film festival opener.
+\end{itemize}
+\end{itemize}
+ 
+\end{frame}
+
+\begin{frame}{Distant Supervision}{Example}
+\begin{itemize}
+ 
+\item Born - In database
+ \begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Donald Knuth & Wisconsin \\
+Srinivasa Ramanujan & Erode \\
+\SoulColor\hl{Alan Turing} & \SoulColor\hl{London} \\
+\hline
+\end{tabular}
+\end{center}
+\item Given Sentences
+\setbeamercolor{normal text}{fg=gray,bg=}
+\setbeamercolor{alerted text}{fg=black,bg=}
+\usebeamercolor{normal text}
+\begin{itemize}
+\item Srinivasa Ramanujan was born in his maternal grandmother’s home in Erode.
+\item Srinivasa Ramanujan was born in Erode, Tamilnadu, India, on 22nd December, 1887.
+\item Turing was born in Paddington, London, while his father was on leave from his position with the Indian Civil Service (ICS) at Chhatrapur, Bihar
+\item \alert<+> {\SoulColor\hl{Alan Turing} biopic The Imitation Game named as \SoulColor\hl{London} film festival opener.}
+\end{itemize}
+\end{itemize}
+ 
+\end{frame}
+
+\begin{frame}{Distant Supervision}
+\begin{itemize}
+\item[\textcolor{red}{$\bullet$}] Distant supervision assumption, any sentence containing the entity pair will express the corresponding relation
+\item[\textcolor{green}{$\bullet$}] Can quickly label huge corpora
+\item[\textcolor{red}{$\bullet$}] Same entity pair can match different relations (Founded(Steve Jobs, Apple) or CEO(Steve Jobs, Apple))
+\item[\textcolor{red}{$\bullet$}] False positives, may lead to model learning wrong patterns for relations
+\end{itemize}
+\end{frame}
+
+\end{document}
