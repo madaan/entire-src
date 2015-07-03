@@ -542,28 +542,28 @@ We prune $M_r$ by picking only sentences which contain one of the words in the s
 The sets keywords(r) are manually crafted and are listed in table \cite{fig:kw}.
 
 \begin{center}
-  \begin{table}
-  \begin{tabular}{|l|l|}
-  \hline \\
-  Relation Keywords & (case insensitive)\\
-  \hline
-  Internet User \% &"Internet"\\
-  Land Area &"area", "land", "land area"\\
-  Population &"Population"\\
-  Diesel &"diesel"\\
-  GDP &"Gross domestic", "GDP"\\
-  CO2 &"Carbon", "Carbon Emission", "CO2"\\
-  Inflation &"Inflation", "Price Rise"\\
-  FDI &"Foreign", "FDI"\\
-  Goods Export & "goods"\\
-  Life Expectancy & "life", "life expectancy"\\
-  Electricity Production & "Electricity\\
-  \hline
-  \end{tabular}
-  \caption{Keywords for Relations}
-  \label{fig:kw}
-  \end{table}
-  \end{center}
+\begin{table}
+ \begin{tabular}{|l|l|}
+\hline \\
+ Relation Keywords & (case insensitive)\\
+\hline
+ Internet User \% &"Internet"\\
+Land Area &"area", "land", "land area"\\
+Population &"Population"\\
+Diesel &"diesel"\\
+GDP &"Gross domestic", "GDP"\\
+CO2 &"Carbon", "Carbon Emission", "CO2"\\
+Inflation &"Inflation", "Price Rise"\\
+FDI &"Foreign", "FDI"\\
+Goods Export & "goods"\\
+Life Expectancy & "life", "life expectancy"\\
+Electricity Production & "Electricity\\
+\hline
+\end{tabular}
+\caption{Keywords for Relations}
+\label{fig:kw}
+\end{table}
+ \end{center}
 
 \subsection{Results}
 The results indicate that keywords help a lot. 
