@@ -1,0 +1,90 @@
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage{default}
+\usepackage{pdfpages}
+\usepackage{biblatex}
+\begin{document}
+\begin{frame}{Distant Supervision Techniques}
+ \begin{itemize}
+  \item First paper in 1999, almost every possibility explored
+ \end{itemize}
+\begin{center}
+ \includegraphics[scale=0.12]{./imgs/dsreadings.pdf}
+ % dsreadings.pdf: 2381x1285 pixel, 72dpi, 84.00x45.33 cm, bb=0 0 2381 1285
+\end{center}
+\end{frame}
+
+\begin{frame}{Distant Supervision Techniques}
+ \begin{itemize}
+  \item First paper in 1999, \emph{almost} every possibility explored
+ \end{itemize}
+\begin{center}
+ \includegraphics[scale=0.12]{./imgs/us.pdf}
+ % us.pdf: 2381x1285 pixel, 72dpi, 84.00x45.33 cm, bb=0 0 2381 1285
+\end{center}
+
+\end{frame}
+
+\begin{frame}{Relation Extraction Using MultiR}{From \url{raphaelhoffmann.com/publications}}
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.40]{./imgs/multirmode1.pdf}
+ % multirmode.1.pdf: 720x540 pixel, 72dpi, 25.40x19.05 cm, bb=0 0 720 540
+ \end{figure}
+\end{frame}
+\begin{frame}{Relation Extraction Using MultiR}{From \url{raphaelhoffmann.com/publications}}
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.40]{./imgs/multirmode2.pdf}
+ % multirmode.1.pdf: 720x540 pixel, 72dpi, 25.40x19.05 cm, bb=0 0 720 540
+ \end{figure}
+\end{frame}
+\begin{frame}{Relation Extraction Using MultiR}{From \url{raphaelhoffmann.com/publications}}
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.40]{./imgs/multirmode3.pdf}
+ % multirmode.1.pdf: 720x540 pixel, 72dpi, 25.40x19.05 cm, bb=0 0 720 540
+ \end{figure}
+\end{frame}
+\begin{frame}{Relation Extraction Using MultiR}{From \url{raphaelhoffmann.com/publications}}
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.40]{./imgs/multirmode4.pdf}
+ % multirmode.1.pdf: 720x540 pixel, 72dpi, 25.40x19.05 cm, bb=0 0 720 540
+ \end{figure}
+\end{frame}
+
+\begin{frame}{Relation Extraction Using MultiR}{From \url{raphaelhoffmann.com/publications}}
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.40]{./imgs/multirmode5.pdf}
+ % multirmode.1.pdf: 720x540 pixel, 72dpi, 25.40x19.05 cm, bb=0 0 720 540
+ \end{figure}
+\end{frame}
+
+\begin{frame}{Relation Extraction Using MultiR}{From \url{raphaelhoffmann.com/publications}}
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.40]{./imgs/multirmode6.pdf}
+ % multirmode.1.pdf: 720x540 pixel, 72dpi, 25.40x19.05 cm, bb=0 0 720 540
+ \end{figure}
+\end{frame}
+
+\begin{frame}{Relation Extraction Using MultiR}{From \url{raphaelhoffmann.com/publications}}
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.40]{./imgs/multirmode7.pdf}
+ % multirmode.1.pdf: 720x540 pixel, 72dpi, 25.40x19.05 cm, bb=0 0 720 540
+ \end{figure}
+\end{frame}
+
+\begin{frame}{Relation Extraction Using MultiR}{From \url{raphaelhoffmann.com/publications}}
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.40]{./imgs/multirmode8.pdf}
+ % multirmode.1.pdf: 720x540 pixel, 72dpi, 25.40x19.05 cm, bb=0 0 720 540
+ \end{figure}
+\end{frame}
+
+\end{document}

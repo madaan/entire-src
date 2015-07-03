@@ -1,0 +1,43 @@
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage{default}
+
+\begin{document}
+\begin{frame}{Rule Based System}{Peculiarity of Numerical Relations}
+\begin{itemize}
+ \item Analyzing a number of sentences expressing numerical relations lead to several insights as already discussed. \\
+ \item \textbf{Keywords} We can expect presence of certain keywords that might help in identifying relations.\\
+ \item \textbf{Modifiers} A large number of false positives stem out of mentions where a change in the numerical attribute is mentioned.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Dependencies}
+\begin{itemize}
+ \item Dependencies: Grammatical relation between two words, governer and dependent. \\
+ \item ``The red ball was lost'' \\
+\item \begin{itemize}
+\item \textbf{amod(ball,3,red,2)} ``Red'' is an adjective for ``ball''
+\item \textbf{det(ball,3,The,1)}  ``the'' is a determiner of ``ball''
+\item \textbf{nsubjpass(lost,5,ball,3)}	``ball is the subject of lost''
+\item \textbf{auxpass(lost,5,was,4)}	``was is an auxiliary of lost''
+\end {itemize}
+\end{itemize}
+\begin{figure}[h]
+ \centering
+ \includegraphics[bb=0 0 1281 118,scale=0.25]{./imgs/dep.png}
+ % dep.png: 1281x118 pixel, 72dpi, 45.19x4.16 cm, bb=0 0 1281 118
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Dependency Path Based Relation Extraction}
+ 
+\begin{itemize}
+ \item For a Country-Number pair, 
+\end{itemize}
+
+\end{frame}
+
+
+\end{document}

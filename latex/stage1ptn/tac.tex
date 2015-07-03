@@ -1,0 +1,59 @@
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage{default}
+\usetheme{Warsaw}
+
+\begin{document}
+
+\begin{frame}{Cold Start Knowledge Base Population at 2014}
+
+\begin{itemize}
+ 
+ \item Knowledge Base Population (KBP) track of TAC encourages the development of systems that can match entities mentioned in natural texts with those
+appearing in a knowledge base and extract novel information about entities from a document collection and add it to a new or existing knowledge base. \pause
+ 
+ \item Some example relations:
+    \begin{itemize}
+      \item children of
+      \item city of birth
+      \item shareholders
+      \item countries of residence
+    \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+\begin{itemize}
+  \item  Modeled the problem using distant supervision
+  \item Used Freebase as an existing Knowledge base.
+    
+    \item \textbf{Freebase: }Freebase is a large collaborative knowledge base consisting of metadata composed mainly by its community members. 
+    \item It is an online collection of structured data harvested from many sources, including individual, user-submitted wiki contributions.
+ \end{itemize}
+
+ 
+\end{frame}
+
+\begin{frame}{Corpus}
+ \begin{itemize}
+  \item The TAC corpus consisted of three type of documents: \pause
+    \begin{itemize}
+	\item \textbf{discussion forums } 99,063 English discussion forum documents selected from the BOLT Phase 1 discussion forums source data releases. Each forum includes at least 5 posts. \pause
+
+	\item \textbf{newswire } 1,000,257 documents selected from English Gigaword Fifth Edition. \pause
+
+	 \item \textbf{web} 999,999 English web documents selected from various GALE web collections. \pause
+    \end{itemize}
+    
+      \item We have submitted the knowledge base populated using our techniques on the above corpus and waiting for results.
+ \end{itemize}
+
+
+ 
+\end{frame}
+
+
+\end{document}
